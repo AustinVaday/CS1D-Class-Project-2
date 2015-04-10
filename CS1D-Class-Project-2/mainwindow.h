@@ -25,7 +25,7 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    bool createDatabaseConnection();
+	bool createDatabaseConnection();
 };
 
 #endif // MAINWINDOW_H
