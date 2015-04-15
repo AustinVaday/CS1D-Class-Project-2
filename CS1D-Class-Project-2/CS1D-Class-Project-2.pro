@@ -1,10 +1,10 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2015-03-21T21:26:20
+# Project created by QtCreator 2015-03-21T21:   26:20
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql webkit webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
