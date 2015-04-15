@@ -4,17 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
+QT       += core gui sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = CS1D-Class-Project-2
 TEMPLATE = app
 
+HEADERS  += mainwindow.h\
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp\
 
-HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
