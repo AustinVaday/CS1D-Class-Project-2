@@ -30,17 +30,19 @@ MainWindow::~MainWindow()
 bool MainWindow::createDatabaseConnection()
 {
 	// Add database type
-	QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 
-	// set attributes
-	db.setHostName("107.178.222.186/");
+    // set attributes
+qDebug() << endl << "Available drivers: " << db.drivers() << endl;
+    db.setHostName("107.178.222.186/phpmyadmin/");
 	db.setDatabaseName("baseball_stadiums");
-	db.setUserName("root");
-	db.setPassword("CS1D");
+    db.setUserName("root");
 
 
-	if (!db.open())
-		return false;
-	else
-		return true;
+    if (db.open("root","CS1D"))
+    {
+        return true; }
+    else {
+        return false;
+    }
 }
