@@ -121,8 +121,6 @@ int  WrapperList::size()  const
     return list.size();
 }
 
-
-
 /*==================================================
 * M U T A T O R S
 * ================================================*/
@@ -181,8 +179,6 @@ void WrapperList::clear()
 {
     list.clear();
 }
-
-
 
 /*==================================================
 * O V E R L O A D E D   O P E R A T O R S
