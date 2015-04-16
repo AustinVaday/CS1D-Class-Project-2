@@ -83,42 +83,42 @@ WrapperList::~WrapperList()
 template <typename DataType>
 bool  WrapperList::contains(const DataType& val) const
 {
-
+    return list.contains(val);
 }
 template <typename DataType>
 int   WrapperList::indexOf(const DataType& value)
 {
-
+    return list.indexOf(value);
 }
 template <typename DataType>
 const DataType& WrapperList::at(int i) const
 {
-
+    return list.at(i);
 }
 template <typename DataType>
 iterator WrapperList::begin() const
 {
-
+    return list.begin();
 }
 template <typename DataType>
 iterator WrapperList::end()   const
 {
-
+    return list.end();
 }
 template <typename DataType>
 int  WrapperList::count() const
 {
-
+    return list.count();
 }
 template <typename DataType>
 bool WrapperList::empty() const
 {
-
+    return list.empty();
 }
 template <typename DataType>
 int  WrapperList::size()  const
 {
-
+    return list.size();
 }
 
 
@@ -129,47 +129,57 @@ int  WrapperList::size()  const
 template <typename DataType>
 void WrapperList::insert(int i, const DataType& value)
 {
-
+    list.insert(i, value);
 }
 template <typename DataType>
 void WrapperList::push_back(const DataType& value)
 {
-
+    list.push_back(value);
 }
 template <typename DataType>
 void WrapperList::push_front(const DataType& value)
 {
-
+    list.push_front(value);
 }
 template <typename DataType>
 iterator WrapperList::erase(iterator begin, iterator end)
 {
-
+    list.erase(begin,end);
 }
 template <typename DataType>
 iterator WrapperList::erase(iterator pos)
 {
-
+    list.erase(pos);
 }
 template <typename DataType>
 DataType& WrapperList::pop_back()
 {
+    DataType* tempPtr = nullptr;
+    tempPtr = &(list.back());
 
+    list.pop_back();
+
+    return *tempPtr;
 }
 template <typename DataType>
 DataType& WrapperList::pop_front()
 {
+    DataType* tempPtr = nullptr;
+    tempPtr = &(list.front());
 
+    list.pop_front();
+
+    return *tempPtr;
 }
 template <typename DataType>
 void WrapperList::removeAt(int i)
 {
-
+    list.removeAt(i);
 }
 template <typename DataType>
 void WrapperList::clear()
 {
-
+    list.clear();
 }
 
 
@@ -180,17 +190,17 @@ void WrapperList::clear()
 template <typename DataType>
 QList<DataType>& WrapperList::operator= (const QList<DataType> &other)
 {
-
+    return list.operator =(other);
 }
 template <typename DataType>
 DataType& WrapperList::operator[](int i)
 {
-
+    return list.operator [](i);
 }
 template <typename DataType>
 const DataType& WrapperList::operator[](int i) const
 {
-
+    return list.operator [](i);
 }
 
 #endif // WRAPPERLIST_H
