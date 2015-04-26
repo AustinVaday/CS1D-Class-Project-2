@@ -11,9 +11,10 @@ TARGET = CS1D-Class-Project-2
 TEMPLATE = app
 
 HEADERS  += mainwindow.h\
+    hashTable.h
 
 SOURCES += main.cpp\
-        mainwindow.cpp\
+        mainwindow.cpp
 
 
 FORMS    += mainwindow.ui
