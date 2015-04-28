@@ -11,9 +11,12 @@ TARGET = CS1D-Class-Project-2
 TEMPLATE = app
 
 HEADERS  += mainwindow.h\
+    googleComputeInterface.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
+    googleComputeInterface.cpp\
+    gcloud-oauth2.py
 
 
 FORMS    += mainwindow.ui

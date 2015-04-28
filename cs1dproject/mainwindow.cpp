@@ -29,18 +29,9 @@ MainWindow::~MainWindow()
 
 bool MainWindow::createDatabaseConnection()
 {
-	// Add database type
-	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-	bool open = false;
-	// set attributes
-	db.setHostName("107.178.222.186");
-	db.setDatabaseName("baseball_stadiums");
-	db.setUserName("root");
+	QProcess sysCommandOutput;
 
-	if (db.open("root",""))
-	   open = true;
 
-	return open;
 
 }
 //QSqlError MainWindow::addConnection(const QString &driver, const QString &dbName, const QString &host, const QString &user, const QString &passwd, int port)
@@ -60,3 +51,15 @@ bool MainWindow::createDatabaseConnection()
 
 //	return err;
 //}
+/*	// Add database type
+	QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+	bool open = false;
+	// set attributes
+	db.setHostName("107.178.222.186");
+	db.setDatabaseName("baseball_stadiums");
+	db.setUserName("root");
+
+	if (db.open("root",""))
+	   open = true;
+
+	return open;*/
