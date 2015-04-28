@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QFont>
+#include <googleComputeInterface.h>
 
 // Database includes --------->
 #include <QtSql>

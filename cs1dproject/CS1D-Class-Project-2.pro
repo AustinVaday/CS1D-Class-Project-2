@@ -11,15 +11,32 @@ TARGET = CS1D-Class-Project-2
 TEMPLATE = app
 
 HEADERS  += mainwindow.h\
-    googleComputeInterface.h
+    googleComputeInterface.h\
+    hashTable.h \
+    .\cppconn\mysql_driver.h\
+    .\cppconn\mysql_connection.h\
+    .\cppconn\mysql_error.h\
+    .\cppconn\build_config.h\
+    .\cppconn\config.h\
+    .\cppconn\connection.h\
+    .\cppconn\datatype.h\
+    .\cppconn\driver.h\
+    .\cppconn\exception.h\
+    .\cppconn\metadata.h\
+    .\cppconn\parameter_metdata.h\
+    .\cppconn\prepared_statement.h\
+    .\cppconn\resultset_metdata.h\
+    .\cppconn\resultset.h\
+    .\cppconn\sqlstring.h\
+    .\cppconn\statement.h\
+    .\cppconn\variant.h\
+    .\cppconn\version_info.h\
+    .\cppconn\warning.h\
 
 SOURCES += main.cpp\
         mainwindow.cpp\
     googleComputeInterface.cpp\
-    gcloud-oauth2.py\
-    hashTable.h
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+
 
 FORMS    += mainwindow.ui
