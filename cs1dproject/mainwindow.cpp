@@ -1,8 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "mysql_connection.h"
-#include "mysql_driver.h"
-#include "mysql_error.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -140,7 +137,7 @@ void MainWindow::on_button_mainMenu5_clicked()
 bool MainWindow::addConnection()
 {
 // Add database type
-	QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 	bool open = false;
 	// set attributes
 	db.setHostName("107.178.222.186");

@@ -1,1 +1,0 @@
-/Users/syndacit/Dropbox/compsci/scc/cs_courses/hwlcs1d/CS1D-Class-Project-2/cs1dproject/cppconn/CMakeFiles/progname.dir
