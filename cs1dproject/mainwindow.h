@@ -5,6 +5,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QFont>
 
 // Database includes --------->
 #include <QtSql>
@@ -21,7 +22,40 @@ class MainWindow : public QMainWindow
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
 
-	private:
+private slots:
+    void on_button_back0_clicked();
+
+    void on_button_planATrip0_clicked();
+
+    void on_button_searchForStadiums0_clicked();
+
+    void on_button_mainMenu0_clicked();
+
+    void on_button_back1_clicked();
+
+    void on_button_mainMenu1_clicked();
+
+    void on_button_mainMenu2_clicked();
+
+    void on_button_back2_clicked();
+
+    void on_button_mainMenu3_clicked();
+
+    void on_button_back3_clicked();
+
+    void on_button_mainMenu4_clicked();
+
+    void on_button_back4_clicked();
+
+    void on_button_viewStadiums_clicked();
+
+    void on_button_shop0_clicked();
+
+    void on_button_adminAccess0_clicked();
+
+    void on_button_mainMenu5_clicked();
+
+private:
 		Ui::MainWindow *ui;
 
 		bool createDatabaseConnection();

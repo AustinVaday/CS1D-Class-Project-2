@@ -16,7 +16,10 @@ HEADERS  += mainwindow.h\
 SOURCES += main.cpp\
         mainwindow.cpp\
     googleComputeInterface.cpp\
-    gcloud-oauth2.py
+    gcloud-oauth2.py\
+    hashTable.h
 
+SOURCES += main.cpp\
+        mainwindow.cpp
 
 FORMS    += mainwindow.ui
