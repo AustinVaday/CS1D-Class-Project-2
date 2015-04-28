@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "mysql_connection.h"
+#include "mysql_driver.h"
+#include "mysql_error.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,7 +23,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_stadiumListTitle->setFont(titleFont);
     ui->label_shopTitle->setFont(titleFont);
    // setup ui
-
+if(addConnection())
+{
+qDebug() << "Connection successful" << endl;
+}
     ui->page_mainMenu->show();
     ui->stackedWidget_mainWidget->show();
 
@@ -29,14 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-bool MainWindow::createDatabaseConnection()
-{
-	QProcess sysCommandOutput;
-
-
-
 }
 
 void MainWindow::on_button_back0_clicked()
@@ -135,3 +133,39 @@ void MainWindow::on_button_mainMenu5_clicked()
     ui->page_adminLogin0->hide();
     ui->page_mainMenu->show();
 }
+
+/************************************************************************
+ * This is here for reference, will remove once completed
+ *************************************************************************/
+bool MainWindow::addConnection()
+{
+// Add database type
+	QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+	bool open = false;
+	// set attributes
+	db.setHostName("107.178.222.186");
+	db.setDatabaseName("baseball_stadiums");
+	db.setUserName("root");
+	db.setPassword("CS1D");
+	if (db.open())
+	   open = true;
+
+	return open;
+}
+
+
+
+	/*static int cCount = 0;
+
+	QSqlError err;
+	QSqlDatabase db = QSqlDatabase::addDatabase(driver, QString("Browser%1").arg(++cCount));
+	db.setDatabaseName(dbName);
+	db.setHostName(host);
+	db.setPort(port);
+	if (!db.open(user, passwd)) {
+		err = db.lastError();
+		db = QSqlDatabase();
+		QSqlDatabase::removeDatabase(QString("Browser%1").arg(cCount));
+	}
+
+	return err;*/

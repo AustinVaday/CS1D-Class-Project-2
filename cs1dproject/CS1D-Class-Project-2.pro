@@ -13,9 +13,9 @@ TEMPLATE = app
 HEADERS  += mainwindow.h\
     googleComputeInterface.h\
     hashTable.h \
-    .\cppconn\mysql_driver.h\
-    .\cppconn\mysql_connection.h\
-    .\cppconn\mysql_error.h\
+    mysql_driver.h\
+    mysql_connection.h\
+    mysql_error.h\
     .\cppconn\build_config.h\
     .\cppconn\config.h\
     .\cppconn\connection.h\

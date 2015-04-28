@@ -59,10 +59,10 @@ private slots:
 private:
 		Ui::MainWindow *ui;
 
-		bool createDatabaseConnection();
+		bool addConnection();
 
 
-QSqlError addConnection(const QString &driver, const QString &dbName, const QString &host, const QString &user, const QString &passwd, int port);
+//QSqlError addConnection(const QString &driver, const QString &dbName, const QString &host, const QString &user, const QString &passwd, int port);
 };
 
 #endif // MAINWINDOW_H
