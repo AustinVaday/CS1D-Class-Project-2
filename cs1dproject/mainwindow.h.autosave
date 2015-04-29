@@ -23,8 +23,16 @@ class MainWindow : public QMainWindow
 		~MainWindow();
 
         // TEMP PLACEMENT FOR TESTING
-        void queryTable;
-
+        void setTableName(QString name);
+        void setColumnName(QString name);
+        void setRowName(QString name);
+        
+        void insertData(QString name);
+        void insertData(int );
+        void insertData(QString name);
+        
+        
+        
 private slots:
     void on_button_back0_clicked();
 

@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    QSqlTableModel 
     //Initializations of fonts for line edits, etc...
     QFont titleFont;
     titleFont.setPointSize(15);
