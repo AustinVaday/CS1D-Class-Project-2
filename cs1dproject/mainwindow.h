@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define DEBUG 0
+#define DEBUG 1
 
 #include <QMainWindow>
 #include <QDebug>

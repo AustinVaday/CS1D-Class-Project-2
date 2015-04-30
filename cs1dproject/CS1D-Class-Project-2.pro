@@ -11,14 +11,11 @@ TARGET = CS1D-Class-Project-2
 TEMPLATE = app
 
 HEADERS  += mainwindow.h\
-    hashTable.h \
-#    sqlite.h
-    connection.h
+    hashTable.h\
+    wrapperlist.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
-#    sqlite.cpp
-
 
 
 FORMS    += mainwindow.ui
