@@ -14,7 +14,6 @@
 #include <qobject.h>
 #include <QString>
 #include <qsysinfo.h>
-#include <sqlite3.h>
 
 class googleComputeInterface : public QObject
 {
@@ -24,7 +23,7 @@ class googleComputeInterface : public QObject
 		~googleComputeInterface();
 
 		bool login(QString project, QString instance, QString user, QString zone);
-		// Login into google compute servers
+        // Login into google compute servers
 		//
 
 		void systemCommand(QString command/**/);

@@ -1,4 +1,3 @@
-gcloud compute ssh project-2-server --zone us-central1-b
-
+gcloud compute --project 'melodic-splicer-89203" ssh --zone "us-central1-b" "project-2-server"
 
 mysql -u remote_user baseball_stadiums -p CS1D

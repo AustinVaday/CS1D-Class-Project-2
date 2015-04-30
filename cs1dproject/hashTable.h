@@ -10,38 +10,38 @@ using namespace std;
 template<class objectType,  class keyType>
 class hashTable
 {
-public:
-    hashTable();
-    hashTable(int sizeOfTable);
-//	hashTable()
-    ~hashTable();
+    public:
+        hashTable();
+        hashTable(int sizeOfTable);
+        //	hashTable()
+        ~hashTable();
 
 
-    //Retrieves object given a key
-    objectType &     retreive(string key);
+        //Retrieves object given a key
+        objectType &     retreive(string key);
 
-    //Remove object given a key
-    void           remove(keyType key);
+        //Remove object given a key
+        void           remove(keyType key);
 
-    //Inserts an object into the hash table an
-    void           insert(objectType object, string key);
-    void           makeEmpty();
-    int            getHash(string key);
-    float          returnLoadFactor();
-//	hashTable<objectType, keyType>& operator = ();
-    int            getCount();
-    void           rehashTable();
-    int            calcLoadFactor();
-    vector<string> returnKeyList();
-private:
+        //Inserts an object into the hash table an
+        void           insert(objectType object, string key);
+        void           makeEmpty();
+        int            getHash(string key);
+        float          returnLoadFactor();
+        //	hashTable<objectType, keyType>& operator = ();
+        int            getCount();
+        void           rehashTable();
+        int            calcLoadFactor();
+        vector<string> returnKeyList();
+    private:
 
-    //P R I V A T E
-    vector<objectType> * _table;
-    vector<string>       _keyList;
-    int                  _count;
-    int                  _sizeOfTable;
-//	int hashFunc(*hashFunc(), const keyType);
-    void compress();
+        //P R I V A T E
+        vector<objectType> * _table;
+        vector<string>       _keyList;
+        int                  _count;
+        int                  _sizeOfTable;
+        //	int hashFunc(*hashFunc(), const keyType);
+        void compress();
 };
 
 template<class objectType, class keyType>

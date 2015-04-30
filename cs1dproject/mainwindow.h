@@ -1,16 +1,15 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define DEBUG 0
+#define DEBUG 1
 
 #include <QMainWindow>
 #include <QDebug>
 #include <QFont>
-#include <googleComputeInterface.h>
-
-// Database includes --------->
 #include <QtSql>
-// --------------------------->
+#include <QSqlDatabase>
+#include <QSqlTableModel>
+
 namespace Ui {
 	class MainWindow;
 }
@@ -22,6 +21,7 @@ class MainWindow : public QMainWindow
 	public:
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
+
 
 private slots:
     void on_button_back0_clicked();
@@ -57,12 +57,8 @@ private slots:
     void on_button_mainMenu5_clicked();
 
 private:
-		Ui::MainWindow *ui;
-
-		bool createDatabaseConnection();
-
-
-QSqlError addConnection(const QString &driver, const QString &dbName, const QString &host, const QString &user, const QString &passwd, int port);
+        Ui::MainWindow *ui;
+        QSqlDatabase database;
 };
 
 #endif // MAINWINDOW_H
