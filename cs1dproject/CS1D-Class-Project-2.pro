@@ -12,7 +12,11 @@ TEMPLATE = app
 
 HEADERS  += mainwindow.h\
     hashTable.h\
-    wrapperlist.h
+    wrapperlist.h\
+    exceptionclasses.h\
+    heap.h\
+    heapitem.h\
+    comparators.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\

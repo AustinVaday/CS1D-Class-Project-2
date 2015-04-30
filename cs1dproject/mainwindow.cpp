@@ -62,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	}
 
 
+
 	//Initializations of fonts for line edits, etc...
 	QFont titleFont;
 	titleFont.setPointSize(15);
