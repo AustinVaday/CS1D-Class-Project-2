@@ -8,15 +8,53 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","baseball_stadiums");
 	ui->setupUi(this);
-	QSqlQuery query;
-	QSqlTableModel teamName;
-	QSqlTableModel teamName_grassOnly;
-	QSqlTableModel teamNameAmerican;
-	QSqlTableModel teamNameNational;
-	QSqlTableModel stadiumName;
-	QSqlTableModel dateOpened;
-	QSqlTableModel souveniers;
-	QSqlTableModel stadiums;
+	QSqlQuery query(db);
+
+	QSqlTableModel tableMdl_teamName;
+	QSqlTableModel tableMdl_teamName_grassOnly;
+	QSqlTableModel tableMdl_teamNameAmerican;
+	QSqlTableModel tableMdl_teamNameNational;
+	QSqlTableModel tableMdl_stadiumName;
+	QSqlTableModel tableMdl_dateOpened;
+	QSqlTableModel tableMdl_souvenirs;
+	QSqlTableModel tableMdl_stadiums;
+
+
+	tableMdl_teamName.setTable("ASC_Team_Name");
+	tableMdl_teamName_grassOnly.setTable("ASC_Team_Name_Grass_Only");
+	tableMdl_teamNameAmerican.setTable("ASC_American_TeamName");
+	tableMdl_teamNameNational.setTable("ASC_National_Team_Name");
+	tableMdl_stadiumName.setTable("ASC_Stadium_Name");
+	tableMdl_dateOpened.setTable("ASC_Date_Opened");
+	tableMdl_souvenirs.setTable("Souvenirs");
+	tableMdl_stadiums.setTable("Stadiums");
+
+	tableMdl_dateOpened.select();
+	tableMdl_souvenirs.select();
+	tableMdl_stadiumName.select();
+	tableMdl_stadiums.select();
+	tableMdl_teamName.select();
+	tableMdl_teamName_grassOnly.select();
+	tableMdl_teamNameAmerican.select();
+	tableMdl_teamNameNational.select();
+
+
+	//	tableMdl_teamName;
+	//	tableMdl_teamName_grassOnly;
+	//	tableMdl_teamNameAmerican;
+	//	tableMdl_teamNameNational;
+	//	tableMdl_stadiumName;
+	//	tableMdl_dateOpened;
+	//	tableMdl_souvenirs;
+	//	tableMdl_stadiums;
+	//	query_teamName;
+	//	query_teamName_grassOnlyQuery;
+	//	query_teamNameAmericanQuery;
+	//	query_teamNameNational;
+	//	query_stadiumName;
+	//	query_dateOpened;
+	//	query_souvenirs;
+	//	query_stadiums;
 
 	//Initializations of fonts for line edits, etc...
 	QFont titleFont;
@@ -35,12 +73,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->page_mainMenu->show();
 	ui->stackedWidget_mainWidget->show();
 
-
-
-//		query("SELECT *
-//FROM  `ASC_American_TeamName`
-//LIMIT 0 , 30",);
-//	}
 
 }
 
