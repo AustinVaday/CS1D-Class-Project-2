@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QErrorMessage>
+#include <QModelIndex>
+#include <QModelIndexList>
+
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -8,24 +11,30 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
 
-
 	QErrorMessage warnWin_initFail;
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","./baseball_stadiums.sql");
 	ui->setupUi(this);
 
+	QSqlQuery query(db);
+	QSqlTableModel tableMdl_teamName;
+	QSqlTableModel tableMdl_teamName_grassOnly;
+	QSqlTableModel tableMdl_teamNameAmerican;
+	QSqlTableModel tableMdl_teamNameNational;
+	QSqlTableModel tableMdl_stadiumName;
+	QSqlTableModel tableMdl_dateOpened;
+	QSqlTableModel tableMdl_souvenirs;
+	QSqlTableModel tableMdl_stadiums;
+	QModelIndex tableIndx_teamName;
+	QModelIndex tableIndx_teamName_grassOnly;
+	QModelIndex tableIndx_teamNameNational;
+	QModelIndex tableIndx_teamNameAmerican;
+	QModelIndex tableIndx_stadiumName;
+	QModelIndex tableIndx_dateOpened;
+	QModelIndex tableIndx_stadiums;
+	QModelIndex tableIndx_souvenirs;
+
 	if(db.open())
 	{
-
-
-		QSqlQuery query(db);
-		QSqlTableModel tableMdl_teamName;
-		QSqlTableModel tableMdl_teamName_grassOnly;
-		QSqlTableModel tableMdl_teamNameAmerican;
-		QSqlTableModel tableMdl_teamNameNational;
-		QSqlTableModel tableMdl_stadiumName;
-		QSqlTableModel tableMdl_dateOpened;
-		QSqlTableModel tableMdl_souvenirs;
-		QSqlTableModel tableMdl_stadiums;
 
 
 		tableMdl_teamName.setTable("ASC_Team_Name");
@@ -51,6 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	{
 		warnWin_initFail.showMessage("Database failed to open");
 	}
+
 
 	//Initializations of fonts for line edits, etc...
 	QFont titleFont;
