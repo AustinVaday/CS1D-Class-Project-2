@@ -22,8 +22,6 @@ class MainWindow : public QMainWindow
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
 
-        // TEMP PLACEMENT FOR TESTING
-        void queryTable;
 
 private slots:
     void on_button_back0_clicked();

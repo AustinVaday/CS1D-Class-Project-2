@@ -22,3 +22,5 @@ SOURCES += main.cpp\
 
 
 FORMS    += mainwindow.ui
+
+DISTFILES += baseball_stadiums.sql
