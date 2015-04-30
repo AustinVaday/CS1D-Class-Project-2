@@ -19,9 +19,9 @@ CREATE TABLE `tableName`
 (fieldName fieldTypes [,]);
 
 ex. CREATE TABLE fruit
-(fruitID smallint, name varchar(8), price decimal(5,2) );
+(fruitID smallint(6), name varchar(8), price decimal(5,2) );
 
- -small int, int, bigint, etc...
+ -small int, int, bigint, etc... (i think the number inside specifies the number of digits)
  -varchar is like a string (8 char)^
  -5 digits total, 2 digits after decimal
 	-ex. 999.99
