@@ -117,8 +117,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <zorder>textBrowser_4</zorder>
-       <zorder>label_titleMainMenu</zorder>
       </widget>
       <widget class="QWidget" name="page_8"/>
      </widget>
@@ -135,10 +133,6 @@ p, li { white-space: pre-wrap; }
        <string>MLB Vacation Planer</string>
       </property>
      </widget>
-     <zorder>layoutWidget</zorder>
-     <zorder>tabWidget</zorder>
-     <zorder>stackedWidget_mainMenu0</zorder>
-     <zorder>label_titleMainMenu</zorder>
     </widget>
     <widget class="QWidget" name="page_planATrip0">
      <widget class="QWidget" name="layoutWidget">
@@ -457,7 +451,7 @@ p, li { white-space: pre-wrap; }
        <string>Team Search</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -535,7 +529,7 @@ p, li { white-space: pre-wrap; }
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -654,7 +648,7 @@ p, li { white-space: pre-wrap; }
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>290</x>

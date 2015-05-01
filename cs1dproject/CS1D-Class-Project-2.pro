@@ -16,10 +16,12 @@ HEADERS  += mainwindow.h\
     exceptionclasses.h\
     heap.h\
     heapitem.h\
-    comparators.h
+    comparators.h \
+    souvenirs.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
+    souvenirs.cpp
 
 
 FORMS    += mainwindow.ui
