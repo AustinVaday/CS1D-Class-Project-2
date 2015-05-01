@@ -6,7 +6,6 @@
 #include <iomanip>
 using namespace std;
 
-
 template<class objectType,  class keyType>
 class hashTable
 {
@@ -49,7 +48,6 @@ hashTable<objectType, keyType>::hashTable()
 {
     _sizeOfTable = 100;
     _count       = 0;
-
     _table       = new vector<objectType>[_sizeOfTable];
 
 }
@@ -122,7 +120,5 @@ void hashTable<objectType, keyType>::makeEmpty()
 {
     //going to work on this in a bit
 }
-
-
 
 #endif // HASHTABLE_CPP

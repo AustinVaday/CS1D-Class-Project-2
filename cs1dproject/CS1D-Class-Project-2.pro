@@ -16,12 +16,17 @@ HEADERS  += mainwindow.h\
     exceptionclasses.h\
     heap.h\
     heapitem.h\
-    comparators.h
+    comparators.h \
+    querydatatable.h \
+    projsqlmodel.h \
+    connectdatabase.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
+    querydatatable.cpp \
+    projsqlmodel.cpp
 
 
 FORMS    += mainwindow.ui
 
-DISTFILES += baseball_stadiums.sql
+DISTFILES += baseball_stadiums

@@ -1,8 +1,0 @@
-Objective:
-Connect to MySQL server through Qt interface.
-
-Possible Ideas:
-Principle idea is to send gcloud commands through terminal which will relay
-commands for MySQL data.
-
-First

@@ -1,0 +1,58 @@
+Select Command: (displays the data)
+----------------------
+SELECT * FROM `tableName` 	(` ` these are not required, just put in tableName)
+       ^	       
+       - (ALL the data, stadiumName, city, everything)
+       - or you can put in a field like stadiumName to only display stadiumName
+
+You can choose from one of these to be more specific:
+
+-where stadiumName = "stadiumName";
+-order by price ASC or DESC LIMIT 1; (limit # and [ASC | DESC] is optional)
+				    -Ascending or Descending order (default is ASC, i think)
+				    -limit will display the number of entries specified 
+
+
+Creating Tables:
+----------------------
+CREATE TABLE `tableName`
+(fieldName fieldTypes [,]);
+
+ex. CREATE TABLE fruit
+(fruitID smallint(6), name varchar(8), price decimal(5,2) );
+
+ -small int, int, bigint, etc... (i think the number inside specifies the number of digits)
+ -varchar is like a string (8 char)^
+ -5 digits total, 2 digits after decimal
+	-ex. 999.99
+
+Creating Views:
+----------------------
+CREATE VIEW `viewName` AS
+SELECT * FROM table (whatever table data you want in the view)
+
+SQL Data Manipulation
+----------------------
+INSERT, DELETE, UPDATE
+
+INSERT INTO `tableName`  
+VALUES (fieldName, "value") or (fieldNames) VALUES (value)
+				^
+
+ex.
+VALUES ('stadiumName', "someStadium") VALUES ('StadiumName',"someStadium");
+
+or
+
+(`stadiumName`,`city`, etc) VALUES ("someStadium", "someCity");
+
+
+
+DELETE FROM tableName
+ORDER BY fieldName DESC LIMIT 1
+
+
+UPDATE tableName 
+SET fieldName = value WHERE fieldName = value;
+
+(Don't need select command for this) 
