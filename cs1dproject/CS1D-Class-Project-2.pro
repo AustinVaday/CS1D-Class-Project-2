@@ -16,10 +16,13 @@ HEADERS  += mainwindow.h\
     exceptionclasses.h\
     heap.h\
     heapitem.h\
-    comparators.h
+    comparators.h \
+    MainHeader.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
+    levenshteinDistance.cpp \
+    findHashKey.cpp
 
 
 FORMS    += mainwindow.ui
