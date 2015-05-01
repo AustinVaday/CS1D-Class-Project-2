@@ -17,11 +17,20 @@ HEADERS  += mainwindow.h\
     heap.h\
     heapitem.h\
     comparators.h \
+<<<<<<< HEAD
     souvenirs.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
     souvenirs.cpp
+=======
+    MainHeader.h
+
+SOURCES += main.cpp\
+        mainwindow.cpp\
+    levenshteinDistance.cpp \
+    findHashKey.cpp
+>>>>>>> 3c9b750afa541532c1d1fff94ccb39772f18895e
 
 
 FORMS    += mainwindow.ui
