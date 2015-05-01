@@ -2,18 +2,41 @@
 #define SOUVENIRS_H
 
 #include <QObject>
+#include <QString>
 
 class souvenirs : public QObject
 {
     Q_OBJECT
 public:
+    /**************************************************************************
+     * Default Constructor
+     *************************************************************************/
     explicit souvenirs(QObject *parent = 0);
     ~souvenirs();
-    void addSouvenir(qstring name, int price);
-    void deleteSouvenir(qstring name);
-    void setSouvenirName(qstring name, qstring souvenirName);
-    void setSouvenirPrice(qstring price, qstring souvenirName);
 
+    /**************************************************************************
+     * Set name of souvenir
+     *************************************************************************/
+    void setItem(QString name);
+
+    /**************************************************************************
+     * Set price of souvenir
+     *************************************************************************/
+    void setPrice(QString price);
+
+    /**************************************************************************
+     * Returns the name of souvenir
+     *************************************************************************/
+    QString getItem();
+
+    /**************************************************************************
+     * Returns the price of souvenir
+     *************************************************************************/
+    double getPrice();
+
+private:
+    QString name_;
+    int price_;
 signals:
 
 public slots:
