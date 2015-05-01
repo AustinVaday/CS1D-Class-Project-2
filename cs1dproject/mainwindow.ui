@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -205,7 +205,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_back0">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>30</x>
         <y>10</y>
         <width>75</width>
         <height>23</height>
@@ -218,7 +218,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_mainMenu0">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>100</x>
         <y>10</y>
         <width>75</width>
         <height>23</height>
@@ -539,7 +539,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_mainMenu3">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>110</x>
         <y>20</y>
         <width>75</width>
         <height>23</height>
@@ -552,7 +552,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_back3">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>40</x>
         <y>20</y>
         <width>75</width>
         <height>23</height>
