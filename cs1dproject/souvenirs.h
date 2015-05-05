@@ -3,7 +3,9 @@
 
 #include <QObject>
 #include <QString>
-
+#include <MainHeader.h>
+#include <QSqlQuery>
+#include <QSql>
 class souvenirs : public QObject
 {
     Q_OBJECT
@@ -11,13 +13,13 @@ public:
     /**************************************************************************
      * Default Constructor
      *************************************************************************/
-    explicit souvenirs(QObject *parent = 0);
+	explicit souvenirs(QObject *parent = 0,QSqlDatabase *db = 0);
     ~souvenirs();
 
     /**************************************************************************
      * Set name of souvenir
      *************************************************************************/
-    void setItem(QString name);
+	void setItem(QString name);
 
     /**************************************************************************
      * Set price of souvenir
@@ -27,16 +29,17 @@ public:
     /**************************************************************************
      * Returns the name of souvenir
      *************************************************************************/
-    QString getItem();
+	QString getName();
 
     /**************************************************************************
      * Returns the price of souvenir
      *************************************************************************/
-    double getPrice();
+	QString getPrice();
 
 private:
     QString name_;
-    int price_;
+	QSqlQuery query;
+	QString price_;
 signals:
 
 public slots:

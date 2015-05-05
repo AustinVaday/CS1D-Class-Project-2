@@ -1,9 +1,9 @@
 #include "souvenirs.h"
 
 
-souvenirs::souvenirs(QObject *parent) : QObject(parent)
+souvenirs::souvenirs(QObject *parent, QSqlDatabase *db) : QObject(parent)
 {
-
+query = QSqlQuery::QSqlQuery(*db);
 }
 
 souvenirs::~souvenirs()
@@ -11,21 +11,19 @@ souvenirs::~souvenirs()
 
 }
 
-QString souvenir:: setItem(QString name){
-    QsqlQuery query;
-    query.execute("Update Souvenirs set souvenir = " + name + " where souvenir = " + this.name_ + ";");
-    this.name_ = name;
+void souvenirs::setItem(QString name){
+	query.exec("Update Souvenirs set Souvenir = " + name + " where souvenir = " + name_ + ";");
+	name_ = name;
 }
 
-QString souvenir:: setPrice(int price){
-    QsqlQuery query;
-    query.execute("Update Souvenirs set price = " + price + " where souvenir = " + this.name_ + ";");
-    this.price_ = price;
+void souvenirs::setPrice(QString price){
+	query.exec("Update Souvenirs set price = " + price + " where souvenir = " + name_ + ";");
+	price_ = price;
 }
 
-QString souvenir:: getName(){
-    return name_;
+QString souvenirs::getName(){
+	return name_;
 }
-int souvenir:: getPrice(){
-    return price_;
+QString souvenirs::getPrice(){
+	return price_;
 }
