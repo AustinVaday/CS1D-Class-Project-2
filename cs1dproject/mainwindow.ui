@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -117,8 +117,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <zorder>textBrowser_4</zorder>
-       <zorder>label_titleMainMenu</zorder>
       </widget>
       <widget class="QWidget" name="page_8"/>
      </widget>
@@ -135,19 +133,15 @@ p, li { white-space: pre-wrap; }
        <string>MLB Vacation Planer</string>
       </property>
      </widget>
-     <zorder>layoutWidget</zorder>
-     <zorder>tabWidget</zorder>
-     <zorder>stackedWidget_mainMenu0</zorder>
-     <zorder>label_titleMainMenu</zorder>
     </widget>
     <widget class="QWidget" name="page_planATrip0">
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>50</y>
+        <y>80</y>
         <width>451</width>
-        <height>261</height>
+        <height>231</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -212,7 +206,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>370</y>
+        <y>10</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -224,8 +218,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_mainMenu0">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>370</y>
+        <x>100</x>
+        <y>10</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -237,8 +231,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="label_planATripTitle">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>30</y>
+        <x>190</x>
+        <y>50</y>
         <width>111</width>
         <height>16</height>
        </rect>
@@ -247,13 +241,24 @@ p, li { white-space: pre-wrap; }
        <string>Plan A Trip</string>
       </property>
      </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>31</x>
+        <y>371</y>
+        <width>158</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_planATrip1">
      <widget class="QTextBrowser" name="textBrowser">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>10</y>
+        <y>30</y>
         <width>361</width>
         <height>301</height>
        </rect>
@@ -286,7 +291,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>380</x>
-        <y>10</y>
+        <y>30</y>
         <width>121</width>
         <height>381</height>
        </rect>
@@ -352,8 +357,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_back1">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>380</y>
+        <x>20</x>
+        <y>0</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -365,8 +370,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_mainMenu1">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>380</y>
+        <x>90</x>
+        <y>0</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -422,7 +427,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>360</y>
+        <y>20</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -435,7 +440,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>360</y>
+        <y>20</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -447,8 +452,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="label_teamSearchTitle">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>10</y>
+        <x>200</x>
+        <y>30</y>
         <width>361</width>
         <height>16</height>
        </rect>
@@ -457,13 +462,13 @@ p, li { white-space: pre-wrap; }
        <string>Team Search</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>50</y>
-        <width>341</width>
-        <height>31</height>
+        <width>491</width>
+        <height>41</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -499,48 +504,22 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="label_shopTitle">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>240</x>
         <y>20</y>
-        <width>101</width>
-        <height>16</height>
+        <width>171</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
        <string>Shop</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="button_back3">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>380</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Back</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="button_mainMenu3">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>380</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Main Menu</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>40</x>
         <y>50</y>
-        <width>401</width>
+        <width>611</width>
         <height>31</height>
        </rect>
       </property>
@@ -556,6 +535,32 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="button_mainMenu3">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Main Menu</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_back3">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page_stadiumList">
@@ -579,8 +584,8 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>250</x>
         <y>40</y>
-        <width>101</width>
-        <height>16</height>
+        <width>291</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -590,21 +595,21 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_back4">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>350</y>
+        <x>50</x>
+        <y>10</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>back</string>
+       <string>Back</string>
       </property>
      </widget>
      <widget class="QPushButton" name="button_mainMenu4">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>350</y>
+        <x>120</x>
+        <y>10</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -645,7 +650,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>380</y>
+        <y>50</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -654,7 +659,7 @@ p, li { white-space: pre-wrap; }
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>290</x>
@@ -673,19 +678,6 @@ p, li { white-space: pre-wrap; }
       </layout>
      </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="button_help0">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Help</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
