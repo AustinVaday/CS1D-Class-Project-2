@@ -20,15 +20,16 @@ HEADERS  += mainwindow.h\
     querydatatable.h \
     projsqlmodel.h \
     connectdatabase.h\
-        MainHeader.h
+        MainHeader.h\
+            souvenirs.h\
 
 SOURCES += main.cpp\
         mainwindow.cpp\
     querydatatable.cpp \
     projsqlmodel.cpp\
     levenshteinDistance.cpp \
-    findHashKey.cpp
-
+    findHashKey.cpp\
+    souvenirs.cpp\
 
 FORMS    += mainwindow.ui
 
