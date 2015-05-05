@@ -550,6 +550,8 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
      <widget class="QPushButton" name="button_back3">
+     <widget class="QWidget" name="layoutWidget">
+     <widget class="QPushButton" name="button_back3">
       <property name="geometry">
        <rect>
         <x>40</x>
