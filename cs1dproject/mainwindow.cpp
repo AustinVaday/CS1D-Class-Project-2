@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->label_shopTitle->setFont(titleFont);
 	// setup ui
 
+	ui->stackedWidget_mainWidget->currentWidget()->hide();
 	ui->page_mainMenu->show();
 	ui->stackedWidget_mainWidget->show();
 

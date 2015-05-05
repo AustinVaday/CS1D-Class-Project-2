@@ -296,6 +296,8 @@ bool createConnection()
 
 	initializeModel(&model);
 QTableView *view1 = createView(&model, QObject::tr("Stadiums"));
+
+view1->show();
 	return true;
 }
 

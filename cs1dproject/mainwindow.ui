@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -112,9 +112,9 @@
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temp - still thinking about what is going to go here&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Helvetica Neue DeskInterface'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;Temp - still thinking about what is going to go here&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -194,9 +194,9 @@ p, li { white-space: pre-wrap; }
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temp - still thinking about what is going to go here&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Helvetica Neue DeskInterface'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;Temp - still thinking about what is going to go here&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -241,7 +241,7 @@ p, li { white-space: pre-wrap; }
        <string>Plan A Trip</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>31</x>
@@ -267,11 +267,11 @@ p, li { white-space: pre-wrap; }
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Picture  of graph goes here&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;could be a stacked widget&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Helvetica Neue DeskInterface'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;Picture  of graph goes here&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;could be a stacked widget&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_outputMilageLabel">
@@ -292,7 +292,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>380</x>
         <y>30</y>
-        <width>121</width>
+        <width>179</width>
         <height>381</height>
        </rect>
       </property>
@@ -346,9 +346,9 @@ p, li { white-space: pre-wrap; }
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temp - Still thinking about what to do here&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Helvetica Neue DeskInterface'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;Temp - Still thinking about what to do here&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -405,9 +405,9 @@ p, li { white-space: pre-wrap; }
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Temp - Still thinking about what to do here&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.Helvetica Neue DeskInterface'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;Temp - Still thinking about what to do here&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -520,7 +520,7 @@ p, li { white-space: pre-wrap; }
         <x>40</x>
         <y>50</y>
         <width>611</width>
-        <height>31</height>
+        <height>33</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -550,158 +550,176 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
      <widget class="QPushButton" name="button_back3">
-     <widget class="QWidget" name="layoutWidget">
-     <widget class="QPushButton" name="button_back3">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>20</y>
-        <width>75</width>
-        <height>23</height>
+        <x>0</x>
+        <y>0</y>
+        <width>100</width>
+        <height>30</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Back</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_stadiumList">
-     <widget class="QListWidget" name="listWidget_stadiumList0">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>70</y>
-        <width>651</width>
-        <height>281</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>This list will contain selectable stadiums</string>
+      <widget class="QWidget" name="layoutWidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
        </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="label_stadiumListTitle">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>40</y>
-        <width>291</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>List of All Stadiums</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="button_back4">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>10</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Back</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="button_mainMenu4">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>10</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Main Menu</string>
-      </property>
+       <widget class="QPushButton" name="button_back3">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>20</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_stadiumList" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <widget class="QListWidget" name="listWidget_stadiumList0">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>70</y>
+          <width>651</width>
+          <height>281</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>This list will contain selectable stadiums</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_stadiumListTitle">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>40</y>
+          <width>291</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>List of All Stadiums</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_back4">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>10</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_mainMenu4">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>10</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Main Menu</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_adminLogin0" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <widget class="QPushButton" name="button_login">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>200</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Login</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_adminLoginTitle">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>70</y>
+          <width>241</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Admin Login</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_mainMenu5">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>50</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Main Menu</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>150</y>
+          <width>251</width>
+          <height>141</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_username"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_password"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_adminLogin0">
-     <widget class="QPushButton" name="button_login">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>200</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Login</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_adminLoginTitle">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>70</y>
-        <width>241</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Admin Login</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="button_mainMenu5">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>50</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Main Menu</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>150</y>
-        <width>251</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_7">
-       <item>
-        <widget class="QLineEdit" name="lineEdit_username"/>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_password"/>
-       </item>
-      </layout>
-     </widget>
-    </widget>
+    <widget class="QMenuBar" name="menuBar"/>
+    <widget class="QToolBar" name="mainToolBar"/>
+    <widget class="QStatusBar" name="statusBar"/>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>782</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- </widget>
-</widget>
+ <resources/>
+ <connections/>
 </ui>
