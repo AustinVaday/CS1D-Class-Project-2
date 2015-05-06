@@ -32,6 +32,7 @@ SOURCES += main.cpp\
     levenshteinDistance.cpp \
     findHashKey.cpp\
     souvenirs.cpp\
+    stadium.cpp
 
 FORMS    += mainwindow.ui
 

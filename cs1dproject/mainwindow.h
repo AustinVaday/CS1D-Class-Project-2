@@ -74,6 +74,12 @@ class MainWindow : public QMainWindow
 
         void on_button_back_adminMainMenu_clicked();
 
+        void on_button_continueAddStadium_clicked();
+
+        void on_button_backAddStadium_clicked();
+
+        void on_button_addStadium0_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase database;

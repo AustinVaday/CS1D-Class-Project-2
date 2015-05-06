@@ -188,3 +188,30 @@ void MainWindow::on_button_back_adminMainMenu_clicked()
     ui->page_adminMainMenu->hide();
     ui->page_adminLogin0->show();
 }
+
+void MainWindow::on_button_continueAddStadium_clicked()
+{
+    QString stadium;
+    QString team;
+    QString city;
+    QString state;
+    QString grassType;
+
+    if(ui->lineEdit_cityName->text().isEmpty())
+    {
+
+    }
+
+}
+
+void MainWindow::on_button_backAddStadium_clicked()
+{
+ ui->page_addStadium->hide();
+ ui->page_adminMainMenu->show();
+}
+
+void MainWindow::on_button_addStadium0_clicked()
+{
+    ui->page_adminMainMenu->hide();
+    ui->page_addStadium->show();
+}
