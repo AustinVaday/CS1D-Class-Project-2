@@ -18,7 +18,6 @@ HEADERS  += mainwindow.h\
     heapitem.h\
     comparators.h \
     querydatatable.h \
-    projsqlmodel.h \
     connectdatabase.h\
         MainHeader.h\
             souvenirs.h\
@@ -28,11 +27,11 @@ HEADERS  += mainwindow.h\
 SOURCES += main.cpp\
         mainwindow.cpp\
     querydatatable.cpp \
-    projsqlmodel.cpp\
     levenshteinDistance.cpp \
     findHashKey.cpp\
     souvenirs.cpp\
-    stadium.cpp
+    stadium.cpp \
+    sqlfunctions.cpp
 
 FORMS    += mainwindow.ui
 

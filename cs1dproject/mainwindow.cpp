@@ -14,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+    QSqlQuery query;
+    createConnection();
+
+    query.exec("select stadiumName from stadiums limit 0,30");
 
 	//Initializations of fonts for line edits, etc...
 	QFont titleFont;
@@ -43,27 +47,6 @@ MainWindow::~MainWindow()
 	delete ui;
 
 }
-
-QString MainWindow::getQStringData(QModelIndex* index, QString dataField)
-{
-
-}
-
-int MainWindow::getIntData(QModelIndex* index, QString dataField)
-{
-
-}
-
-float MainWindow::getFloatData(QModelIndex* index, QString dataField)
-{
-
-}
-
-char MainWindow::getCharData(QModelIndex* index, QString dataField)
-{
-
-}
-
 
 void MainWindow::on_button_back0_clicked()
 {

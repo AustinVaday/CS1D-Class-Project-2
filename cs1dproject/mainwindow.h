@@ -2,73 +2,86 @@
 #define MAINWINDOW_H
 
 #define DEBUG 1
-
+// Standard Qt Includes
 #include <QMainWindow>
 #include <QDebug>
 #include <QFont>
+#include <QFile>
+#include <QApplication>
+#include <QtGui>
+#include <QMessageBox>
+
+// Qt Sql includes, database, query and table display
+#include <QTableView>
+#include <QSqlQueryModel>
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
-#include <QFile>
+
+// Project includes
+#include "graph.h"
+#include "querydatatable.h"
+#include "stadium.h"
 
 namespace Ui {
-	class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
-		Q_OBJECT
+        Q_OBJECT
 
-	public:
-		explicit MainWindow(QWidget *parent = 0);
-		~MainWindow();
+    public:
+        explicit MainWindow(QWidget *parent = 0);
+        ~MainWindow();
 
-		void executeQueriesFromFile(QFile *file, QSqlQuery* query);
-		// Does not work at the moment, considering removing from project.
-		//	only keeping if I get the chance to implement
+        QString queryData(stadium stadiumTable);
 
-		QString getQStringData(QModelIndex *index, QString dataField);
-		// Will return a QString of the data from the QModelIndex
+        // SQL Methods for retrieving and configuring data in the SQL database
 
-		int getIntData(QModelIndex *index, QString dataField);
-		// Returns integer data at the model index
-		float getFloatData(QModelIndex *index, QString dataField);
-		// Returns float data at the model index
-		char getCharData(QModelIndex *index, QString dataField);
-		// Returns chara data at the model index
+        void sendData(const stadium& data);
 
-	private slots:
-		void on_button_back0_clicked();
+        bool createConnection();
+        // ---->IN PROGRESS <----Methods DO NOT RELY ON THESE METHODS
 
-		void on_button_planATrip0_clicked();
+        void initializeModel(QSqlQueryModel *model);
 
-		void on_button_searchForStadiums0_clicked();
+        QTableView* createView(QSqlQueryModel *model, const QString &title = "");
 
-		void on_button_mainMenu0_clicked();
+        void executeQueriesFromFile(QFile *file, QSqlQuery *query);
 
-		void on_button_back1_clicked();
+    private slots:
+        void on_button_back0_clicked();
 
-		void on_button_mainMenu1_clicked();
+        void on_button_planATrip0_clicked();
 
-		void on_button_mainMenu2_clicked();
+        void on_button_searchForStadiums0_clicked();
 
-		void on_button_back2_clicked();
+        void on_button_mainMenu0_clicked();
 
-		void on_button_mainMenu3_clicked();
+        void on_button_back1_clicked();
 
-		void on_button_back3_clicked();
+        void on_button_mainMenu1_clicked();
 
-		void on_button_mainMenu4_clicked();
+        void on_button_mainMenu2_clicked();
 
-		void on_button_back4_clicked();
+        void on_button_back2_clicked();
 
-		void on_button_viewStadiums_clicked();
+        void on_button_mainMenu3_clicked();
 
-		void on_button_shop0_clicked();
+        void on_button_back3_clicked();
 
-		void on_button_adminAccess0_clicked();
+        void on_button_mainMenu4_clicked();
 
-		void on_button_mainMenu5_clicked();
+        void on_button_back4_clicked();
+
+        void on_button_viewStadiums_clicked();
+
+        void on_button_shop0_clicked();
+
+        void on_button_adminAccess0_clicked();
+
+        void on_button_mainMenu5_clicked();
 
         void on_button_login_clicked();
 
@@ -80,9 +93,9 @@ class MainWindow : public QMainWindow
 
         void on_button_addStadium0_clicked();
 
-private:
-		Ui::MainWindow *ui;
-		QSqlDatabase database;
+    private:
+        Ui::MainWindow *ui;
+        QSqlDatabase db;
 };
 
 #endif // MAINWINDOW_H
