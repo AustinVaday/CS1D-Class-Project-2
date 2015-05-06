@@ -70,7 +70,11 @@ class MainWindow : public QMainWindow
 
 		void on_button_mainMenu5_clicked();
 
-	private:
+        void on_button_login_clicked();
+
+        void on_button_back_adminMainMenu_clicked();
+
+private:
 		Ui::MainWindow *ui;
 		QSqlDatabase database;
 };

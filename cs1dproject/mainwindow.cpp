@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QErrorMessage>
 #include <QModelIndex>
+#include <QMessageBox>
 #include <QModelIndexList>
 #include <fstream>
 #include <QTableView>
@@ -159,4 +160,31 @@ void MainWindow::on_button_mainMenu5_clicked()
 {
 	ui->page_adminLogin0->hide();
 	ui->page_mainMenu->show();
+}
+
+void MainWindow::on_button_login_clicked()
+{
+    //Login button pushed
+    QString username      = "admin";
+    QString password      = "password";
+    QString inputName     = ui->lineEdit_username->text();
+    QString inputPassword = ui->lineEdit_password->text();
+    if(inputName != username || inputPassword != password)
+    {
+        QMessageBox::information(this, "Login Error", "incorrect Username or Password");
+        ui->lineEdit_password->clear();
+        ui->lineEdit_username->clear();
+    }
+    else
+    {
+           ui->page_adminLogin0->hide();
+           ui->page_adminMainMenu->show();
+    }
+
+}
+
+void MainWindow::on_button_back_adminMainMenu_clicked()
+{
+    ui->page_adminMainMenu->hide();
+    ui->page_adminLogin0->show();
 }

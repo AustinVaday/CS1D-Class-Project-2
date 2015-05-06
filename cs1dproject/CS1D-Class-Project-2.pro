@@ -22,6 +22,8 @@ HEADERS  += mainwindow.h\
     connectdatabase.h\
         MainHeader.h\
             souvenirs.h\
+                graph.h\
+    stadium.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
