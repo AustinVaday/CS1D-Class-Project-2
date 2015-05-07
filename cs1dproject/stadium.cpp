@@ -60,6 +60,14 @@ bool stadium::operator==(stadium& otherStadium)
      }
 }
 
+// overloaded extraction operator to display some data..
+QDebug operator<<(QDebug out, stadium& displayStadium)
+{
+    out << displayStadium.getStadiumNumber();
+
+    return out;
+}
+
 void stadium::setCity(QString cityN)
 {
     city = cityN;
@@ -94,3 +102,4 @@ void stadium::setVisited(bool visitedN)
 {
     visited = visitedN;
 }
+

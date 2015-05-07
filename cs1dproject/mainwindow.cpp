@@ -19,6 +19,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     fillGraph();
 
+    qDebug() << "TESTING DIJKSTRA's: ";
+    stadium source;
+    source.setStadiumName("SEE STADIUM NUM INSTEAD!");
+    source.setStadiumNumber(5);
+
+
+    graph.Dijkstra(source);
+
 	QSqlTableModel *model = new QSqlTableModel();
 	initializeModel(model);
 	QTableView *table = createView(model, QObject::tr("Stadium Info"));

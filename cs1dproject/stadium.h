@@ -28,6 +28,9 @@ public:
     // the accessors are not const.....
     bool operator==(stadium& otherStadium);
 
+    // overloaded extraction operator to display some data..
+    friend QDebug operator<<(QDebug out, stadium& displayStadium);
+
     //Mutators
     void setStadiumName(QString stadiumName);
     void setStadiumNumber(int number);
