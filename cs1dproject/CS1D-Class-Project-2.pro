@@ -18,7 +18,6 @@ HEADERS  += mainwindow.h\
     heapitem.h\
     comparators.h \
     querydatatable.h \
-    connectdatabase.h\
         MainHeader.h\
             souvenirs.h\
                 graph.h\

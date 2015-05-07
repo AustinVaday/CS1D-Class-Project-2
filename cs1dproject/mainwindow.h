@@ -22,6 +22,7 @@
 #include "graph.h"
 #include "querydatatable.h"
 #include "stadium.h"
+#include "MainHeader.h"
 
 namespace Ui {
     class MainWindow;
@@ -35,20 +36,15 @@ class MainWindow : public QMainWindow
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
 
-        QString queryData(stadium stadiumTable);
+//        QString queryData(stadium stadiumTable);
 
-        // SQL Methods for retrieving and configuring data in the SQL database
+//        // SQL Methods for retrieving and configuring data in the SQL database
 
-        void sendData(const stadium& data);
+//        void sendData(const stadium& data);
 
-        bool createConnection();
-        // ---->IN PROGRESS <----Methods DO NOT RELY ON THESE METHODS
+//        void initializeModel(QSqlTableModel *model);
 
-        void initializeModel(QSqlQueryModel *model);
-
-        QTableView* createView(QSqlQueryModel *model, const QString &title = "");
-
-        void executeQueriesFromFile(QFile *file, QSqlQuery *query);
+//        QTableView* createView(QSqlTableModel *model, const QString &title = "");
 
     private slots:
         void on_button_back0_clicked();
@@ -95,7 +91,6 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
-        QSqlDatabase db;
 };
 
 #endif // MAINWINDOW_H

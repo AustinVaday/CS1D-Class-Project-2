@@ -2,16 +2,18 @@
 #include <QApplication>
 #include <QtGui>
 #include <QtSql>
-#include <QMessageBox>
-#include "graph.h"
-#include "querydatatable.h"
-#include <QTableView>
-#include <QSqlQueryModel>
+#include "MainHeader.h"
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	MainWindow w;
+    createConnection();
+    QSqlTableModel model;
+    initializeModel(&model);
+    QTableView *table = createView(&model, QObject::tr("Stadium Info"));
+
+    table->show();
 
     w.show();
 
