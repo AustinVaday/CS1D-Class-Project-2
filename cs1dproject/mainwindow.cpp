@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     fillGraph();
 
+    // Testing ...
     qDebug() << "TESTING DIJKSTRA's: ";
     stadium sourceStadium;
     sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
