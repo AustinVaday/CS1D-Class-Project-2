@@ -46,6 +46,7 @@ class MainWindow : public QMainWindow
 
 //        QTableView* createView(QSqlTableModel *model, const QString &title = "");
 
+		bool createConnection();
     private slots:
         void on_button_back0_clicked();
 
@@ -91,6 +92,8 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
+		QSqlDatabase db;
+
 };
 
 #endif // MAINWINDOW_H
