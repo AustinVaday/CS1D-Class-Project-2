@@ -6,8 +6,8 @@
 
 int main(int argc, char *argv[])
 {
-    try
-    {
+//    try
+//    {
         QApplication a(argc, argv);
         MainWindow w;
 
@@ -16,61 +16,61 @@ int main(int argc, char *argv[])
         return a.exec();
 
     }
-    catch (const OutOfRange&)
-   {
-       qDebug() << "Inside Catch -- OutOfRange\n";
+//    catch (const OutOfRange&)
+//   {
+//       qDebug() << "Inside Catch -- OutOfRange\n";
 
-   }
-   catch (const NotFound&)
-   {
-       qDebug() << "Inside Catch -- NotFound\n";
+//   }
+//   catch (const NotFound&)
+//   {
+//       qDebug() << "Inside Catch -- NotFound\n";
 
-   }
-   catch (const Full&)
-   {
-       qDebug() << "Inside Catch -- Full\n";
+//   }
+//   catch (const Full&)
+//   {
+//       qDebug() << "Inside Catch -- Full\n";
 
-   }
-   catch (const Empty&)
-   {
-       qDebug() << "Inside Catch -- Empty\n";
+//   }
+//   catch (const Empty&)
+//   {
+//       qDebug() << "Inside Catch -- Empty\n";
 
-   }
-   catch (const NoParent&)
-   {
-       qDebug() << "Inside Catch -- No Parent\n";
+//   }
+//   catch (const NoParent&)
+//   {
+//       qDebug() << "Inside Catch -- No Parent\n";
 
-   }
-   catch (const ExternalNode&)
-   {
-       qDebug() << "Inside Catch -- External Node\n";
+//   }
+//   catch (const ExternalNode&)
+//   {
+//       qDebug() << "Inside Catch -- External Node\n";
 
-   }
-   catch (const RootAlreadyExists&)
-   {
-       qDebug() << "Inside Catch -- Root Already Exists\n";
+//   }
+//   catch (const RootAlreadyExists&)
+//   {
+//       qDebug() << "Inside Catch -- Root Already Exists\n";
 
-   }
-   catch (const TreeError&)
-   {
-       qDebug() << "Inside Catch -- Tree Error\n";
-       qDebug() << "Check your tree insertions and/or deletions\n";
+//   }
+//   catch (const TreeError&)
+//   {
+//       qDebug() << "Inside Catch -- Tree Error\n";
+//       qDebug() << "Check your tree insertions and/or deletions\n";
 
-   }
-   catch (const BadHash&)
-   {
-       qDebug() << "Inside Catch -- Bad Hash\n";
-       qDebug() << "Please check your hashing class!\n";
-   }
-   catch (const IndexNotSet&)
-   {
-       qDebug() << "Inside Catch -- IndexNotSet\n";
-       qDebug() << "Please check your Vertex class!\n";
-   }
-   catch(...)
-   {
-       qDebug() << "Inside Catch All\n";
-   }
+//   }
+//   catch (const BadHash&)
+//   {
+//       qDebug() << "Inside Catch -- Bad Hash\n";
+//       qDebug() << "Please check your hashing class!\n";
+//   }
+//   catch (const IndexNotSet&)
+//   {
+//       qDebug() << "Inside Catch -- IndexNotSet\n";
+//       qDebug() << "Please check your Vertex class!\n";
+//   }
+//   catch(...)
+//   {
+//       qDebug() << "Inside Catch All\n";
+//   }
 
 
 }

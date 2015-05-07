@@ -1723,7 +1723,6 @@ void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexD
     Vertex<VertexType> *endVertex;
     int totalCost = 0;
 
-    typename vector<Vertex<VertexType>* >::iterator vertexIt;
     stack<Vertex<VertexType> *> vertexStack;
 
     sourceVertex = returnVertexFromData(sourceVertexData);
@@ -1752,7 +1751,7 @@ void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexD
             currentVertex = currentVertex->getParent();
         }
 
-        qDebug() << "Shortest path from " << **sourceVertex << " to " << /*setw(8) <<  */***vertexIt << " is: ";
+        qDebug() << "Shortest path from " << **sourceVertex << " to " << /*setw(8) <<  */**endVertex << " is: ";
 
         // output source since it is not on stack
         qDebug() << **sourceVertex;

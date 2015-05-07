@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
     endStadium.setStadiumNumber(2);
 
-//    graph.DijkstraShortestPath(sourceStadium, endStadium);
+    graph.DijkstraShortestPath(sourceStadium, endStadium);
 
 	QSqlTableModel *model = new QSqlTableModel();
 	initializeModel(model);
