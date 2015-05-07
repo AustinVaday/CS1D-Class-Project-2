@@ -2,7 +2,7 @@
 
 void initializeModel(QSqlTableModel *model)
 {
-    model->setTable("Stadium");
+	model->setTable("stadiums");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select();
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Stadium Names"));

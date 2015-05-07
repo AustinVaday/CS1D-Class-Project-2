@@ -10,11 +10,6 @@ int main(int argc, char *argv[])
 	MainWindow w;
 
     createConnection();
-    QSqlTableModel model;
-    initializeModel(&model);
-    QTableView *table = createView(&model, QObject::tr("Stadium Info"));
-
-    table->show();
 
     w.show();
 

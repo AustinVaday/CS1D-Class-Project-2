@@ -26,7 +26,7 @@ QTableView* createView(QSqlTableModel *model, const QString &title);
 
 static bool createConnection()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	static QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(":memory:");
 
     if (!db.open())
@@ -38,7 +38,7 @@ static bool createConnection()
         return false;
     }
 
-    QSqlQuery query;
+	QSqlQuery query = QSqlQuery(db);
     qDebug()<<   query.exec("create table stadiums (stadiumName varchar(50),"
                             "teamName varchar(50),street varchar(50), city varchar(50),"
                             "state varchar(50), zip varchar(50), boxOfficeNum varchar(50),"
@@ -178,6 +178,11 @@ static bool createConnection()
                "'1060 West Addison Street', 'Chicago', 'IL', '60613', "
                "'773-404-2827', '1914-04-23', '42,374', 'National', 'Grass')");
     query.next();
+QSqlTableModel *model = new QSqlTableModel(0,db);
+	initializeModel(model);
+	QTableView *table = createView(model, QObject::tr("Stadium Info"));
+
+	table->show();
 
 
     return true;
