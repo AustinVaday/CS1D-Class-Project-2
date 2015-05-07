@@ -47,6 +47,8 @@ class MainWindow : public QMainWindow
 //        QTableView* createView(QSqlTableModel *model, const QString &title = "");
 
 		bool createConnection();
+
+        void fillGraph();
     private slots:
         void on_button_back0_clicked();
 
@@ -94,6 +96,11 @@ class MainWindow : public QMainWindow
         Ui::MainWindow *ui;
 		QSqlDatabase db;
 
+        /*
+         * Vertex: stadium
+         * Edge: float (could be int, but let's make it generic)
+         */
+        Graph<stadium,float> graph;
 };
 
 #endif // MAINWINDOW_H

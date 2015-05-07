@@ -23,6 +23,10 @@ public:
     //getDate()
     bool getVisited();
 
+    // should pass by const reference, but does
+    // not work with this implementation because
+    // the accessors are not const.....
+    bool operator==(stadium& otherStadium);
 
     //Mutators
     void setStadiumName(QString stadiumName);
@@ -42,7 +46,7 @@ private:
     QString           state;
     QString           grassType;
     int               stadiumNumber;
-    vector<souvenirs> souvenirList;
+//    vector<souvenirs> souvenirList;
     bool              visited;
 
 

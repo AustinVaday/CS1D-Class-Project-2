@@ -6,14 +6,19 @@
 #include <QModelIndexList>
 #include <fstream>
 #include <QTableView>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
-	ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
 	ui->setupUi(this);
 
 	createConnection();
+
+    fillGraph();
+
 	QSqlTableModel *model = new QSqlTableModel();
 	initializeModel(model);
 	QTableView *table = createView(model, QObject::tr("Stadium Info"));
@@ -365,4 +370,36 @@ qDebug() << "Commit: " << db.commit();
 
 
 	return true;
+}
+
+void MainWindow::fillGraph()
+{
+    qDebug() << "filling out the graph...";
+
+    // create all stadium objects
+
+    /****************************************
+     *  Temp -- dummy data
+     * *************************************/
+    stadium stadiumDummyArray[10];
+
+    //fill out stadium name and
+    for (int i = 0; i < 10; i++)
+    {
+
+        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
+        stadiumDummyArray[i].setStadiumNumber(i);
+
+    }
+
+
+    // add all stadium objects to graph
+
+    for (int i = 1; i < 10; i++)
+    {
+        // connect vertices with random weights...
+        // the weight is completely randomized, do no fear my friends!
+        graph.insert(stadiumDummyArray[i-1],stadiumDummyArray[i], (i*203 + 7000) % 71);
+    }
+
 }

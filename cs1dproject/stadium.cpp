@@ -47,6 +47,18 @@ bool stadium::getVisited()
     return visited;
 }
 
+bool stadium::operator==(stadium& otherStadium)
+{
+    if (this->getStadiumName()   == otherStadium.getStadiumName()
+     && this->getStadiumNumber() == otherStadium.getStadiumNumber())
+     {
+        return true;
+     }
+    else
+     {
+        return false;
+     }
+}
 
 void stadium::setCity(QString cityN)
 {
