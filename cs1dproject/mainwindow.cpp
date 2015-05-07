@@ -20,12 +20,15 @@ MainWindow::MainWindow(QWidget *parent) :
     fillGraph();
 
     qDebug() << "TESTING DIJKSTRA's: ";
-    stadium source;
-    source.setStadiumName("SEE STADIUM NUM INSTEAD!");
-    source.setStadiumNumber(5);
+    stadium sourceStadium;
+    sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+    sourceStadium.setStadiumNumber(5);
 
+    stadium endStadium;
+    endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+    endStadium.setStadiumNumber(2);
 
-    graph.Dijkstra(source);
+    graph.DijkstraShortestPath(sourceStadium, endStadium);
 
 	QSqlTableModel *model = new QSqlTableModel();
 	initializeModel(model);

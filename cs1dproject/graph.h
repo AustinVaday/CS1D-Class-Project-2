@@ -547,6 +547,8 @@ class Graph
         bool isStronglyConnected(VertexType beginVertex);
         bool isAncestor(Vertex<VertexType> &vDescendant, Vertex<VertexType> &vAncestor);
         void Dijkstra(VertexType sourceVertexData);
+        void DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData);
+
         void MST();
 
         /******************************************************************
@@ -1712,6 +1714,71 @@ void Graph<VertexType,WeightType>::Dijkstra(VertexType sourceVertexData)
     qDebug() << right;
 
 }
+
+template <typename VertexType, typename WeightType>
+void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData)
+{
+    Vertex<VertexType> *sourceVertex;
+    Vertex<VertexType> *currentVertex;
+    Vertex<VertexType> *endVertex;
+    int totalCost = 0;
+
+    typename vector<Vertex<VertexType>* >::iterator vertexIt;
+    stack<Vertex<VertexType> *> vertexStack;
+
+    sourceVertex = returnVertexFromData(sourceVertexData);
+    endVertex    = returnVertexFromData(endVertexData);
+
+    // reset all vertices/edges to unexplored
+    resetVertexEdgeExploration();
+
+    /* finds the vertex from the data provided, calls Dijkstra's Computation */
+    DijkstrasComputation(*sourceVertex);
+
+    qDebug() << left;
+
+
+    currentVertex = endVertex;
+
+    // Only output the nodes that were used
+    if (currentVertex->getCost() != int(INFINITY))
+    {
+        totalCost = currentVertex->getCost();
+
+        // Search backwards until we reach source vertex
+        while (currentVertex != sourceVertex)
+        {
+            vertexStack.push(currentVertex);
+            currentVertex = currentVertex->getParent();
+        }
+
+        qDebug() << "Shortest path from " << **sourceVertex << " to " << /*setw(8) <<  */***vertexIt << " is: ";
+
+        // output source since it is not on stack
+        qDebug() << **sourceVertex;
+
+        // pop from stack and display in reverse order since we start from end vertex
+        // and backtrack to source!
+        while (!vertexStack.empty())
+        {
+            qDebug() << " -> ";
+
+            currentVertex = vertexStack.top();
+
+            qDebug() << **currentVertex;
+
+            vertexStack.pop();
+
+        }
+
+        qDebug() << endl << "\t : WITH TOTAL COST: " << totalCost << endl;
+
+    }
+
+    qDebug() << right;
+
+}
+
 
 template <typename VertexType, typename WeightType>
 void Graph<VertexType,WeightType>::MST()
