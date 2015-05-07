@@ -11,10 +11,9 @@
 #include <QSqlTableModel>
 #include <QTableView>
 #include <QApplication>
+#include <QSqlError>
 
 using namespace std;
-
-
 
 size_t LevenshteinDistance(const string &s1, const string &s2);
 
@@ -36,15 +35,15 @@ static bool createConnection()
                               qApp->tr("Unable to establish a database connection.\n"
                                        "Click Cancel to exit."), QMessageBox::Cancel);
         qDebug() << "IT DOESN'T DOESN'T WORK!" << endl;
-        return 1;
+        return false;
     }
 
     QSqlQuery query;
-    query.exec("create table stadiums (stadiumName varchar(50),"
-               "teamName varchar(50),street varchar(50), city varchar(50),"
-               "state varchar(50), zip varchar(50), boxOfficeNum varchar(50),"
-               "dateOpened varchar(50), capacity varchar(50), league varchar(50),"
-               "surface  varchar(50))");
+    qDebug()<<   query.exec("create table stadiums (stadiumName varchar(50),"
+                            "teamName varchar(50),street varchar(50), city varchar(50),"
+                            "state varchar(50), zip varchar(50), boxOfficeNum varchar(50),"
+                            "dateOpened varchar(50), capacity varchar(50), league varchar(50),"
+                            "surface  varchar(50))");
 
     query.exec("insert into stadiums values('Angels Stadium of Anaheim', "
                "'Los Angeles Angels of Anaheim', '2000 E Gene Autry Way', "
@@ -178,6 +177,8 @@ static bool createConnection()
     query.exec("insert into stadiums values('Wrigley Field', 'Chicago Cubs', "
                "'1060 West Addison Street', 'Chicago', 'IL', '60613', "
                "'773-404-2827', '1914-04-23', '42,374', 'National', 'Grass')");
+    query.next();
+
 
     return true;
 }
