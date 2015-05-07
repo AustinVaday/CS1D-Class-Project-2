@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
         return a.exec();
 
-    }
+}
 //    catch (const OutOfRange&)
 //   {
 //       qDebug() << "Inside Catch -- OutOfRange\n";
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 //   }
 
 
-}
+//}
 
 
 

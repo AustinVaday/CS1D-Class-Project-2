@@ -547,7 +547,7 @@ class Graph
         bool isStronglyConnected(VertexType beginVertex);
         bool isAncestor(Vertex<VertexType> &vDescendant, Vertex<VertexType> &vAncestor);
         void Dijkstra(VertexType sourceVertexData);
-        void DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData);
+        void DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData, vector<Vertex<VertexType> *> &vertexVector, WeightType &totalCost);
 
         void MST();
 
@@ -1716,12 +1716,13 @@ void Graph<VertexType,WeightType>::Dijkstra(VertexType sourceVertexData)
 }
 
 template <typename VertexType, typename WeightType>
-void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData)
+void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData, vector<Vertex<VertexType> *>& vertexVector, WeightType &totalCost)
 {
     Vertex<VertexType> *sourceVertex;
     Vertex<VertexType> *currentVertex;
     Vertex<VertexType> *endVertex;
-    int totalCost = 0;
+
+    totalCost = 0;
 
     stack<Vertex<VertexType> *> vertexStack;
 
@@ -1733,9 +1734,6 @@ void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexD
 
     /* finds the vertex from the data provided, calls Dijkstra's Computation */
     DijkstrasComputation(*sourceVertex);
-
-    qDebug() << left;
-
 
     currentVertex = endVertex;
 
@@ -1751,31 +1749,33 @@ void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexD
             currentVertex = currentVertex->getParent();
         }
 
-        qDebug() << "Shortest path from " << **sourceVertex << " to " << /*setw(8) <<  */**endVertex << " is: ";
+//        qDebug() << "Shortest path from " << **sourceVertex << " to " << /*setw(8) <<  */**endVertex << " is: ";
 
-        // output source since it is not on stack
-        qDebug() << **sourceVertex;
+//        // output source since it is not on stack
+//        qDebug() << **sourceVertex;
+        vertexVector.push_back(sourceVertex);
 
         // pop from stack and display in reverse order since we start from end vertex
         // and backtrack to source!
         while (!vertexStack.empty())
         {
-            qDebug() << " -> ";
+//            qDebug() << " -> ";
 
             currentVertex = vertexStack.top();
 
-            qDebug() << **currentVertex;
+            vertexVector.push_back(currentVertex);
+
+//            qDebug() << **currentVertex;
 
             vertexStack.pop();
 
         }
 
-        qDebug() << endl << "\t : WITH TOTAL COST: " << totalCost << endl;
+//        qDebug() << endl << "\t : WITH TOTAL COST: " << totalCost << endl;
 
     }
 
-    qDebug() << right;
-
+//    qDebug() << right;
 }
 
 

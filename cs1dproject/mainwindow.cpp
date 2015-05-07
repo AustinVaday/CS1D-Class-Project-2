@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
+    vector<Vertex<stadium> *> shortestPath;
+    float totalCost = 0;
 	ui->setupUi(this);
 
 	createConnection();
@@ -28,7 +30,20 @@ MainWindow::MainWindow(QWidget *parent) :
     endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
     endStadium.setStadiumNumber(2);
 
-    graph.DijkstraShortestPath(sourceStadium, endStadium);
+    graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
+
+    qDebug() << "Displaying shortest path from shortestPath list!";
+
+    for (int i = 0; i < shortestPath.size(); i++)
+    {
+        // *(shortestPath[i]) returns a stadium POINTER
+        qDebug() << *(*(shortestPath[i]));
+        qDebug() << " --> ";
+    }
+
+    qDebug() << "And the total cost is: " << totalCost;
+
+
 
 	QSqlTableModel *model = new QSqlTableModel();
 	initializeModel(model);
