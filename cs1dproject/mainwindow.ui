@@ -29,14 +29,14 @@
    <widget class="QStackedWidget" name="stackedWidget_mainWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>50</y>
+      <x>-60</x>
+      <y>80</y>
       <width>721</width>
       <height>421</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -486,25 +486,10 @@ p, li { white-space: pre-wrap; }
      </widget>
     </widget>
     <widget class="QWidget" name="page_shop0">
-     <widget class="QListWidget" name="listWidget_searchResults1">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>90</y>
-        <width>611</width>
-        <height>291</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>On selecting an element, it will launch the team info page which will have a shop functionality</string>
-       </property>
-      </item>
-     </widget>
      <widget class="QLabel" name="label_shopTitle">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>480</x>
         <y>20</y>
         <width>171</width>
         <height>21</height>
@@ -536,10 +521,23 @@ p, li { white-space: pre-wrap; }
        </item>
       </layout>
      </widget>
+     <widget class="QPushButton" name="button_prev">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Prev</string>
+      </property>
+     </widget>
      <widget class="QPushButton" name="button_mainMenu3">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>10</x>
         <y>20</y>
         <width>75</width>
         <height>23</height>
@@ -549,17 +547,362 @@ p, li { white-space: pre-wrap; }
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="button_back3">
+     <widget class="QPushButton" name="button_next">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>150</x>
         <y>20</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Back</string>
+       <string>Next</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_finish">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Finish</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="table_stadiumsToVisit">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>231</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Stadium</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Team</string>
+       </property>
+      </column>
+      <item row="0" column="0">
+       <property name="text">
+        <string>Angels Stadium of Anaheim</string>
+       </property>
+      </item>
+      <item row="0" column="1">
+       <property name="text">
+        <string>Los Angeles Angels of Anaheim</string>
+       </property>
+      </item>
+      <item row="1" column="0">
+       <property name="text">
+        <string>Comeria Park</string>
+       </property>
+      </item>
+      <item row="1" column="1">
+       <property name="text">
+        <string>Detroit Tigers</string>
+       </property>
+      </item>
+      <item row="2" column="0">
+       <property name="text">
+        <string>Fenway Park</string>
+       </property>
+      </item>
+      <item row="2" column="1">
+       <property name="text">
+        <string>Boston Red Sox</string>
+       </property>
+      </item>
+      <item row="3" column="0">
+       <property name="text">
+        <string>Globe Life Park in Arlington</string>
+       </property>
+      </item>
+      <item row="3" column="1">
+       <property name="text">
+        <string>Texas Rangers</string>
+       </property>
+      </item>
+      <item row="4" column="0">
+       <property name="text">
+        <string>Kauffman Stadium</string>
+       </property>
+      </item>
+      <item row="4" column="1">
+       <property name="text">
+        <string>Kansas City Royals</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_souvenirs">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>200</y>
+        <width>191</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Souvenirs Avalilable for Purchase</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Baseball Cap: $25.99</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBox_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Baseball Bat: $35.35</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBox_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>151</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Team Pennant: $12.99</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBox_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>171</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Autographed Baseball: $19.99</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_welcomeMessage">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>120</y>
+        <width>161</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to Angels Stadium!&lt;/p&gt;&lt;p&gt;Home of the Los Angeles &lt;/p&gt;&lt;p&gt;Angels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_addToCart">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>310</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add to Cart</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>120</y>
+        <width>291</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>Team</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Item</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Price</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Qty</string>
+       </property>
+      </column>
+      <item row="0" column="0">
+       <property name="text">
+        <string>Angels</string>
+       </property>
+      </item>
+      <item row="0" column="1">
+       <property name="text">
+        <string>Baseball Cap</string>
+       </property>
+      </item>
+      <item row="0" column="2">
+       <property name="text">
+        <string>$25.99</string>
+       </property>
+      </item>
+      <item row="0" column="3">
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item row="1" column="0">
+       <property name="text">
+        <string>Tigers</string>
+       </property>
+      </item>
+      <item row="1" column="1">
+       <property name="text">
+        <string>Baseball Bat</string>
+       </property>
+      </item>
+      <item row="1" column="2">
+       <property name="text">
+        <string>$35.35</string>
+       </property>
+      </item>
+      <item row="1" column="3">
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item row="2" column="0">
+       <property name="text">
+        <string>Red Sox</string>
+       </property>
+      </item>
+      <item row="2" column="1">
+       <property name="text">
+        <string>Team Pennant</string>
+       </property>
+      </item>
+      <item row="2" column="2">
+       <property name="text">
+        <string>$12.99</string>
+       </property>
+      </item>
+      <item row="2" column="3">
+       <property name="text">
+        <string>2</string>
+       </property>
+      </item>
+      <item row="3" column="0">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stadiums to Visit:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>370</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total: $74.33</string>
       </property>
      </widget>
     </widget>
@@ -692,7 +1035,7 @@ p, li { white-space: pre-wrap; }
        <string>Back</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>250</x>
@@ -762,7 +1105,7 @@ p, li { white-space: pre-wrap; }
         <string>Please enter the following information</string>
        </property>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>110</x>
@@ -789,7 +1132,7 @@ p, li { white-space: pre-wrap; }
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>21</x>
