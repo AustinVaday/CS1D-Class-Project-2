@@ -1,27 +1,96 @@
-#include "MainHeader.h"
+#include "mainwindow.h"
 
-void initializeModel(QSqlTableModel *model)
+
+/***************************************************************************
+ *  Initialize Model
+ * ------------------------------------------------------------------------
+ * This is method will take a QSqlTableModel pointer and set it's primary
+ * table to be "stadiums", our default server at the moment.
+ *	It sets the column headers 0-8 for it's current order of names.
+ * This make it so you can modify it, we can intialize edit strategy to not
+ * allow it to be editable.
+ *************************************************************************/
+void MainWindow::initializeModel(QSqlTableModel *initModel)
 {
-	model->setTable("stadiums");
-    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->select();
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Stadium Names"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Team Names"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("City"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("State"));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Zip"));
-    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Box Office Number"));
-    model->setHeaderData(6, Qt::Horizontal, QObject::tr("Date Opened"));
-    model->setHeaderData(7, Qt::Horizontal, QObject::tr("League"));
-    model->setHeaderData(8, Qt::Horizontal, QObject::tr("Surface"));
+	initModel->setTable("stadiums");
+	initModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	initModel->select();
+	initModel->setHeaderData(0, Qt::Horizontal, QObject::tr("Primary Key"));
+	initModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Stadium Names"));
+	initModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Team Names"));
+	initModel->setHeaderData(3, Qt::Horizontal, QObject::tr("City"));
+	initModel->setHeaderData(4, Qt::Horizontal, QObject::tr("State"));
+	initModel->setHeaderData(5, Qt::Horizontal, QObject::tr("Zip"));
+	initModel->setHeaderData(6, Qt::Horizontal, QObject::tr("Box Office Number"));
+	initModel->setHeaderData(7, Qt::Horizontal, QObject::tr("Date Opened"));
+	initModel->setHeaderData(8, Qt::Horizontal, QObject::tr("League"));
+	initModel->setHeaderData(9, Qt::Horizontal, QObject::tr("Surface"));
+	initModel->setHeaderData(9, Qt::Horizontal, QObject::tr("Vertices And Edges"));
 }
 
-QTableView* createView(QSqlTableModel *model, const QString &title)
+void MainWindow::refresh()
 {
-    QTableView *view = new QTableView;
-    view->setModel(model);
-    view->setWindowTitle(title);
-
-    return view;
+	initModel->select();
 }
+
+QTableView* MainWindow::createView(QSqlTableModel *initModel, const QString &title)
+{
+	QTableView *view = new QTableView;
+	view->setModel(initModel);
+	view->setWindowTitle(title);
+
+	return view;
+}
+
+// ************** EXAMPLE ***************
+// v.0.1 - It only updates the values after the application has been
+//		restarted. I think there is a commit or something that can be done
+//		by the admin to save it live.
+//		This works though!
+bool MainWindow::setStadiumName()
+{
+	QSqlQuery query;
+	return query.exec("update stadiums set stadiumName='EXAMPLE THAT IT WORKSs' where teamName='Los Angeles Angels of Anaheim'");
+}// ************** EXAMPLE ***************
+bool MainWindow::setStadiumName(int stadiumId,const QString &newName)
+{
+	QSqlQuery query;
+	return query.exec("update stadiums set stadiumName='"
+					  + newName + " where Primary Key='" + stadiumId + "'");
+}
+
+bool MainWindow::setTeamName(int stadiumId,const QString &newName)
+{
+	QSqlQuery query;
+	return query.exec("update stadiums set teamName='"
+					  + newName + " where Primary Key='" + stadiumId + "'");
+}
+
+bool MainWindow::setCity(int stadiumId, const QString &city)
+{
+	QSqlQuery query;
+		return query.exec("update stadiums set city='"
+					  + city + " where Primary Key='" + stadiumId + "'");
+}
+
+bool MainWindow::setState(int stadiumId, const QString &state)
+{
+	QSqlQuery query;
+	return query.exec("update stadiums set state='"
+					  + state + " where Primary Key='" + stadiumId + "'");
+}
+bool MainWindow::setSurface(int stadiumId, const QString &playingSurface)
+{
+	QSqlQuery query;
+	return query.exec("update stadiums set playingSurface='"
+					  + playingSurface + " where Primary Key='" + stadiumId + "'");
+}
+
+
+void MainWindow::showTableView()
+{
+	QTableView *table = createView(initModel, QObject::tr("Stadium Info"));
+	table->show();
+}
+
 

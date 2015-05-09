@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
-#define DEBUG 1
+#define SQL_DEBUG 1
+#define DEBUG 0
 // Standard Qt Includes
 #include <QMainWindow>
 #include <QDebug>
@@ -20,87 +20,92 @@
 
 // Project includes
 #include "graph.h"
-#include "querydatatable.h"
 #include "stadium.h"
 #include "MainHeader.h"
 
 namespace Ui {
-    class MainWindow;
+	class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
-        Q_OBJECT
+		Q_OBJECT
 
-    public:
-        explicit MainWindow(QWidget *parent = 0);
-        ~MainWindow();
+	public:
+		explicit MainWindow(QWidget *parent = 0);
+		~MainWindow();
 
-//        QString queryData(stadium stadiumTable);
+		bool createConnection(bool restart = false);
+		void showTableView();
+		void fillGraph();
 
-//        // SQL Methods for retrieving and configuring data in the SQL database
+		void refresh();
+		bool setState(int stadiumId, const QString &state);
+		bool setTeamName(int stadiumId, const QString &teamName);
+		bool setSurface(int stadiumId, const QString &playingSurface);
+		bool setCity(int stadiumId, const QString &city);
+		bool setStadiumName(); // <----- EXAMPLE & Demo for functionality
+		bool setStadiumName(int stadiumId,const QString &teamName);
 
-//        void sendData(const stadium& data);
+		void initializeModel(QSqlTableModel *initModel);
 
-//        void initializeModel(QSqlTableModel *model);
+		QTableView* createView(QSqlTableModel *initModel, const QString &title);
+		// This method will take a model foo and give it a title foobar.
+		//	MAKE SURE TO DEALLOCATE MEMORY for model foo
 
-//        QTableView* createView(QSqlTableModel *model, const QString &title = "");
+	private slots:
+		void on_button_back0_clicked();
 
-		bool createConnection();
+		void on_button_planATrip0_clicked();
 
-        void fillGraph();
-    private slots:
-        void on_button_back0_clicked();
+		void on_button_searchForStadiums0_clicked();
 
-        void on_button_planATrip0_clicked();
+		void on_button_mainMenu0_clicked();
 
-        void on_button_searchForStadiums0_clicked();
+		void on_button_back1_clicked();
 
-        void on_button_mainMenu0_clicked();
+		void on_button_mainMenu1_clicked();
 
-        void on_button_back1_clicked();
+		void on_button_mainMenu2_clicked();
 
-        void on_button_mainMenu1_clicked();
+		void on_button_back2_clicked();
 
-        void on_button_mainMenu2_clicked();
+		void on_button_mainMenu3_clicked();
 
-        void on_button_back2_clicked();
+		void on_button_back3_clicked();
 
-        void on_button_mainMenu3_clicked();
+		void on_button_mainMenu4_clicked();
 
-        void on_button_back3_clicked();
+		void on_button_back4_clicked();
 
-        void on_button_mainMenu4_clicked();
+		void on_button_viewStadiums_clicked();
 
-        void on_button_back4_clicked();
+		void on_button_shop0_clicked();
 
-        void on_button_viewStadiums_clicked();
+		void on_button_adminAccess0_clicked();
 
-        void on_button_shop0_clicked();
+		void on_button_mainMenu5_clicked();
 
-        void on_button_adminAccess0_clicked();
+		void on_button_login_clicked();
 
-        void on_button_mainMenu5_clicked();
+		void on_button_back_adminMainMenu_clicked();
 
-        void on_button_login_clicked();
+		void on_button_continueAddStadium_clicked();
 
-        void on_button_back_adminMainMenu_clicked();
+		void on_button_backAddStadium_clicked();
 
-        void on_button_continueAddStadium_clicked();
+		void on_button_addStadium0_clicked();
 
-        void on_button_backAddStadium_clicked();
-
-        void on_button_addStadium0_clicked();
-
-    private:
-        Ui::MainWindow *ui;
+	private:
+		Ui::MainWindow *ui;
 		QSqlDatabase db;
-
-        /*
-         * Vertex: stadium
-         * Edge: float (could be int, but let's make it generic)
-         */
-        Graph<stadium,float> graph;
+		QSqlTableModel* initModel;
+		QTableView* viewModel;
+		/*
+		 * Vertex: stadium
+		 * Edge: float (could be int, but let's make it generic)
+		 */
+		Graph<stadium,float> graph;
 };
 
 #endif // MAINWINDOW_H

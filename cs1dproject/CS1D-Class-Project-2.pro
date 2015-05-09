@@ -17,15 +17,13 @@ HEADERS  += mainwindow.h\
     heap.h\
     heapitem.h\
     comparators.h \
-    querydatatable.h \
         MainHeader.h\
             souvenirs.h\
                 graph.h\
-    stadium.h
+    stadium.h\
 
 SOURCES += main.cpp\
         mainwindow.cpp\
-    querydatatable.cpp \
     levenshteinDistance.cpp \
     findHashKey.cpp\
     souvenirs.cpp\

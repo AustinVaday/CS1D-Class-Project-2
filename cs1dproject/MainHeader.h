@@ -22,11 +22,4 @@ size_t LevenshteinDistance(const string &s1, const string &s2);
 string findHashKey(QString stadiumNames[], QString searchKey, const int SIZE);
 
 
-void initializeModel(QSqlTableModel *model);
-
-QTableView* createView(QSqlTableModel *model, const QString &title);
-
-
-
-
 #endif // MAINHEADER_H

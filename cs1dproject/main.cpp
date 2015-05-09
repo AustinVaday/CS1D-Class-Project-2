@@ -6,14 +6,14 @@
 
 int main(int argc, char *argv[])
 {
-//    try
-//    {
-        QApplication a(argc, argv);
-        MainWindow w;
+	//    try
+	//    {
+	QApplication a(argc, argv);
+	MainWindow w;
 
-        w.show();
+	w.show();
 
-        return a.exec();
+	return a.exec();
 
 }
 //    catch (const OutOfRange&)
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
 //	graph4.insert("Boston", "New York", 214);
 //	graph4.insert("Atlanta", "Miami", 661);
 
-    //	Display is too messy b/c no set(w) in QT
+//	Display is too messy b/c no set(w) in QT
 //	graph4.display();
 
 //	graph4.Dijkstra("Seattle");
