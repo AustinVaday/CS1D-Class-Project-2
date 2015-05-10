@@ -24,7 +24,7 @@
 
 #ignore all user files and build folders
 *.user
-.pro.*
+.user*
 build*
 gcloud*
 *gcloud
