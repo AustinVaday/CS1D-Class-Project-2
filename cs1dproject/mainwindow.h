@@ -22,6 +22,7 @@
 #include "graph.h"
 #include "stadium.h"
 #include "MainHeader.h"
+//#include "hashTable.h"
 
 namespace Ui {
 	class MainWindow;
@@ -113,6 +114,7 @@ class MainWindow : public QMainWindow
 		 * Edge: float (could be int, but let's make it generic)
 		 */
 		Graph<stadium,float> graph;
+        QHash<QString,stadium> stadiumHash;
 };
 
 #endif // MAINWINDOW_H

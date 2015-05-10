@@ -1963,79 +1963,79 @@ void Graph<VertexType,WeightType>::display() const
 
     qDebug() << left;
 
-    qDebug() << "THE ADJACENCY MATRIX:\n";
-    qDebug() << "=================================================================\n";
+//    qDebug() << "THE ADJACENCY MATRIX:\n";
+//    qDebug() << "=================================================================\n";
 
-    // outputs vertex horizontal header
-//    qDebug() << setw(15) << "";
+//    // outputs vertex horizontal header
+////    qDebug() << setw(15) << "";
 
-    // loop throughout (width) size of matrix, output horizontal HEADER
-    for (int index = 0; index < size; index++)
-    {
-//        qDebug() << setw(9);
+//    // loop throughout (width) size of matrix, output horizontal HEADER
+//    for (int index = 0; index < size; index++)
+//    {
+////        qDebug() << setw(9);
 
-        /* returns a vertex that has a vertexIndex of index.
-         * returns NULL if not found */
-        vertexPtr = returnVertexFromIndex(index);
+//        /* returns a vertex that has a vertexIndex of index.
+//         * returns NULL if not found */
+//        vertexPtr = returnVertexFromIndex(index);
 
-        if (vertexPtr == NULL)
-        {
-            qDebug() << "N/A ";
-        }
-        else
-        {
-            // output vertex data
-            qDebug() << **vertexPtr << " ";		}
+//        if (vertexPtr == NULL)
+//        {
+//            qDebug() << "N/A ";
+//        }
+//        else
+//        {
+//            // output vertex data
+//            qDebug() << **vertexPtr << " ";		}
 
-    }
+//    }
 
-    qDebug() << endl;
+//    qDebug() << endl;
 
-    // outputs vertex horizontal dashes beneath header
-//    qDebug() << setw(15) << "";
-    for (int i = 0; i < size; i++)
-    {
-        qDebug() /*<< setw(10) */<< "----- ";
-    }
+//    // outputs vertex horizontal dashes beneath header
+////    qDebug() << setw(15) << "";
+//    for (int i = 0; i < size; i++)
+//    {
+//        qDebug() /*<< setw(10) */<< "----- ";
+//    }
 
-    qDebug() << endl;
+//    qDebug() << endl;
 
-    // loop throughout (width) size of matrix, output vertical HEADER
-    for (int row = 0; row < size; row++)
-    {
-//        qDebug() << setw(15);
+//    // loop throughout (width) size of matrix, output vertical HEADER
+//    for (int row = 0; row < size; row++)
+//    {
+////        qDebug() << setw(15);
 
-        /* returns a vertex that has a vertexIndex of index.
-         * returns NULL if not found */
-        vertexPtr = returnVertexFromIndex(row);
+//        /* returns a vertex that has a vertexIndex of index.
+//         * returns NULL if not found */
+//        vertexPtr = returnVertexFromIndex(row);
 
-        if (vertexPtr == NULL)
-        {
-            qDebug() << "N/A" << "| ";
-        }
-        else
-        {
-            // output vertex data
-            qDebug() << **vertexPtr << "| ";
-        }
+//        if (vertexPtr == NULL)
+//        {
+//            qDebug() << "N/A" << "| ";
+//        }
+//        else
+//        {
+//            // output vertex data
+//            qDebug() << **vertexPtr << "| ";
+//        }
 
-        // outputs element in each column (of the same row)
-        for (int col = 0; col < size; col++)
-        {
-//            qDebug() << setw(10);
-            if (edgeMatrix[row][col] == NULL)
-            {
-                qDebug() << "0";
-            }
-            else
-            {
-                qDebug() << edgeMatrix[row][col]->getWeight();
-            }
-        }
-        qDebug() << endl << endl;
+//        // outputs element in each column (of the same row)
+//        for (int col = 0; col < size; col++)
+//        {
+////            qDebug() << setw(10);
+//            if (edgeMatrix[row][col] == NULL)
+//            {
+//                qDebug() << "0";
+//            }
+//            else
+//            {
+//                qDebug() << edgeMatrix[row][col]->getWeight();
+//            }
+//        }
+//        qDebug() << endl << endl;
 
 
-    }
+//    }
 
 
     /* OUTPUT VERTEX DATA */
@@ -2354,6 +2354,7 @@ template <typename VertexType, typename WeightType>
         // compare the two vertex VALUES
         if (***vertexIt == vertexData)
         {
+//            qDebug() << "It exists!!";
             return *vertexIt;
         }
         else
@@ -2361,6 +2362,8 @@ template <typename VertexType, typename WeightType>
             ++vertexIt;
         }
     }
+//    qDebug() << "It does not exist!!";
+
 
     return NULL;
 

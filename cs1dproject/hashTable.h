@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <QString>
 using namespace std;
 
 template<class objectType,  class keyType>
@@ -17,26 +18,26 @@ class hashTable
 
 
         //Retrieves object given a key
-        objectType &     retreive(string key);
+        objectType &     retreive(QString key);
 
         //Remove object given a key
         void           remove(keyType key);
 
         //Inserts an object into the hash table an
-        void           insert(objectType object, string key);
+        void           insert(objectType object, QString key);
         void           makeEmpty();
-        int            getHash(string key);
+        int            getHash(QString key);
         float          returnLoadFactor();
         //	hashTable<objectType, keyType>& operator = ();
         int            getCount();
         void           rehashTable();
         int            calcLoadFactor();
-        vector<string> returnKeyList();
+        vector<QString> returnKeyList();
     private:
 
         //P R I V A T E
         vector<objectType> * _table;
-        vector<string>       _keyList;
+        vector<QString>       _keyList;
         int                  _count;
         int                  _sizeOfTable;
         //	int hashFunc(*hashFunc(), const keyType);
@@ -67,19 +68,19 @@ hashTable<objectType, keyType>::~hashTable()
 }
 
 template<class objectType, class keyType>
-int hashTable<objectType, keyType>::getHash(string key)
+int hashTable<objectType, keyType>::getHash(QString key)
 {
     int sum = 0;
     for(int i = 0; i< key.length(); i++)
     {
-        sum += key[i];
+        sum += key[i].digitValue();
     }
     return sum % (_sizeOfTable - 1);
 
 }
 
 template<class objectType, class keyType>
-void hashTable<objectType, keyType>::insert(objectType object, string key)
+void hashTable<objectType, keyType>::insert(objectType object, QString key)
 {
 
 
@@ -89,22 +90,19 @@ void hashTable<objectType, keyType>::insert(objectType object, string key)
 }
 
 template<class objectType, class keyType>
-objectType & hashTable<objectType, keyType>::retreive(string key)
+objectType & hashTable<objectType, keyType>::retreive(QString key)
 {
     int hash;
 
     hash = getHash(key);
-    objectType newObject;
-
-
-    newObject = _table[hash];
+    objectType newObject = _table->operator [](hash);
 
     return newObject;
 
 }
 
 template<class objectType, class keyType>
-vector<string> hashTable<objectType, keyType>::returnKeyList()
+vector<QString> hashTable<objectType, keyType>::returnKeyList()
 {
     return _keyList;
 }
