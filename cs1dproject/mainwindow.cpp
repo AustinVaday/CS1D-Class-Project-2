@@ -18,9 +18,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection();
+	createConnection(/*true*/);  // put true to reinitialize the model
 	initModel = new QSqlTableModel(this);
-	initializeModel(initModel);
+	initializeModel(initModel); // Pass in false if you want to make it only
+								//	only editable when submit is clicked.
 
 
 	fillGraph();
@@ -160,10 +161,7 @@ void MainWindow::on_button_back4_clicked()
 
 void MainWindow::on_button_viewStadiums_clicked()
 {
-	qDebug() << "Setting names: " << setStadiumName();
-	refresh();
 	QTableView* tableView = createView(initModel, "Stadiums");
-
 	tableView->show();
 	ui->page_mainMenu->hide();
 	ui->page_stadiumList->show();

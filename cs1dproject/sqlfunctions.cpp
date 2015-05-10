@@ -13,6 +13,7 @@
 void MainWindow::initializeModel(QSqlTableModel *initModel, bool editField)
 {
 	initModel->setTable("stadiums");
+	// Defaulted to be false!!
 	if(editField)
 	{
 		initModel->setEditStrategy(QSqlTableModel::OnFieldChange);
@@ -42,10 +43,10 @@ void MainWindow::refresh()
 	initModel->select();
 }
 
-QTableView* MainWindow::createView(QSqlTableModel *initModel, const QString &title)
+QTableView* MainWindow::createView(QSqlTableModel *model, const QString &title)
 {
 	QTableView *view = new QTableView;
-	view->setModel(initModel);
+	view->setModel(model);
 	view->resizeColumnsToContents();
 	view->resizeRowsToContents();
 	view->setWindowTitle(title);

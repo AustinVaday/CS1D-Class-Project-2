@@ -47,7 +47,7 @@ class MainWindow : public QMainWindow
 		bool setStadiumName(); // <----- EXAMPLE & Demo for functionality
 		bool setStadiumName(int stadiumId,const QString &teamName);
 
-		void initializeModel(QSqlTableModel *initModel, bool editField = false);
+		void initializeModel(QSqlTableModel *initModel, bool editField = true);
 
 		QTableView* createView(QSqlTableModel *initModel, const QString &title);
 		// This method will take a model foo and give it a title foobar.
