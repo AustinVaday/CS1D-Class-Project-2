@@ -35,7 +35,7 @@ class MainWindow : public QMainWindow
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
 
-		bool createConnection(bool restart = false);
+		bool createConnection(bool restart = true);
 		void showTableView();
 		void fillGraph();
 

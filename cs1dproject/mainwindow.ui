@@ -861,13 +861,13 @@ p, li { white-space: pre-wrap; }
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView_stadiumList">
+     <widget class="QTreeView" name="treeView_stadiumList">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>90</y>
-        <width>441</width>
-        <height>301</height>
+        <x>50</x>
+        <y>70</y>
+        <width>631</width>
+        <height>321</height>
        </rect>
       </property>
       <property name="frameShadow">

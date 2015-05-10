@@ -18,14 +18,16 @@ void MainWindow::initializeModel(QSqlTableModel *initModel)
 	initModel->setHeaderData(0, Qt::Horizontal, QObject::tr("Primary Key"));
 	initModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Stadium Names"));
 	initModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Team Names"));
-	initModel->setHeaderData(3, Qt::Horizontal, QObject::tr("City"));
-	initModel->setHeaderData(4, Qt::Horizontal, QObject::tr("State"));
-	initModel->setHeaderData(5, Qt::Horizontal, QObject::tr("Zip"));
-	initModel->setHeaderData(6, Qt::Horizontal, QObject::tr("Box Office Number"));
-	initModel->setHeaderData(7, Qt::Horizontal, QObject::tr("Date Opened"));
-	initModel->setHeaderData(8, Qt::Horizontal, QObject::tr("League"));
-	initModel->setHeaderData(9, Qt::Horizontal, QObject::tr("Surface"));
-	initModel->setHeaderData(9, Qt::Horizontal, QObject::tr("Vertices And Edges"));
+	initModel->setHeaderData(3, Qt::Horizontal, QObject::tr("Street"));
+	initModel->setHeaderData(4, Qt::Horizontal, QObject::tr("City"));
+	initModel->setHeaderData(5, Qt::Horizontal, QObject::tr("State"));
+	initModel->setHeaderData(6, Qt::Horizontal, QObject::tr("Zip"));
+	initModel->setHeaderData(7, Qt::Horizontal, QObject::tr("Box Office Number"));
+	initModel->setHeaderData(8, Qt::Horizontal, QObject::tr("Date Opened"));
+	initModel->setHeaderData(9, Qt::Horizontal, QObject::tr("Capacity"));
+	initModel->setHeaderData(10, Qt::Horizontal, QObject::tr("League"));
+	initModel->setHeaderData(11, Qt::Horizontal, QObject::tr("Surface"));
+	initModel->setHeaderData(12, Qt::Horizontal, QObject::tr("Vertices And Edges"));
 }
 
 void MainWindow::refresh()
