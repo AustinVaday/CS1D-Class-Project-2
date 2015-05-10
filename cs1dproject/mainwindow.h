@@ -35,7 +35,7 @@ class MainWindow : public QMainWindow
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
 
-		bool createConnection(bool restart = true);
+		bool createConnection(bool restart = false);
 		void showTableView();
 		void fillGraph();
 
@@ -47,11 +47,18 @@ class MainWindow : public QMainWindow
 		bool setStadiumName(); // <----- EXAMPLE & Demo for functionality
 		bool setStadiumName(int stadiumId,const QString &teamName);
 
-		void initializeModel(QSqlTableModel *initModel);
+		void initializeModel(QSqlTableModel *initModel, bool editField = false);
 
 		QTableView* createView(QSqlTableModel *initModel, const QString &title);
 		// This method will take a model foo and give it a title foobar.
 		//	MAKE SURE TO DEALLOCATE MEMORY for model foo
+
+		bool setStreet(int stadiumId, const QString& street);
+
+		void submit(QSqlTableModel* model);
+
+		bool addStadium(QVector<QString> stadiumData);
+		// Incomeplete ^^^
 
 	private slots:
 		void on_button_back0_clicked();

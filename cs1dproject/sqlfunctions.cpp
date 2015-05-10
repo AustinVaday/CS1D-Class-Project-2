@@ -10,10 +10,17 @@
  * This make it so you can modify it, we can intialize edit strategy to not
  * allow it to be editable.
  *************************************************************************/
-void MainWindow::initializeModel(QSqlTableModel *initModel)
+void MainWindow::initializeModel(QSqlTableModel *initModel, bool editField)
 {
 	initModel->setTable("stadiums");
-	initModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	if(editField)
+	{
+		initModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+	}
+	else
+	{
+		initModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	}
 	initModel->select();
 	initModel->setHeaderData(0, Qt::Horizontal, QObject::tr("Primary Key"));
 	initModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Stadium Names"));
@@ -39,6 +46,8 @@ QTableView* MainWindow::createView(QSqlTableModel *initModel, const QString &tit
 {
 	QTableView *view = new QTableView;
 	view->setModel(initModel);
+	view->resizeColumnsToContents();
+	view->resizeRowsToContents();
 	view->setWindowTitle(title);
 
 	return view;
@@ -58,34 +67,43 @@ bool MainWindow::setStadiumName(int stadiumId,const QString &newName)
 {
 	QSqlQuery query;
 	return query.exec("update stadiums set stadiumName='"
-					  + newName + " where Primary Key='" + stadiumId + "'");
+					  + newName + " where Primary Key='" + QString(stadiumId) + "'");
 }
 
 bool MainWindow::setTeamName(int stadiumId,const QString &newName)
 {
 	QSqlQuery query;
 	return query.exec("update stadiums set teamName='"
-					  + newName + " where Primary Key='" + stadiumId + "'");
+					  + newName + " where Primary Key='" + QString(stadiumId) + "'");
 }
 
 bool MainWindow::setCity(int stadiumId, const QString &city)
 {
 	QSqlQuery query;
-		return query.exec("update stadiums set city='"
-					  + city + " where Primary Key='" + stadiumId + "'");
+	return query.exec("update stadiums set city='"
+					  + city + " where Primary Key='" + QString(stadiumId) + "'");
 }
 
 bool MainWindow::setState(int stadiumId, const QString &state)
 {
 	QSqlQuery query;
 	return query.exec("update stadiums set state='"
-					  + state + " where Primary Key='" + stadiumId + "'");
+					  + state + " where Primary Key='" + QString(stadiumId) + "'");
 }
+
 bool MainWindow::setSurface(int stadiumId, const QString &playingSurface)
 {
 	QSqlQuery query;
 	return query.exec("update stadiums set playingSurface='"
-					  + playingSurface + " where Primary Key='" + stadiumId + "'");
+					  + playingSurface + " where Primary Key='" + QString(stadiumId) + "'");
+}
+
+
+bool MainWindow::setStreet(int stadiumId, const QString &street)
+{
+	QSqlQuery query;
+	return query.exec("update stadiums set street='"
+					  + street + " where Primary Key='" + QString(stadiumId) + "'");
 }
 
 
@@ -93,6 +111,25 @@ void MainWindow::showTableView()
 {
 	QTableView *table = createView(initModel, QObject::tr("Stadium Info"));
 	table->show();
+}
+
+bool MainWindow::addStadium(QVector<QString> stadiumData)
+{
+	//	QSqlQuery
+	return false;
+}
+
+void MainWindow::submit(QSqlTableModel* model)
+{
+	model->database().transaction();
+	if (model->submitAll()) {
+		model->database().commit();
+	} else {
+		model->database().rollback();
+		QMessageBox::warning(this, tr("Cached Table"),
+							 tr("The database reported an error: %1")
+							 .arg(model->lastError().text()));
+	}
 }
 
 
