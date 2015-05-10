@@ -1,0 +1,50 @@
+struct edgeStringStruct
+{
+    QString v1;
+    QString v2;
+    float   edge;
+};
+
+
+QString dbString = "cubs;20563~Dodger's Stadium;207";
+
+
+vector<edgeStringStruct> edgeStringVector;
+vector<edgeStringStruact>::iterator structIt;
+edgeStringStruct tempStruct;
+QString vertexString1;
+QString vertexString2;
+QString edgeString;
+QStringList stringList;
+QStringList tempStringList;
+
+// list of strings split by ~ (vertex,edge pair)
+stringList = dbString.split('~');
+
+vertexString1 = "Angel's Stadium";
+for (int i = 0; i < stringList.size(); i++)
+{
+    // split vertex-edge pair by delimter ';'
+    tempStringList = (stringList[i].split(';'));
+
+    // first entry is a vertex
+    vertexString2 = tempStringList[0];
+
+    // second entry is an edge
+    edgeString = tempStringList[1];
+
+    tempStruct.v1   = vertexString1;
+    tempStruct.v2   = vertexString2;
+    tempStruct.edge = edgeString.toFloat();
+
+    edgeStringVector.push_back(tempStruct);
+
+    tempStringList.clear();
+}
+
+qDebug() << "Displaying vertices and their respective weights!";
+for (structIt = edgeStringVector.begin(); structIt != edgeStringVector.end(); structIt++)
+{
+    qDebug() << "Vertex 1 : " << (*structIt).v1 << " Vertex 2 : " << (*structIt).v2 << " Edge : " << (*structIt).edge;
+}
+
