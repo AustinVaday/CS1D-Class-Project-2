@@ -17,19 +17,22 @@ HEADERS  += mainwindow.h\
     heap.h\
     heapitem.h\
     comparators.h \
-    querydatatable.h \
-    projsqlmodel.h \
-    connectdatabase.h\
         MainHeader.h\
             souvenirs.h\
+                graph.h\
+    stadium.h\
+    datatable.h \
+    addstadiumfunctionality.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
-    querydatatable.cpp \
-    projsqlmodel.cpp\
     levenshteinDistance.cpp \
     findHashKey.cpp\
     souvenirs.cpp\
+    stadium.cpp \
+    sqlfunctions.cpp \
+    datatable.cpp \
+    addstadiumfunctionality.cpp
 
 FORMS    += mainwindow.ui
 

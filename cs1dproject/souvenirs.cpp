@@ -3,7 +3,18 @@
 
 souvenirs::souvenirs(QObject *parent, QSqlDatabase *db) : QObject(parent)
 {
-query = QSqlQuery::QSqlQuery(*db);
+
+    QSqlDatabase temp;
+
+    try
+    {
+//        query = QSqlQuery::QSqlQuery(temp);
+
+    }
+    catch(...)
+    {
+        qDebug() << "Souvenirs Constructor" << endl;
+    }
 }
 
 souvenirs::~souvenirs()

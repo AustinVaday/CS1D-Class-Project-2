@@ -1,0 +1,60 @@
+Add the below to Angels Stadium of Anaheim
+Petco Park;110~Dodger Stadium;0
+Add the below to Comerica Park
+Rogers Centre;210~Progressive Field;90~US Cellular Field;240
+Add the below to Fenway Park
+Rogers Centre;430~Marlins Park;1255~Yankee Stadium;195
+Add the below to Globe Life Park in Arlington
+Chase Field;870~Coors Field;650~Kauffman Stadium;460~Turner Field;740~Minute Maid Park;230
+Add the below to Kauffman Stadium
+Wrigley Field;415~Busch Stadium;235~Globe Life Park in Arlington;460~Coors Field;560
+Add the below to Minute Maid Park
+Busch Stadium;680~Tropicana Field;790~Marlins Park;965~Chase Field;1115~Globe Life Park in Arlington;230
+Add the below to O.co Coliseum
+AT&T Park;0~Chase Field;650~Dodger Stadium;340
+Add the below to Oriole Park at Camden Yards
+Nationals Park;0~Citizens Bank Park;90
+Add the below to Progressive Field
+Comerica Park;90~PNC Park;115~Great American Ball Park;225
+Add the below to Rogers Centre
+Fenway Park;430~PNC Park;225~Comerica Park;210~Miller Park;430~SafeCo Field;2070
+Add the below to SafeCo Field
+Rogers Centre;2070~Target Field;1390~AT&T Park;680
+Add the below to Target Field
+SafeCo Field;1390~Miller Park;300~Busch Stadium;465~Dodger Stadium;1500
+Add the below to Tropicana Field
+Marlins Park;210~Minute Maid Park;790~Great American Ball Park;790
+Add the below to US Cellular Field
+Wrigley Field;0~Comerica Park;240~Great American Ball Park;250
+Add the below to Yankee Stadium
+Citi Field;0~Citizens Bank Park;80~PNC Park;315~Fenway Park;195
+Add the below to AT&T Park
+O.co Coliseum;0~SafeCo Field;680
+Add the below to Busch Stadium
+Great American Ball Park;310~Minute Maid Park;680~Kauffman Stadium;235~Target Field;465
+Add the below to Chase Field
+Coors Field;580~Globe Life Park in Arlington;870~Minute Maid Park;1115~Petco Park;300~O.co Coliseum;650
+Add the below to Citi Field
+Yankee Stadium;0
+Add the below to Citizens Bank Park
+Yankee Stadium;80~Oriole Park at Camden Yards;90
+Add the below to Coors Field
+Kauffman Stadium;560~Globe Life Park in Arlington;650~Chase Field;580~Petco Park;830
+Add the below to Dodger Stadium
+Angels Stadium of Anaheim;0~Target Field;1500~O.co Coliseum;340
+Add the below to Great American Ball Park
+Progressive Field;225~PNC Park;260~Tropicana Field;790~Turner Field;375~Busch Stadium;310~US Cellular Field;250
+Add the below to Marlins Park
+Nationals Park;930~Fenway Park;1255~Minute Maid Park;965~Tropicana Field;210~Turner Field;600
+Add the below to Miller Park
+Rogers Centre;430~Wrigley Field;80~Target Field;300
+Add the below to Nationals Park
+Oriole Park at Camden Yards;0~Marlins Park;930~Turner Field;560~PNC Park;195
+Add the below to Petco Park
+Angels Stadium of Anaheim;110~Coors Field;830~Chase Field;300
+Add the below to PNC Park
+Rogers Centre;225~Yankee Stadium;315~Nationals Park;195~Great American Ball Park;260~Progressive Field;115
+Add the below to Turner Field
+Great American Ball Park;375~Nationals Park;560~Marlins Park;600~Globe Life Park in Arlington;740
+Add the below to Wrigley Field
+US Cellular Field;0~Kauffman Stadium;415~Miller Park;80

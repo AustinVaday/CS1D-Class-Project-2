@@ -11,6 +11,7 @@
 #include <queue>
 #include <stack>
 
+#define INFINITY 999999999999999
 
 using namespace std;
 
@@ -547,6 +548,8 @@ class Graph
         bool isStronglyConnected(VertexType beginVertex);
         bool isAncestor(Vertex<VertexType> &vDescendant, Vertex<VertexType> &vAncestor);
         void Dijkstra(VertexType sourceVertexData);
+        void DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData, vector<Vertex<VertexType> *> &vertexVector, WeightType &totalCost);
+
         void MST();
 
         /******************************************************************
@@ -1714,6 +1717,70 @@ void Graph<VertexType,WeightType>::Dijkstra(VertexType sourceVertexData)
 }
 
 template <typename VertexType, typename WeightType>
+void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData, vector<Vertex<VertexType> *>& vertexVector, WeightType &totalCost)
+{
+    Vertex<VertexType> *sourceVertex;
+    Vertex<VertexType> *currentVertex;
+    Vertex<VertexType> *endVertex;
+
+    totalCost = 0;
+
+    stack<Vertex<VertexType> *> vertexStack;
+
+    sourceVertex = returnVertexFromData(sourceVertexData);
+    endVertex    = returnVertexFromData(endVertexData);
+
+    // reset all vertices/edges to unexplored
+    resetVertexEdgeExploration();
+
+    /* finds the vertex from the data provided, calls Dijkstra's Computation */
+    DijkstrasComputation(*sourceVertex);
+
+    currentVertex = endVertex;
+
+    // Only output the nodes that were used
+    if (currentVertex->getCost() != int(INFINITY))
+    {
+        totalCost = currentVertex->getCost();
+
+        // Search backwards until we reach source vertex
+        while (currentVertex != sourceVertex)
+        {
+            vertexStack.push(currentVertex);
+            currentVertex = currentVertex->getParent();
+        }
+
+//        qDebug() << "Shortest path from " << **sourceVertex << " to " << /*setw(8) <<  */**endVertex << " is: ";
+
+//        // output source since it is not on stack
+//        qDebug() << **sourceVertex;
+        vertexVector.push_back(sourceVertex);
+
+        // pop from stack and display in reverse order since we start from end vertex
+        // and backtrack to source!
+        while (!vertexStack.empty())
+        {
+//            qDebug() << " -> ";
+
+            currentVertex = vertexStack.top();
+
+            vertexVector.push_back(currentVertex);
+
+//            qDebug() << **currentVertex;
+
+            vertexStack.pop();
+
+        }
+
+//        qDebug() << endl << "\t : WITH TOTAL COST: " << totalCost << endl;
+
+    }
+
+//    qDebug() << right;
+}
+
+
+template <typename VertexType, typename WeightType>
 void Graph<VertexType,WeightType>::MST()
 
 {
@@ -1896,79 +1963,79 @@ void Graph<VertexType,WeightType>::display() const
 
     qDebug() << left;
 
-    qDebug() << "THE ADJACENCY MATRIX:\n";
-    qDebug() << "=================================================================\n";
+//    qDebug() << "THE ADJACENCY MATRIX:\n";
+//    qDebug() << "=================================================================\n";
 
-    // outputs vertex horizontal header
-//    qDebug() << setw(15) << "";
+//    // outputs vertex horizontal header
+////    qDebug() << setw(15) << "";
 
-    // loop throughout (width) size of matrix, output horizontal HEADER
-    for (int index = 0; index < size; index++)
-    {
-//        qDebug() << setw(9);
+//    // loop throughout (width) size of matrix, output horizontal HEADER
+//    for (int index = 0; index < size; index++)
+//    {
+////        qDebug() << setw(9);
 
-        /* returns a vertex that has a vertexIndex of index.
-         * returns NULL if not found */
-        vertexPtr = returnVertexFromIndex(index);
+//        /* returns a vertex that has a vertexIndex of index.
+//         * returns NULL if not found */
+//        vertexPtr = returnVertexFromIndex(index);
 
-        if (vertexPtr == NULL)
-        {
-            qDebug() << "N/A ";
-        }
-        else
-        {
-            // output vertex data
-            qDebug() << **vertexPtr << " ";		}
+//        if (vertexPtr == NULL)
+//        {
+//            qDebug() << "N/A ";
+//        }
+//        else
+//        {
+//            // output vertex data
+//            qDebug() << **vertexPtr << " ";		}
 
-    }
+//    }
 
-    qDebug() << endl;
+//    qDebug() << endl;
 
-    // outputs vertex horizontal dashes beneath header
-//    qDebug() << setw(15) << "";
-    for (int i = 0; i < size; i++)
-    {
-        qDebug() /*<< setw(10) */<< "----- ";
-    }
+//    // outputs vertex horizontal dashes beneath header
+////    qDebug() << setw(15) << "";
+//    for (int i = 0; i < size; i++)
+//    {
+//        qDebug() /*<< setw(10) */<< "----- ";
+//    }
 
-    qDebug() << endl;
+//    qDebug() << endl;
 
-    // loop throughout (width) size of matrix, output vertical HEADER
-    for (int row = 0; row < size; row++)
-    {
-//        qDebug() << setw(15);
+//    // loop throughout (width) size of matrix, output vertical HEADER
+//    for (int row = 0; row < size; row++)
+//    {
+////        qDebug() << setw(15);
 
-        /* returns a vertex that has a vertexIndex of index.
-         * returns NULL if not found */
-        vertexPtr = returnVertexFromIndex(row);
+//        /* returns a vertex that has a vertexIndex of index.
+//         * returns NULL if not found */
+//        vertexPtr = returnVertexFromIndex(row);
 
-        if (vertexPtr == NULL)
-        {
-            qDebug() << "N/A" << "| ";
-        }
-        else
-        {
-            // output vertex data
-            qDebug() << **vertexPtr << "| ";
-        }
+//        if (vertexPtr == NULL)
+//        {
+//            qDebug() << "N/A" << "| ";
+//        }
+//        else
+//        {
+//            // output vertex data
+//            qDebug() << **vertexPtr << "| ";
+//        }
 
-        // outputs element in each column (of the same row)
-        for (int col = 0; col < size; col++)
-        {
-//            qDebug() << setw(10);
-            if (edgeMatrix[row][col] == NULL)
-            {
-                qDebug() << "0";
-            }
-            else
-            {
-                qDebug() << edgeMatrix[row][col]->getWeight();
-            }
-        }
-        qDebug() << endl << endl;
+//        // outputs element in each column (of the same row)
+//        for (int col = 0; col < size; col++)
+//        {
+////            qDebug() << setw(10);
+//            if (edgeMatrix[row][col] == NULL)
+//            {
+//                qDebug() << "0";
+//            }
+//            else
+//            {
+//                qDebug() << edgeMatrix[row][col]->getWeight();
+//            }
+//        }
+//        qDebug() << endl << endl;
 
 
-    }
+//    }
 
 
     /* OUTPUT VERTEX DATA */
@@ -2287,6 +2354,7 @@ template <typename VertexType, typename WeightType>
         // compare the two vertex VALUES
         if (***vertexIt == vertexData)
         {
+//            qDebug() << "It exists!!";
             return *vertexIt;
         }
         else
@@ -2294,6 +2362,8 @@ template <typename VertexType, typename WeightType>
             ++vertexIt;
         }
     }
+//    qDebug() << "It does not exist!!";
+
 
     return NULL;
 

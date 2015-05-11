@@ -1,15 +1,28 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
-#define DEBUG 1
-
+#define SQL_DEBUG 1
+#define DEBUG 0
+// Standard Qt Includes
 #include <QMainWindow>
 #include <QDebug>
 #include <QFont>
+#include <QFile>
+#include <QApplication>
+#include <QtGui>
+#include <QMessageBox>
+
+// Qt Sql includes, database, query and table display
+#include <QTableView>
+#include <QSqlQueryModel>
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
-#include <QFile>
+
+// Project includes
+#include "graph.h"
+#include "stadium.h"
+#include "MainHeader.h"
+//#include "hashTable.h"
 
 namespace Ui {
 	class MainWindow;
@@ -23,19 +36,30 @@ class MainWindow : public QMainWindow
 		explicit MainWindow(QWidget *parent = 0);
 		~MainWindow();
 
-		void executeQueriesFromFile(QFile *file, QSqlQuery* query);
-		// Does not work at the moment, considering removing from project.
-		//	only keeping if I get the chance to implement
+		bool createConnection(bool restart = false);
+		void showTableView();
+		void fillGraph();
 
-		QString getQStringData(QModelIndex *index, QString dataField);
-		// Will return a QString of the data from the QModelIndex
+		void refresh();
+		bool setState(int stadiumId, const QString &state);
+		bool setTeamName(int stadiumId, const QString &teamName);
+		bool setSurface(int stadiumId, const QString &playingSurface);
+		bool setCity(int stadiumId, const QString &city);
+		bool setStadiumName(); // <----- EXAMPLE & Demo for functionality
+		bool setStadiumName(int stadiumId,const QString &teamName);
 
-		int getIntData(QModelIndex *index, QString dataField);
-		// Returns integer data at the model index
-		float getFloatData(QModelIndex *index, QString dataField);
-		// Returns float data at the model index
-		char getCharData(QModelIndex *index, QString dataField);
-		// Returns chara data at the model index
+		void initializeModel(QSqlTableModel *initModel, bool editField = true);
+
+		QTableView* createView(QSqlTableModel *initModel, const QString &title);
+		// This method will take a model foo and give it a title foobar.
+		//	MAKE SURE TO DEALLOCATE MEMORY for model foo
+
+		bool setStreet(int stadiumId, const QString& street);
+
+		void submit(QSqlTableModel* model);
+
+		bool addStadium(QVector<QString> stadiumData);
+		// Incomeplete ^^^
 
 	private slots:
 		void on_button_back0_clicked();
@@ -70,9 +94,27 @@ class MainWindow : public QMainWindow
 
 		void on_button_mainMenu5_clicked();
 
+		void on_button_login_clicked();
+
+		void on_button_back_adminMainMenu_clicked();
+
+		void on_button_continueAddStadium_clicked();
+
+		void on_button_backAddStadium_clicked();
+
+		void on_button_addStadium0_clicked();
+
 	private:
 		Ui::MainWindow *ui;
-		QSqlDatabase database;
+		QSqlDatabase db;
+		QSqlTableModel* initModel;
+		QTableView* viewModel;
+		/*
+		 * Vertex: stadium
+		 * Edge: float (could be int, but let's make it generic)
+		 */
+		Graph<stadium,float> graph;
+        QHash<QString,stadium> stadiumHash;
 };
 
 #endif // MAINWINDOW_H
