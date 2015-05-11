@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection(/*true*/);  // put true to reinitialize the model
+	createConnection(true);  // put true to reinitialize the model
 	initModel = new QSqlTableModel(this);
 	initializeModel(initModel); // Pass in false if you want to make it only
 								//	only editable when submit is clicked.
@@ -28,27 +28,27 @@ MainWindow::MainWindow(QWidget *parent) :
 	fillGraph();
 
 	// Testing ...
-	qDebug() << "TESTING DIJKSTRA's: ";
-	stadium sourceStadium;
-	sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-	sourceStadium.setStadiumNumber(5);
+//	qDebug() << "TESTING DIJKSTRA's: ";
+//	stadium sourceStadium;
+//	sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+//	sourceStadium.setStadiumNumber(5);
 
-	stadium endStadium;
-	endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-	endStadium.setStadiumNumber(2);
+//	stadium endStadium;
+//	endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+//	endStadium.setStadiumNumber(2);
 
-	graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
+//	graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
 
-	qDebug() << "Displaying shortest path from shortestPath list!";
+//	qDebug() << "Displaying shortest path from shortestPath list!";
 
-	for (int i = 0; i < shortestPath.size(); i++)
-	{
-		// *(shortestPath[i]) returns a stadium POINTER
-		qDebug() << *(*(shortestPath[i]));
-		qDebug() << " --> ";
-	}
+//	for (int i = 0; i < shortestPath.size(); i++)
+//	{
+//		// *(shortestPath[i]) returns a stadium POINTER
+//		qDebug() << *(*(shortestPath[i]));
+//		qDebug() << " --> ";
+//	}
 
-	qDebug() << "And the total cost is: " << totalCost;
+//	qDebug() << "And the total cost is: " << totalCost;
 
 
 	//Initializations of fonts for line edits, etc...
@@ -162,12 +162,10 @@ void MainWindow::on_button_back4_clicked()
 
 void MainWindow::on_button_viewStadiums_clicked()
 {
-	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
-//	mapper->setModel(initModel);
-//	mapper->addMapping();
-//	QVBoxLayout *layout = new QVBoxLayout;
+//	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
 
-
+	QTableView *view = createView(initModel, "Stadiums");
+	view->show();
 	ui->page_mainMenu->hide();
 	ui->page_stadiumList->show();
 	refresh();
@@ -222,23 +220,6 @@ void MainWindow::on_button_back_adminMainMenu_clicked()
 	ui->page_adminLogin0->show();
 }
 
-void MainWindow::on_button_continueAddStadium_clicked()
-{
-	QVector<QString> stadiumData;
-	QString stadium;
-	QString team;
-	QString city;
-	QString state;
-	QString grassType;
-
-
-	// We need an id / key to identify the teams by / row
-	if(ui->lineEdit_cityName->text().isEmpty())
-	{
-
-	}
-
-}
 
 void MainWindow::on_button_backAddStadium_clicked()
 {
@@ -464,34 +445,152 @@ bool MainWindow::createConnection(bool restart)
 
 void MainWindow::fillGraph()
 {
-	qDebug() << "filling out the graph...";
-
-	// create all stadium objects
-
-	/****************************************
-	 *  Temp -- dummy data
-	 * *************************************/
-	stadium stadiumDummyArray[10];
-
-	//fill out stadium name and
-	for (int i = 0; i < 10; i++)
-	{
-
-		stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
-		stadiumDummyArray[i].setStadiumNumber(i);
-
-	}
+    qDebug() << "filling out the graph...";
 
 
-	// add all stadium objects to graph
 
-	for (int i = 1; i < 10; i++)
-	{
-		// connect vertices with random weights...
-		// the weight is completely randomized, do no fear my friends!
-		graph.insert(stadiumDummyArray[i-1],stadiumDummyArray[i], (i*203 + 7000) % 71);
-	}
+    QSqlQuery query = QSqlQuery(db);
+//    QString dbString;
+    vector<vertexEdgeStruct> vertexEdgeVector;
+    vector<vertexEdgeStruct>::iterator structIt;
+    vertexEdgeStruct tempStruct;
+//    QString vertexString1;
+    QString vertexString2;
+    QString edgeString;
+    QStringList stringList;
+    QStringList tempStringList;
 
+    // for stadium -- others
+    int stadiumNum;
+    QString stadiumName;
+    QString teamName;
+    QString street;
+    QString city;
+    QString state;
+    int zip;
+    QString boxOfficeNum;
+    QString dateOpened;
+    QString capacity;
+    QString league;
+    QString surface;
+    QString verticesAndEdges;
+
+    stadium *stadiumObj;
+
+    query.exec("SELECT * FROM stadiums");
+
+
+    // retrieve all stadium
+    while (query.next())
+    {
+        stadiumNum      = query.value(PRIMARY_KEY).toInt();
+        stadiumName     = query.value(STADIUM_NAME).toString();
+        teamName        = query.value(TEAM_NAME).toString();
+        street          = query.value(STREET).toString();
+        city            = query.value(CITY).toString();
+        state           = query.value(STATE).toString();
+        zip             = query.value(ZIP).toInt();
+        boxOfficeNum    = query.value(BOX_OFFICE_NUM).toString();
+        dateOpened      = query.value(DATE_OPENED).toString();
+        capacity        = query.value(CAPACITY).toString();
+        league          = query.value(LEAGUE).toString();
+        surface         = query.value(SURFACE).toString();
+        verticesAndEdges= query.value(VERTICES_AND_EDGES).toString();
+
+
+        // list of strings split by ~ (vertex,edge pair)
+        stringList = verticesAndEdges.split('~');
+
+        for (int i = 0; i < stringList.size(); i++)
+        {
+            // split vertex-edge pair by delimter ';'
+            tempStringList = (stringList[i].split(';'));
+            // first entry is a vertex
+            vertexString2 = tempStringList[0];
+            // second entry is an edge
+            edgeString = tempStringList[1];
+
+            tempStruct.otherVertex = vertexString2;
+            tempStruct.edge = edgeString.toFloat();
+            vertexEdgeVector.push_back(tempStruct);
+            tempStringList.clear();
+        }
+
+        // create stadium
+        stadiumObj = new stadium ( stadiumNum,
+                                   stadiumName,
+                                   teamName,
+                                   street,
+                                   city,
+                                   state,
+                                   zip,
+                                   boxOfficeNum,
+                                   dateOpened,
+                                   capacity,
+                                   league,
+                                   surface,
+                                   vertexEdgeVector
+                                  );
+
+        // push back an object (force a pass by copy)
+//        stadiumHash.insert(stadium(*stadiumObj), stadiumName);
+        stadiumHash.insert(stadiumName,  stadium(*stadiumObj));
+
+        // delete stadium object
+           delete stadiumObj;
+
+        vertexEdgeVector.clear();
+
+    }
+
+
+
+//    // create all stadium objects
+
+//    /****************************************
+//     *  Temp -- dummy data
+//     * *************************************/
+//    stadium stadiumDummyArray[10];
+
+//    //fill out stadium name and
+//    for (int i = 0; i < 10; i++)
+//    {
+
+//        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
+//        stadiumDummyArray[i].setStadiumNumber(i);
+
+//    }
+
+
+    // add all stadium objects to graph
+
+    QHash<QString,stadium>::iterator stadiumIt;
+    float weight;
+    QString otherStadium;
+
+    // re-use the following datatypes
+    stadiumName.clear();
+
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        vertexEdgeVector.clear();
+
+        vertexEdgeVector = (*stadiumIt).getVertexEdgeStructVector();
+
+        stadiumName = (*stadiumIt).getStadiumName();
+
+        for (unsigned int i = 0; i < vertexEdgeVector.size(); i++)
+        {
+            otherStadium = (vertexEdgeVector[i]).otherVertex;
+            weight = (vertexEdgeVector[i]).edge;
+
+            graph.insert((*stadiumIt), stadiumHash[otherStadium], weight);
+        }
+
+
+    }
+
+    graph.display();
 }
 
 

@@ -21,7 +21,8 @@ HEADERS  += mainwindow.h\
             souvenirs.h\
                 graph.h\
     stadium.h\
-    datatable.h
+    datatable.h \
+    addstadiumfunctionality.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
@@ -30,7 +31,8 @@ SOURCES += main.cpp\
     souvenirs.cpp\
     stadium.cpp \
     sqlfunctions.cpp \
-    datatable.cpp
+    datatable.cpp \
+    addstadiumfunctionality.cpp
 
 FORMS    += mainwindow.ui
 

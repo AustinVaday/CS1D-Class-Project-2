@@ -3,6 +3,7 @@
 
 #include <QString>
 #include "souvenirs.h"
+#include "MainHeader.h"
 #include <vector>
 
 class stadium
@@ -12,6 +13,20 @@ public:
     stadium();
     //Destructor
     ~stadium();
+    stadium (int stadiumNum,
+             QString stadiumName,
+             QString teamName,
+             QString street,
+             QString city,
+             QString state,
+             int zipCode,
+             QString boxOfficeNum,
+             QString dateOpened,
+             QString capacity,
+             QString league,
+             QString surface,
+             vector<vertexEdgeStruct> vertexEdgeVector
+             );
 
     //Accessors
     QString getStadiumName();
@@ -20,8 +35,9 @@ public:
     QString getState();
     QString getPlayingSurface();
     int getStadiumNumber();
+    vector<vertexEdgeStruct> getVertexEdgeStructVector();
     //getDate()
-    bool getVisited();
+    //    bool getVisited();
 
     // should pass by const reference, but does
     // not work with this implementation because
@@ -39,18 +55,30 @@ public:
     void setPlayingSurface(QString grassType);
     void setCity(QString city);
     void setState(QString state);
-    void setVisited(bool visited);
+    //    void setVisited(bool visited);
     //void resetTrip()
 
 private:
+    int               stadiumNumber;
     QString           stadiumName;
     QString           teamName;
+    QString           street;
     QString           city;
     QString           state;
-    QString           grassType;
-    int               stadiumNumber;
-//    vector<souvenirs> souvenirList;
-    bool              visited;
+    int               zip;
+    QString           boxOfficeNum;
+    QString           dateOpened;
+    QString           capacity;
+    QString           league;
+    QString           surface;
+    vector<vertexEdgeStruct> vertexEdgeVector;
+
+    //    vector<souvenirs> souvenirList;
+
+
+
+
+    //    bool              visited;
 
 
 };

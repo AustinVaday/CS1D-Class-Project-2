@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\levenshteinDistance.o
+./release\findHashKey.o
+./release\souvenirs.o
+./release\stadium.o
+./release\sqlfunctions.o
+./release\datatable.o
+./release\addstadiumfunctionality.o
+./release\moc_mainwindow.o
+./release\moc_souvenirs.o
+./release\moc_datatable.o
+);

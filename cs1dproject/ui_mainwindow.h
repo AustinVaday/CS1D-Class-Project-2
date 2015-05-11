@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.1
+** Created by: Qt User Interface Compiler version 5.3.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -26,9 +26,11 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -108,7 +110,6 @@ public:
     QPushButton *button_mainMenu3;
     QPushButton *button_next;
     QPushButton *button_finish;
-    QTableWidget *table_stadiumsToVisit;
     QGroupBox *groupBox_souvenirs;
     QCheckBox *checkBox;
     QCheckBox *checkBox_2;
@@ -119,11 +120,12 @@ public:
     QTableWidget *tableWidget;
     QLabel *label;
     QLabel *label_2;
+    QTableView *table_stadiumList;
     QWidget *page_stadiumList;
-    QListWidget *listWidget_stadiumList0;
     QLabel *label_stadiumListTitle;
     QPushButton *button_back4;
     QPushButton *button_mainMenu4;
+    QTreeView *treeView_stadiumList;
     QWidget *page_adminLogin0;
     QPushButton *button_login;
     QLabel *label_adminLoginTitle;
@@ -170,7 +172,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(782, 539);
+        MainWindow->resize(803, 539);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         stackedWidget = new QStackedWidget(centralWidget);
@@ -184,7 +186,7 @@ public:
         stackedWidget->addWidget(page_2);
         stackedWidget_mainWidget = new QStackedWidget(centralWidget);
         stackedWidget_mainWidget->setObjectName(QStringLiteral("stackedWidget_mainWidget"));
-        stackedWidget_mainWidget->setGeometry(QRect(-60, 80, 721, 421));
+        stackedWidget_mainWidget->setGeometry(QRect(40, 40, 721, 421));
         page_mainMenu = new QWidget();
         page_mainMenu->setObjectName(QStringLiteral("page_mainMenu"));
         layoutWidget = new QWidget(page_mainMenu);
@@ -301,7 +303,7 @@ public:
         label_outputMilageLabel->setGeometry(QRect(210, 310, 161, 20));
         layoutWidget3 = new QWidget(page_planATrip1);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(380, 30, 121, 381));
+        layoutWidget3->setGeometry(QRect(380, 30, 179, 381));
         verticalLayout_3 = new QVBoxLayout(layoutWidget3);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -398,7 +400,7 @@ public:
         label_shopTitle->setGeometry(QRect(480, 20, 171, 21));
         layoutWidget5 = new QWidget(page_shop0);
         layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
-        layoutWidget5->setGeometry(QRect(40, 50, 611, 31));
+        layoutWidget5->setGeometry(QRect(40, 50, 611, 33));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget5);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -426,47 +428,6 @@ public:
         button_finish = new QPushButton(page_shop0);
         button_finish->setObjectName(QStringLiteral("button_finish"));
         button_finish->setGeometry(QRect(220, 20, 75, 23));
-        table_stadiumsToVisit = new QTableWidget(page_shop0);
-        if (table_stadiumsToVisit->columnCount() < 2)
-            table_stadiumsToVisit->setColumnCount(2);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        table_stadiumsToVisit->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        table_stadiumsToVisit->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        if (table_stadiumsToVisit->rowCount() < 5)
-            table_stadiumsToVisit->setRowCount(5);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        table_stadiumsToVisit->setVerticalHeaderItem(0, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        table_stadiumsToVisit->setVerticalHeaderItem(1, __qtablewidgetitem3);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        table_stadiumsToVisit->setVerticalHeaderItem(2, __qtablewidgetitem4);
-        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        table_stadiumsToVisit->setVerticalHeaderItem(3, __qtablewidgetitem5);
-        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        table_stadiumsToVisit->setVerticalHeaderItem(4, __qtablewidgetitem6);
-        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(0, 0, __qtablewidgetitem7);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(0, 1, __qtablewidgetitem8);
-        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(1, 0, __qtablewidgetitem9);
-        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(1, 1, __qtablewidgetitem10);
-        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(2, 0, __qtablewidgetitem11);
-        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(2, 1, __qtablewidgetitem12);
-        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(3, 0, __qtablewidgetitem13);
-        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(3, 1, __qtablewidgetitem14);
-        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(4, 0, __qtablewidgetitem15);
-        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        table_stadiumsToVisit->setItem(4, 1, __qtablewidgetitem16);
-        table_stadiumsToVisit->setObjectName(QStringLiteral("table_stadiumsToVisit"));
-        table_stadiumsToVisit->setGeometry(QRect(10, 120, 231, 241));
         groupBox_souvenirs = new QGroupBox(page_shop0);
         groupBox_souvenirs->setObjectName(QStringLiteral("groupBox_souvenirs"));
         groupBox_souvenirs->setGeometry(QRect(250, 200, 191, 111));
@@ -491,52 +452,52 @@ public:
         tableWidget = new QTableWidget(page_shop0);
         if (tableWidget->columnCount() < 4)
             tableWidget->setColumnCount(4);
-        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem17);
-        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem18);
-        QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem19);
-        QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem20);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         if (tableWidget->rowCount() < 5)
             tableWidget->setRowCount(5);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        tableWidget->setItem(0, 0, __qtablewidgetitem9);
+        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
+        tableWidget->setItem(0, 1, __qtablewidgetitem10);
+        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
+        tableWidget->setItem(0, 2, __qtablewidgetitem11);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        tableWidget->setItem(0, 3, __qtablewidgetitem12);
+        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
+        tableWidget->setItem(1, 0, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        tableWidget->setItem(1, 1, __qtablewidgetitem14);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        tableWidget->setItem(1, 2, __qtablewidgetitem15);
+        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
+        tableWidget->setItem(1, 3, __qtablewidgetitem16);
+        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
+        tableWidget->setItem(2, 0, __qtablewidgetitem17);
+        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
+        tableWidget->setItem(2, 1, __qtablewidgetitem18);
+        QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
+        tableWidget->setItem(2, 2, __qtablewidgetitem19);
+        QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
+        tableWidget->setItem(2, 3, __qtablewidgetitem20);
         QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem21);
-        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem22);
-        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem23);
-        QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem24);
-        QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem25);
-        QTableWidgetItem *__qtablewidgetitem26 = new QTableWidgetItem();
-        tableWidget->setItem(0, 0, __qtablewidgetitem26);
-        QTableWidgetItem *__qtablewidgetitem27 = new QTableWidgetItem();
-        tableWidget->setItem(0, 1, __qtablewidgetitem27);
-        QTableWidgetItem *__qtablewidgetitem28 = new QTableWidgetItem();
-        tableWidget->setItem(0, 2, __qtablewidgetitem28);
-        QTableWidgetItem *__qtablewidgetitem29 = new QTableWidgetItem();
-        tableWidget->setItem(0, 3, __qtablewidgetitem29);
-        QTableWidgetItem *__qtablewidgetitem30 = new QTableWidgetItem();
-        tableWidget->setItem(1, 0, __qtablewidgetitem30);
-        QTableWidgetItem *__qtablewidgetitem31 = new QTableWidgetItem();
-        tableWidget->setItem(1, 1, __qtablewidgetitem31);
-        QTableWidgetItem *__qtablewidgetitem32 = new QTableWidgetItem();
-        tableWidget->setItem(1, 2, __qtablewidgetitem32);
-        QTableWidgetItem *__qtablewidgetitem33 = new QTableWidgetItem();
-        tableWidget->setItem(1, 3, __qtablewidgetitem33);
-        QTableWidgetItem *__qtablewidgetitem34 = new QTableWidgetItem();
-        tableWidget->setItem(2, 0, __qtablewidgetitem34);
-        QTableWidgetItem *__qtablewidgetitem35 = new QTableWidgetItem();
-        tableWidget->setItem(2, 1, __qtablewidgetitem35);
-        QTableWidgetItem *__qtablewidgetitem36 = new QTableWidgetItem();
-        tableWidget->setItem(2, 2, __qtablewidgetitem36);
-        QTableWidgetItem *__qtablewidgetitem37 = new QTableWidgetItem();
-        tableWidget->setItem(2, 3, __qtablewidgetitem37);
-        QTableWidgetItem *__qtablewidgetitem38 = new QTableWidgetItem();
-        tableWidget->setItem(3, 0, __qtablewidgetitem38);
+        tableWidget->setItem(3, 0, __qtablewidgetitem21);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
         tableWidget->setGeometry(QRect(430, 120, 291, 231));
         label = new QLabel(page_shop0);
@@ -545,13 +506,12 @@ public:
         label_2 = new QLabel(page_shop0);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(640, 370, 81, 16));
+        table_stadiumList = new QTableView(page_shop0);
+        table_stadiumList->setObjectName(QStringLiteral("table_stadiumList"));
+        table_stadiumList->setGeometry(QRect(0, 130, 256, 192));
         stackedWidget_mainWidget->addWidget(page_shop0);
         page_stadiumList = new QWidget();
         page_stadiumList->setObjectName(QStringLiteral("page_stadiumList"));
-        listWidget_stadiumList0 = new QListWidget(page_stadiumList);
-        new QListWidgetItem(listWidget_stadiumList0);
-        listWidget_stadiumList0->setObjectName(QStringLiteral("listWidget_stadiumList0"));
-        listWidget_stadiumList0->setGeometry(QRect(40, 70, 651, 281));
         label_stadiumListTitle = new QLabel(page_stadiumList);
         label_stadiumListTitle->setObjectName(QStringLiteral("label_stadiumListTitle"));
         label_stadiumListTitle->setGeometry(QRect(250, 40, 291, 21));
@@ -561,6 +521,11 @@ public:
         button_mainMenu4 = new QPushButton(page_stadiumList);
         button_mainMenu4->setObjectName(QStringLiteral("button_mainMenu4"));
         button_mainMenu4->setGeometry(QRect(120, 10, 75, 23));
+        treeView_stadiumList = new QTreeView(page_stadiumList);
+        treeView_stadiumList->setObjectName(QStringLiteral("treeView_stadiumList"));
+        treeView_stadiumList->setGeometry(QRect(50, 70, 631, 321));
+        treeView_stadiumList->setFrameShadow(QFrame::Raised);
+        treeView_stadiumList->setDragDropMode(QAbstractItemView::InternalMove);
         stackedWidget_mainWidget->addWidget(page_stadiumList);
         page_adminLogin0 = new QWidget();
         page_adminLogin0->setObjectName(QStringLiteral("page_adminLogin0"));
@@ -671,7 +636,7 @@ public:
 
         layoutWidget9 = new QWidget(frame_2);
         layoutWidget9->setObjectName(QStringLiteral("layoutWidget9"));
-        layoutWidget9->setGeometry(QRect(21, 42, 91, 231));
+        layoutWidget9->setGeometry(QRect(21, 42, 101, 231));
         verticalLayout_6 = new QVBoxLayout(layoutWidget9);
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setContentsMargins(11, 11, 11, 11);
@@ -723,7 +688,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 782, 21));
+        menuBar->setGeometry(QRect(0, 0, 803, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -734,7 +699,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget_mainWidget->setCurrentIndex(4);
+        stackedWidget_mainWidget->setCurrentIndex(8);
         stackedWidget_mainMenu0->setCurrentIndex(0);
         stackedWidget_planATrip0->setCurrentIndex(0);
 
@@ -805,45 +770,6 @@ public:
         button_mainMenu3->setText(QApplication::translate("MainWindow", "Main Menu", 0));
         button_next->setText(QApplication::translate("MainWindow", "Next", 0));
         button_finish->setText(QApplication::translate("MainWindow", "Finish", 0));
-        QTableWidgetItem *___qtablewidgetitem = table_stadiumsToVisit->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Stadium", 0));
-        QTableWidgetItem *___qtablewidgetitem1 = table_stadiumsToVisit->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "Team", 0));
-        QTableWidgetItem *___qtablewidgetitem2 = table_stadiumsToVisit->verticalHeaderItem(0);
-        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "1", 0));
-        QTableWidgetItem *___qtablewidgetitem3 = table_stadiumsToVisit->verticalHeaderItem(1);
-        ___qtablewidgetitem3->setText(QApplication::translate("MainWindow", "2", 0));
-        QTableWidgetItem *___qtablewidgetitem4 = table_stadiumsToVisit->verticalHeaderItem(2);
-        ___qtablewidgetitem4->setText(QApplication::translate("MainWindow", "3", 0));
-        QTableWidgetItem *___qtablewidgetitem5 = table_stadiumsToVisit->verticalHeaderItem(3);
-        ___qtablewidgetitem5->setText(QApplication::translate("MainWindow", "4", 0));
-        QTableWidgetItem *___qtablewidgetitem6 = table_stadiumsToVisit->verticalHeaderItem(4);
-        ___qtablewidgetitem6->setText(QApplication::translate("MainWindow", "5", 0));
-
-        const bool __sortingEnabled = table_stadiumsToVisit->isSortingEnabled();
-        table_stadiumsToVisit->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem7 = table_stadiumsToVisit->item(0, 0);
-        ___qtablewidgetitem7->setText(QApplication::translate("MainWindow", "Angels Stadium of Anaheim", 0));
-        QTableWidgetItem *___qtablewidgetitem8 = table_stadiumsToVisit->item(0, 1);
-        ___qtablewidgetitem8->setText(QApplication::translate("MainWindow", "Los Angeles Angels of Anaheim", 0));
-        QTableWidgetItem *___qtablewidgetitem9 = table_stadiumsToVisit->item(1, 0);
-        ___qtablewidgetitem9->setText(QApplication::translate("MainWindow", "Comeria Park", 0));
-        QTableWidgetItem *___qtablewidgetitem10 = table_stadiumsToVisit->item(1, 1);
-        ___qtablewidgetitem10->setText(QApplication::translate("MainWindow", "Detroit Tigers", 0));
-        QTableWidgetItem *___qtablewidgetitem11 = table_stadiumsToVisit->item(2, 0);
-        ___qtablewidgetitem11->setText(QApplication::translate("MainWindow", "Fenway Park", 0));
-        QTableWidgetItem *___qtablewidgetitem12 = table_stadiumsToVisit->item(2, 1);
-        ___qtablewidgetitem12->setText(QApplication::translate("MainWindow", "Boston Red Sox", 0));
-        QTableWidgetItem *___qtablewidgetitem13 = table_stadiumsToVisit->item(3, 0);
-        ___qtablewidgetitem13->setText(QApplication::translate("MainWindow", "Globe Life Park in Arlington", 0));
-        QTableWidgetItem *___qtablewidgetitem14 = table_stadiumsToVisit->item(3, 1);
-        ___qtablewidgetitem14->setText(QApplication::translate("MainWindow", "Texas Rangers", 0));
-        QTableWidgetItem *___qtablewidgetitem15 = table_stadiumsToVisit->item(4, 0);
-        ___qtablewidgetitem15->setText(QApplication::translate("MainWindow", "Kauffman Stadium", 0));
-        QTableWidgetItem *___qtablewidgetitem16 = table_stadiumsToVisit->item(4, 1);
-        ___qtablewidgetitem16->setText(QApplication::translate("MainWindow", "Kansas City Royals", 0));
-        table_stadiumsToVisit->setSortingEnabled(__sortingEnabled);
-
         groupBox_souvenirs->setTitle(QApplication::translate("MainWindow", "Souvenirs Avalilable for Purchase", 0));
         checkBox->setText(QApplication::translate("MainWindow", "Baseball Cap: $25.99", 0));
         checkBox_2->setText(QApplication::translate("MainWindow", "Baseball Bat: $35.35", 0));
@@ -851,62 +777,55 @@ public:
         checkBox_4->setText(QApplication::translate("MainWindow", "Autographed Baseball: $19.99", 0));
         label_welcomeMessage->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Welcome to Angels Stadium!</p><p>Home of the Los Angeles </p><p>Angels.</p></body></html>", 0));
         button_addToCart->setText(QApplication::translate("MainWindow", "Add to Cart", 0));
-        QTableWidgetItem *___qtablewidgetitem17 = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem17->setText(QApplication::translate("MainWindow", "Team", 0));
-        QTableWidgetItem *___qtablewidgetitem18 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem18->setText(QApplication::translate("MainWindow", "Item", 0));
-        QTableWidgetItem *___qtablewidgetitem19 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem19->setText(QApplication::translate("MainWindow", "Price", 0));
-        QTableWidgetItem *___qtablewidgetitem20 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem20->setText(QApplication::translate("MainWindow", "Qty", 0));
-        QTableWidgetItem *___qtablewidgetitem21 = tableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem21->setText(QApplication::translate("MainWindow", "1", 0));
-        QTableWidgetItem *___qtablewidgetitem22 = tableWidget->verticalHeaderItem(1);
-        ___qtablewidgetitem22->setText(QApplication::translate("MainWindow", "2", 0));
-        QTableWidgetItem *___qtablewidgetitem23 = tableWidget->verticalHeaderItem(2);
-        ___qtablewidgetitem23->setText(QApplication::translate("MainWindow", "3", 0));
-        QTableWidgetItem *___qtablewidgetitem24 = tableWidget->verticalHeaderItem(3);
-        ___qtablewidgetitem24->setText(QApplication::translate("MainWindow", "4", 0));
-        QTableWidgetItem *___qtablewidgetitem25 = tableWidget->verticalHeaderItem(4);
-        ___qtablewidgetitem25->setText(QApplication::translate("MainWindow", "5", 0));
+        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Team", 0));
+        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "Item", 0));
+        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "Price", 0));
+        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("MainWindow", "Qty", 0));
+        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->verticalHeaderItem(0);
+        ___qtablewidgetitem4->setText(QApplication::translate("MainWindow", "1", 0));
+        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->verticalHeaderItem(1);
+        ___qtablewidgetitem5->setText(QApplication::translate("MainWindow", "2", 0));
+        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->verticalHeaderItem(2);
+        ___qtablewidgetitem6->setText(QApplication::translate("MainWindow", "3", 0));
+        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->verticalHeaderItem(3);
+        ___qtablewidgetitem7->setText(QApplication::translate("MainWindow", "4", 0));
+        QTableWidgetItem *___qtablewidgetitem8 = tableWidget->verticalHeaderItem(4);
+        ___qtablewidgetitem8->setText(QApplication::translate("MainWindow", "5", 0));
 
-        const bool __sortingEnabled1 = tableWidget->isSortingEnabled();
+        const bool __sortingEnabled = tableWidget->isSortingEnabled();
         tableWidget->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem26 = tableWidget->item(0, 0);
-        ___qtablewidgetitem26->setText(QApplication::translate("MainWindow", "Angels", 0));
-        QTableWidgetItem *___qtablewidgetitem27 = tableWidget->item(0, 1);
-        ___qtablewidgetitem27->setText(QApplication::translate("MainWindow", "Baseball Cap", 0));
-        QTableWidgetItem *___qtablewidgetitem28 = tableWidget->item(0, 2);
-        ___qtablewidgetitem28->setText(QApplication::translate("MainWindow", "$25.99", 0));
-        QTableWidgetItem *___qtablewidgetitem29 = tableWidget->item(0, 3);
-        ___qtablewidgetitem29->setText(QApplication::translate("MainWindow", "1", 0));
-        QTableWidgetItem *___qtablewidgetitem30 = tableWidget->item(1, 0);
-        ___qtablewidgetitem30->setText(QApplication::translate("MainWindow", "Tigers", 0));
-        QTableWidgetItem *___qtablewidgetitem31 = tableWidget->item(1, 1);
-        ___qtablewidgetitem31->setText(QApplication::translate("MainWindow", "Baseball Bat", 0));
-        QTableWidgetItem *___qtablewidgetitem32 = tableWidget->item(1, 2);
-        ___qtablewidgetitem32->setText(QApplication::translate("MainWindow", "$35.35", 0));
-        QTableWidgetItem *___qtablewidgetitem33 = tableWidget->item(1, 3);
-        ___qtablewidgetitem33->setText(QApplication::translate("MainWindow", "1", 0));
-        QTableWidgetItem *___qtablewidgetitem34 = tableWidget->item(2, 0);
-        ___qtablewidgetitem34->setText(QApplication::translate("MainWindow", "Red Sox", 0));
-        QTableWidgetItem *___qtablewidgetitem35 = tableWidget->item(2, 1);
-        ___qtablewidgetitem35->setText(QApplication::translate("MainWindow", "Team Pennant", 0));
-        QTableWidgetItem *___qtablewidgetitem36 = tableWidget->item(2, 2);
-        ___qtablewidgetitem36->setText(QApplication::translate("MainWindow", "$12.99", 0));
-        QTableWidgetItem *___qtablewidgetitem37 = tableWidget->item(2, 3);
-        ___qtablewidgetitem37->setText(QApplication::translate("MainWindow", "2", 0));
-        tableWidget->setSortingEnabled(__sortingEnabled1);
+        QTableWidgetItem *___qtablewidgetitem9 = tableWidget->item(0, 0);
+        ___qtablewidgetitem9->setText(QApplication::translate("MainWindow", "Angels", 0));
+        QTableWidgetItem *___qtablewidgetitem10 = tableWidget->item(0, 1);
+        ___qtablewidgetitem10->setText(QApplication::translate("MainWindow", "Baseball Cap", 0));
+        QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(0, 2);
+        ___qtablewidgetitem11->setText(QApplication::translate("MainWindow", "$25.99", 0));
+        QTableWidgetItem *___qtablewidgetitem12 = tableWidget->item(0, 3);
+        ___qtablewidgetitem12->setText(QApplication::translate("MainWindow", "1", 0));
+        QTableWidgetItem *___qtablewidgetitem13 = tableWidget->item(1, 0);
+        ___qtablewidgetitem13->setText(QApplication::translate("MainWindow", "Tigers", 0));
+        QTableWidgetItem *___qtablewidgetitem14 = tableWidget->item(1, 1);
+        ___qtablewidgetitem14->setText(QApplication::translate("MainWindow", "Baseball Bat", 0));
+        QTableWidgetItem *___qtablewidgetitem15 = tableWidget->item(1, 2);
+        ___qtablewidgetitem15->setText(QApplication::translate("MainWindow", "$35.35", 0));
+        QTableWidgetItem *___qtablewidgetitem16 = tableWidget->item(1, 3);
+        ___qtablewidgetitem16->setText(QApplication::translate("MainWindow", "1", 0));
+        QTableWidgetItem *___qtablewidgetitem17 = tableWidget->item(2, 0);
+        ___qtablewidgetitem17->setText(QApplication::translate("MainWindow", "Red Sox", 0));
+        QTableWidgetItem *___qtablewidgetitem18 = tableWidget->item(2, 1);
+        ___qtablewidgetitem18->setText(QApplication::translate("MainWindow", "Team Pennant", 0));
+        QTableWidgetItem *___qtablewidgetitem19 = tableWidget->item(2, 2);
+        ___qtablewidgetitem19->setText(QApplication::translate("MainWindow", "$12.99", 0));
+        QTableWidgetItem *___qtablewidgetitem20 = tableWidget->item(2, 3);
+        ___qtablewidgetitem20->setText(QApplication::translate("MainWindow", "2", 0));
+        tableWidget->setSortingEnabled(__sortingEnabled);
 
         label->setText(QApplication::translate("MainWindow", "Stadiums to Visit:", 0));
         label_2->setText(QApplication::translate("MainWindow", "Total: $74.33", 0));
-
-        const bool __sortingEnabled2 = listWidget_stadiumList0->isSortingEnabled();
-        listWidget_stadiumList0->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listWidget_stadiumList0->item(0);
-        ___qlistwidgetitem->setText(QApplication::translate("MainWindow", "This list will contain selectable stadiums", 0));
-        listWidget_stadiumList0->setSortingEnabled(__sortingEnabled2);
-
         label_stadiumListTitle->setText(QApplication::translate("MainWindow", "List of All Stadiums", 0));
         button_back4->setText(QApplication::translate("MainWindow", "Back", 0));
         button_mainMenu4->setText(QApplication::translate("MainWindow", "Main Menu", 0));
