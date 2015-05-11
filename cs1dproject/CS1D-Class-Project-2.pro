@@ -22,7 +22,8 @@ HEADERS  += mainwindow.h\
                 graph.h\
     stadium.h\
     datatable.h \
-    addstadiumfunctionality.h
+    addstadiumfunctionality.h \
+    ui_mainwindow.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\

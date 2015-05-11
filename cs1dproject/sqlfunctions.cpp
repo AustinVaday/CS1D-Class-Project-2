@@ -117,7 +117,7 @@ void MainWindow::showTableView()
 bool MainWindow::addStadium(const  stadium &stadiumData)
 {
 	QSqlQuery query;
-	query.prepare()
+//	query.prepare()
 	return false;
 }
 
