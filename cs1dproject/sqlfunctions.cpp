@@ -114,9 +114,10 @@ void MainWindow::showTableView()
 	table->show();
 }
 
-bool MainWindow::addStadium(QVector<QString> stadiumData)
+bool MainWindow::addStadium(const  stadium &stadiumData)
 {
-	//	QSqlQuery
+	QSqlQuery query;
+	query.prepare()
 	return false;
 }
 

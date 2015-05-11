@@ -58,7 +58,7 @@ class MainWindow : public QMainWindow
 
 		void submit(QSqlTableModel* model);
 
-		bool addStadium(QVector<QString> stadiumData);
+		bool addStadium(const stadium &stadiumData);
 		// Incomeplete ^^^
 
 	private slots:
