@@ -56,12 +56,12 @@ void MainWindow::on_button_continueAddStadium_clicked()
 
        // stadium:: stadium(QString newStadiumName, QString newTeamName,  QString newCityName,
          //                 QString newStateName,   QString newGrassType, int     newStadiumNumber)
-        newStadium = new stadium(ui->lineEdit_stadiumName->text(),
-                                 ui->lineEdit_teamName->text(),
-                                 ui->lineEdit_cityName->text(),
-                                 ui->lineEdit_stateName->text(),
-                                 ui->lineEdit_grassType->text(),
-                                 0);
+//        newStadium = new stadium(ui->lineEdit_stadiumName->text(),
+//                                 ui->lineEdit_teamName->text(),
+//                                 ui->lineEdit_cityName->text(),
+//                                 ui->lineEdit_stateName->text(),
+//                                 ui->lineEdit_grassType->text(),
+//                                 0);
 
 
     }
