@@ -217,23 +217,6 @@ void MainWindow::on_button_back_adminMainMenu_clicked()
 	ui->page_adminLogin0->show();
 }
 
-void MainWindow::on_button_continueAddStadium_clicked()
-{
-	QVector<QString> stadiumData;
-	QString stadium;
-	QString team;
-	QString city;
-	QString state;
-	QString grassType;
-
-
-	// We need an id / key to identify the teams by / row
-	if(ui->lineEdit_cityName->text().isEmpty())
-	{
-
-	}
-
-}
 
 void MainWindow::on_button_backAddStadium_clicked()
 {
