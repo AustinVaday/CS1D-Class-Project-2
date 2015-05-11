@@ -54,6 +54,12 @@ class MainWindow : public QMainWindow
 		// This method will take a model foo and give it a title foobar.
 		//	MAKE SURE TO DEALLOCATE MEMORY for model foo
 
+
+
+        stadium searchForStadium(QString searchKey);
+
+
+
 		bool setStreet(int stadiumId, const QString& street);
 
 		void submit(QSqlTableModel* model);
