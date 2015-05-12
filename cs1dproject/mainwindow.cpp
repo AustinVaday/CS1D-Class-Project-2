@@ -667,14 +667,14 @@ void MainWindow::on_button_customTrip0_clicked()
     ui->page_planATrip0->hide();
     ui->page_customTripMenu->show();
 
-    int i = 0;
-    qDebug() << "CUSTOM TRIP IN: ";
-    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-    {
-        i++;
-        qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+//    int i = 0;
+//    qDebug() << "CUSTOM TRIP IN: ";
+//    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+//    {
+//        i++;
+//        qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
 
-    }
+//    }
     QListWidgetItem *listItem;
     // add in all stadiums to combobox and QListWidget
     for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
@@ -715,4 +715,16 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
 
     }
+}
+
+void MainWindow::on_button_customTripBack_clicked()
+{
+    ui->page_customTripMenu->hide();
+    ui->page_planATrip0->show();
+}
+
+void MainWindow::on_button_customTripMainMenu_clicked()
+{
+    ui->page_customTripMenu->hide();
+    ui->page_mainMenu->show();
 }
