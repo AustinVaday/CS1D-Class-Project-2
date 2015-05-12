@@ -70,7 +70,7 @@ void MainWindow::on_button_continueAddStadium_clicked()
     else
     {
 
-        QMessageBox::information(this, "Success", "Addition succesful. To add more edges, visit modify stadium")
+        QMessageBox::information(this, "Success", "Addition succesful. To add more edges, visit modify stadium");
         //Must create a stadium here. pass the stadium object into a method that sends the data to the data base
 
     }
