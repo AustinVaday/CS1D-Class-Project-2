@@ -594,3 +594,9 @@ void MainWindow::fillGraph()
 }
 
 
+
+void MainWindow::on_button_quickTrip0_clicked()
+{
+    ui->page_planATrip0->hide();
+    ui->page_quickTrip->show();
+}

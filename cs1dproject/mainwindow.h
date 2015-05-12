@@ -110,7 +110,9 @@ class MainWindow : public QMainWindow
 
 		void on_button_addStadium0_clicked();
 
-	private:
+        void on_button_quickTrip0_clicked();
+
+private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
 		QSqlTableModel* initModel;
