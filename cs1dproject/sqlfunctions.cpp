@@ -115,11 +115,14 @@ void MainWindow::showTableView()
 	table->show();
 }
 
-bool MainWindow::addStadium(const  stadium &stadiumData)
+bool MainWindow::addStadium(stadium stadiumData)
 {
-//	QSqlQuery query;
-//	query.prepare()
-	return false;
+	QSqlQuery query;
+	QString queryString;
+
+	queryString = "(insert into stadiums values(" + query.size() + stadiumData.getStadiumQuery();
+	return query.exec(queryString);
+
 }
 
 void MainWindow::submit(QSqlTableModel* model)

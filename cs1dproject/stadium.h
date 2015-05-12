@@ -38,6 +38,7 @@ public:
     vector<vertexEdgeStruct> getVertexEdgeStructVector();
     //getDate()
     //    bool getVisited();
+	QString getStadiumQuery();
 
     // should pass by const reference, but does
     // not work with this implementation because
@@ -72,14 +73,6 @@ private:
     QString           league;
     QString           surface;
     vector<vertexEdgeStruct> vertexEdgeVector;
-
-    //    vector<souvenirs> souvenirList;
-
-
-
-
-    //    bool              visited;
-
 
 };
 

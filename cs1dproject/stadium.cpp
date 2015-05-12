@@ -77,7 +77,26 @@ int stadium::getStadiumNumber()
 
 vector<vertexEdgeStruct> stadium::getVertexEdgeStructVector()
 {
-    return vertexEdgeVector;
+	return vertexEdgeVector;
+}
+
+QString stadium::getStadiumQuery()
+{
+	QString queryString;
+
+	queryString = ", '" + stadiumName + "', '"
+				+ teamName + "', '"
+				+ street + "', '"
+				+ city + "', '"
+				+ state + "', '"
+				+ zip + "', '"
+				+ boxOfficeNum + "', '"
+				+ dateOpened + "', '"
+				+ capacity + "', '"
+				+ league + "', '"
+				+ surface + "')";
+
+	return queryString;
 }
 
 QString stadium::getTeamName()

@@ -64,8 +64,7 @@ class MainWindow : public QMainWindow
 
 		bool setStreet(int stadiumId, const QString& street);
 		void submit(QSqlTableModel* model);
-		bool addStadium(const stadium &stadiumData);
-		// Incomeplete ^^^
+		bool addStadium(stadium stadiumData);
 
 	private slots:
 		void on_button_back0_clicked();
