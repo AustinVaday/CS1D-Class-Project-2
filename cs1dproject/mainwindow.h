@@ -67,6 +67,8 @@ class MainWindow : public QMainWindow
 		bool addStadium(const stadium &stadiumData);
 		// Incomeplete ^^^
 
+        void SetProgressBar(int location);
+
 	private slots:
 		void on_button_back0_clicked();
 

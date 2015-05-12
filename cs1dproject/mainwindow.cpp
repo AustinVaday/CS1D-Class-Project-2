@@ -702,7 +702,6 @@ void MainWindow::on_pushButton_customTripGo_clicked()
     vector<QString> selectedStadiums;
     float cost = 0;
     float totalCost = 0;
-    int progressBarVal = 0;
 
     vector<Vertex<stadium> *> subsequentVertexVector;
     dijkstraVertexVector.clear();
@@ -768,6 +767,9 @@ void MainWindow::on_pushButton_customTripGo_clicked()
             currentStadiumIndex = 0;
             listItem->setTextColor(QColor("red"));
             listItem->setFont(QFont("bold"));
+
+            ui->label_customTripStadiumName->setText(listItem->text());
+
         }
         else
         {
@@ -780,9 +782,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
 
     // set the value of the progress bar.
-    progressBarVal = ((1.00) / dijkstraVertexVector.size()) * 100;
-    ui->progressBar_customTrip->setValue(progressBarVal);
-
+    SetProgressBar(-1);
 
     ui->page_customTripMenu->hide();
     ui->page_customTrip->show();
@@ -815,6 +815,7 @@ void MainWindow::on_button_customTripMainMenu_2_clicked()
 void MainWindow::on_pushButton_customTripNext_clicked()
 {
     QListWidgetItem *listItem;
+    stadium *currentStadium;
 
     if (currentStadiumIndex == -1)
     {
@@ -822,22 +823,39 @@ void MainWindow::on_pushButton_customTripNext_clicked()
     }
 
     // check if we're at last stadium --> disable the next button
-    if (currentStadiumIndex == int(dijkstraVertexVector.size() - 1))
+    if (currentStadiumIndex + 1 == int(dijkstraVertexVector.size() - 1))
     {
         ui->pushButton_customTripNext->setEnabled(false);
     }
-    else
-    {
-        // set the old QListWidgetItem back to default
-        listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
-        listItem->setTextColor(QColor("gray"));
-        listItem->setFont(QFont("none"));
 
-        currentStadiumIndex++;
+    // set the old QListWidgetItem back to default
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("gray"));
+    listItem->setFont(QFont("none"));
 
-        // set the current QListWidgetItem to current stadium indicator
-        listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
-        listItem->setTextColor(QColor("red"));
-        listItem->setFont(QFont("bold"));
-    }
+    currentStadiumIndex++;
+
+    // set the current QListWidgetItem to current stadium indicator
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("red"));
+    listItem->setFont(QFont("bold"));
+
+//    currentStadium = stadiumHash.find(listItem->text());
+
+    ui->label_customTripStadiumName->setText(listItem->text());
+
+    // update progress bar
+    SetProgressBar(currentStadiumIndex);
+}
+
+void MainWindow::on_pushButton_customTripPrevious_clicked()
+{
+
+}
+
+void MainWindow::SetProgressBar(int location)
+{
+    int progressBarVal = ((float(location + 1)) / dijkstraVertexVector.size()) * 100;
+    ui->progressBar_customTrip->setValue(progressBarVal);
+
 }

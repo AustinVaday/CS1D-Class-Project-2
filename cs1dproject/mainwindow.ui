@@ -570,6 +570,19 @@ p, li { white-space: pre-wrap; }
        <string>[distance]</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_customTripStadiumName">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>30</y>
+        <width>231</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stadium</string>
+      </property>
+     </widget>
      <widget class="QLabel" name="label_fixed_4">
       <property name="geometry">
        <rect>
@@ -606,6 +619,19 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_fixed_5">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Current Stadium: </string>
+      </property>
+     </widget>
      <widget class="QPushButton" name="button_customTripBack_2">
       <property name="geometry">
        <rect>
@@ -631,32 +657,6 @@ p, li { white-space: pre-wrap; }
       <property name="text">
        <string>Main Menu</string>
       </property>
-     </widget>
-     <widget class="QWidget" name="">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>30</y>
-        <width>174</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_fixed_5">
-         <property name="text">
-          <string>Current Stadium: </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_customTripStadiumName">
-         <property name="text">
-          <string>Stadium</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="page_planATrip1">
