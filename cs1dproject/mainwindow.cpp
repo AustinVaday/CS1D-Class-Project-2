@@ -19,36 +19,36 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection(true);  // put true to reinitialize the model
+	createConnection(true);		// put true to reinitialize the model
 	initModel = new QSqlTableModel(this);
 	initializeModel(initModel); // Pass in false if you want to make it only
-								//	only editable when submit is clicked.
+	//	only editable when submit is clicked.
 
 
 	fillGraph();
 
 	// Testing ...
-//	qDebug() << "TESTING DIJKSTRA's: ";
-//	stadium sourceStadium;
-//	sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-//	sourceStadium.setStadiumNumber(5);
+	//	qDebug() << "TESTING DIJKSTRA's: ";
+	//	stadium sourceStadium;
+	//	sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+	//	sourceStadium.setStadiumNumber(5);
 
-//	stadium endStadium;
-//	endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-//	endStadium.setStadiumNumber(2);
+	//	stadium endStadium;
+	//	endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+	//	endStadium.setStadiumNumber(2);
 
-//	graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
+	//	graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
 
-//	qDebug() << "Displaying shortest path from shortestPath list!";
+	//	qDebug() << "Displaying shortest path from shortestPath list!";
 
-//	for (int i = 0; i < shortestPath.size(); i++)
-//	{
-//		// *(shortestPath[i]) returns a stadium POINTER
-//		qDebug() << *(*(shortestPath[i]));
-//		qDebug() << " --> ";
-//	}
+	//	for (int i = 0; i < shortestPath.size(); i++)
+	//	{
+	//		// *(shortestPath[i]) returns a stadium POINTER
+	//		qDebug() << *(*(shortestPath[i]));
+	//		qDebug() << " --> ";
+	//	}
 
-//	qDebug() << "And the total cost is: " << totalCost;
+	//	qDebug() << "And the total cost is: " << totalCost;
 
 
 	//Initializations of fonts for line edits, etc...
@@ -162,7 +162,7 @@ void MainWindow::on_button_back4_clicked()
 
 void MainWindow::on_button_viewStadiums_clicked()
 {
-//	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
+	//	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
 
 	QTableView *view = createView(initModel, "Stadiums");
 	view->show();
@@ -261,11 +261,20 @@ bool MainWindow::createConnection(bool restart)
 		query.clear();
 	}
 
-	tableMade = query.exec("create table stadiums(stadium_id int primary key,stadiumName "
-						   "varchar(50), teamName varchar(50),street varchar(50), city varchar(50),"
-						   "state varchar(50), zip varchar(50), boxOfficeNum varchar(50),"
-						   "dateOpened varchar(50), capacity varchar(50), league varchar(50),"
-						   "surface varchar(50),verticesAndEdges varchar(100))");
+	tableMade = query.exec("create table stadiums"
+						   "(stadium_id int primary key,stadiumName "
+						   "varchar(50), "
+						   "teamName varchar(50),"
+						   "street varchar(50), "
+						   "city varchar(50),"
+						   "state varchar(50), "
+						   "zip varchar(50), "
+						   "boxOfficeNum varchar(50),"
+						   "dateOpened varchar(50), "
+						   "capacity varchar(50), "
+						   "league varchar(50),"
+						   "surface varchar(50),"
+						   "verticesAndEdges varchar(100))");
 
 	qDebug() << "TableMade: " << tableMade;
 
@@ -358,82 +367,125 @@ bool MainWindow::createConnection(bool restart)
 							   " Park;300~Busch Stadium;465~Dodger "
 							   "Stadium;1500')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(12, 'Tropicana Field', 'Tampa Bay Rays', "
+							   "(13, 'Tropicana Field', 'Tampa Bay Rays', "
 							   "'1 Tropicana Dr', 'St. Petersburg', 'FL', "
 							   "'33705', '727-825-3137', '1990-03-3', "
 							   "'31,042 (Regular Season) 42,735 (Postseason)',"
 							   " 'American', 'Turf', 'Marlins Park;210~Minute"
 							   " Maid Park;790~Great American Ball Park;790')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(13, 'US Cellular Field', 'Chicago White Sox',"
+							   "(14, 'US Cellular Field', 'Chicago White Sox',"
 							   " '333 West 35th Street', 'Chicago', 'IL', "
 							   "'60616', '312-674-1000', '1991-04-18', "
 							   "'40,615', 'American', 'Grass', 'Wrigley "
 							   "Field;0~Comerica Park;240~Great American"
 							   " Ball Park;250')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(14, 'Yankee Stadium', 'New York Yankees', "
+							   "(15, 'Yankee Stadium', 'New York Yankees', "
 							   "'1 E 161st St', 'South Bronx', 'NY', '10451', "
 							   "'718-293-4300', '2009-04-16', '50,291', "
 							   "'American', 'Grass', 'Citi Field;0~Citizens "
 							   "Bank Park;80~PNC Park;315~Fenway Park;195')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(15, 'AT&T Park', 'San Francisco Giants', "
+							   "(16, 'AT&T Park', 'San Francisco Giants', "
 							   "'24 Willie Mays Plaza', 'San Francisco', "
 							   "'CA', '94107', '415-972-2000', '2000-04-11', "
 							   "'41,915', 'National', 'Grass', 'O.co "
 							   "Coliseum;0~SafeCo Field;680')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(16, 'Busch Stadium', 'St. Louis Cardinals', "
+							   "(17, 'Busch Stadium', 'St. Louis Cardinals', "
 							   "'700 Clark Street', 'St. Louis', 'MO', "
 							   "'63102', '314-345-9600', '2006-04-10', "
 							   "'46,861', 'National', 'Grass', 'Great American"
-							   " Ball Park;310~Minute Maid Park;680~Kauffman Stadium;235~Target Field;465')");
+							   " Ball Park;310~Minute Maid Park;680~Kauffman "
+							   "Stadium;235~Target Field;465')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(17, 'Chase Field', 'Arizona Diamondbacks', '401 East Jefferson Street', 'Phoenix', 'AZ', '85004', '602-462-6500', '1998-03-31', '48,633', 'National', 'Grass', 'Coors Field;580~Globe Life Park  in Arlington;870~Minute Maid Park;1115~Petco Park;300~O.co Coliseum;650')");
+							   "(18, 'Chase Field', 'Arizona Diamondbacks', "
+							   "'401 East Jefferson Street', 'Phoenix', 'AZ', "
+							   "'85004', '602-462-6500', '1998-03-31', "
+							   "'48,633', 'National', 'Grass', "
+							   "'Coors Field;580~Globe Life Park in "
+							   "Arlington;870~Minute Maid Park;1115~Petco "
+							   "Park;300~O.co Coliseum;650')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(18, 'Citi Field', 'New York Mets', '126th St. & Roosevelt Ave.', 'Queens', 'NY', '11368', '718-507-6387', '2009-04-13', '41,922', 'National', 'Grass', 'Yankee Stadium;0')");
+							   "(19, 'Citi Field', 'New York Mets', '126th "
+							   "St. & Roosevelt Ave.', 'Queens', 'NY', "
+							   "'11368', '718-507-6387', '2009-04-13', "
+							   "'41,922', 'National', 'Grass', "
+							   "'Yankee Stadium;0')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(19, 'Citizens Bank Park', 'Philadelphia Phillies', '1 Citizens Bank Way', 'Philadelphia', 'PA', '19148', '215-463-1000', '2004-04-3', '43,651', 'National', 'Grass', 'Yankee Stadium;80~Oriole Park at Camden Yards;90')");
+							   "(20, 'Citizens Bank Park', "
+							   "'Philadelphia Phillies', "
+							   "'1 Citizens Bank Way', 'Philadelphia', 'PA', "
+							   "'19148', '215-463-1000', '2004-04-3', "
+							   "'43,651', 'National', 'Grass', 'Yankee "
+							   "Stadium;80~Oriole Park at Camden Yards;90')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(20, 'Coors Field', 'Colorado Rockies', '2001 Blake St', 'Denver', 'CO', '80205', '303-292-0200', '1995-04-26', '50,480', 'National', 'Grass', 'Kauffman Stadium;560~Globe Life Park in Arlington;650~Chase Field;580~Petco Park;830')");
+							   "(21, 'Coors Field', 'Colorado Rockies', "
+							   "'2001 Blake St', 'Denver', 'CO', '80205', "
+							   "'303-292-0200', '1995-04-26', '50,480', "
+							   "'National', 'Grass', 'Kauffman Stadium;"
+							   "560~Globe Life Park in Arlington;650~Chase "
+							   "Field;580~Petco Park;830')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(21, 'Dodger Stadium', 'Los Angeles Dodgers', '1000 Elysian Park Avenue', 'Los Angeles', 'CA', '90090', '323-224-1507', '1962-04-10', '56,000', 'National', 'Grass', 'Angels Stadium of Anaheim;0~Target Field;1500~O.co Coliseum;340')");
+							   "(22, 'Dodger Stadium', 'Los Angeles Dodgers', "
+							   "'1000 Elysian Park Avenue', 'Los Angeles', "
+							   "'CA', '90090', '323-224-1507', '1962-04-10', "
+							   "'56,000', 'National', 'Grass', 'Angels Stadium "
+							   "of Anaheim;0~Target Field;1500~O.co "
+							   "Coliseum;340')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(22, 'Great American Ball Park', 'Cincinnati Reds', '100 Joe Nuxhall Way', 'Cincinnati', 'OH', '45202', '513-381-7337', '2003-03-31', '42,319', 'National', 'Grass', 'Progressive Field;225~PNC Park;260~Tropicana Field;790~Turner Field;375~Busch Stadium;310~US Cellular Field;250')");
+							   "(23, 'Great American Ball Park', "
+							   "'Cincinnati Reds', '100 Joe Nuxhall Way', "
+							   "'Cincinnati', 'OH', '45202', '513-381-7337', "
+							   "'2003-03-31', '42,319', 'National', 'Grass', "
+							   "'Progressive Field;225~PNC Park;260~Tropicana "
+							   "Field;790~Turner Field;375~Busch "
+							   "Stadium;310~US Cellular Field;250')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(23, 'Marlins Park', 'Miami Marlins', '501 Marlins Way', 'Miami', 'FL', '33125', '305-480-1300', '2012-04-4', '37,442', 'National', 'Grass', 'Nationals Park;930~Fenway Park;1255~Minute Maid Park;965~Tropicana Field;210~Turner Field;600')");
+							   "(24, 'Marlins Park', 'Miami Marlins', "
+							   "'501 Marlins Way', 'Miami', 'FL', '33125', "
+							   "'305-480-1300', '2012-04-4', '37,442', "
+							   "'National', 'Grass', 'Nationals "
+							   "Park;930~Fenway Park;1255~Minute Maid "
+							   "Park;965~Tropicana Field;210~Turner "
+							   "Field;600')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(24, 'Miller Park', 'Milwaukee Brewers', '1 Brewers Way', 'Milwaukee', 'WI', '53214', '414-902-4400', '2001-04-6', '41,900', 'National', 'Grass', 'Rogers Centre;430~Wrigley Field;80~Target Field;300')");
+							   "(25, 'Miller Park', 'Milwaukee Brewers', "
+							   "'1 Brewers Way', 'Milwaukee', 'WI', '53214', "
+							   "'414-902-4400', '2001-04-6', '41,900', "
+							   "'National', 'Grass', 'Rogers "
+							   "Centre;430~Wrigley Field;80~Target "
+							   "Field;300')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(25, 'Nationals Park', 'Washington Nationals', "
+							   "(26, 'Nationals Park', 'Washington Nationals', "
 							   "'1500 S Capitol St SE', 'Washington', 'DC', "
 							   "'20003', '202-675-6287', '2008-03-30', "
 							   "'41,418', 'National', 'Grass', 'Oriole Park at "
 							   "Camden Yards;0~Marlins Park;930~Turner "
 							   "Field;560~PNC Park;195')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(26, 'Petco Park', 'San Diego Padres', "
+							   "(27, 'Petco Park', 'San Diego Padres', "
 							   "'19 Tony Gwynn Drive', 'San Diego', 'CA', "
 							   "'92101', '619-795-5000', '2004-04-8', '42,524',"
 							   " 'National', 'Grass', 'Angels Stadium of "
 							   "Anaheim;110~Coors Field;830~Chase Field;300')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(27, 'PNC Park', 'Pittsburgh Pirates', "
+							   "(28, 'PNC Park', 'Pittsburgh Pirates', "
 							   "'115 Federal St', 'Pittsburgh', 'PA', '15212', "
 							   "'412-321-2827', '2001-03-31', '38,362', "
 							   "'National', 'Grass', 'Rogers Centre;225~Yankee "
 							   "Stadium;315~Nationals Park;195~Great American "
 							   "Ball Park;260~Progressive Field;115')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(28, 'Turner Field', 'Atlanta Braves', "
+							   "(29, 'Turner Field', 'Atlanta Braves', "
 							   "'755 Hank Aaron Drive', 'Atlanta', 'GA', "
 							   "'30315', '404-522-7630', '1997-03-29', "
 							   "'49,586', 'National', 'Grass', 'Great American "
 							   "Ball Park;375~Nationals Park;560~Marlins Park;"
 							   "600~Globe Life Park in Arlington;740')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(29, 'Wrigley Field', 'Chicago Cubs', "
+							   "(30, 'Wrigley Field', 'Chicago Cubs', "
 							   "'1060 West Addison Street', 'Chicago', 'IL', "
 							   "'60613', '773-404-2827', '1914-04-23', "
 							   "'42,374', 'National', 'Grass', 'US Cellular "
@@ -445,152 +497,140 @@ bool MainWindow::createConnection(bool restart)
 
 void MainWindow::fillGraph()
 {
-    qDebug() << "filling out the graph...";
+	qDebug() << "filling out the graph...";
 
 
 
-    QSqlQuery query = QSqlQuery(db);
-//    QString dbString;
-    vector<vertexEdgeStruct> vertexEdgeVector;
-    vector<vertexEdgeStruct>::iterator structIt;
-    vertexEdgeStruct tempStruct;
-//    QString vertexString1;
-    QString vertexString2;
-    QString edgeString;
-    QStringList stringList;
-    QStringList tempStringList;
+	QSqlQuery query = QSqlQuery(db);
+	//    QString dbString;
+	vector<vertexEdgeStruct> vertexEdgeVector;
+	vector<vertexEdgeStruct>::iterator structIt;
+	vertexEdgeStruct tempStruct;
+	//    QString vertexString1;
+	QString vertexString2;
+	QString edgeString;
+	QStringList stringList;
+	QStringList tempStringList;
 
-    // for stadium -- others
-    int stadiumNum;
-    QString stadiumName;
-    QString teamName;
-    QString street;
-    QString city;
-    QString state;
-    int zip;
-    QString boxOfficeNum;
-    QString dateOpened;
-    QString capacity;
-    QString league;
-    QString surface;
-    QString verticesAndEdges;
+	// for stadium -- others
+	int stadiumNum;
+	QString stadiumName;
+	QString teamName;
+	QString street;
+	QString city;
+	QString state;
+	int zip;
+	QString boxOfficeNum;
+	QString dateOpened;
+	QString capacity;
+	QString league;
+	QString surface;
+	QString verticesAndEdges;
 
-    stadium *stadiumObj;
+	stadium *stadiumObj;
 
-    query.exec("SELECT * FROM stadiums");
-
-
-    // retrieve all stadium
-    while (query.next())
-    {
-        stadiumNum      = query.value(PRIMARY_KEY).toInt();
-        stadiumName     = query.value(STADIUM_NAME).toString();
-        teamName        = query.value(TEAM_NAME).toString();
-        street          = query.value(STREET).toString();
-        city            = query.value(CITY).toString();
-        state           = query.value(STATE).toString();
-        zip             = query.value(ZIP).toInt();
-        boxOfficeNum    = query.value(BOX_OFFICE_NUM).toString();
-        dateOpened      = query.value(DATE_OPENED).toString();
-        capacity        = query.value(CAPACITY).toString();
-        league          = query.value(LEAGUE).toString();
-        surface         = query.value(SURFACE).toString();
-        verticesAndEdges= query.value(VERTICES_AND_EDGES).toString();
+	query.exec("SELECT * FROM stadiums");
 
 
-        // list of strings split by ~ (vertex,edge pair)
-        stringList = verticesAndEdges.split('~');
-
-        for (int i = 0; i < stringList.size(); i++)
-        {
-            // split vertex-edge pair by delimter ';'
-            tempStringList = (stringList[i].split(';'));
-            // first entry is a vertex
-            vertexString2 = tempStringList[0];
-            // second entry is an edge
-            edgeString = tempStringList[1];
-
-            tempStruct.otherVertex = vertexString2;
-            tempStruct.edge = edgeString.toFloat();
-            vertexEdgeVector.push_back(tempStruct);
-            tempStringList.clear();
-        }
-
-        // create stadium
-        stadiumObj = new stadium ( stadiumNum,
-                                   stadiumName,
-                                   teamName,
-                                   street,
-                                   city,
-                                   state,
-                                   zip,
-                                   boxOfficeNum,
-                                   dateOpened,
-                                   capacity,
-                                   league,
-                                   surface,
-                                   vertexEdgeVector
-                                  );
-
-        // push back an object (force a pass by copy)
-//        stadiumHash.insert(stadium(*stadiumObj), stadiumName);
-        stadiumHash.insert(stadiumName,  stadium(*stadiumObj));
-
-        // delete stadium object
-           delete stadiumObj;
-
-        vertexEdgeVector.clear();
-
-    }
+	// retrieve all stadium
+	while (query.next())
+	{
+		stadiumNum      = query.value(PRIMARY_KEY).toInt();
+		stadiumName     = query.value(STADIUM_NAME).toString();
+		teamName        = query.value(TEAM_NAME).toString();
+		street          = query.value(STREET).toString();
+		city            = query.value(CITY).toString();
+		state           = query.value(STATE).toString();
+		zip             = query.value(ZIP).toInt();
+		boxOfficeNum    = query.value(BOX_OFFICE_NUM).toString();
+		dateOpened      = query.value(DATE_OPENED).toString();
+		capacity        = query.value(CAPACITY).toString();
+		league          = query.value(LEAGUE).toString();
+		surface         = query.value(SURFACE).toString();
+		verticesAndEdges= query.value(VERTICES_AND_EDGES).toString();
 
 
+		// list of strings split by ~ (vertex,edge pair)
+		stringList = verticesAndEdges.split('~');
 
-//    // create all stadium objects
+		for (int i = 0; i < stringList.size(); i++)
+		{
+			// split vertex-edge pair by delimter ';'
+			tempStringList = (stringList[i].split(';'));
+			// first entry is a vertex
+			vertexString2 = tempStringList[0];
+			// second entry is an edge
+			edgeString = tempStringList[1];
 
-//    /****************************************
-//     *  Temp -- dummy data
-//     * *************************************/
-//    stadium stadiumDummyArray[10];
+			tempStruct.otherVertex = vertexString2;
+			tempStruct.edge = edgeString.toFloat();
+			vertexEdgeVector.push_back(tempStruct);
+			tempStringList.clear();
+		}
 
-//    //fill out stadium name and
-//    for (int i = 0; i < 10; i++)
-//    {
+		// create stadium
+		stadiumObj = new stadium ( stadiumNum,
+								   stadiumName,
+								   teamName,
+								   street,
+								   city,
+								   state,
+								   zip,
+								   boxOfficeNum,
+								   dateOpened,
+								   capacity,
+								   league,
+								   surface,
+								   vertexEdgeVector
+								   );
 
-//        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
-//        stadiumDummyArray[i].setStadiumNumber(i);
+		// push back an object (force a pass by copy)
+		//        stadiumHash.insert(stadium(*stadiumObj), stadiumName);
+		stadiumHash.insert(stadiumName,  stadium(*stadiumObj));
 
-//    }
+		// delete stadium object
+		delete stadiumObj;
 
+		vertexEdgeVector.clear();
 
-    // add all stadium objects to graph
+	}
 
-    QHash<QString,stadium>::iterator stadiumIt;
-    float weight;
-    QString otherStadium;
+	//    // create all stadium objects
+	//    /****************************************
+	//     *  Temp -- dummy data
+	//     * *************************************/
+	//    stadium stadiumDummyArray[10];
 
-    // re-use the following datatypes
-    stadiumName.clear();
+	//    //fill out stadium name and
+	//    for (int i = 0; i < 10; i++)
+	//    {
 
-    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-    {
-        vertexEdgeVector.clear();
+	//        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
+	//        stadiumDummyArray[i].setStadiumNumber(i);
+	//    }
+	// add all stadium objects to graph
 
-        vertexEdgeVector = (*stadiumIt).getVertexEdgeStructVector();
+	QHash<QString,stadium>::iterator stadiumIt;
+	float weight;
+	QString otherStadium;
 
-        stadiumName = (*stadiumIt).getStadiumName();
+	// re-use the following datatypes
+	stadiumName.clear();
 
-        for (unsigned int i = 0; i < vertexEdgeVector.size(); i++)
-        {
-            otherStadium = (vertexEdgeVector[i]).otherVertex;
-            weight = (vertexEdgeVector[i]).edge;
+	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+	{
+		vertexEdgeVector.clear();
+		vertexEdgeVector = (*stadiumIt).getVertexEdgeStructVector();
+		stadiumName = (*stadiumIt).getStadiumName();
 
-            graph.insert((*stadiumIt), stadiumHash[otherStadium], weight);
-        }
-
-
-    }
-
-    graph.display();
+		for (unsigned int i = 0; i < vertexEdgeVector.size(); i++)
+		{
+			otherStadium = (vertexEdgeVector[i]).otherVertex;
+			weight = (vertexEdgeVector[i]).edge;
+			graph.insert((*stadiumIt), stadiumHash[otherStadium], weight);
+		}
+	}
+	graph.display();
 }
 
 

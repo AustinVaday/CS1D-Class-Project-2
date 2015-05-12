@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+											#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #define SQL_DEBUG 1
 #define DEBUG 0
@@ -17,6 +17,8 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
+#include <QAbstractItemView>
+#include <QAbstractItemModel>
 
 // Project includes
 #include "graph.h"
@@ -55,9 +57,7 @@ class MainWindow : public QMainWindow
 		//	MAKE SURE TO DEALLOCATE MEMORY for model foo
 
 		bool setStreet(int stadiumId, const QString& street);
-
 		void submit(QSqlTableModel* model);
-
 		bool addStadium(const stadium &stadiumData);
 		// Incomeplete ^^^
 

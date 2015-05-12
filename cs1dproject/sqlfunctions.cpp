@@ -46,6 +46,7 @@ void MainWindow::refresh()
 QTableView* MainWindow::createView(QSqlTableModel *model, const QString &title)
 {
 	QTableView *view = new QTableView;
+
 	view->setModel(model);
 	view->resizeColumnsToContents();
 	view->resizeRowsToContents();
@@ -116,7 +117,7 @@ void MainWindow::showTableView()
 
 bool MainWindow::addStadium(const  stadium &stadiumData)
 {
-	QSqlQuery query;
+//	QSqlQuery query;
 //	query.prepare()
 	return false;
 }
