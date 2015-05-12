@@ -38,3 +38,6 @@ SOURCES += main.cpp\
 FORMS    += mainwindow.ui
 
 DISTFILES += baseball_stadiums
+
+RESOURCES += \
+    teamImages.qrc

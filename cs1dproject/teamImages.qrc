@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../logos/Arizona.jpg</file>
+        <file>../logos/Atlanta.jpg</file>
+        <file>../logos/Baltimore.jpg</file>
+        <file>../logos/Boston.jpg</file>
+        <file>../logos/ChicagoCubs.jpg</file>
+        <file>../logos/ChicagoWSox.jpg</file>
+        <file>../logos/Cincinnati.jpg</file>
+        <file>../logos/Cleveland.jpg</file>
+        <file>../logos/Colorado.jpg</file>
+        <file>../logos/Detroit.jpg</file>
+        <file>../logos/Houston.jpg</file>
+        <file>../logos/KansasCity.jpg</file>
+        <file>../logos/LosAngelesAngels.jpg</file>
+        <file>../logos/LosAngelesDodgers.jpg</file>
+        <file>../logos/Miami.jpg</file>
+        <file>../logos/Milwaukee.jpg</file>
+        <file>../logos/Minnesota.jpg</file>
+        <file>../logos/NewYorkMets.jpg</file>
+        <file>../logos/NewYorkYankees.jpg</file>
+        <file>../logos/Oakland.jpg</file>
+        <file>../logos/Philadelphia.jpg</file>
+        <file>../logos/Pittsburgh.jpg</file>
+        <file>../logos/SanDiego.jpg</file>
+        <file>../logos/SanFrancisco.jpg</file>
+        <file>../logos/Seattle.jpg</file>
+        <file>../logos/StLouis.jpg</file>
+        <file>../logos/TampaBay.jpg</file>
+        <file>../logos/TexasRangers.jpg</file>
+        <file>../logos/Toronto.jpg</file>
+        <file>../logos/Washington.jpg</file>
+    </qresource>
+</RCC>

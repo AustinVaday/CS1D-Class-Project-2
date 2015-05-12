@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection(true);  // put true to reinitialize the model
+    createConnection(true);  // put true to reinitialize the model
 	initModel = new QSqlTableModel(this);
 	initializeModel(initModel); // Pass in false if you want to make it only
 								//	only editable when submit is clicked.
@@ -259,6 +259,8 @@ bool MainWindow::createConnection(bool restart)
 		query.clear();
 		query.exec("drop table stadiums");
 		query.clear();
+
+        qDebug() << "restart: " << restart;
 	}
 
 	tableMade = query.exec("create table stadiums(stadium_id int primary key,stadiumName "
@@ -315,7 +317,7 @@ bool MainWindow::createConnection(bool restart)
 							   "'713-259-8000', '2000-03-30', '42,060', "
 							   "'American', 'Grass', "
 							   "'Busch Stadium;680~Tropicana Field;790~Marlins "
-							   "Park;965~Chase Field;1115~Globe Life Park in "
+                               "Park;965~Chase Field;1115~Globe Life Park in "
 							   "Arlington;230')");
 		qDebug() << query.exec("insert into stadiums values"
 							   "(7, 'O.co Coliseum', 'Oakland Athletics', "
@@ -390,7 +392,7 @@ bool MainWindow::createConnection(bool restart)
 							   "'46,861', 'National', 'Grass', 'Great American"
 							   " Ball Park;310~Minute Maid Park;680~Kauffman Stadium;235~Target Field;465')");
 		qDebug() << query.exec("insert into stadiums values"
-							   "(17, 'Chase Field', 'Arizona Diamondbacks', '401 East Jefferson Street', 'Phoenix', 'AZ', '85004', '602-462-6500', '1998-03-31', '48,633', 'National', 'Grass', 'Coors Field;580~Globe Life Park  in Arlington;870~Minute Maid Park;1115~Petco Park;300~O.co Coliseum;650')");
+                               "(17, 'Chase Field', 'Arizona Diamondbacks', '401 East Jefferson Street', 'Phoenix', 'AZ', '85004', '602-462-6500', '1998-03-31', '48,633', 'National', 'Grass', 'Coors Field;580~Globe Life Park in Arlington;870~Minute Maid Park;1115~Petco Park;300~O.co Coliseum;650')");
 		qDebug() << query.exec("insert into stadiums values"
 							   "(18, 'Citi Field', 'New York Mets', '126th St. & Roosevelt Ave.', 'Queens', 'NY', '11368', '718-507-6387', '2009-04-13', '41,922', 'National', 'Grass', 'Yankee Stadium;0')");
 		qDebug() << query.exec("insert into stadiums values"
@@ -565,14 +567,26 @@ void MainWindow::fillGraph()
     // add all stadium objects to graph
 
     QHash<QString,stadium>::iterator stadiumIt;
+    QHash<QString,stadium>::iterator otherStadiumIt;
+
     float weight;
     QString otherStadium;
 
     // re-use the following datatypes
     stadiumName.clear();
 
+    int i = 0;
+    qDebug() << "FILL IN: ";
     for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
     {
+        i++;
+        qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+    }
+
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+
         vertexEdgeVector.clear();
 
         vertexEdgeVector = (*stadiumIt).getVertexEdgeStructVector();
@@ -584,13 +598,40 @@ void MainWindow::fillGraph()
             otherStadium = (vertexEdgeVector[i]).otherVertex;
             weight = (vertexEdgeVector[i]).edge;
 
-            graph.insert((*stadiumIt), stadiumHash[otherStadium], weight);
+            if (!otherStadium.isEmpty())
+            {
+                if (stadiumHash.contains(otherStadium))
+                {
+                    otherStadiumIt = stadiumHash.find(otherStadium);
+                    graph.insert((*stadiumIt), *otherStadiumIt, weight);
+
+                }
+                else
+                {
+                    qDebug() << "Other Stadium not found: " << otherStadium;
+                }
+
+
+
+            }
         }
+
 
 
     }
 
-    graph.display();
+     i = 0;
+    qDebug() << "FILL IN: ";
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        i++;
+        qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+    }
+qDebug() << "Stadium hash size: " << stadiumHash.size();
+//    graph.display();
+
+
 }
 
 
@@ -620,4 +661,58 @@ void MainWindow::on_button_finish_clicked()
     refresh();
     ui->page_shop0->hide();
     ui->page_shoppingCart->show();
+}
+void MainWindow::on_button_customTrip0_clicked()
+{
+    ui->page_planATrip0->hide();
+    ui->page_customTripMenu->show();
+
+    int i = 0;
+    qDebug() << "CUSTOM TRIP IN: ";
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        i++;
+        qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+    }
+    QListWidgetItem *listItem;
+    // add in all stadiums to combobox and QListWidget
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+        ui->comboBox_customTripSelectStadium->addItem((*stadiumIt).getStadiumName());
+
+        listItem = new QListWidgetItem;
+        listItem->setFlags(listItem->flags() | Qt::ItemIsUserCheckable);
+        listItem->setCheckState(Qt::Unchecked);
+        listItem->setText((*stadiumIt).getStadiumName());
+
+        ui->listWidget_customTrip->addItem(listItem);
+
+        }
+
+    }
+
+
+}
+
+void MainWindow::on_pushButton_customTripGo_clicked()
+{
+    qDebug() << "Starting Stadium: " << ui->comboBox_customTripSelectStadium->currentText();
+
+    qDebug() << "Selected stadiums: ";
+
+    QListWidgetItem *currentItem;
+    for (int i = 0; i < stadiumHash.size(); i++)
+    {
+
+        currentItem = ui->listWidget_customTrip->item(i);
+        if (currentItem->checkState() == Qt::Checked)
+        {
+            qDebug() << currentItem->text();
+        }
+
+
+    }
 }
