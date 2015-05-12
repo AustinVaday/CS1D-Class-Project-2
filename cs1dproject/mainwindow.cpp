@@ -20,10 +20,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	// Create Database and initialize the table model ( NOT VIEW )
 	createConnection(true);		// put true to reinitialize the model
-	initModel = new QSqlTableModel(this);
+
+	initModel = new QSqlTableModel(0,db);
+	ui->tableView_stadiumList->setModel(initModel);
 	initializeModel(initModel); // Pass in false if you want to make it only
 	//	only editable when submit is clicked.
-
 
 	fillGraph();
 
@@ -164,8 +165,9 @@ void MainWindow::on_button_viewStadiums_clicked()
 {
 	//	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
 
-	QTableView *view = createView(initModel, "Stadiums");
-	view->show();
+//	QTableView *view = createView(initModel, "Stadiums");
+//	view->show();
+ui->tableView_stadiumList->show();
 	ui->page_mainMenu->hide();
 	ui->page_stadiumList->show();
 	refresh();
@@ -243,6 +245,7 @@ bool MainWindow::createConnection(bool restart)
 	bool tableMade = false;
 	db.setHostName("localhost");
 	db.setDatabaseName("baseball_stadiums");
+
 	if (!db.open())
 	{
 		QMessageBox::critical(0, qApp->tr("Cannot open database"),
@@ -259,6 +262,8 @@ bool MainWindow::createConnection(bool restart)
 		query.clear();
 		query.exec("drop table stadiums");
 		query.clear();
+
+		qDebug() << "restart: " << restart;
 	}
 
 	tableMade = query.exec("create table stadiums"
@@ -594,43 +599,160 @@ void MainWindow::fillGraph()
 		vertexEdgeVector.clear();
 
 	}
-
-	//    // create all stadium objects
-	//    /****************************************
-	//     *  Temp -- dummy data
-	//     * *************************************/
-	//    stadium stadiumDummyArray[10];
-
-	//    //fill out stadium name and
-	//    for (int i = 0; i < 10; i++)
-	//    {
-
-	//        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
-	//        stadiumDummyArray[i].setStadiumNumber(i);
-	//    }
 	// add all stadium objects to graph
 
 	QHash<QString,stadium>::iterator stadiumIt;
+	QHash<QString,stadium>::iterator otherStadiumIt;
+
 	float weight;
 	QString otherStadium;
 
 	// re-use the following datatypes
 	stadiumName.clear();
 
+	int i = 0;
+	qDebug() << "FILL IN: ";
 	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
 	{
+		i++;
+		qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+	}
+
+	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+	{
+
 		vertexEdgeVector.clear();
+
 		vertexEdgeVector = (*stadiumIt).getVertexEdgeStructVector();
+
 		stadiumName = (*stadiumIt).getStadiumName();
 
 		for (unsigned int i = 0; i < vertexEdgeVector.size(); i++)
 		{
 			otherStadium = (vertexEdgeVector[i]).otherVertex;
 			weight = (vertexEdgeVector[i]).edge;
-			graph.insert((*stadiumIt), stadiumHash[otherStadium], weight);
+
+			if (!otherStadium.isEmpty())
+			{
+				if (stadiumHash.contains(otherStadium))
+				{
+					otherStadiumIt = stadiumHash.find(otherStadium);
+					graph.insert((*stadiumIt), *otherStadiumIt, weight);
+
+				}
+				else
+				{
+					qDebug() << "Other Stadium not found: " << otherStadium;
+				}
+
+
+
+			}
 		}
+
+
 	}
-	graph.display();
+
+	i = 0;
+	qDebug() << "FILL IN: ";
+	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+	{
+		i++;
+		qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+	}
+	qDebug() << "Stadium hash size: " << stadiumHash.size();
+	//    graph.display();
+
+
 }
 
 
+
+
+void MainWindow::on_button_quickTrip0_clicked()
+{
+	ui->page_planATrip0->hide();
+	ui->page_quickTrip->show();
+}
+
+void MainWindow::on_button_confirm_clicked()
+{
+	QMessageBox::information(this, tr("Confirm Order"), tr("Thank you for shopping with us. Your order has been placed."));
+	ui->page_shoppingCart->hide();
+	ui->page_shop0->show();
+}
+
+void MainWindow::on_button_cancel_clicked()
+{
+	QMessageBox::information(this, tr("Cancel Order"), tr("Your order has been canceled."));
+	ui->page_shoppingCart->hide();
+	ui->page_shop0->show();
+}
+
+void MainWindow::on_button_finish_clicked()
+{
+	refresh();
+	ui->page_shop0->hide();
+	ui->page_shoppingCart->show();
+}
+void MainWindow::on_button_customTrip0_clicked()
+{
+	ui->page_planATrip0->hide();
+	ui->page_customTripMenu->show();
+
+	int i = 0;
+	qDebug() << "CUSTOM TRIP IN: ";
+	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+	{
+		i++;
+		qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+	}
+	QListWidgetItem *listItem;
+	// add in all stadiums to combobox and QListWidget
+	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+	{
+		if (!(*stadiumIt).getStadiumName().isEmpty())
+		{
+			ui->comboBox_customTripSelectStadium->addItem((*stadiumIt).getStadiumName());
+
+			listItem = new QListWidgetItem;
+			listItem->setFlags(listItem->flags() | Qt::ItemIsUserCheckable);
+			listItem->setCheckState(Qt::Unchecked);
+			listItem->setText((*stadiumIt).getStadiumName());
+
+			ui->listWidget_customTrip->addItem(listItem);
+
+		}
+	}
+
+
+}
+
+void MainWindow::on_pushButton_customTripGo_clicked()
+{
+	qDebug() << "Starting Stadium: " << ui->comboBox_customTripSelectStadium->currentText();
+
+	qDebug() << "Selected stadiums: ";
+
+	QListWidgetItem *currentItem;
+	for (int i = 0; i < stadiumHash.size(); i++)
+	{
+
+		currentItem = ui->listWidget_customTrip->item(i);
+		if (currentItem->checkState() == Qt::Checked)
+		{
+			qDebug() << currentItem->text();
+		}
+
+
+	}
+}
+
+
+void MainWindow::on_button_customTripBack_clicked()
+{
+
+}

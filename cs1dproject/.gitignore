@@ -24,10 +24,15 @@
 
 #ignore all user files and build folders
 *.user
-.user*
-build*
+build/*
+*debug
+moc_*
 gcloud*
 *gcloud
 melodic*
 *build/
 *.auto*
+*Make
+*.Release
+*.Debug
+object_script.*
