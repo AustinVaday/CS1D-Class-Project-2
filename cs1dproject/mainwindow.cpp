@@ -675,6 +675,10 @@ void MainWindow::on_button_customTrip0_clicked()
 
 //    }
     QListWidgetItem *listItem;
+
+    ui->comboBox_customTripSelectStadium->clear();
+    ui->listWidget_customTrip->clear();
+
     // add in all stadiums to combobox and QListWidget
     for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
     {
@@ -705,6 +709,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
     vector<Vertex<stadium> *> subsequentVertexVector;
     dijkstraVertexVector.clear();
+    currentStadiumIndex = -1;
 
 
     // retrieve all selected stadiums
@@ -752,6 +757,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
     // fill out QListWidget with dijkstra sequence.
     QListWidgetItem *listItem;
 
+    ui->listWidget_customTripSequence->clear();
 
     for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
     {
@@ -769,10 +775,15 @@ void MainWindow::on_pushButton_customTripGo_clicked()
             listItem->setFont(QFont("bold"));
 
             ui->label_customTripStadiumName->setText(listItem->text());
+            ui->pushButton_customTripPrevious->setEnabled(false);
+            ui->pushButton_customTripNext->setEnabled(false);
+
 
         }
         else
         {
+            ui->pushButton_customTripNext->setEnabled(true);
+
             listItem->setTextColor(QColor("gray"));
         }
         ui->listWidget_customTripSequence->addItem(listItem);
@@ -815,7 +826,7 @@ void MainWindow::on_button_customTripMainMenu_2_clicked()
 void MainWindow::on_pushButton_customTripNext_clicked()
 {
     QListWidgetItem *listItem;
-    stadium *currentStadium;
+//    stadium *currentStadium;
 
     if (currentStadiumIndex == -1)
     {
@@ -826,6 +837,18 @@ void MainWindow::on_pushButton_customTripNext_clicked()
     if (currentStadiumIndex + 1 == int(dijkstraVertexVector.size() - 1))
     {
         ui->pushButton_customTripNext->setEnabled(false);
+    }
+    else
+    {
+        ui->pushButton_customTripNext->setEnabled(true);
+
+    }
+
+    // enable previous button
+    if (currentStadiumIndex == 0)
+    {
+        ui->pushButton_customTripPrevious->setEnabled(true);
+
     }
 
     // set the old QListWidgetItem back to default
@@ -850,7 +873,59 @@ void MainWindow::on_pushButton_customTripNext_clicked()
 
 void MainWindow::on_pushButton_customTripPrevious_clicked()
 {
+    QListWidgetItem *listItem;
+//    stadium *currentStadium;
 
+    if (currentStadiumIndex == -1)
+    {
+        QMessageBox::information(this, "ERROR - on_pushButton_customTripNext_clicked()", "error");
+    }
+
+
+    // check if we're at first stadium --> disable the previous button
+    if (currentStadiumIndex - 1 == 0)
+    {
+        ui->pushButton_customTripPrevious->setEnabled(false);
+    }
+    else
+    {
+        ui->pushButton_customTripPrevious->setEnabled(true);
+    }
+
+
+    // enable the next button if necessary
+    if(currentStadiumIndex == int(dijkstraVertexVector.size() - 1))
+    {
+        ui->pushButton_customTripNext->setEnabled(true);
+    }
+
+    // set the old QListWidgetItem back to default
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("gray"));
+    listItem->setFont(QFont("none"));
+
+    currentStadiumIndex--;
+
+    // set the current QListWidgetItem to current stadium indicator
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("red"));
+    listItem->setFont(QFont("bold"));
+
+//    currentStadium = stadiumHash.find(listItem->text());
+
+    ui->label_customTripStadiumName->setText(listItem->text());
+
+    // update progress bar
+    // if back to first, set progress bar blank
+    if (currentStadiumIndex == 0)
+    {
+        SetProgressBar(-1);
+    }
+    else
+    {
+        SetProgressBar(currentStadiumIndex);
+
+    }
 }
 
 void MainWindow::SetProgressBar(int location)
