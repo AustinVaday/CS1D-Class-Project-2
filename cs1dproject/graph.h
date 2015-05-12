@@ -11,7 +11,7 @@
 #include <queue>
 #include <stack>
 
-#define INFINITY 999999999999999
+//#define INFINITY 999999999999999
 
 using namespace std;
 

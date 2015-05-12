@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	vector<Vertex<stadium> *> shortestPath;
 	float totalCost = 0;
 	ui->setupUi(this);
+    currentStadiumIndex = -1;
 
 	// Create Database and initialize the table model ( NOT VIEW )
 	createConnection(true);		// put true to reinitialize the model
@@ -502,168 +503,187 @@ bool MainWindow::createConnection(bool restart)
 
 void MainWindow::fillGraph()
 {
-	qDebug() << "filling out the graph...";
+    qDebug() << "filling out the graph...";
 
 
 
-	QSqlQuery query = QSqlQuery(db);
-	//    QString dbString;
-	vector<vertexEdgeStruct> vertexEdgeVector;
-	vector<vertexEdgeStruct>::iterator structIt;
-	vertexEdgeStruct tempStruct;
-	//    QString vertexString1;
-	QString vertexString2;
-	QString edgeString;
-	QStringList stringList;
-	QStringList tempStringList;
+    QSqlQuery query = QSqlQuery(db);
+//    QString dbString;
+    vector<vertexEdgeStruct> vertexEdgeVector;
+    vector<vertexEdgeStruct>::iterator structIt;
+    vertexEdgeStruct tempStruct;
+//    QString vertexString1;
+    QString vertexString2;
+    QString edgeString;
+    QStringList stringList;
+    QStringList tempStringList;
 
-	// for stadium -- others
-	int stadiumNum;
-	QString stadiumName;
-	QString teamName;
-	QString street;
-	QString city;
-	QString state;
-	int zip;
-	QString boxOfficeNum;
-	QString dateOpened;
-	QString capacity;
-	QString league;
-	QString surface;
-	QString verticesAndEdges;
+    // for stadium -- others
+    int stadiumNum;
+    QString stadiumName;
+    QString teamName;
+    QString street;
+    QString city;
+    QString state;
+    int zip;
+    QString boxOfficeNum;
+    QString dateOpened;
+    QString capacity;
+    QString league;
+    QString surface;
+    QString verticesAndEdges;
 
-	stadium *stadiumObj;
+    stadium *stadiumObj;
 
-	query.exec("SELECT * FROM stadiums");
-
-
-	// retrieve all stadium
-	while (query.next())
-	{
-		stadiumNum      = query.value(PRIMARY_KEY).toInt();
-		stadiumName     = query.value(STADIUM_NAME).toString();
-		teamName        = query.value(TEAM_NAME).toString();
-		street          = query.value(STREET).toString();
-		city            = query.value(CITY).toString();
-		state           = query.value(STATE).toString();
-		zip             = query.value(ZIP).toInt();
-		boxOfficeNum    = query.value(BOX_OFFICE_NUM).toString();
-		dateOpened      = query.value(DATE_OPENED).toString();
-		capacity        = query.value(CAPACITY).toString();
-		league          = query.value(LEAGUE).toString();
-		surface         = query.value(SURFACE).toString();
-		verticesAndEdges= query.value(VERTICES_AND_EDGES).toString();
+    query.exec("SELECT * FROM stadiums");
 
 
-		// list of strings split by ~ (vertex,edge pair)
-		stringList = verticesAndEdges.split('~');
+    // retrieve all stadium
+    while (query.next())
+    {
+        stadiumNum      = query.value(PRIMARY_KEY).toInt();
+        stadiumName     = query.value(STADIUM_NAME).toString();
+        teamName        = query.value(TEAM_NAME).toString();
+        street          = query.value(STREET).toString();
+        city            = query.value(CITY).toString();
+        state           = query.value(STATE).toString();
+        zip             = query.value(ZIP).toInt();
+        boxOfficeNum    = query.value(BOX_OFFICE_NUM).toString();
+        dateOpened      = query.value(DATE_OPENED).toString();
+        capacity        = query.value(CAPACITY).toString();
+        league          = query.value(LEAGUE).toString();
+        surface         = query.value(SURFACE).toString();
+        verticesAndEdges= query.value(VERTICES_AND_EDGES).toString();
 
-		for (int i = 0; i < stringList.size(); i++)
-		{
-			// split vertex-edge pair by delimter ';'
-			tempStringList = (stringList[i].split(';'));
-			// first entry is a vertex
-			vertexString2 = tempStringList[0];
-			// second entry is an edge
-			edgeString = tempStringList[1];
 
-			tempStruct.otherVertex = vertexString2;
-			tempStruct.edge = edgeString.toFloat();
-			vertexEdgeVector.push_back(tempStruct);
-			tempStringList.clear();
-		}
+        // list of strings split by ~ (vertex,edge pair)
+        stringList = verticesAndEdges.split('~');
 
-		// create stadium
-		stadiumObj = new stadium ( stadiumNum,
-								   stadiumName,
-								   teamName,
-								   street,
-								   city,
-								   state,
-								   zip,
-								   boxOfficeNum,
-								   dateOpened,
-								   capacity,
-								   league,
-								   surface,
-								   vertexEdgeVector
-								   );
+        for (int i = 0; i < stringList.size(); i++)
+        {
+            // split vertex-edge pair by delimter ';'
+            tempStringList = (stringList[i].split(';'));
+            // first entry is a vertex
+            vertexString2 = tempStringList[0];
+            // second entry is an edge
+            edgeString = tempStringList[1];
 
-		// push back an object (force a pass by copy)
-		//        stadiumHash.insert(stadium(*stadiumObj), stadiumName);
-		stadiumHash.insert(stadiumName,  stadium(*stadiumObj));
+            tempStruct.otherVertex = vertexString2;
+            tempStruct.edge = edgeString.toFloat();
+            vertexEdgeVector.push_back(tempStruct);
+            tempStringList.clear();
+        }
 
-		// delete stadium object
-		delete stadiumObj;
+        // create stadium
+        stadiumObj = new stadium ( stadiumNum,
+                                   stadiumName,
+                                   teamName,
+                                   street,
+                                   city,
+                                   state,
+                                   zip,
+                                   boxOfficeNum,
+                                   dateOpened,
+                                   capacity,
+                                   league,
+                                   surface,
+                                   vertexEdgeVector
+                                  );
 
-		vertexEdgeVector.clear();
+        // push back an object (force a pass by copy)
+//        stadiumHash.insert(stadium(*stadiumObj), stadiumName);
+        stadiumHash.insert(stadiumName,  stadium(*stadiumObj));
 
-	}
-	// add all stadium objects to graph
+        // delete stadium object
+           delete stadiumObj;
 
-	QHash<QString,stadium>::iterator stadiumIt;
-	QHash<QString,stadium>::iterator otherStadiumIt;
+        vertexEdgeVector.clear();
 
-	float weight;
-	QString otherStadium;
-
-	// re-use the following datatypes
-	stadiumName.clear();
-
-	int i = 0;
-	qDebug() << "FILL IN: ";
-	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-	{
-		i++;
-		qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
-
-	}
-
-	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-	{
-
-		vertexEdgeVector.clear();
-
-		vertexEdgeVector = (*stadiumIt).getVertexEdgeStructVector();
-
-		stadiumName = (*stadiumIt).getStadiumName();
-
-		for (unsigned int i = 0; i < vertexEdgeVector.size(); i++)
-		{
-			otherStadium = (vertexEdgeVector[i]).otherVertex;
-			weight = (vertexEdgeVector[i]).edge;
-
-			if (!otherStadium.isEmpty())
-			{
-				if (stadiumHash.contains(otherStadium))
-				{
-					otherStadiumIt = stadiumHash.find(otherStadium);
-					graph.insert((*stadiumIt), *otherStadiumIt, weight);
-
-				}
-				else
-				{
-					qDebug() << "Other Stadium not found: " << otherStadium;
-				}
+    }
 
 
 
-			}
-		}
+//    // create all stadium objects
+
+//    /****************************************
+//     *  Temp -- dummy data
+//     * *************************************/
+//    stadium stadiumDummyArray[10];
+
+//    //fill out stadium name and
+//    for (int i = 0; i < 10; i++)
+//    {
+
+//        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
+//        stadiumDummyArray[i].setStadiumNumber(i);
+
+//    }
 
 
-	}
+    // add all stadium objects to graph
 
-	i = 0;
-	qDebug() << "FILL IN: ";
-	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-	{
-		i++;
-		qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+    QMap<QString,stadium>::iterator stadiumIt;
+    QMap<QString,stadium>::iterator otherStadiumIt;
 
-	}
-	qDebug() << "Stadium hash size: " << stadiumHash.size();
-	//    graph.display();
+    float weight;
+    QString otherStadium;
+
+    // re-use the following datatypes
+    stadiumName.clear();
+
+    int i = 0;
+    qDebug() << "FILL IN: ";
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        i++;
+        qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+    }
+
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+
+        vertexEdgeVector.clear();
+
+        vertexEdgeVector = (*stadiumIt).getVertexEdgeStructVector();
+
+        stadiumName = (*stadiumIt).getStadiumName();
+
+        for (unsigned int i = 0; i < vertexEdgeVector.size(); i++)
+        {
+            otherStadium = (vertexEdgeVector[i]).otherVertex;
+            weight = (vertexEdgeVector[i]).edge;
+
+            if (!otherStadium.isEmpty())
+            {
+                if (stadiumHash.contains(otherStadium))
+                {
+                    otherStadiumIt = stadiumHash.find(otherStadium);
+                    graph.insert((*stadiumIt), *otherStadiumIt, weight);
+
+                }
+                else
+                {
+                    qDebug() << "Other Stadium not found: " << otherStadium;
+                }
+
+            }
+        }
+
+
+
+    }
+
+     i = 0;
+    qDebug() << "FILL IN: ";
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        i++;
+        qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+
+    }
+qDebug() << "Stadium hash size: " << stadiumHash.size();
+//    graph.display();
 
 
 }
@@ -699,17 +719,13 @@ void MainWindow::on_button_finish_clicked()
 }
 void MainWindow::on_button_customTrip0_clicked()
 {
-	ui->page_planATrip0->hide();
-	ui->page_customTripMenu->show();
+    ui->page_planATrip0->hide();
+    ui->page_customTripMenu->show();
 
-	int i = 0;
-	qDebug() << "CUSTOM TRIP IN: ";
-	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-	{
-		i++;
-		qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
+    ui->comboBox_customTripSelectStadium->clear();
+    ui->listWidget_customTrip->clear();
 
-	}
+
 	QListWidgetItem *listItem;
 	// add in all stadiums to combobox and QListWidget
 	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
@@ -731,28 +747,242 @@ void MainWindow::on_button_customTrip0_clicked()
 
 }
 
+
 void MainWindow::on_pushButton_customTripGo_clicked()
 {
-	qDebug() << "Starting Stadium: " << ui->comboBox_customTripSelectStadium->currentText();
+        QString startStadium = ui->comboBox_customTripSelectStadium->currentText();
+        vector<QString> selectedStadiums;
+        float cost = 0;
+        float totalCost = 0;
 
-	qDebug() << "Selected stadiums: ";
-
-	QListWidgetItem *currentItem;
-	for (int i = 0; i < stadiumHash.size(); i++)
-	{
-
-		currentItem = ui->listWidget_customTrip->item(i);
-		if (currentItem->checkState() == Qt::Checked)
-		{
-			qDebug() << currentItem->text();
-		}
+        vector<Vertex<stadium> *> subsequentVertexVector;
+        dijkstraVertexVector.clear();
+        currentStadiumIndex = -1;
 
 
-	}
+        // retrieve all selected stadiums
+        QListWidgetItem *currentItem;
+        for (int i = 0; i < stadiumHash.size(); i++)
+        {
+
+            currentItem = ui->listWidget_customTrip->item(i);
+            if (currentItem->checkState() == Qt::Checked)
+            {
+                selectedStadiums.push_back(currentItem->text());
+            }
+
+
+        }
+
+        for (unsigned int i = 0; i < selectedStadiums.size(); i++)
+        {
+            graph.DijkstraShortestPath(*(stadiumHash.find(startStadium)), *(stadiumHash.find(selectedStadiums[i])), subsequentVertexVector, cost);
+
+            qDebug() << "Cost is: " << cost;
+            totalCost = totalCost + cost;
+            qDebug() << "Total cost is: " << totalCost;
+
+
+            for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
+            {
+                dijkstraVertexVector.push_back(subsequentVertexVector[j]);
+
+                if ( j != 0)
+                {
+                    // prevent subsequent duplicates by seeing if stadiums entered in twice
+                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
+                    {
+                        dijkstraVertexVector.pop_back();
+                    }
+                }
+
+            }
+
+            // update new current stadium
+            startStadium = selectedStadiums[i];
+        }
+
+
+
+
+        // fill out QListWidget with dijkstra sequence.
+        QListWidgetItem *listItem;
+
+        ui->listWidget_customTripSequence->clear();
+
+        for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+        {
+
+
+            listItem = new QListWidgetItem;
+            listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+            listItem->setFlags(listItem->flags() & !Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+
+            // indicate first one is current stadium
+            if (i == 0)
+            {
+                currentStadiumIndex = 0;
+                listItem->setTextColor(QColor("red"));
+                listItem->setFont(QFont("bold"));
+
+                ui->label_customTripStadiumName->setText(listItem->text());
+                ui->pushButton_customTripPrevious->setEnabled(false);
+                ui->pushButton_customTripNext->setEnabled(false);
+
+
+            }
+            else
+            {
+                ui->pushButton_customTripNext->setEnabled(true);
+
+                listItem->setTextColor(QColor("gray"));
+            }
+            ui->listWidget_customTripSequence->addItem(listItem);
+        }
+
+        ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+
+
+        // set the value of the progress bar.
+        SetProgressBar(-1);
+
+        ui->page_customTripMenu->hide();
+        ui->page_customTrip->show();
+
 }
-
 
 void MainWindow::on_button_customTripBack_clicked()
 {
+    ui->page_customTripMenu->hide();
+    ui->page_planATrip0->show();
+}
+
+void MainWindow::on_button_customTripMainMenu_clicked()
+{
+    ui->page_customTripMenu->hide();
+    ui->page_mainMenu->show();
+}
+
+void MainWindow::on_button_customTripBack_2_clicked()
+{
+    ui->page_customTrip->hide();
+    ui->page_customTripMenu->show();
+}
+
+void MainWindow::on_button_customTripMainMenu_2_clicked()
+{
+    ui->page_customTrip->hide();
+    ui->page_mainMenu->show();
+}
+
+void MainWindow::on_pushButton_customTripNext_clicked()
+{
+    QListWidgetItem *listItem;
+//    stadium *currentStadium;
+
+    if (currentStadiumIndex == -1)
+    {
+        QMessageBox::information(this, "ERROR - on_pushButton_customTripNext_clicked()", "error");
+    }
+
+    // check if we're at last stadium --> disable the next button
+    if (currentStadiumIndex + 1 == int(dijkstraVertexVector.size() - 1))
+    {
+        ui->pushButton_customTripNext->setEnabled(false);
+    }
+    else
+    {
+        ui->pushButton_customTripNext->setEnabled(true);
+
+    }
+
+    // enable previous button
+    if (currentStadiumIndex == 0)
+    {
+        ui->pushButton_customTripPrevious->setEnabled(true);
+
+    }
+
+    // set the old QListWidgetItem back to default
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("gray"));
+    listItem->setFont(QFont("none"));
+
+    currentStadiumIndex++;
+
+    // set the current QListWidgetItem to current stadium indicator
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("red"));
+    listItem->setFont(QFont("bold"));
+
+//    currentStadium = stadiumHash.find(listItem->text());
+
+    ui->label_customTripStadiumName->setText(listItem->text());
+
+    // update progress bar
+    SetProgressBar(currentStadiumIndex);
+}
+
+void MainWindow::on_pushButton_customTripPrevious_clicked()
+{
+    QListWidgetItem *listItem;
+//    stadium *currentStadium;
+
+    if (currentStadiumIndex == -1)
+    {
+        QMessageBox::information(this, "ERROR - on_pushButton_customTripNext_clicked()", "error");
+    }
+
+
+    // check if we're at first stadium --> disable the previous button
+    if (currentStadiumIndex - 1 == 0)
+    {
+        ui->pushButton_customTripPrevious->setEnabled(false);
+    }
+    else
+    {
+        ui->pushButton_customTripPrevious->setEnabled(true);
+    }
+
+
+    // enable the next button if necessary
+    if(currentStadiumIndex == int(dijkstraVertexVector.size() - 1))
+    {
+        ui->pushButton_customTripNext->setEnabled(true);
+    }
+
+    // set the old QListWidgetItem back to default
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("gray"));
+    listItem->setFont(QFont("none"));
+
+    currentStadiumIndex--;
+
+    // set the current QListWidgetItem to current stadium indicator
+    listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+    listItem->setTextColor(QColor("red"));
+    listItem->setFont(QFont("bold"));
+
+//    currentStadium = stadiumHash.find(listItem->text());
+
+    ui->label_customTripStadiumName->setText(listItem->text());
+
+    // update progress bar
+    // if back to first, set progress bar blank
+    if (currentStadiumIndex == 0)
+    {
+        SetProgressBar(-1);
+    }
+    else
+    {
+        SetProgressBar(currentStadiumIndex);
+
+    }
+}
+
+void MainWindow::SetProgressBar(int location)
+{
+    int progressBarVal = ((float(location + 1)) / dijkstraVertexVector.size()) * 100;
+    ui->progressBar_customTrip->setValue(progressBarVal);
 
 }

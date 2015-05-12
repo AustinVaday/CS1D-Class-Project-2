@@ -66,6 +66,8 @@ class MainWindow : public QMainWindow
 		void submit(QSqlTableModel* model);
 		bool addStadium(stadium stadiumData);
 
+        void SetProgressBar(int location);
+
 	private slots:
 		void on_button_back0_clicked();
 
@@ -123,6 +125,16 @@ class MainWindow : public QMainWindow
 
         void on_button_customTripBack_clicked();
 
+        void on_button_customTripMainMenu_clicked();
+
+        void on_button_customTripBack_2_clicked();
+
+        void on_button_customTripMainMenu_2_clicked();
+
+        void on_pushButton_customTripNext_clicked();
+
+        void on_pushButton_customTripPrevious_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
@@ -133,8 +145,18 @@ private:
 		 * Edge: float (could be int, but let's make it generic)
 		 */
 		Graph<stadium,float> graph;
-        QHash<QString,stadium> stadiumHash;
-        QHash<QString,stadium>::iterator stadiumIt;
+        QMap<QString,stadium> stadiumHash;
+        QMap<QString,stadium>::iterator stadiumIt;
+
+        // used to store most recent graph algorithm (global to this class)
+        // mst      --> need edges
+        // dijkstra --> need vertices
+        vector<Edge<Vertex<stadium>,float> *> mstEdgeVector;
+        vector<Vertex<stadium> *> dijkstraVertexVector;
+
+        int currentStadiumIndex;
+
+
 };
 
 #endif // MAINWINDOW_H
