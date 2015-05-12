@@ -566,8 +566,8 @@ void MainWindow::fillGraph()
 
     // add all stadium objects to graph
 
-    QHash<QString,stadium>::iterator stadiumIt;
-    QHash<QString,stadium>::iterator otherStadiumIt;
+    QMap<QString,stadium>::iterator stadiumIt;
+    QMap<QString,stadium>::iterator otherStadiumIt;
 
     float weight;
     QString otherStadium;
@@ -610,8 +610,6 @@ void MainWindow::fillGraph()
                 {
                     qDebug() << "Other Stadium not found: " << otherStadium;
                 }
-
-
 
             }
         }
@@ -699,10 +697,16 @@ void MainWindow::on_button_customTrip0_clicked()
 
 void MainWindow::on_pushButton_customTripGo_clicked()
 {
-    qDebug() << "Starting Stadium: " << ui->comboBox_customTripSelectStadium->currentText();
+    QString startStadium = ui->comboBox_customTripSelectStadium->currentText();
+    vector<QString> selectedStadiums;
+    float cost = 0;
+    float totalCost = 0;
 
-    qDebug() << "Selected stadiums: ";
+    vector<Vertex<stadium> *> subsequentVertexVector;
+    dijkstraVertexVector.clear();
 
+
+    // retrieve all selected stadiums
     QListWidgetItem *currentItem;
     for (int i = 0; i < stadiumHash.size(); i++)
     {
@@ -710,11 +714,55 @@ void MainWindow::on_pushButton_customTripGo_clicked()
         currentItem = ui->listWidget_customTrip->item(i);
         if (currentItem->checkState() == Qt::Checked)
         {
-            qDebug() << currentItem->text();
+            selectedStadiums.push_back(currentItem->text());
         }
 
 
     }
+
+    for (unsigned int i = 0; i < selectedStadiums.size(); i++)
+    {
+        graph.DijkstraShortestPath(*(stadiumHash.find(startStadium)), *(stadiumHash.find(selectedStadiums[i])), subsequentVertexVector, cost);
+
+        totalCost = totalCost + cost;
+
+        for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
+        {
+            dijkstraVertexVector.push_back(subsequentVertexVector[j]);
+
+            if ( j != 0)
+            {
+                // prevent subsequent duplicates by seeing if stadiums entered in twice
+                if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
+                {
+                    dijkstraVertexVector.pop_back();
+                }
+            }
+
+        }
+
+        // update new current stadium
+        startStadium = selectedStadiums[i];
+    }
+
+    for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+    {
+      qDebug() << (**(dijkstraVertexVector[i])).getStadiumName();
+    }
+
+    qDebug() << "Total cost is: " << totalCost;
+
+    // fill out QListWidget with dijkstra sequence.
+
+    // set the value of the progress bar.
+    ui->progressBar_customTrip->setValue(99);
+
+
+
+
+
+    ui->page_customTripMenu->hide();
+    ui->page_customTrip->show();
 }
 
 void MainWindow::on_button_customTripBack_clicked()
@@ -726,5 +774,17 @@ void MainWindow::on_button_customTripBack_clicked()
 void MainWindow::on_button_customTripMainMenu_clicked()
 {
     ui->page_customTripMenu->hide();
+    ui->page_mainMenu->show();
+}
+
+void MainWindow::on_button_customTripBack_2_clicked()
+{
+    ui->page_customTrip->hide();
+    ui->page_customTripMenu->show();
+}
+
+void MainWindow::on_button_customTripMainMenu_2_clicked()
+{
+    ui->page_customTrip->hide();
     ui->page_mainMenu->show();
 }
