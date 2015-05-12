@@ -514,7 +514,7 @@ p, li { white-space: pre-wrap; }
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QListView" name="listView_customTripStadiumSeq"/>
+         <widget class="QListWidget" name="listWidget_customTripSequence"/>
         </item>
        </layout>
       </widget>
@@ -522,8 +522,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QProgressBar" name="progressBar_customTrip">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>410</y>
+        <x>130</x>
+        <y>420</y>
         <width>491</width>
         <height>21</height>
        </rect>
@@ -547,27 +547,27 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="label_fixed_3">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>30</x>
         <y>390</y>
         <width>131</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Distance Travelled: </string>
+       <string>Total Mileage: </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_customTripDistanceTravelled_">
+     <widget class="QLabel" name="label_customTripDistanceTravelled">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>130</x>
         <y>390</y>
         <width>61</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Distance</string>
+       <string>[distance]</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_fixed_4">

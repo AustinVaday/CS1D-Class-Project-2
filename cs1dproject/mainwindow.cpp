@@ -745,14 +745,36 @@ void MainWindow::on_pushButton_customTripGo_clicked()
         startStadium = selectedStadiums[i];
     }
 
-    for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
-    {
-      qDebug() << (**(dijkstraVertexVector[i])).getStadiumName();
-    }
 
-    qDebug() << "Total cost is: " << totalCost;
+
 
     // fill out QListWidget with dijkstra sequence.
+    QListWidgetItem *listItem;
+
+
+    for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+    {
+
+
+        listItem = new QListWidgetItem;
+        listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+        listItem->setFlags(listItem->flags() & !Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+
+        // indicate first one is current stadium
+        if (i == 0)
+        {
+            listItem->setTextColor(QColor("red"));
+            listItem->setFont(QFont("bold"));
+        }
+        else
+        {
+            listItem->setTextColor(QColor("gray"));
+        }
+        ui->listWidget_customTripSequence->addItem(listItem);
+    }
+
+    ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+
 
     // set the value of the progress bar.
     ui->progressBar_customTrip->setValue(99);
