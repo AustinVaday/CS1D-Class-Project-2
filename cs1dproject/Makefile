@@ -53,8 +53,8 @@ SOURCES       = main.cpp \
 		stadium.cpp \
 		sqlfunctions.cpp \
 		datatable.cpp \
-		addstadiumfunctionality.cpp \
-		searchForStadium.cpp moc_mainwindow.cpp \
+		addstadiumfunctionality.cpp qrc_teamImages.cpp \
+		moc_mainwindow.cpp \
 		moc_souvenirs.cpp \
 		moc_datatable.cpp
 OBJECTS       = main.o \
@@ -66,7 +66,7 @@ OBJECTS       = main.o \
 		sqlfunctions.o \
 		datatable.o \
 		addstadiumfunctionality.o \
-		searchForStadium.o \
+		qrc_teamImages.o \
 		moc_mainwindow.o \
 		moc_souvenirs.o \
 		moc_datatable.o
@@ -186,8 +186,7 @@ DIST          = baseball_stadiums \
 		stadium.cpp \
 		sqlfunctions.cpp \
 		datatable.cpp \
-		addstadiumfunctionality.cpp \
-		searchForStadium.cpp
+		addstadiumfunctionality.cpp
 QMAKE_TARGET  = CS1D-Class-Project-2
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = CS1D-Class-Project-2
@@ -328,6 +327,7 @@ Makefile: CS1D-Class-Project-2.pro ../../../Qt5.3.2/5.3/gcc_64/mkspecs/linux-g++
 		../../../Qt5.3.2/5.3/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt5.3.2/5.3/gcc_64/mkspecs/features/lex.prf \
 		CS1D-Class-Project-2.pro \
+		teamImages.qrc \
 		/home/anthony/Qt5.3.2/5.3/gcc_64/lib/libQt5Widgets.prl \
 		/home/anthony/Qt5.3.2/5.3/gcc_64/lib/libQt5Gui.prl \
 		/home/anthony/Qt5.3.2/5.3/gcc_64/lib/libQt5Core.prl \
@@ -441,6 +441,7 @@ Makefile: CS1D-Class-Project-2.pro ../../../Qt5.3.2/5.3/gcc_64/mkspecs/linux-g++
 ../../../Qt5.3.2/5.3/gcc_64/mkspecs/features/yacc.prf:
 ../../../Qt5.3.2/5.3/gcc_64/mkspecs/features/lex.prf:
 CS1D-Class-Project-2.pro:
+teamImages.qrc:
 /home/anthony/Qt5.3.2/5.3/gcc_64/lib/libQt5Widgets.prl:
 /home/anthony/Qt5.3.2/5.3/gcc_64/lib/libQt5Gui.prl:
 /home/anthony/Qt5.3.2/5.3/gcc_64/lib/libQt5Core.prl:
@@ -452,7 +453,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/CS1D-Class-Project-21.0.0 || mkdir -p .tmp/CS1D-Class-Project-21.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/CS1D-Class-Project-21.0.0/ && $(COPY_FILE) --parents mainwindow.h hashTable.h wrapperlist.h exceptionclasses.h heap.h heapitem.h comparators.h MainHeader.h souvenirs.h graph.h stadium.h datatable.h addstadiumfunctionality.h ui_mainwindow.h .tmp/CS1D-Class-Project-21.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp levenshteinDistance.cpp findHashKey.cpp souvenirs.cpp stadium.cpp sqlfunctions.cpp datatable.cpp addstadiumfunctionality.cpp searchForStadium.cpp .tmp/CS1D-Class-Project-21.0.0/ && $(COPY_FILE) --parents mainwindow.ui .tmp/CS1D-Class-Project-21.0.0/ && (cd `dirname .tmp/CS1D-Class-Project-21.0.0` && $(TAR) CS1D-Class-Project-21.0.0.tar CS1D-Class-Project-21.0.0 && $(COMPRESS) CS1D-Class-Project-21.0.0.tar) && $(MOVE) `dirname .tmp/CS1D-Class-Project-21.0.0`/CS1D-Class-Project-21.0.0.tar.gz . && $(DEL_FILE) -r .tmp/CS1D-Class-Project-21.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/CS1D-Class-Project-21.0.0/ && $(COPY_FILE) --parents teamImages.qrc .tmp/CS1D-Class-Project-21.0.0/ && $(COPY_FILE) --parents mainwindow.h hashTable.h wrapperlist.h exceptionclasses.h heap.h heapitem.h comparators.h MainHeader.h souvenirs.h graph.h stadium.h datatable.h addstadiumfunctionality.h .tmp/CS1D-Class-Project-21.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp levenshteinDistance.cpp findHashKey.cpp souvenirs.cpp stadium.cpp sqlfunctions.cpp datatable.cpp addstadiumfunctionality.cpp .tmp/CS1D-Class-Project-21.0.0/ && $(COPY_FILE) --parents mainwindow.ui .tmp/CS1D-Class-Project-21.0.0/ && (cd `dirname .tmp/CS1D-Class-Project-21.0.0` && $(TAR) CS1D-Class-Project-21.0.0.tar CS1D-Class-Project-21.0.0 && $(COMPRESS) CS1D-Class-Project-21.0.0.tar) && $(MOVE) `dirname .tmp/CS1D-Class-Project-21.0.0`/CS1D-Class-Project-21.0.0.tar.gz . && $(DEL_FILE) -r .tmp/CS1D-Class-Project-21.0.0
 
 
 clean:compiler_clean 
@@ -473,8 +474,42 @@ mocables: compiler_moc_header_make_all compiler_moc_source_make_all
 
 check: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_teamImages.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_teamImages.cpp
+qrc_teamImages.cpp: teamImages.qrc \
+		../logos/Atlanta.jpg \
+		../logos/Cincinnati.jpg \
+		../logos/TexasRangers.jpg \
+		../logos/Miami.jpg \
+		../logos/Cleveland.jpg \
+		../logos/KansasCity.jpg \
+		../logos/SanDiego.jpg \
+		../logos/TampaBay.jpg \
+		../logos/Minnesota.jpg \
+		../logos/NewYorkYankees.jpg \
+		../logos/LosAngelesDodgers.jpg \
+		../logos/Detroit.jpg \
+		../logos/Washington.jpg \
+		../logos/ChicagoCubs.jpg \
+		../logos/Seattle.jpg \
+		../logos/Pittsburgh.jpg \
+		../logos/Baltimore.jpg \
+		../logos/NewYorkMets.jpg \
+		../logos/LosAngelesAngels.jpg \
+		../logos/Colorado.jpg \
+		../logos/Milwaukee.jpg \
+		../logos/ChicagoWSox.jpg \
+		../logos/Boston.jpg \
+		../logos/Philadelphia.jpg \
+		../logos/SanFrancisco.jpg \
+		../logos/Arizona.jpg \
+		../logos/Oakland.jpg \
+		../logos/StLouis.jpg \
+		../logos/Toronto.jpg \
+		../logos/Houston.jpg
+	/home/anthony/Qt5.3.2/5.3/gcc_64/bin/rcc -name teamImages teamImages.qrc -o qrc_teamImages.cpp
+
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_souvenirs.cpp moc_datatable.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_souvenirs.cpp moc_datatable.cpp
@@ -1109,7 +1144,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1834,6 +1869,51 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
 		ui_mainwindow.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCheckBox \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFrame \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QListWidget \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMenuBar \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmenubar.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmenu.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QStatusBar \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTableWidget \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTextBrowser \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QToolBar \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtoolbar.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTreeView \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtreeview.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QErrorMessage \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qerrormessage.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QDataWidgetMapper \
@@ -3273,6 +3353,51 @@ addstadiumfunctionality.o: addstadiumfunctionality.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
 		ui_mainwindow.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCheckBox \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFrame \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QListWidget \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMenuBar \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmenubar.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmenu.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstackedwidget.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QStatusBar \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTableWidget \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTextBrowser \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtextbrowser.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QToolBar \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtoolbar.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTreeView \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtreeview.h \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QErrorMessage \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qerrormessage.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QModelIndex \
@@ -3280,366 +3405,8 @@ addstadiumfunctionality.o: addstadiumfunctionality.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addstadiumfunctionality.o addstadiumfunctionality.cpp
 
-searchForStadium.o: searchForStadium.cpp mainwindow.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qwidget.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qglobal.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qconfig.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfeatures.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtypetraits.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsysinfo.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qlogging.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qflags.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv7.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv6.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv5.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_ia64.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_mips.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_x86.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_gcc.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_unix.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmutex.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qnumeric.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qnamespace.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qobject.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstring.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qchar.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qbytearray.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qrefcount.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qarraydata.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qlist.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qalgorithms.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qiterator.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcoreevent.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmetatype.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qisenum.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmargins.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qrect.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsize.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qpoint.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpalette.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qcolor.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qrgb.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstringlist.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qdatastream.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qpair.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qregexp.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qbrush.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qvector.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qmatrix.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpolygon.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qregion.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qline.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtransform.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpainterpath.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qimage.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpixmap.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qhash.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qfont.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qfontinfo.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qcursor.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qkeysequence.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qevent.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmap.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qdebug.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtextstream.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qset.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qurl.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qurlquery.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfile.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfiledevice.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDebug \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/QFont \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QFile \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qapplication.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qeventloop.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/QtGui \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/QtGuiDepends \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QtCore \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QtCoreDepends \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qabstractanimation.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qanimationgroup.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qparallelanimationgroup.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qpauseanimation.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qpropertyanimation.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qvariantanimation.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qeasingcurve.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsequentialanimationgroup.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtextcodec.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qendian.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qlibraryinfo.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qbuffer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qdir.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfileinfo.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qdiriterator.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfileselector.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QObject \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QStringList \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfilesystemwatcher.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qlockfile.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qloggingcategory.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qprocess.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qresource.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsavefile.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsettings.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtemporarydir.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QScopedPointer \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtemporaryfile.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qabstractproxymodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qidentityproxymodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsortfilterproxymodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstringlistmodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qjsonarray.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qjsonvalue.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qjsondocument.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qjsonobject.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qabstracteventdispatcher.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qbasictimer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmath.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmetaobject.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmimedata.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qobjectcleanuphandler.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qpointer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsharedmemory.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsignalmapper.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsocketnotifier.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsystemsemaphore.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtimer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtranslator.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qwineventnotifier.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmimedatabase.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmimetype.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfactoryinterface.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qlibrary.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qplugin.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qpluginloader.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/quuid.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qabstractstate.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qabstracttransition.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qeventtransition.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfinalstate.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qhistorystate.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsignaltransition.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstate.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstatemachine.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qexception.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfuture.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfutureinterface.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qrunnable.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qresultstore.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfuturesynchronizer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qfuturewatcher.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qreadwritelock.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qsemaphore.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qthreadpool.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qthreadstorage.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qwaitcondition.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qarraydataops.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qarraydatapointer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qbitarray.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qbytearraymatcher.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcache.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcollator.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcommandlineoption.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcommandlineparser.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qcryptographichash.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qelapsedtimer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qlinkedlist.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qmessageauthenticationcode.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qqueue.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qregularexpression.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qscopedvaluerollback.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qstack.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtextboundaryfinder.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtimeline.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtimezone.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qxmlstream.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qtcoreversion.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qaccessible.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qaccessiblebridge.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qaccessibleobject.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qaccessibleplugin.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qbitmap.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qiconengine.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qiconengineplugin.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qimageiohandler.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qimagereader.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qimagewriter.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qmovie.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpicture.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpictureformatplugin.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpixmapcache.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qstandarditemmodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qclipboard.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qdrag.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qgenericplugin.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qgenericpluginfactory.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qoffscreensurface.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qsurface.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qsurfaceformat.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglcontext.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/QSurfaceFormat \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopengl.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/qt_windows.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopengles2ext.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglext.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qscreen.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QList \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QRect \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QSize \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QSizeF \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/QTransform \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qsessionmanager.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qstylehints.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qwindow.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QEvent \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QMargins \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qgenericmatrix.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qmatrix4x4.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qvector3d.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qvector4d.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qquaternion.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglbuffer.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopengldebug.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglframebufferobject.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglfunctions.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglpaintdevice.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglpixeltransferoptions.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QSharedDataPointer \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopengltexture.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopengltimerquery.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qbackingstore.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpagedpaintdevice.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpagelayout.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpagesize.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpaintengine.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpainter.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpen.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qpdfwriter.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextlayout.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextformat.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qglyphrun.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qrawfont.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qfontdatabase.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextcursor.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextdocument.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qstatictext.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qsyntaxhighlighter.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextobject.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextdocumentfragment.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextdocumentwriter.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtextlist.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtexttable.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qdesktopservices.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qvalidator.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtGui/qtguiversion.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMessageBox \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qdialog.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTableView \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtableview.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qslider.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstyle.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlQueryModel \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlquerymodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqldatabase.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsql.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QtSql \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QtSqlDepends \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqldriver.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqldriverplugin.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlerror.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlfield.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlindex.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlrecord.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlquery.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlresult.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlrelationaldelegate.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qitemdelegate.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlistview.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcombobox.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqlrelationaltablemodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qsqltablemodel.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/qtsqlversion.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlDatabase \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
-		graph.h \
-		heap.h \
-		heapitem.h \
-		exceptionclasses.h \
-		comparators.h \
-		stadium.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QString \
-		souvenirs.h \
-		MainHeader.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSql \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlQuery \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlError \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchForStadium.o searchForStadium.cpp
+qrc_teamImages.o: qrc_teamImages.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_teamImages.o qrc_teamImages.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

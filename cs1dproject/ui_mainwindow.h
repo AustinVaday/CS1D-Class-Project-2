@@ -14,16 +14,22 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
@@ -60,7 +66,7 @@ public:
     QWidget *page_planATrip0;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *button_VisitAll0;
+    QPushButton *button_quickTrip0;
     QPushButton *button_customTrip0;
     QPushButton *button_searchForStadiums1;
     QStackedWidget *stackedWidget_planATrip0;
@@ -70,12 +76,38 @@ public:
     QPushButton *button_back0;
     QPushButton *button_mainMenu0;
     QLabel *label_planATripTitle;
-    QWidget *layoutWidget2;
-    QHBoxLayout *horizontalLayout_2;
+    QWidget *page_quickTrip;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QGridLayout *gridLayout;
+    QListView *listView_quickTripStadiums;
+    QProgressBar *progressBar_quickTrip;
+    QLabel *label_fixed;
+    QLabel *label_stadiumName;
+    QLabel *label_fixed_2;
+    QLabel *label_quickTripDistanceTravelled;
+    QSplitter *splitter;
+    QPushButton *pushButton_quickTripPrevious;
+    QPushButton *pushButton_quickTripNext;
+    QWidget *page_customTripMenu;
+    QStackedWidget *stackedWidget_2;
+    QWidget *page_5;
+    QWidget *page_12;
+    QPushButton *button_customTripBack;
+    QLabel *label_planATripTitle_2;
+    QPushButton *button_customTripMainMenu;
+    QLabel *label_3;
+    QLabel *label_4;
+    QComboBox *comboBox_customTripSelectStadium;
+    QPushButton *pushButton_customTripGo;
+    QScrollArea *scrollArea_2;
+    QWidget *scrollAreaWidgetContents_3;
+    QGridLayout *gridLayout_3;
+    QListWidget *listWidget_customTrip;
     QWidget *page_planATrip1;
     QTextBrowser *textBrowser;
     QLabel *label_outputMilageLabel;
-    QWidget *layoutWidget3;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_3;
     QPushButton *button_shop1;
     QPushButton *button_searchForStadiums2;
@@ -96,19 +128,15 @@ public:
     QPushButton *button_back2;
     QPushButton *button_mainMenu2;
     QLabel *label_teamSearchTitle;
-    QWidget *layoutWidget4;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout;
     QLineEdit *lineEdit_searchLine0;
     QPushButton *button_search0;
     QWidget *page_searchForStadium1;
-    QLabel *label_3;
-    QLabel *label_4;
+    QLabel *label_31;
+    QLabel *label_41;
     QWidget *page_shop0;
     QLabel *label_shopTitle;
-    QWidget *layoutWidget5;
-    QHBoxLayout *horizontalLayout_3;
-    QLineEdit *lineEdit_searchLine2;
-    QPushButton *button_search2;
     QPushButton *button_prev;
     QPushButton *button_mainMenu3;
     QPushButton *button_next;
@@ -120,10 +148,21 @@ public:
     QCheckBox *checkBox_4;
     QLabel *label_welcomeMessage;
     QPushButton *button_addToCart;
-    QTableWidget *tableWidget;
     QLabel *label;
-    QLabel *label_2;
     QTableView *table_stadiumList;
+    QWidget *page_shoppingCart;
+    QLabel *label_viewShoppingCart;
+    QTableWidget *tableWidget;
+    QLabel *label_total;
+    QPushButton *button_cancel;
+    QPushButton *button_confirm;
+    QLabel *label_name;
+    QLabel *label_creditCardNumber;
+    QLabel *label_expirationDate;
+    QComboBox *comboBox_month;
+    QComboBox *comboBox_year;
+    QLineEdit *lineEdit_creditCardNumber;
+    QLineEdit *lineEdit_name;
     QWidget *page_stadiumList;
     QLabel *label_stadiumListTitle;
     QPushButton *button_back4;
@@ -133,13 +172,13 @@ public:
     QPushButton *button_login;
     QLabel *label_adminLoginTitle;
     QPushButton *button_mainMenu5;
-    QWidget *layoutWidget6;
+    QWidget *layoutWidget4;
     QVBoxLayout *verticalLayout_7;
     QLineEdit *lineEdit_username;
     QLineEdit *lineEdit_password;
     QWidget *page_adminMainMenu;
     QPushButton *button_back_adminMainMenu;
-    QWidget *layoutWidget7;
+    QWidget *layoutWidget5;
     QVBoxLayout *verticalLayout_4;
     QPushButton *button_addStadium0;
     QPushButton *button_modifyStadium;
@@ -148,14 +187,14 @@ public:
     QWidget *page_addStadium;
     QFrame *frame_2;
     QLabel *label_titleAddStadium;
-    QWidget *layoutWidget8;
+    QWidget *layoutWidget6;
     QVBoxLayout *verticalLayout_5;
     QLineEdit *lineEdit_stadiumName;
     QLineEdit *lineEdit_teamName;
     QLineEdit *lineEdit_cityName;
     QLineEdit *lineEdit_stateName;
     QLineEdit *lineEdit_grassType;
-    QWidget *layoutWidget9;
+    QWidget *layoutWidget7;
     QVBoxLayout *verticalLayout_6;
     QLabel *label_stadiumLabel;
     QLabel *label_teamNameLabel;
@@ -175,7 +214,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(803, 539);
+        MainWindow->resize(813, 550);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         stackedWidget = new QStackedWidget(centralWidget);
@@ -189,7 +228,7 @@ public:
         stackedWidget->addWidget(page_2);
         stackedWidget_mainWidget = new QStackedWidget(centralWidget);
         stackedWidget_mainWidget->setObjectName(QStringLiteral("stackedWidget_mainWidget"));
-        stackedWidget_mainWidget->setGeometry(QRect(40, 40, 721, 451));
+        stackedWidget_mainWidget->setGeometry(QRect(50, 20, 721, 451));
         page_mainMenu = new QWidget();
         page_mainMenu->setObjectName(QStringLiteral("page_mainMenu"));
         layoutWidget = new QWidget(page_mainMenu);
@@ -251,10 +290,10 @@ public:
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        button_VisitAll0 = new QPushButton(layoutWidget1);
-        button_VisitAll0->setObjectName(QStringLiteral("button_VisitAll0"));
+        button_quickTrip0 = new QPushButton(layoutWidget1);
+        button_quickTrip0->setObjectName(QStringLiteral("button_quickTrip0"));
 
-        verticalLayout_2->addWidget(button_VisitAll0);
+        verticalLayout_2->addWidget(button_quickTrip0);
 
         button_customTrip0 = new QPushButton(layoutWidget1);
         button_customTrip0->setObjectName(QStringLiteral("button_customTrip0"));
@@ -287,15 +326,103 @@ public:
         label_planATripTitle = new QLabel(page_planATrip0);
         label_planATripTitle->setObjectName(QStringLiteral("label_planATripTitle"));
         label_planATripTitle->setGeometry(QRect(190, 50, 111, 16));
-        layoutWidget2 = new QWidget(page_planATrip0);
-        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(31, 371, 158, 25));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget2);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         stackedWidget_mainWidget->addWidget(page_planATrip0);
+        page_quickTrip = new QWidget();
+        page_quickTrip->setObjectName(QStringLiteral("page_quickTrip"));
+        scrollArea = new QScrollArea(page_quickTrip);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setGeometry(QRect(0, 40, 201, 321));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 199, 319));
+        gridLayout = new QGridLayout(scrollAreaWidgetContents);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        listView_quickTripStadiums = new QListView(scrollAreaWidgetContents);
+        listView_quickTripStadiums->setObjectName(QStringLiteral("listView_quickTripStadiums"));
+
+        gridLayout->addWidget(listView_quickTripStadiums, 0, 0, 1, 1);
+
+        scrollArea->setWidget(scrollAreaWidgetContents);
+        progressBar_quickTrip = new QProgressBar(page_quickTrip);
+        progressBar_quickTrip->setObjectName(QStringLiteral("progressBar_quickTrip"));
+        progressBar_quickTrip->setGeometry(QRect(120, 400, 491, 21));
+        progressBar_quickTrip->setValue(24);
+        label_fixed = new QLabel(page_quickTrip);
+        label_fixed->setObjectName(QStringLiteral("label_fixed"));
+        label_fixed->setGeometry(QRect(40, 20, 191, 16));
+        label_stadiumName = new QLabel(page_quickTrip);
+        label_stadiumName->setObjectName(QStringLiteral("label_stadiumName"));
+        label_stadiumName->setGeometry(QRect(320, 10, 281, 51));
+        label_fixed_2 = new QLabel(page_quickTrip);
+        label_fixed_2->setObjectName(QStringLiteral("label_fixed_2"));
+        label_fixed_2->setGeometry(QRect(240, 380, 131, 16));
+        label_quickTripDistanceTravelled = new QLabel(page_quickTrip);
+        label_quickTripDistanceTravelled->setObjectName(QStringLiteral("label_quickTripDistanceTravelled"));
+        label_quickTripDistanceTravelled->setGeometry(QRect(370, 380, 61, 16));
+        splitter = new QSplitter(page_quickTrip);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setGeometry(QRect(300, 230, 226, 32));
+        splitter->setOrientation(Qt::Horizontal);
+        pushButton_quickTripPrevious = new QPushButton(splitter);
+        pushButton_quickTripPrevious->setObjectName(QStringLiteral("pushButton_quickTripPrevious"));
+        splitter->addWidget(pushButton_quickTripPrevious);
+        pushButton_quickTripNext = new QPushButton(splitter);
+        pushButton_quickTripNext->setObjectName(QStringLiteral("pushButton_quickTripNext"));
+        splitter->addWidget(pushButton_quickTripNext);
+        stackedWidget_mainWidget->addWidget(page_quickTrip);
+        page_customTripMenu = new QWidget();
+        page_customTripMenu->setObjectName(QStringLiteral("page_customTripMenu"));
+        stackedWidget_2 = new QStackedWidget(page_customTripMenu);
+        stackedWidget_2->setObjectName(QStringLiteral("stackedWidget_2"));
+        stackedWidget_2->setGeometry(QRect(140, 50, 0, 0));
+        page_5 = new QWidget();
+        page_5->setObjectName(QStringLiteral("page_5"));
+        stackedWidget_2->addWidget(page_5);
+        page_12 = new QWidget();
+        page_12->setObjectName(QStringLiteral("page_12"));
+        stackedWidget_2->addWidget(page_12);
+        button_customTripBack = new QPushButton(page_customTripMenu);
+        button_customTripBack->setObjectName(QStringLiteral("button_customTripBack"));
+        button_customTripBack->setGeometry(QRect(30, 10, 75, 23));
+        label_planATripTitle_2 = new QLabel(page_customTripMenu);
+        label_planATripTitle_2->setObjectName(QStringLiteral("label_planATripTitle_2"));
+        label_planATripTitle_2->setGeometry(QRect(280, 40, 241, 16));
+        button_customTripMainMenu = new QPushButton(page_customTripMenu);
+        button_customTripMainMenu->setObjectName(QStringLiteral("button_customTripMainMenu"));
+        button_customTripMainMenu->setGeometry(QRect(100, 10, 75, 23));
+        label_3 = new QLabel(page_customTripMenu);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(50, 110, 171, 16));
+        label_4 = new QLabel(page_customTripMenu);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(50, 150, 301, 16));
+        comboBox_customTripSelectStadium = new QComboBox(page_customTripMenu);
+        comboBox_customTripSelectStadium->setObjectName(QStringLiteral("comboBox_customTripSelectStadium"));
+        comboBox_customTripSelectStadium->setGeometry(QRect(300, 100, 201, 31));
+        pushButton_customTripGo = new QPushButton(page_customTripMenu);
+        pushButton_customTripGo->setObjectName(QStringLiteral("pushButton_customTripGo"));
+        pushButton_customTripGo->setGeometry(QRect(560, 400, 101, 32));
+        scrollArea_2 = new QScrollArea(page_customTripMenu);
+        scrollArea_2->setObjectName(QStringLiteral("scrollArea_2"));
+        scrollArea_2->setGeometry(QRect(300, 150, 221, 218));
+        scrollArea_2->setWidgetResizable(true);
+        scrollAreaWidgetContents_3 = new QWidget();
+        scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 219, 216));
+        gridLayout_3 = new QGridLayout(scrollAreaWidgetContents_3);
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        listWidget_customTrip = new QListWidget(scrollAreaWidgetContents_3);
+        listWidget_customTrip->setObjectName(QStringLiteral("listWidget_customTrip"));
+
+        gridLayout_3->addWidget(listWidget_customTrip, 0, 0, 1, 1);
+
+        scrollArea_2->setWidget(scrollAreaWidgetContents_3);
+        stackedWidget_mainWidget->addWidget(page_customTripMenu);
         page_planATrip1 = new QWidget();
         page_planATrip1->setObjectName(QStringLiteral("page_planATrip1"));
         textBrowser = new QTextBrowser(page_planATrip1);
@@ -304,30 +431,30 @@ public:
         label_outputMilageLabel = new QLabel(page_planATrip1);
         label_outputMilageLabel->setObjectName(QStringLiteral("label_outputMilageLabel"));
         label_outputMilageLabel->setGeometry(QRect(210, 310, 161, 20));
-        layoutWidget3 = new QWidget(page_planATrip1);
-        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(380, 30, 141, 381));
-        verticalLayout_3 = new QVBoxLayout(layoutWidget3);
+        layoutWidget2 = new QWidget(page_planATrip1);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(380, 30, 141, 381));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget2);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        button_shop1 = new QPushButton(layoutWidget3);
+        button_shop1 = new QPushButton(layoutWidget2);
         button_shop1->setObjectName(QStringLiteral("button_shop1"));
 
         verticalLayout_3->addWidget(button_shop1);
 
-        button_searchForStadiums2 = new QPushButton(layoutWidget3);
+        button_searchForStadiums2 = new QPushButton(layoutWidget2);
         button_searchForStadiums2->setObjectName(QStringLiteral("button_searchForStadiums2"));
 
         verticalLayout_3->addWidget(button_searchForStadiums2);
 
-        button_help2 = new QPushButton(layoutWidget3);
+        button_help2 = new QPushButton(layoutWidget2);
         button_help2->setObjectName(QStringLiteral("button_help2"));
 
         verticalLayout_3->addWidget(button_help2);
 
-        lineEdit = new QLineEdit(layoutWidget3);
+        lineEdit = new QLineEdit(layoutWidget2);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
 
         verticalLayout_3->addWidget(lineEdit);
@@ -377,20 +504,20 @@ public:
         label_teamSearchTitle = new QLabel(page_searchForStadium0);
         label_teamSearchTitle->setObjectName(QStringLiteral("label_teamSearchTitle"));
         label_teamSearchTitle->setGeometry(QRect(200, 30, 361, 16));
-        layoutWidget4 = new QWidget(page_searchForStadium0);
-        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(20, 50, 491, 41));
-        horizontalLayout = new QHBoxLayout(layoutWidget4);
+        layoutWidget3 = new QWidget(page_searchForStadium0);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(20, 50, 491, 41));
+        horizontalLayout = new QHBoxLayout(layoutWidget3);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        lineEdit_searchLine0 = new QLineEdit(layoutWidget4);
+        lineEdit_searchLine0 = new QLineEdit(layoutWidget3);
         lineEdit_searchLine0->setObjectName(QStringLiteral("lineEdit_searchLine0"));
 
         horizontalLayout->addWidget(lineEdit_searchLine0);
 
-        button_search0 = new QPushButton(layoutWidget4);
+        button_search0 = new QPushButton(layoutWidget3);
         button_search0->setObjectName(QStringLiteral("button_search0"));
 
         horizontalLayout->addWidget(button_search0);
@@ -398,36 +525,18 @@ public:
         stackedWidget_mainWidget->addWidget(page_searchForStadium0);
         page_searchForStadium1 = new QWidget();
         page_searchForStadium1->setObjectName(QStringLiteral("page_searchForStadium1"));
-        label_3 = new QLabel(page_searchForStadium1);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(80, 50, 67, 17));
-        label_4 = new QLabel(page_searchForStadium1);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(80, 90, 67, 17));
+        label_31 = new QLabel(page_searchForStadium1);
+        label_31->setObjectName(QStringLiteral("label_31"));
+        label_31->setGeometry(QRect(80, 50, 67, 17));
+        label_41 = new QLabel(page_searchForStadium1);
+        label_41->setObjectName(QStringLiteral("label_41"));
+        label_41->setGeometry(QRect(80, 90, 67, 17));
         stackedWidget_mainWidget->addWidget(page_searchForStadium1);
         page_shop0 = new QWidget();
         page_shop0->setObjectName(QStringLiteral("page_shop0"));
         label_shopTitle = new QLabel(page_shop0);
         label_shopTitle->setObjectName(QStringLiteral("label_shopTitle"));
-        label_shopTitle->setGeometry(QRect(480, 20, 171, 21));
-        layoutWidget5 = new QWidget(page_shop0);
-        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
-        layoutWidget5->setGeometry(QRect(40, 50, 611, 33));
-        horizontalLayout_3 = new QHBoxLayout(layoutWidget5);
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        lineEdit_searchLine2 = new QLineEdit(layoutWidget5);
-        lineEdit_searchLine2->setObjectName(QStringLiteral("lineEdit_searchLine2"));
-
-        horizontalLayout_3->addWidget(lineEdit_searchLine2);
-
-        button_search2 = new QPushButton(layoutWidget5);
-        button_search2->setObjectName(QStringLiteral("button_search2"));
-
-        horizontalLayout_3->addWidget(button_search2);
-
+        label_shopTitle->setGeometry(QRect(360, 30, 171, 41));
         button_prev = new QPushButton(page_shop0);
         button_prev->setObjectName(QStringLiteral("button_prev"));
         button_prev->setGeometry(QRect(80, 20, 75, 23));
@@ -442,7 +551,7 @@ public:
         button_finish->setGeometry(QRect(220, 20, 75, 23));
         groupBox_souvenirs = new QGroupBox(page_shop0);
         groupBox_souvenirs->setObjectName(QStringLiteral("groupBox_souvenirs"));
-        groupBox_souvenirs->setGeometry(QRect(250, 200, 191, 111));
+        groupBox_souvenirs->setGeometry(QRect(420, 140, 191, 111));
         checkBox = new QCheckBox(groupBox_souvenirs);
         checkBox->setObjectName(QStringLiteral("checkBox"));
         checkBox->setGeometry(QRect(10, 20, 151, 17));
@@ -457,11 +566,29 @@ public:
         checkBox_4->setGeometry(QRect(10, 80, 171, 17));
         label_welcomeMessage = new QLabel(page_shop0);
         label_welcomeMessage->setObjectName(QStringLiteral("label_welcomeMessage"));
-        label_welcomeMessage->setGeometry(QRect(260, 120, 161, 71));
+        label_welcomeMessage->setGeometry(QRect(10, 50, 651, 51));
         button_addToCart = new QPushButton(page_shop0);
         button_addToCart->setObjectName(QStringLiteral("button_addToCart"));
-        button_addToCart->setGeometry(QRect(260, 310, 151, 23));
-        tableWidget = new QTableWidget(page_shop0);
+        button_addToCart->setGeometry(QRect(450, 260, 151, 23));
+        label = new QLabel(page_shop0);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(10, 120, 101, 16));
+        table_stadiumList = new QTableView(page_shop0);
+        table_stadiumList->setObjectName(QStringLiteral("table_stadiumList"));
+        table_stadiumList->setGeometry(QRect(10, 140, 351, 192));
+        stackedWidget_mainWidget->addWidget(page_shop0);
+        page_shoppingCart = new QWidget();
+        page_shoppingCart->setObjectName(QStringLiteral("page_shoppingCart"));
+        label_viewShoppingCart = new QLabel(page_shoppingCart);
+        label_viewShoppingCart->setObjectName(QStringLiteral("label_viewShoppingCart"));
+        label_viewShoppingCart->setGeometry(QRect(30, 20, 191, 31));
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(true);
+        font.setItalic(true);
+        font.setWeight(75);
+        label_viewShoppingCart->setFont(font);
+        tableWidget = new QTableWidget(page_shoppingCart);
         if (tableWidget->columnCount() < 4)
             tableWidget->setColumnCount(4);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
@@ -511,17 +638,38 @@ public:
         QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
         tableWidget->setItem(3, 0, __qtablewidgetitem21);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(430, 120, 291, 231));
-        label = new QLabel(page_shop0);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 100, 101, 16));
-        label_2 = new QLabel(page_shop0);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(640, 370, 81, 16));
-        table_stadiumList = new QTableView(page_shop0);
-        table_stadiumList->setObjectName(QStringLiteral("table_stadiumList"));
-        table_stadiumList->setGeometry(QRect(0, 130, 256, 192));
-        stackedWidget_mainWidget->addWidget(page_shop0);
+        tableWidget->setGeometry(QRect(30, 90, 291, 231));
+        label_total = new QLabel(page_shoppingCart);
+        label_total->setObjectName(QStringLiteral("label_total"));
+        label_total->setGeometry(QRect(240, 340, 81, 16));
+        button_cancel = new QPushButton(page_shoppingCart);
+        button_cancel->setObjectName(QStringLiteral("button_cancel"));
+        button_cancel->setGeometry(QRect(450, 260, 75, 23));
+        button_confirm = new QPushButton(page_shoppingCart);
+        button_confirm->setObjectName(QStringLiteral("button_confirm"));
+        button_confirm->setGeometry(QRect(550, 260, 75, 23));
+        label_name = new QLabel(page_shoppingCart);
+        label_name->setObjectName(QStringLiteral("label_name"));
+        label_name->setGeometry(QRect(350, 120, 47, 13));
+        label_creditCardNumber = new QLabel(page_shoppingCart);
+        label_creditCardNumber->setObjectName(QStringLiteral("label_creditCardNumber"));
+        label_creditCardNumber->setGeometry(QRect(350, 160, 111, 16));
+        label_expirationDate = new QLabel(page_shoppingCart);
+        label_expirationDate->setObjectName(QStringLiteral("label_expirationDate"));
+        label_expirationDate->setGeometry(QRect(350, 210, 91, 16));
+        comboBox_month = new QComboBox(page_shoppingCart);
+        comboBox_month->setObjectName(QStringLiteral("comboBox_month"));
+        comboBox_month->setGeometry(QRect(450, 210, 81, 22));
+        comboBox_year = new QComboBox(page_shoppingCart);
+        comboBox_year->setObjectName(QStringLiteral("comboBox_year"));
+        comboBox_year->setGeometry(QRect(550, 210, 69, 22));
+        lineEdit_creditCardNumber = new QLineEdit(page_shoppingCart);
+        lineEdit_creditCardNumber->setObjectName(QStringLiteral("lineEdit_creditCardNumber"));
+        lineEdit_creditCardNumber->setGeometry(QRect(450, 160, 171, 20));
+        lineEdit_name = new QLineEdit(page_shoppingCart);
+        lineEdit_name->setObjectName(QStringLiteral("lineEdit_name"));
+        lineEdit_name->setGeometry(QRect(450, 120, 171, 20));
+        stackedWidget_mainWidget->addWidget(page_shoppingCart);
         page_stadiumList = new QWidget();
         page_stadiumList->setObjectName(QStringLiteral("page_stadiumList"));
         label_stadiumListTitle = new QLabel(page_stadiumList);
@@ -550,20 +698,20 @@ public:
         button_mainMenu5 = new QPushButton(page_adminLogin0);
         button_mainMenu5->setObjectName(QStringLiteral("button_mainMenu5"));
         button_mainMenu5->setGeometry(QRect(70, 50, 75, 23));
-        layoutWidget6 = new QWidget(page_adminLogin0);
-        layoutWidget6->setObjectName(QStringLiteral("layoutWidget6"));
-        layoutWidget6->setGeometry(QRect(290, 150, 251, 141));
-        verticalLayout_7 = new QVBoxLayout(layoutWidget6);
+        layoutWidget4 = new QWidget(page_adminLogin0);
+        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(290, 150, 251, 141));
+        verticalLayout_7 = new QVBoxLayout(layoutWidget4);
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        lineEdit_username = new QLineEdit(layoutWidget6);
+        lineEdit_username = new QLineEdit(layoutWidget4);
         lineEdit_username->setObjectName(QStringLiteral("lineEdit_username"));
 
         verticalLayout_7->addWidget(lineEdit_username);
 
-        lineEdit_password = new QLineEdit(layoutWidget6);
+        lineEdit_password = new QLineEdit(layoutWidget4);
         lineEdit_password->setObjectName(QStringLiteral("lineEdit_password"));
 
         verticalLayout_7->addWidget(lineEdit_password);
@@ -574,30 +722,30 @@ public:
         button_back_adminMainMenu = new QPushButton(page_adminMainMenu);
         button_back_adminMainMenu->setObjectName(QStringLiteral("button_back_adminMainMenu"));
         button_back_adminMainMenu->setGeometry(QRect(30, 30, 75, 23));
-        layoutWidget7 = new QWidget(page_adminMainMenu);
-        layoutWidget7->setObjectName(QStringLiteral("layoutWidget7"));
-        layoutWidget7->setGeometry(QRect(250, 50, 261, 251));
-        verticalLayout_4 = new QVBoxLayout(layoutWidget7);
+        layoutWidget5 = new QWidget(page_adminMainMenu);
+        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
+        layoutWidget5->setGeometry(QRect(250, 50, 261, 251));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget5);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        button_addStadium0 = new QPushButton(layoutWidget7);
+        button_addStadium0 = new QPushButton(layoutWidget5);
         button_addStadium0->setObjectName(QStringLiteral("button_addStadium0"));
 
         verticalLayout_4->addWidget(button_addStadium0);
 
-        button_modifyStadium = new QPushButton(layoutWidget7);
+        button_modifyStadium = new QPushButton(layoutWidget5);
         button_modifyStadium->setObjectName(QStringLiteral("button_modifyStadium"));
 
         verticalLayout_4->addWidget(button_modifyStadium);
 
-        button_addSouviner = new QPushButton(layoutWidget7);
+        button_addSouviner = new QPushButton(layoutWidget5);
         button_addSouviner->setObjectName(QStringLiteral("button_addSouviner"));
 
         verticalLayout_4->addWidget(button_addSouviner);
 
-        button_modifySouviner = new QPushButton(layoutWidget7);
+        button_modifySouviner = new QPushButton(layoutWidget5);
         button_modifySouviner->setObjectName(QStringLiteral("button_modifySouviner"));
 
         verticalLayout_4->addWidget(button_modifySouviner);
@@ -613,68 +761,68 @@ public:
         label_titleAddStadium = new QLabel(frame_2);
         label_titleAddStadium->setObjectName(QStringLiteral("label_titleAddStadium"));
         label_titleAddStadium->setGeometry(QRect(70, 0, 251, 21));
-        layoutWidget8 = new QWidget(frame_2);
-        layoutWidget8->setObjectName(QStringLiteral("layoutWidget8"));
-        layoutWidget8->setGeometry(QRect(110, 40, 231, 241));
-        verticalLayout_5 = new QVBoxLayout(layoutWidget8);
+        layoutWidget6 = new QWidget(frame_2);
+        layoutWidget6->setObjectName(QStringLiteral("layoutWidget6"));
+        layoutWidget6->setGeometry(QRect(110, 40, 231, 241));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget6);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
-        lineEdit_stadiumName = new QLineEdit(layoutWidget8);
+        lineEdit_stadiumName = new QLineEdit(layoutWidget6);
         lineEdit_stadiumName->setObjectName(QStringLiteral("lineEdit_stadiumName"));
 
         verticalLayout_5->addWidget(lineEdit_stadiumName);
 
-        lineEdit_teamName = new QLineEdit(layoutWidget8);
+        lineEdit_teamName = new QLineEdit(layoutWidget6);
         lineEdit_teamName->setObjectName(QStringLiteral("lineEdit_teamName"));
 
         verticalLayout_5->addWidget(lineEdit_teamName);
 
-        lineEdit_cityName = new QLineEdit(layoutWidget8);
+        lineEdit_cityName = new QLineEdit(layoutWidget6);
         lineEdit_cityName->setObjectName(QStringLiteral("lineEdit_cityName"));
 
         verticalLayout_5->addWidget(lineEdit_cityName);
 
-        lineEdit_stateName = new QLineEdit(layoutWidget8);
+        lineEdit_stateName = new QLineEdit(layoutWidget6);
         lineEdit_stateName->setObjectName(QStringLiteral("lineEdit_stateName"));
 
         verticalLayout_5->addWidget(lineEdit_stateName);
 
-        lineEdit_grassType = new QLineEdit(layoutWidget8);
+        lineEdit_grassType = new QLineEdit(layoutWidget6);
         lineEdit_grassType->setObjectName(QStringLiteral("lineEdit_grassType"));
 
         verticalLayout_5->addWidget(lineEdit_grassType);
 
-        layoutWidget9 = new QWidget(frame_2);
-        layoutWidget9->setObjectName(QStringLiteral("layoutWidget9"));
-        layoutWidget9->setGeometry(QRect(21, 42, 109, 231));
-        verticalLayout_6 = new QVBoxLayout(layoutWidget9);
+        layoutWidget7 = new QWidget(frame_2);
+        layoutWidget7->setObjectName(QStringLiteral("layoutWidget7"));
+        layoutWidget7->setGeometry(QRect(21, 42, 109, 231));
+        verticalLayout_6 = new QVBoxLayout(layoutWidget7);
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setContentsMargins(11, 11, 11, 11);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        label_stadiumLabel = new QLabel(layoutWidget9);
+        label_stadiumLabel = new QLabel(layoutWidget7);
         label_stadiumLabel->setObjectName(QStringLiteral("label_stadiumLabel"));
 
         verticalLayout_6->addWidget(label_stadiumLabel);
 
-        label_teamNameLabel = new QLabel(layoutWidget9);
+        label_teamNameLabel = new QLabel(layoutWidget7);
         label_teamNameLabel->setObjectName(QStringLiteral("label_teamNameLabel"));
 
         verticalLayout_6->addWidget(label_teamNameLabel);
 
-        label_cityLabel = new QLabel(layoutWidget9);
+        label_cityLabel = new QLabel(layoutWidget7);
         label_cityLabel->setObjectName(QStringLiteral("label_cityLabel"));
 
         verticalLayout_6->addWidget(label_cityLabel);
 
-        label_stateLabel = new QLabel(layoutWidget9);
+        label_stateLabel = new QLabel(layoutWidget7);
         label_stateLabel->setObjectName(QStringLiteral("label_stateLabel"));
 
         verticalLayout_6->addWidget(label_stateLabel);
 
-        label_grassTypeLabel = new QLabel(layoutWidget9);
+        label_grassTypeLabel = new QLabel(layoutWidget7);
         label_grassTypeLabel->setObjectName(QStringLiteral("label_grassTypeLabel"));
 
         verticalLayout_6->addWidget(label_grassTypeLabel);
@@ -713,7 +861,7 @@ public:
 
         stackedWidget_mainWidget->setCurrentIndex(3);
         stackedWidget_mainMenu0->setCurrentIndex(0);
-        stackedWidget_planATrip0->setCurrentIndex(0);
+        stackedWidget_planATrip0->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -725,7 +873,7 @@ public:
         button_planATrip0->setText(QApplication::translate("MainWindow", "plan a trip", 0));
         button_searchForStadiums0->setText(QApplication::translate("MainWindow", "search for stadium", 0));
         button_viewStadiums->setText(QApplication::translate("MainWindow", "View stadiums", 0));
-        button_shop0->setText(QApplication::translate("MainWindow", "shop", 0));
+        button_shop0->setText(QApplication::translate("MainWindow", "Shop", 0));
         button_adminAccess0->setText(QApplication::translate("MainWindow", "Admin", 0));
         textBrowser_4->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -733,9 +881,9 @@ public:
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt;\">Temp - still thinking about what is going to go here</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;\"><br /></p></body></html>", 0));
-        label_titleMainMenu->setText(QApplication::translate("MainWindow", "MLB Vacation Planer", 0));
-        button_VisitAll0->setText(QApplication::translate("MainWindow", "visit all", 0));
-        button_customTrip0->setText(QApplication::translate("MainWindow", "custom trip", 0));
+        label_titleMainMenu->setText(QApplication::translate("MainWindow", "MLB Vacation Planner", 0));
+        button_quickTrip0->setText(QApplication::translate("MainWindow", "Quick Trip", 0));
+        button_customTrip0->setText(QApplication::translate("MainWindow", "Custom Trip", 0));
         button_searchForStadiums1->setText(QApplication::translate("MainWindow", "search for a stadium", 0));
         textBrowser_5->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -746,6 +894,18 @@ public:
         button_back0->setText(QApplication::translate("MainWindow", "Back", 0));
         button_mainMenu0->setText(QApplication::translate("MainWindow", "Main Menu", 0));
         label_planATripTitle->setText(QApplication::translate("MainWindow", "Plan A Trip", 0));
+        label_fixed->setText(QApplication::translate("MainWindow", "Stadium Sequence", 0));
+        label_stadiumName->setText(QApplication::translate("MainWindow", "Stadium", 0));
+        label_fixed_2->setText(QApplication::translate("MainWindow", "Distance Travelled: ", 0));
+        label_quickTripDistanceTravelled->setText(QApplication::translate("MainWindow", "Distance", 0));
+        pushButton_quickTripPrevious->setText(QApplication::translate("MainWindow", "Previous", 0));
+        pushButton_quickTripNext->setText(QApplication::translate("MainWindow", "Next", 0));
+        button_customTripBack->setText(QApplication::translate("MainWindow", "Back", 0));
+        label_planATripTitle_2->setText(QApplication::translate("MainWindow", "Design a Custom Trip!", 0));
+        button_customTripMainMenu->setText(QApplication::translate("MainWindow", "Main Menu", 0));
+        label_3->setText(QApplication::translate("MainWindow", "Select Starting Stadium: ", 0));
+        label_4->setText(QApplication::translate("MainWindow", "Select All Stadiums you wish to visit: ", 0));
+        pushButton_customTripGo->setText(QApplication::translate("MainWindow", "Go!", 0));
         textBrowser->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -777,10 +937,9 @@ public:
         button_mainMenu2->setText(QApplication::translate("MainWindow", "Main Menu", 0));
         label_teamSearchTitle->setText(QApplication::translate("MainWindow", "Team Search", 0));
         button_search0->setText(QApplication::translate("MainWindow", "Search", 0));
-        label_3->setText(QApplication::translate("MainWindow", "TextLabel", 0));
-        label_4->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        label_31->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        label_41->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         label_shopTitle->setText(QApplication::translate("MainWindow", "Shop", 0));
-        button_search2->setText(QApplication::translate("MainWindow", "Search", 0));
         button_prev->setText(QApplication::translate("MainWindow", "Prev", 0));
         button_mainMenu3->setText(QApplication::translate("MainWindow", "Main Menu", 0));
         button_next->setText(QApplication::translate("MainWindow", "Next", 0));
@@ -790,8 +949,10 @@ public:
         checkBox_2->setText(QApplication::translate("MainWindow", "Baseball Bat: $35.35", 0));
         checkBox_3->setText(QApplication::translate("MainWindow", "Team Pennant: $12.99", 0));
         checkBox_4->setText(QApplication::translate("MainWindow", "Autographed Baseball: $19.99", 0));
-        label_welcomeMessage->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Welcome to Angels Stadium!</p><p>Home of the Los Angeles </p><p>Angels.</p></body></html>", 0));
+        label_welcomeMessage->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Welcome to Angels Stadium! Home of the Los Angeles Angels.</p></body></html>", 0));
         button_addToCart->setText(QApplication::translate("MainWindow", "Add to Cart", 0));
+        label->setText(QApplication::translate("MainWindow", "Stadiums to Visit:", 0));
+        label_viewShoppingCart->setText(QApplication::translate("MainWindow", "View Shopping Cart", 0));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Team", 0));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
@@ -839,8 +1000,36 @@ public:
         ___qtablewidgetitem20->setText(QApplication::translate("MainWindow", "2", 0));
         tableWidget->setSortingEnabled(__sortingEnabled);
 
-        label->setText(QApplication::translate("MainWindow", "Stadiums to Visit:", 0));
-        label_2->setText(QApplication::translate("MainWindow", "Total: $74.33", 0));
+        label_total->setText(QApplication::translate("MainWindow", "Total: $74.33", 0));
+        button_cancel->setText(QApplication::translate("MainWindow", "Cancel", 0));
+        button_confirm->setText(QApplication::translate("MainWindow", "Confirm", 0));
+        label_name->setText(QApplication::translate("MainWindow", "Name:", 0));
+        label_creditCardNumber->setText(QApplication::translate("MainWindow", "Credit Card Number:", 0));
+        label_expirationDate->setText(QApplication::translate("MainWindow", "Expiration Date:", 0));
+        comboBox_month->clear();
+        comboBox_month->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "January", 0)
+         << QApplication::translate("MainWindow", "February", 0)
+         << QApplication::translate("MainWindow", "March", 0)
+         << QApplication::translate("MainWindow", "April", 0)
+         << QApplication::translate("MainWindow", "May", 0)
+         << QApplication::translate("MainWindow", "June", 0)
+         << QApplication::translate("MainWindow", "July", 0)
+         << QApplication::translate("MainWindow", "August", 0)
+         << QApplication::translate("MainWindow", "September", 0)
+         << QApplication::translate("MainWindow", "October", 0)
+         << QApplication::translate("MainWindow", "November", 0)
+         << QApplication::translate("MainWindow", "December", 0)
+        );
+        comboBox_year->clear();
+        comboBox_year->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "2015", 0)
+         << QApplication::translate("MainWindow", "2016", 0)
+         << QApplication::translate("MainWindow", "2017", 0)
+         << QApplication::translate("MainWindow", "2018", 0)
+         << QApplication::translate("MainWindow", "2019", 0)
+         << QApplication::translate("MainWindow", "2020", 0)
+        );
         label_stadiumListTitle->setText(QApplication::translate("MainWindow", "List of All Stadiums", 0));
         button_back4->setText(QApplication::translate("MainWindow", "Back", 0));
         button_mainMenu4->setText(QApplication::translate("MainWindow", "Main Menu", 0));

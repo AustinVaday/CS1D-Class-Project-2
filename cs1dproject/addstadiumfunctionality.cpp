@@ -36,33 +36,42 @@ void MainWindow::on_button_continueAddStadium_clicked()
     bool teamEmpty;
     bool cityEmpty;
     bool stateEmpty;
+    bool zipCode;
+    bool boxOffice;
+    bool dateOpened;
+    bool capacity;
+    bool league;
     bool grassTypeEmpty;
+    bool adjacentStadiums;
 
 
 
-    stadiumEmpty    = ui->lineEdit_stadiumName->text().isEmpty();
-    teamEmpty       = ui->lineEdit_teamName->text().isEmpty();
-    cityEmpty       = ui->lineEdit_cityName->text().isEmpty();
-    stateEmpty      = ui->lineEdit_stateName->text().isEmpty();
-    grassTypeEmpty  = ui->lineEdit_grassType->text().isEmpty();
+    stadiumEmpty     = ui->lineEdit_stadiumName->text().isEmpty();
+    teamEmpty        = ui->lineEdit_teamName->text().isEmpty();
+    cityEmpty        = ui->lineEdit_cityName->text().isEmpty();
+    stateEmpty       = ui->lineEdit_stateName->text().isEmpty();
+    zipCode          = ui->lineEdit_zipCode->text().isEmpty();
+    boxOffice        = ui->lineEdit_boxOfficeNum->text().isEmpty();
+    dateOpened       = ui->lineEdit_dateOpened->text().isEmpty();
+    capacity         = ui->lineEdit_capacity->text().isEmpty();
+    league           = ui->lineEdit_league->text().isEmpty();
+    grassTypeEmpty   = ui->lineEdit_grassType->text().isEmpty();
+    adjacentStadiums = ui->lineEdit_adjacentStadiums->text().isEmpty();
+
 
     // We need an id / key to identify the teams by / row
-    if(stadiumEmpty || teamEmpty || cityEmpty || stateEmpty || grassTypeEmpty)
+    if(stadiumEmpty   || teamEmpty     || cityEmpty  ||
+       stateEmpty     || zipCode       || boxOffice  ||
+       dateOpened     || capacity      || league     ||
+       grassTypeEmpty || adjacentStadiums)
     {
         QMessageBox::information(this, "Missing Entry", "Please enter the appropriate information in all fields");
     }
     else
     {
 
-       // stadium:: stadium(QString newStadiumName, QString newTeamName,  QString newCityName,
-         //                 QString newStateName,   QString newGrassType, int     newStadiumNumber)
-//        newStadium = new stadium(ui->lineEdit_stadiumName->text(),
-//                                 ui->lineEdit_teamName->text(),
-//                                 ui->lineEdit_cityName->text(),
-//                                 ui->lineEdit_stateName->text(),
-//                                 ui->lineEdit_grassType->text(),
-//                                 0);
-
+        QMessageBox::information(this, "Success", "Addition succesful. To add more edges, visit modify stadium")
+        //Must create a stadium here. pass the stadium object into a method that sends the data to the data base
 
     }
 

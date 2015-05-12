@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>12</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -529,7 +529,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>380</x>
         <y>30</y>
-        <width>141</width>
+        <width>174</width>
         <height>381</height>
        </rect>
       </property>
@@ -1457,10 +1457,10 @@ p, li { white-space: pre-wrap; }
      <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>10</x>
         <y>20</y>
-        <width>391</width>
-        <height>351</height>
+        <width>661</width>
+        <height>401</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -1472,9 +1472,9 @@ p, li { white-space: pre-wrap; }
       <widget class="QLabel" name="label_titleAddStadium">
        <property name="geometry">
         <rect>
-         <x>70</x>
-         <y>0</y>
-         <width>251</width>
+         <x>210</x>
+         <y>10</y>
+         <width>331</width>
          <height>21</height>
         </rect>
        </property>
@@ -1485,10 +1485,10 @@ p, li { white-space: pre-wrap; }
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>40</y>
-         <width>231</width>
-         <height>241</height>
+         <x>150</x>
+         <y>30</y>
+         <width>491</width>
+         <height>359</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1505,17 +1505,35 @@ p, li { white-space: pre-wrap; }
          <widget class="QLineEdit" name="lineEdit_stateName"/>
         </item>
         <item>
+         <widget class="QLineEdit" name="lineEdit_zipCode"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_boxOfficeNum"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_dateOpened"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_capacity"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_league"/>
+        </item>
+        <item>
          <widget class="QLineEdit" name="lineEdit_grassType"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_adjacentStadiums"/>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>21</x>
-         <y>42</y>
-         <width>109</width>
-         <height>231</height>
+         <x>40</x>
+         <y>30</y>
+         <width>112</width>
+         <height>361</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1548,61 +1566,64 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="label_zipCode">
+          <property name="text">
+           <string>Zip  Code:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Box Office #:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Date Opened:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Capacity:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>League:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="label_grassTypeLabel">
           <property name="text">
            <string>Grass Type : </string>
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Adjacent Stad:</string>
+          </property>
+         </widget>
+        </item>
        </layout>
-      </widget>
-     </widget>
-     <widget class="QFrame" name="frame_1">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>231</width>
-        <height>341</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QListWidget" name="listWidget_currentStadiums">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>60</y>
-         <width>211</width>
-         <height>241</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_currentStadiumList">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>201</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Current Stadium List</string>
-       </property>
       </widget>
      </widget>
      <widget class="QPushButton" name="button_continueAddStadium">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>380</y>
-        <width>261</width>
-        <height>31</height>
+        <x>280</x>
+        <y>430</y>
+        <width>161</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -1612,10 +1633,10 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="button_backAddStadium">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>75</width>
-        <height>23</height>
+        <x>10</x>
+        <y>0</y>
+        <width>71</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -1630,7 +1651,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>803</width>
+     <width>813</width>
      <height>25</height>
     </rect>
    </property>
