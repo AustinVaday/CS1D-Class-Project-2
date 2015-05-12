@@ -21,17 +21,7 @@
 void MainWindow::on_button_continueAddStadium_clicked()
 {
 
-
-
-
-//    QString stadium;
-//    QString team;
-//    QString city;
-//    QString state;
-//    QString grassType;
-
     stadium * newStadium;
-
     bool stadiumEmpty;
     bool teamEmpty;
     bool cityEmpty;
@@ -71,6 +61,23 @@ void MainWindow::on_button_continueAddStadium_clicked()
     {
 
         QMessageBox::information(this, "Success", "Addition succesful. To add more edges, visit modify stadium");
+
+
+        ui->page_addStadium->hide();
+        ui->page_adminMainMenu->show();
+
+        ui->lineEdit_stadiumName->clear();
+        ui->lineEdit_teamName->clear();
+        ui->lineEdit_cityName->clear();
+        ui->lineEdit_stateName->clear();
+        ui->lineEdit_zipCode->clear();
+        ui->lineEdit_boxOfficeNum->clear();
+        ui->lineEdit_dateOpened->clear();
+        ui->lineEdit_capacity->clear();
+        ui->lineEdit_league->clear();
+        ui->lineEdit_grassType->clear();
+        ui->lineEdit_adjacentStadiums->clear();
+
         //Must create a stadium here. pass the stadium object into a method that sends the data to the data base
 
     }
