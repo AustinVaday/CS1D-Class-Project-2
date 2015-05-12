@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	vector<Vertex<stadium> *> shortestPath;
 	float totalCost = 0;
 	ui->setupUi(this);
+    currentStadiumIndex = -1;
 
 	// Create Database and initialize the table model ( NOT VIEW )
     createConnection(true);  // put true to reinitialize the model
@@ -701,6 +702,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
     vector<QString> selectedStadiums;
     float cost = 0;
     float totalCost = 0;
+    int progressBarVal = 0;
 
     vector<Vertex<stadium> *> subsequentVertexVector;
     dijkstraVertexVector.clear();
@@ -763,6 +765,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
         // indicate first one is current stadium
         if (i == 0)
         {
+            currentStadiumIndex = 0;
             listItem->setTextColor(QColor("red"));
             listItem->setFont(QFont("bold"));
         }
@@ -777,10 +780,8 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
 
     // set the value of the progress bar.
-    ui->progressBar_customTrip->setValue(99);
-
-
-
+    progressBarVal = ((1.00) / dijkstraVertexVector.size()) * 100;
+    ui->progressBar_customTrip->setValue(progressBarVal);
 
 
     ui->page_customTripMenu->hide();
@@ -809,4 +810,34 @@ void MainWindow::on_button_customTripMainMenu_2_clicked()
 {
     ui->page_customTrip->hide();
     ui->page_mainMenu->show();
+}
+
+void MainWindow::on_pushButton_customTripNext_clicked()
+{
+    QListWidgetItem *listItem;
+
+    if (currentStadiumIndex == -1)
+    {
+        QMessageBox::information(this, "ERROR - on_pushButton_customTripNext_clicked()", "error");
+    }
+
+    // check if we're at last stadium --> disable the next button
+    if (currentStadiumIndex == int(dijkstraVertexVector.size() - 1))
+    {
+        ui->pushButton_customTripNext->setEnabled(false);
+    }
+    else
+    {
+        // set the old QListWidgetItem back to default
+        listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+        listItem->setTextColor(QColor("gray"));
+        listItem->setFont(QFont("none"));
+
+        currentStadiumIndex++;
+
+        // set the current QListWidgetItem to current stadium indicator
+        listItem = ui->listWidget_customTripSequence->item(currentStadiumIndex);
+        listItem->setTextColor(QColor("red"));
+        listItem->setFont(QFont("bold"));
+    }
 }

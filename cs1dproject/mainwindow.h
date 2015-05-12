@@ -130,6 +130,8 @@ class MainWindow : public QMainWindow
 
         void on_button_customTripMainMenu_2_clicked();
 
+        void on_pushButton_customTripNext_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
@@ -148,6 +150,8 @@ private:
         // dijkstra --> need vertices
         vector<Edge<Vertex<stadium>,float> *> mstEdgeVector;
         vector<Vertex<stadium> *> dijkstraVertexVector;
+
+        int currentStadiumIndex;
 
 
 };

@@ -522,9 +522,9 @@ p, li { white-space: pre-wrap; }
      <widget class="QProgressBar" name="progressBar_customTrip">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>40</x>
         <y>420</y>
-        <width>491</width>
+        <width>591</width>
         <height>21</height>
        </rect>
       </property>
@@ -562,7 +562,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>130</x>
         <y>390</y>
-        <width>61</width>
+        <width>101</width>
         <height>16</height>
        </rect>
       </property>
@@ -586,8 +586,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QSplitter" name="splitter_2">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>240</y>
+        <x>300</x>
+        <y>370</y>
         <width>226</width>
         <height>32</height>
        </rect>
@@ -600,7 +600,7 @@ p, li { white-space: pre-wrap; }
         <string>Previous</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_quickTripNext_2">
+      <widget class="QPushButton" name="pushButton_customTripNext">
        <property name="text">
         <string>Next</string>
        </property>
