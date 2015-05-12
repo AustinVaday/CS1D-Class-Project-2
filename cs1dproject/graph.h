@@ -1798,7 +1798,7 @@ void Graph<VertexType,WeightType>::MST(vector<Edge<Vertex<VertexType>,WeightType
     /* finds the vertex from the data provided, calls MST Computation */
     PrimJarnikMSTComputation();
 
-    qDebug() << left;
+//    qDebug() << left;
 
     // Output ALL MST paths to screen (and add up all total costs)
     for (edgeIt = edgeList.begin(); edgeIt != edgeList.end(); edgeIt++)
@@ -1822,9 +1822,9 @@ void Graph<VertexType,WeightType>::MST(vector<Edge<Vertex<VertexType>,WeightType
 
     }
 
-    qDebug() << "TOTAL MST COST IS: " << totalCost << endl;
+//    qDebug() << "TOTAL MST COST IS: " << totalCost << endl;
 
-    qDebug() << right;
+//    qDebug() << right;
 
 }
 
