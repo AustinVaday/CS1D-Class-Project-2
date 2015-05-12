@@ -2,31 +2,40 @@
 
 
 
-stadium MainWindow::searchForStadium(QString searchKey)
+stadium MainWindow::searchForStadium(string searchKey)
 {
+
+
 
     QHash<QString,stadium>::iterator stadiumIt; //Used to iterate through the hash table
     //Used for levenshteins algorithm
-    vector<int>     differenceArray;
-    vector<QString> stadiumNameArray;
-    vector<QString>::iterator nameIt;
+    vector<int>               differenceArray;
+    vector<string>            stadiumNameArray;
+    vector<string>::iterator  nameIt;
+    vector<int>::iterator     differenceIt;
+    int                       smallestDifferenceIndex = 999;
+    string                    temp;
 
     //Loads all stadium names into vector
     for(stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
     {
-        stadiumNameArray.push_back((*stadiumIt).getStadiumName());
+        stadiumNameArray.push_back(((*stadiumIt).getStadiumName()).toStdString());
     }
 
-    nameIt = stadiumNameArray;
+    nameIt = stadiumNameArray.begin();
 
 //    LevenshteinDistance(const string &s1, const string &s2)
-    while(nameIt != stadiumArray.end())
+    while(nameIt != stadiumNameArray.end())
     {
 
         differenceArray.push_back(LevenshteinDistance(searchKey, (*nameIt)));
-
         nameIt++;
     }
 
+    for(differenceIt  = differenceArray.begin(), nameIt = stadiumNameArray.begin();
+        differenceIt != differenceArray.end(),   nameIt != stadiumNameArray.end();
+        differenceIt++ , nameIt++)
+    {
 
+    }
 }

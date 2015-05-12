@@ -56,7 +56,7 @@ class MainWindow : public QMainWindow
 
 
 
-        stadium searchForStadium(QString searchKey);
+        stadium searchForStadium(string searchKey);
 
 
 

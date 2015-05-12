@@ -306,7 +306,7 @@ public:
         label_outputMilageLabel->setGeometry(QRect(210, 310, 161, 20));
         layoutWidget3 = new QWidget(page_planATrip1);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(380, 30, 151, 381));
+        layoutWidget3->setGeometry(QRect(380, 30, 141, 381));
         verticalLayout_3 = new QVBoxLayout(layoutWidget3);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -711,7 +711,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget_mainWidget->setCurrentIndex(0);
+        stackedWidget_mainWidget->setCurrentIndex(3);
         stackedWidget_mainMenu0->setCurrentIndex(0);
         stackedWidget_planATrip0->setCurrentIndex(0);
 

@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -292,7 +292,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>380</x>
         <y>30</y>
-        <width>151</width>
+        <width>141</width>
         <height>381</height>
        </rect>
       </property>
