@@ -600,3 +600,24 @@ void MainWindow::on_button_quickTrip0_clicked()
     ui->page_planATrip0->hide();
     ui->page_quickTrip->show();
 }
+
+void MainWindow::on_button_confirm_clicked()
+{
+    QMessageBox::information(this, tr("Confirm Order"), tr("Thank you for shopping with us. Your order has been placed."));
+    ui->page_shoppingCart->hide();
+    ui->page_shop0->show();
+}
+
+void MainWindow::on_button_cancel_clicked()
+{
+    QMessageBox::information(this, tr("Cancel Order"), tr("Your order has been canceled."));
+    ui->page_shoppingCart->hide();
+    ui->page_shop0->show();
+}
+
+void MainWindow::on_button_finish_clicked()
+{
+    refresh();
+    ui->page_shop0->hide();
+    ui->page_shoppingCart->show();
+}

@@ -112,6 +112,12 @@ class MainWindow : public QMainWindow
 
         void on_button_quickTrip0_clicked();
 
+        void on_button_confirm_clicked();
+
+        void on_button_cancel_clicked();
+
+        void on_button_finish_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
