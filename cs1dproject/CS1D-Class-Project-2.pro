@@ -23,7 +23,7 @@ HEADERS  += mainwindow.h\
     stadium.h\
     datatable.h \
     addstadiumfunctionality.h \
-    ui_mainwindow.h
+#    ui_mainwindow.h
 
 SOURCES += main.cpp\
         mainwindow.cpp\
@@ -38,3 +38,6 @@ SOURCES += main.cpp\
 FORMS    += mainwindow.ui
 
 DISTFILES += baseball_stadiums
+
+RESOURCES += \
+    teamImages.qrc

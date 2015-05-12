@@ -110,7 +110,19 @@ class MainWindow : public QMainWindow
 
 		void on_button_addStadium0_clicked();
 
-	private:
+        void on_button_quickTrip0_clicked();
+
+        void on_button_confirm_clicked();
+
+        void on_button_cancel_clicked();
+
+        void on_button_finish_clicked();
+
+        void on_button_customTrip0_clicked();
+
+        void on_pushButton_customTripGo_clicked();
+
+private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
 		QSqlTableModel* initModel;
@@ -121,6 +133,7 @@ class MainWindow : public QMainWindow
 		 */
 		Graph<stadium,float> graph;
         QHash<QString,stadium> stadiumHash;
+        QHash<QString,stadium>::iterator stadiumIt;
 };
 
 #endif // MAINWINDOW_H
