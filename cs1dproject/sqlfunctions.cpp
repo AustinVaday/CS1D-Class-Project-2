@@ -6,7 +6,7 @@
  * ------------------------------------------------------------------------
  * This is method will take a QSqlTableModel pointer and set it's primary
  * table to be "stadiums", our default server at the moment.
- *	It sets the column headers 0-8 for it's current order of names.
+ *	It sets the column headers 1-8 for it's current order of names.
  * This make it so you can modify it, we can intialize edit strategy to not
  * allow it to be editable.
  *************************************************************************/
@@ -23,7 +23,6 @@ void MainWindow::initializeModel(QSqlTableModel *initModel, bool editField)
 		initModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 	}
 	initModel->select();
-	initModel->setHeaderData(0, Qt::Horizontal, QObject::tr("Primary Key"));
 	initModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Stadium Names"));
 	initModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Team Names"));
 	initModel->setHeaderData(3, Qt::Horizontal, QObject::tr("Street"));
@@ -37,10 +36,35 @@ void MainWindow::initializeModel(QSqlTableModel *initModel, bool editField)
 	initModel->setHeaderData(11, Qt::Horizontal, QObject::tr("Surface"));
 	initModel->setHeaderData(12, Qt::Horizontal, QObject::tr("Vertices And Edges"));
 }
-
+/***************************************************************************
+ *  Initialize Souvenir
+ * ------------------------------------------------------------------------
+ * This is method will take a QSqlTableModel pointer and set it's primary
+ * table to be "souvenirs", our default server at the moment.
+ *	It sets the column headers 1-2 for it's current order of names.
+ * This make it so you can modify it, we can intialize edit strategy to not
+ * allow it to be editable.
+ *************************************************************************/
+void MainWindow::initializeSouvenir(QSqlTableModel *souvenirModel, bool editField)
+{
+    souvenirModel->setTable("souvenirs");
+    // Defaulted to be false!!
+    if(editField)
+    {
+        souvenirModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+    }
+    else
+    {
+        souvenirModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    }
+    souvenirModel->select();
+    souvenirModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
+    souvenirModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Price"));
+}
 void MainWindow::refresh()
 {
-	initModel->select();
+    souvenirModel->select();
+    initModel->select();
 }
 
 QTableView* MainWindow::createView(QSqlTableModel *model, const QString &title)

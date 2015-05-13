@@ -34,12 +34,12 @@ public:
     /**************************************************************************
      * Returns the price of souvenir
      *************************************************************************/
-	QString getPrice();
+    float getPrice();
 
 private:
     QString name_;
 	QSqlQuery query;
-	QString price_;
+    float price_;
 signals:
 
 public slots:
