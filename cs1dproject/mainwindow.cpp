@@ -1101,3 +1101,21 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
     ui->page_customTrip->show();
 
 }
+
+void MainWindow::on_button_MST_clicked()
+{
+    ui->page_planATrip0->hide();
+    ui->page_MST->show();
+}
+
+void MainWindow::on_button_backMST_clicked()
+{
+    ui->page_MST->hide();
+    ui->page_planATrip0->show();
+}
+
+void MainWindow::on_button_backMainMenuMST_clicked()
+{
+    ui->page_MST->hide();
+    ui->page_mainMenu->show();
+}
