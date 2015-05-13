@@ -1712,6 +1712,44 @@ p, li { white-space: pre-wrap; }
        </property>
       </item>
      </widget>
+     <widget class="QLabel" name="label_errorName">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>380</y>
+        <width>581</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Name Error Message</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_errorCardNumber">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>410</y>
+        <width>601</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Card Number Error Message</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_stadiumList">
      <widget class="QLabel" name="label_stadiumListTitle">

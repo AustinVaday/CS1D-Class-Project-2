@@ -712,15 +712,33 @@ void MainWindow::on_button_quickTrip0_clicked()
             ui->comboBox_quickTripSelectStadium->addItem((*stadiumIt).getStadiumName());
         }
     }
-
-
 }
 
 void MainWindow::on_button_confirm_clicked()
 {
-	QMessageBox::information(this, tr("Confirm Order"), tr("Thank you for shopping with us. Your order has been placed."));
-	ui->page_shoppingCart->hide();
-	ui->page_shop0->show();
+    // Clear label errors
+    ui->label_errorName->setText("");
+    ui->label_errorCardNumber->setText("");
+
+    // Check for any errors
+    if (ui->lineEdit_name->text() == "" || ui->lineEdit_creditCardNumber->text() == "")
+    {
+        // Determine which errors exist and display error message
+        if (ui->lineEdit_name->text() == "")
+        {
+            ui->label_errorName->setText("Please enter a valid name.");
+        }
+        if (ui->lineEdit_creditCardNumber->text() == "")
+        {
+            ui->label_errorCardNumber->setText("Please enter a valid credit card number.");
+        }
+    }
+    else
+    {
+        QMessageBox::information(this, tr("Confirm Order"), tr("Thank you for shopping with us. Your order has been placed."));
+        ui->page_shoppingCart->hide();
+        ui->page_shop0->show();
+    }
 }
 
 void MainWindow::on_button_cancel_clicked()
@@ -732,7 +750,11 @@ void MainWindow::on_button_cancel_clicked()
 
 void MainWindow::on_button_finish_clicked()
 {
-	refresh();
+    // Clear label errors
+    ui->label_errorName->setText("");
+    ui->label_errorCardNumber->setText("");
+
+    refresh();
 	ui->page_shop0->hide();
 	ui->page_shoppingCart->show();
 }
