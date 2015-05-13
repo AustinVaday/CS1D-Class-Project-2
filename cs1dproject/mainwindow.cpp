@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     currentStadiumIndex = -1;
 
 	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection(true);		// put true to reinitialize the model
+    createConnection(/*true*/);		// put true to reinitialize the model
 
 	initModel = new QSqlTableModel(0,db);
 	ui->tableView_stadiumList->setModel(initModel);
@@ -503,7 +503,6 @@ bool MainWindow::createConnection(bool restart)
 							   "'42,374', 'National', 'Grass', 'US Cellular "
 							   "Field;0~Kauffman Stadium;415~Miller Park;80')");
 	}
-
 	return tableMade;
 }
 
@@ -573,7 +572,6 @@ void MainWindow::fillGraph()
             vertexString2 = tempStringList[0];
             // second entry is an edge
             edgeString = tempStringList[1];
-
             tempStruct.otherVertex = vertexString2;
             tempStruct.edge = edgeString.toFloat();
             vertexEdgeVector.push_back(tempStruct);
@@ -728,9 +726,9 @@ void MainWindow::on_button_confirm_clicked()
         {
             ui->label_errorName->setText("Please enter a valid name.");
         }
-        if (ui->lineEdit_creditCardNumber->text() == "")
+        if (ui->lineEdit_creditCardNumber->text().length() != 16)
         {
-            ui->label_errorCardNumber->setText("Please enter a valid credit card number.");
+            ui->label_errorCardNumber->setText("Please enter a valid 16-digit credit card number.");
         }
     }
     else
@@ -781,11 +779,8 @@ void MainWindow::on_button_customTrip0_clicked()
 			listItem->setText((*stadiumIt).getStadiumName());
 
 			ui->listWidget_customTrip->addItem(listItem);
-
 		}
 	}
-
-
 }
 
 
