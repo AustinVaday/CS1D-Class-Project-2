@@ -162,4 +162,3 @@ void MainWindow::submit(QSqlTableModel* model)
 	}
 }
 
-

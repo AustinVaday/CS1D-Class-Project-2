@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QWidget>
 
+
 class dataTable : public QWidget
 {
 		Q_OBJECT
