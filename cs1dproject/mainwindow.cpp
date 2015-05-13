@@ -71,6 +71,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->stackedWidget_mainWidget->currentWidget()->hide();
 	ui->page_mainMenu->show();
 	ui->stackedWidget_mainWidget->show();
+
+    // Input mask gives type of input allowed for credit card number
+    ui->lineEdit_creditCardNumber->setInputMask("0000000000000000");
+    // Max length of input for credit card number
+    ui->lineEdit_creditCardNumber->setMaxLength(9999999999999999);
 }
 
 MainWindow::~MainWindow()
