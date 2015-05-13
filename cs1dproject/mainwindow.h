@@ -135,6 +135,12 @@ class MainWindow : public QMainWindow
 
         void on_pushButton_customTripPrevious_clicked();
 
+        void on_button_quickTripBack_clicked();
+
+        void on_button_quickTripMainMenu_clicked();
+
+        void on_pushButton_quickTripGo_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;

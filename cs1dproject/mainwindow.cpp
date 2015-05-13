@@ -694,7 +694,20 @@ qDebug() << "Stadium hash size: " << stadiumHash.size();
 void MainWindow::on_button_quickTrip0_clicked()
 {
 	ui->page_planATrip0->hide();
-	ui->page_quickTrip->show();
+    ui->page_quickTripMenu->show();
+
+    ui->comboBox_quickTripSelectStadium->clear();
+
+    // add in all stadiums to combobox
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_quickTripSelectStadium->addItem((*stadiumIt).getStadiumName());
+        }
+    }
+
+
 }
 
 void MainWindow::on_button_confirm_clicked()
@@ -1009,4 +1022,72 @@ void MainWindow::SetProgressBar(int location)
     int progressBarVal = ((float(location + 1)) / dijkstraVertexVector.size()) * 100;
     ui->progressBar_customTrip->setValue(progressBarVal);
 
+}
+
+void MainWindow::on_button_quickTripBack_clicked()
+{
+    ui->page_quickTripMenu->hide();
+    ui->page_planATrip0->show();
+}
+
+void MainWindow::on_button_quickTripMainMenu_clicked()
+{
+    ui->page_quickTripMenu->hide();
+    ui->page_mainMenu->show();
+}
+
+void MainWindow::on_pushButton_quickTripGo_clicked()
+{
+    QString selectedStadium = ui->comboBox_quickTripSelectStadium->currentText();
+//vector<Vertex<stadium> *>::iterator vertexVecIt;
+    float totalCost = 0;
+
+    dijkstraVertexVector.clear();
+    currentStadiumIndex = -1;
+
+    graph.DijkstraShortestPath(*(stadiumHash.find("Angels Stadium of Anaheim")), *(stadiumHash.find(selectedStadium)), dijkstraVertexVector, totalCost);
+
+    // fill out QListWidget with dijkstra sequence.
+    QListWidgetItem *listItem;
+
+    ui->listWidget_customTripSequence->clear();
+
+    for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+    {
+
+
+        listItem = new QListWidgetItem;
+        listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+        listItem->setFlags(listItem->flags() & !Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+
+        // indicate first one is current stadium
+        if (i == 0)
+        {
+            currentStadiumIndex = 0;
+            listItem->setTextColor(QColor("red"));
+            listItem->setFont(QFont("bold"));
+
+            ui->label_customTripStadiumName->setText(listItem->text());
+            ui->pushButton_customTripPrevious->setEnabled(false);
+            ui->pushButton_customTripNext->setEnabled(false);
+
+
+        }
+        else
+        {
+            ui->pushButton_customTripNext->setEnabled(true);
+
+            listItem->setTextColor(QColor("gray"));
+        }
+        ui->listWidget_customTripSequence->addItem(listItem);
+    }
+
+    ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+
+
+    // set the value of the progress bar.
+    SetProgressBar(-1);
+
+    ui->page_quickTripMenu->hide();
+    ui->page_customTrip->show();
 }
