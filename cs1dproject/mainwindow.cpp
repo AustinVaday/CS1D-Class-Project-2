@@ -881,7 +881,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
             listItem = new QListWidgetItem;
             listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
-            listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+            listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
 
             // indicate first one is current stadium
             if (i == 0)
