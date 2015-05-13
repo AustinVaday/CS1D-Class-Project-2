@@ -243,7 +243,7 @@ int Heap<KeyType, DataType>::getNumElements()
 template <typename KeyType, typename DataType>
 int Heap<KeyType, DataType>::getHeight()
 {
-    //return log2(numElements);
+    return log2(numElements);
 }
 
 /**************************************************************************
