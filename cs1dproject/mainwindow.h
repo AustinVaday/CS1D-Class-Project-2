@@ -161,7 +161,7 @@ private:
         vector<Vertex<stadium> *> dijkstraVertexVector;
 
         int currentStadiumIndex;
-
+        bool quickTrip;
 
 };
 

@@ -15,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
 	vector<Vertex<stadium> *> shortestPath;
-	float totalCost = 0;
+//	float totalCost = 0;
+    quickTrip  = false;
 	ui->setupUi(this);
     currentStadiumIndex = -1;
 
@@ -903,7 +904,16 @@ void MainWindow::on_button_customTripMainMenu_clicked()
 void MainWindow::on_button_customTripBack_2_clicked()
 {
     ui->page_customTrip->hide();
-    ui->page_customTripMenu->show();
+
+    if (quickTrip)
+    {
+        ui->page_quickTripMenu->show();
+        quickTrip = false;
+    }
+    else
+    {
+        ui->page_customTripMenu->show();
+    }
 }
 
 void MainWindow::on_button_customTripMainMenu_2_clicked()
@@ -1039,7 +1049,6 @@ void MainWindow::on_button_quickTripMainMenu_clicked()
 void MainWindow::on_pushButton_quickTripGo_clicked()
 {
     QString selectedStadium = ui->comboBox_quickTripSelectStadium->currentText();
-//vector<Vertex<stadium> *>::iterator vertexVecIt;
     float totalCost = 0;
 
     dijkstraVertexVector.clear();
@@ -1054,8 +1063,6 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
 
     for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
     {
-
-
         listItem = new QListWidgetItem;
         listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
         listItem->setFlags(listItem->flags() & !Qt::ItemIsEditable & !Qt::ItemIsSelectable );
@@ -1071,7 +1078,6 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
             ui->pushButton_customTripPrevious->setEnabled(false);
             ui->pushButton_customTripNext->setEnabled(false);
 
-
         }
         else
         {
@@ -1079,6 +1085,7 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
 
             listItem->setTextColor(QColor("gray"));
         }
+
         ui->listWidget_customTripSequence->addItem(listItem);
     }
 
@@ -1088,6 +1095,9 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
     // set the value of the progress bar.
     SetProgressBar(-1);
 
+    quickTrip = true;
+
     ui->page_quickTripMenu->hide();
     ui->page_customTrip->show();
+
 }
