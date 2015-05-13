@@ -756,9 +756,12 @@ void MainWindow::on_pushButton_customTripGo_clicked()
         float totalCost = 0;
 
         vector<Vertex<stadium> *> subsequentVertexVector;
+        vector<Vertex<stadium> *>::iterator vertexVecIt;
         dijkstraVertexVector.clear();
         currentStadiumIndex = -1;
 
+        // push back starting stadium
+        selectedStadiums.push_back(startStadium);
 
         // retrieve all selected stadiums
         QListWidgetItem *currentItem;
@@ -774,9 +777,12 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
         }
 
-        for (unsigned int i = 0; i < selectedStadiums.size(); i++)
+        // loop until stadium before last selected stadium is reached (need i+1)
+        for (unsigned int i = 0; i < selectedStadiums.size() - 1; i++)
         {
-            graph.DijkstraShortestPath(*(stadiumHash.find(startStadium)), *(stadiumHash.find(selectedStadiums[i])), subsequentVertexVector, cost);
+            subsequentVertexVector.clear();
+
+            graph.DijkstraShortestPath(*(stadiumHash.find(selectedStadiums[i])), *(stadiumHash.find(selectedStadiums[i + 1])), subsequentVertexVector, cost);
 
             qDebug() << "Cost is: " << cost;
             totalCost = totalCost + cost;
@@ -787,23 +793,41 @@ void MainWindow::on_pushButton_customTripGo_clicked()
             {
                 dijkstraVertexVector.push_back(subsequentVertexVector[j]);
 
-                if ( j != 0)
-                {
-                    // prevent subsequent duplicates by seeing if stadiums entered in twice
-                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
-                    {
-                        dijkstraVertexVector.pop_back();
-                    }
-                }
+//                if ( j != 0)
+//                {
+//                    // prevent subsequent duplicates by seeing if stadiums entered in twice
+//                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
+//                    {
+//                        dijkstraVertexVector.pop_back();
+//                    }
+//                }
 
             }
 
             // update new current stadium
-            startStadium = selectedStadiums[i];
+//            startStadium = selectedStadiums[i];
         }
 
 
+        // remove duplicates in dijkstraVertexVector ...
+        for (vertexVecIt = dijkstraVertexVector.begin();
+             vertexVecIt != dijkstraVertexVector.end();
+             vertexVecIt++)
+        {
 
+            if (vertexVecIt + 1 != dijkstraVertexVector.end())
+            {
+                qDebug() << "Comparing " << ***vertexVecIt << " and " << ***(vertexVecIt + 1);
+                // prevent subsequent duplicates by seeing if stadiums entered in twice
+                if (***(vertexVecIt) == ***(vertexVecIt + 1))
+                {
+                    dijkstraVertexVector.erase(vertexVecIt);
+                    qDebug() << "Erasing " << (***vertexVecIt).getStadiumName();
+                }
+
+            }
+
+        }
 
         // fill out QListWidget with dijkstra sequence.
         QListWidgetItem *listItem;
