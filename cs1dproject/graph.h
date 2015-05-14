@@ -550,7 +550,7 @@ class Graph
         void Dijkstra(VertexType sourceVertexData);
         void DijkstraShortestPath(VertexType sourceVertexData, VertexType endVertexData, vector<Vertex<VertexType> *> &vertexVector, WeightType &totalCost);
 
-        void MST(vector<Edge<Vertex<VertexType>,WeightType> *> &edgeVector, WeightType &totalCost);
+        void MST(vector<Edge<VertexType,WeightType> *> &edgeVector, WeightType &totalCost);
 
         /******************************************************************
          * Display-to-console methods
@@ -1781,7 +1781,7 @@ void Graph<VertexType,WeightType>::DijkstraShortestPath(VertexType sourceVertexD
 
 
 template <typename VertexType, typename WeightType>
-void Graph<VertexType,WeightType>::MST(vector<Edge<Vertex<VertexType>,WeightType> *> &edgeVector, WeightType &totalCost)
+void Graph<VertexType,WeightType>::MST(vector<Edge<VertexType,WeightType> *> &edgeVector, WeightType &totalCost)
 
 
 {
@@ -1813,18 +1813,15 @@ void Graph<VertexType,WeightType>::MST(vector<Edge<Vertex<VertexType>,WeightType
 
             edgeVector.push_back(currentEdge);
 
-//            qDebug() << "MST edge between ";
-//            qDebug() << /*setw(8) << */ **(currentEdge->getVertex1())  << " and ";
-//            qDebug() << /*setw(8) << */ **(currentEdge->getVertex2())  << " has cost: ";
-//            qDebug() << cost << endl;
+            qDebug() << "MST edge between ";
+            qDebug() << /*setw(8) << */ **(currentEdge->getVertex1())  << " and ";
+            qDebug() << /*setw(8) << */ **(currentEdge->getVertex2())  << " has cost: ";
+            qDebug() << currentEdge->getWeight() << endl;
 
         }
 
     }
 
-//    qDebug() << "TOTAL MST COST IS: " << totalCost << endl;
-
-//    qDebug() << right;
 
 }
 

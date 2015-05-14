@@ -51,6 +51,7 @@ class MainWindow : public QMainWindow
 		bool setStadiumName(int stadiumId,const QString &teamName);
 
 		void initializeModel(QSqlTableModel *initModel, bool editField = true);
+        void initializeSouvenir(QSqlTableModel *initModel, bool editField = true);
 
 		QTableView* createView(QSqlTableModel *initModel, const QString &title);
 		// This method will take a model foo and give it a title foobar.
@@ -67,6 +68,8 @@ class MainWindow : public QMainWindow
 		bool addStadium(stadium stadiumData);
 
         void SetProgressBar(int location);
+
+        void initializeShoppingCart(QSqlTableModel *cartModel, bool editField);
 
 	private slots:
 		void on_button_back0_clicked();
@@ -135,12 +138,26 @@ class MainWindow : public QMainWindow
 
         void on_pushButton_customTripPrevious_clicked();
 
+        void on_button_quickTripBack_clicked();
+
+        void on_button_quickTripMainMenu_clicked();
+
+        void on_pushButton_quickTripGo_clicked();
+
+        void on_button_MST_clicked();
+
+        void on_button_backMST_clicked();
+
+        void on_button_backMainMenuMST_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
-		QSqlTableModel* initModel;
 		QTableView* viewModel;
-		/*
+        QSqlTableModel* souvenirModel;
+        QSqlTableModel* initModel;
+        QSqlTableModel* cartModel;
+        /*
 		 * Vertex: stadium
 		 * Edge: float (could be int, but let's make it generic)
 		 */
@@ -151,11 +168,11 @@ private:
         // used to store most recent graph algorithm (global to this class)
         // mst      --> need edges
         // dijkstra --> need vertices
-        vector<Edge<Vertex<stadium>,float> *> mstEdgeVector;
+        vector<Edge<stadium,float> *> mstEdgeVector;
         vector<Vertex<stadium> *> dijkstraVertexVector;
 
         int currentStadiumIndex;
-
+        bool quickTrip;
 
 };
 

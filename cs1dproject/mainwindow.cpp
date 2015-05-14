@@ -10,233 +10,239 @@
 #include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) :
-	QMainWindow(parent),
-	ui(new Ui::MainWindow),
-	graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
+    QMainWindow(parent),
+    ui(new Ui::MainWindow),
+    graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
-	vector<Vertex<stadium> *> shortestPath;
-	float totalCost = 0;
-	ui->setupUi(this);
+    vector<Vertex<stadium> *> shortestPath;
+    //	float totalCost = 0;
+    quickTrip  = false;
+    ui->setupUi(this);
     currentStadiumIndex = -1;
 
-	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection(/*true*/);		// put true to reinitialize the model
+    // Create Database and initialize the table model ( NOT VIEW )
+    createConnection(true);		// put true to reinitialize the model
 
-	initModel = new QSqlTableModel(0,db);
-	ui->tableView_stadiumList->setModel(initModel);
-	initializeModel(initModel); // Pass in false if you want to make it only
-	//	only editable when submit is clicked.
+    initModel = new QSqlTableModel(0,db);
+    souvenirModel = new QSqlTableModel(0,db);
+    //    ui->tableView_stadiumList->setModel(initModel);
+    initializeModel(initModel); // Pass in false if you want to make it only
+                                //	only editable when submit is clicked.
+    initializeSouvenir(souvenirModel);
+    ui->tableView_stadiumList->setModel(souvenirModel);
+    ui->tableView_stadiumList->setSortingEnabled(true);
 
-	fillGraph();
+    fillGraph();
 
-	// Testing ...
-	//	qDebug() << "TESTING DIJKSTRA's: ";
-	//	stadium sourceStadium;
-	//	sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-	//	sourceStadium.setStadiumNumber(5);
+    // Testing ...
+    //	qDebug() << "TESTING DIJKSTRA's: ";
+    //	stadium sourceStadium;
+    //	sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+    //	sourceStadium.setStadiumNumber(5);
 
-	//	stadium endStadium;
-	//	endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-	//	endStadium.setStadiumNumber(2);
+    //	stadium endStadium;
+    //	endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
+    //	endStadium.setStadiumNumber(2);
 
-	//	graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
+    //	graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
 
-	//	qDebug() << "Displaying shortest path from shortestPath list!";
+    //	qDebug() << "Displaying shortest path from shortestPath list!";
 
-	//	for (int i = 0; i < shortestPath.size(); i++)
-	//	{
-	//		// *(shortestPath[i]) returns a stadium POINTER
-	//		qDebug() << *(*(shortestPath[i]));
-	//		qDebug() << " --> ";
-	//	}
+    //	for (int i = 0; i < shortestPath.size(); i++)
+    //	{
+    //		// *(shortestPath[i]) returns a stadium POINTER
+    //		qDebug() << *(*(shortestPath[i]));
+    //		qDebug() << " --> ";
+    //	}
 
-	//	qDebug() << "And the total cost is: " << totalCost;
+    //	qDebug() << "And the total cost is: " << totalCost;
 
 
-	//Initializations of fonts for line edits, etc...
-	QFont titleFont;
-	titleFont.setPointSize(15);
-	titleFont.setBold(true);
-	titleFont.setItalic(true);
+    //Initializations of fonts for line edits, etc...
+    QFont titleFont;
+    titleFont.setPointSize(15);
+    titleFont.setBold(true);
+    titleFont.setItalic(true);
 
-	ui->label_titleMainMenu->setFont(titleFont);
-	ui->label_adminLoginTitle->setFont(titleFont);
-	ui->label_planATripTitle->setFont(titleFont);
-	ui->label_teamSearchTitle->setFont(titleFont);
-	ui->label_stadiumListTitle->setFont(titleFont);
-	ui->label_shopTitle->setFont(titleFont);
-	// setup ui
+    ui->label_titleMainMenu->setFont(titleFont);
+    ui->label_adminLoginTitle->setFont(titleFont);
+    ui->label_planATripTitle->setFont(titleFont);
+    ui->label_teamSearchTitle->setFont(titleFont);
+    ui->label_stadiumListTitle->setFont(titleFont);
+    ui->label_shopTitle->setFont(titleFont);
+    // setup ui
 
-	ui->stackedWidget_mainWidget->currentWidget()->hide();
-	ui->page_mainMenu->show();
-	ui->stackedWidget_mainWidget->show();
+    ui->stackedWidget_mainWidget->currentWidget()->hide();
+    ui->page_mainMenu->show();
+    ui->stackedWidget_mainWidget->show();
+
+    // Input mask gives type of input allowed for credit card number
+    ui->lineEdit_creditCardNumber->setInputMask("0000000000000000");
 }
 
 MainWindow::~MainWindow()
 {
-	delete ui;
+    delete ui;
 }
 
 void MainWindow::on_button_back0_clicked()
 {
-	refresh();
-	ui->page_planATrip0->hide();
-	ui->page_mainMenu->show();
+    refresh();
+    ui->page_planATrip0->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_planATrip0_clicked()
 {
-	refresh();
-	ui->page_mainMenu->hide();
-	ui->page_planATrip0->show();
+    refresh();
+    ui->page_mainMenu->hide();
+    ui->page_planATrip0->show();
 }
 
 void MainWindow::on_button_searchForStadiums0_clicked()
 {
-	refresh();
-	ui->page_mainMenu->hide();
-	ui->page_searchForStadium0->show();
+    refresh();
+    ui->page_mainMenu->hide();
+    ui->page_searchForStadium0->show();
 }
 
 void MainWindow::on_button_mainMenu0_clicked()
 {
-	refresh();
-	ui->page_planATrip0->hide();
-	ui->page_mainMenu->show();
+    refresh();
+    ui->page_planATrip0->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_back1_clicked()
 {
-	refresh();
-	ui->page_planATrip1->hide();
-	ui->page_planATrip0->show();
+    refresh();
+    ui->page_planATrip1->hide();
+    ui->page_planATrip0->show();
 }
 
 void MainWindow::on_button_mainMenu1_clicked()
 {
-	refresh();
-	ui->page_planATrip1->hide();
-	ui->page_planATrip0->show();}
+    refresh();
+    ui->page_planATrip1->hide();
+    ui->page_planATrip0->show();}
 
 void MainWindow::on_button_mainMenu2_clicked()
 {
-	refresh();
-	ui->page_searchForStadium0->hide();
-	ui->page_mainMenu->show();
+    refresh();
+    ui->page_searchForStadium0->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_back2_clicked()
 {
-	refresh();
-	ui->page_searchForStadium0->hide();
-	ui->page_mainMenu->show();
+    refresh();
+    ui->page_searchForStadium0->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_mainMenu3_clicked()
 {
-	refresh();
-	ui->page_shop0->hide();
-	ui->page_mainMenu->show();
+    refresh();
+    ui->page_shop0->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_back3_clicked()
 {
-	refresh();
+    refresh();
 
-	ui->page_shop0->hide();
-	ui->page_mainMenu->show();
+    ui->page_shop0->hide();
+    ui->page_mainMenu->show();
 
 }
 
 void MainWindow::on_button_mainMenu4_clicked()
 {
-	refresh();
-	ui->page_stadiumList->hide();
-	ui->page_mainMenu->show();
+    refresh();
+    ui->page_stadiumList->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_back4_clicked()
 {
-	refresh();
-	ui->page_stadiumList->hide();
-	ui->page_mainMenu->show();
+    refresh();
+    ui->page_stadiumList->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_viewStadiums_clicked()
 {
-	//	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
+    //	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
 
-//	QTableView *view = createView(initModel, "Stadiums");
-//	view->show();
-ui->tableView_stadiumList->show();
-	ui->page_mainMenu->hide();
-	ui->page_stadiumList->show();
-	refresh();
+    //	QTableView *view = createView(initModel, "Stadiums");
+    //	view->show();
+    ui->tableView_stadiumList->show();
+    ui->page_mainMenu->hide();
+    ui->page_stadiumList->show();
+    refresh();
 }
 
 void MainWindow::on_button_shop0_clicked()
 {
-	refresh();
-	//	QTableView* view = createView(model, "Stadiums");
-	ui->page_mainMenu->hide();
-	ui->page_shop0->show();
+    refresh();
+    //	QTableView* view = createView(model, "Stadiums");
+    ui->page_mainMenu->hide();
+    ui->page_shop0->show();
 }
 
 void MainWindow::on_button_adminAccess0_clicked()
 {
-	refresh();
-	ui->page_mainMenu->hide();
-	ui->page_adminLogin0->show();
+    refresh();
+    ui->page_mainMenu->hide();
+    ui->page_adminLogin0->show();
 }
 
 void MainWindow::on_button_mainMenu5_clicked()
 {
-	ui->page_adminLogin0->hide();
-	ui->page_mainMenu->show();
+    ui->page_adminLogin0->hide();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_login_clicked()
 {
-	//Login button pushed
-	QString username      = "admin";
-	QString password      = "password";
-	QString inputName     = ui->lineEdit_username->text();
-	QString inputPassword = ui->lineEdit_password->text();
-	if(inputName != username || inputPassword != password)
-	{
-		QMessageBox::information(this, "Login Error", "incorrect Username or Password");
-		ui->lineEdit_password->clear();
-		ui->lineEdit_username->clear();
-	}
-	else
-	{
-		//qDebug() << "Set name in admin: " << setStadiumName;
-		ui->page_adminLogin0->hide();
-		ui->page_adminMainMenu->show();
-	}
+    //Login button pushed
+    QString username      = "admin";
+    QString password      = "password";
+    QString inputName     = ui->lineEdit_username->text();
+    QString inputPassword = ui->lineEdit_password->text();
+    if(inputName != username || inputPassword != password)
+    {
+        QMessageBox::information(this, "Login Error", "incorrect Username or Password");
+        ui->lineEdit_password->clear();
+        ui->lineEdit_username->clear();
+    }
+    else
+    {
+        //qDebug() << "Set name in admin: " << setStadiumName;
+        ui->page_adminLogin0->hide();
+        ui->page_adminMainMenu->show();
+    }
 
 }
 
 void MainWindow::on_button_back_adminMainMenu_clicked()
 {
-	ui->page_adminMainMenu->hide();
-	ui->page_adminLogin0->show();
+    ui->page_adminMainMenu->hide();
+    ui->page_adminLogin0->show();
 }
 
 
 void MainWindow::on_button_backAddStadium_clicked()
 {
-	ui->page_addStadium->hide();
-	ui->page_adminMainMenu->show();
+    ui->page_addStadium->hide();
+    ui->page_adminMainMenu->show();
 }
 
 void MainWindow::on_button_addStadium0_clicked()
 {
-	ui->page_adminMainMenu->hide();
-	ui->page_addStadium->show();
+    ui->page_adminMainMenu->hide();
+    ui->page_addStadium->show();
 }
-
-
 void MainWindow::fillGraph()
 {
     qDebug() << "filling out the graph...";
@@ -244,11 +250,11 @@ void MainWindow::fillGraph()
 
 
     QSqlQuery query = QSqlQuery(db);
-//    QString dbString;
+    //    QString dbString;
     vector<vertexEdgeStruct> vertexEdgeVector;
     vector<vertexEdgeStruct>::iterator structIt;
     vertexEdgeStruct tempStruct;
-//    QString vertexString1;
+    //    QString vertexString1;
     QString vertexString2;
     QString edgeString;
     QStringList stringList;
@@ -303,7 +309,6 @@ void MainWindow::fillGraph()
             vertexString2 = tempStringList[0];
             // second entry is an edge
             edgeString = tempStringList[1];
-
             tempStruct.otherVertex = vertexString2;
             tempStruct.edge = edgeString.toFloat();
             vertexEdgeVector.push_back(tempStruct);
@@ -324,14 +329,14 @@ void MainWindow::fillGraph()
                                    league,
                                    surface,
                                    vertexEdgeVector
-                                  );
+                                   );
 
         // push back an object (force a pass by copy)
-//        stadiumHash.insert(stadium(*stadiumObj), stadiumName);
+        //        stadiumHash.insert(stadium(*stadiumObj), stadiumName);
         stadiumHash.insert(stadiumName,  stadium(*stadiumObj));
 
         // delete stadium object
-           delete stadiumObj;
+        delete stadiumObj;
 
         vertexEdgeVector.clear();
 
@@ -339,21 +344,21 @@ void MainWindow::fillGraph()
 
 
 
-//    // create all stadium objects
+    //    // create all stadium objects
 
-//    /****************************************
-//     *  Temp -- dummy data
-//     * *************************************/
-//    stadium stadiumDummyArray[10];
+    //    /****************************************
+    //     *  Temp -- dummy data
+    //     * *************************************/
+    //    stadium stadiumDummyArray[10];
 
-//    //fill out stadium name and
-//    for (int i = 0; i < 10; i++)
-//    {
+    //    //fill out stadium name and
+    //    for (int i = 0; i < 10; i++)
+    //    {
 
-//        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
-//        stadiumDummyArray[i].setStadiumNumber(i);
+    //        stadiumDummyArray[i].setStadiumName("SEE STADIUM NUM INSTEAD!");
+    //        stadiumDummyArray[i].setStadiumNumber(i);
 
-//    }
+    //    }
 
 
     // add all stadium objects to graph
@@ -410,7 +415,7 @@ void MainWindow::fillGraph()
 
     }
 
-     i = 0;
+    i = 0;
     qDebug() << "FILL IN: ";
     for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
     {
@@ -418,40 +423,112 @@ void MainWindow::fillGraph()
         qDebug() << "Stadium " << i << " is " << (*stadiumIt).getStadiumName();
 
     }
-qDebug() << "Stadium hash size: " << stadiumHash.size();
-//    graph.display();
+    qDebug() << "Stadium hash size: " << stadiumHash.size();
+    //    graph.display();
 
 
 }
+/***********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+  **********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+ **  ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+    **  ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+        **  ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+                ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+            ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+        ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+     ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+    ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE ***/
+//    // add in all stadiums to combobox
+//    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+//    {
+//        if (!(*stadiumIt).getStadiumName().isEmpty())
+//        {
+//            Ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+//        }
+//    }
 
 
+//    ui->page_adminMainMenu->hide();
+//    ui->page_addStadium->show();
 
+
+/***********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+  **********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************/
 
 void MainWindow::on_button_quickTrip0_clicked()
 {
-	ui->page_planATrip0->hide();
-	ui->page_quickTrip->show();
+    ui->page_planATrip0->hide();
+    ui->page_quickTripMenu->show();
+
+    ui->comboBox_quickTripSelectStadium->clear();
+
+    // add in all stadiums to combobox
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_quickTripSelectStadium->addItem((*stadiumIt).getStadiumName());
+        }
+    }
 }
 
 void MainWindow::on_button_confirm_clicked()
 {
-	QMessageBox::information(this, tr("Confirm Order"), tr("Thank you for shopping with us. Your order has been placed."));
-	ui->page_shoppingCart->hide();
-	ui->page_shop0->show();
+    // Clear label errors
+    ui->label_errorName->setText("");
+    ui->label_errorCardNumber->setText("");
+
+    // Check for any errors
+    if (ui->lineEdit_name->text() == "" || ui->lineEdit_creditCardNumber->text() == "")
+    {
+        // Determine which errors exist and display error message
+        if (ui->lineEdit_name->text() == "")
+        {
+            ui->label_errorName->setText("Please enter a valid name.");
+        }
+        if (ui->lineEdit_creditCardNumber->text().length() != 16)
+        {
+            ui->label_errorCardNumber->setText("Please enter a valid 16-digit credit card number.");
+        }
+    }
+    else
+    {
+        QMessageBox::information(this, tr("Confirm Order"), tr("Thank you for shopping with us. Your order has been placed."));
+        ui->page_shoppingCart->hide();
+        ui->page_shop0->show();
+    }
 }
 
 void MainWindow::on_button_cancel_clicked()
 {
-	QMessageBox::information(this, tr("Cancel Order"), tr("Your order has been canceled."));
-	ui->page_shoppingCart->hide();
-	ui->page_shop0->show();
+    QMessageBox::information(this, tr("Cancel Order"), tr("Your order has been canceled."));
+    ui->page_shoppingCart->hide();
+    ui->page_shop0->show();
 }
 
 void MainWindow::on_button_finish_clicked()
 {
-	refresh();
-	ui->page_shop0->hide();
-	ui->page_shoppingCart->show();
+    // Clear label errors
+    ui->label_errorName->setText("");
+    ui->label_errorCardNumber->setText("");
+
+    refresh();
+    ui->page_shop0->hide();
+    ui->page_shoppingCart->show();
 }
 void MainWindow::on_button_customTrip0_clicked()
 {
@@ -462,128 +539,147 @@ void MainWindow::on_button_customTrip0_clicked()
     ui->listWidget_customTrip->clear();
 
 
-	QListWidgetItem *listItem;
-	// add in all stadiums to combobox and QListWidget
-	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-	{
-		if (!(*stadiumIt).getStadiumName().isEmpty())
-		{
-			ui->comboBox_customTripSelectStadium->addItem((*stadiumIt).getStadiumName());
+    QListWidgetItem *listItem;
+    // add in all stadiums to combobox and QListWidget
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_customTripSelectStadium->addItem((*stadiumIt).getStadiumName());
 
-			listItem = new QListWidgetItem;
-			listItem->setFlags(listItem->flags() | Qt::ItemIsUserCheckable);
-			listItem->setCheckState(Qt::Unchecked);
-			listItem->setText((*stadiumIt).getStadiumName());
+            listItem = new QListWidgetItem;
+            listItem->setFlags(listItem->flags() | Qt::ItemIsUserCheckable);
+            listItem->setCheckState(Qt::Unchecked);
+            listItem->setText((*stadiumIt).getStadiumName());
 
-			ui->listWidget_customTrip->addItem(listItem);
-
-		}
-	}
-
-
+            ui->listWidget_customTrip->addItem(listItem);
+        }
+    }
 }
 
 
 void MainWindow::on_pushButton_customTripGo_clicked()
 {
-        QString startStadium = ui->comboBox_customTripSelectStadium->currentText();
-        vector<QString> selectedStadiums;
-        float cost = 0;
-        float totalCost = 0;
+    QString startStadium = ui->comboBox_customTripSelectStadium->currentText();
+    vector<QString> selectedStadiums;
+    float cost = 0;
+    float totalCost = 0;
 
-        vector<Vertex<stadium> *> subsequentVertexVector;
-        dijkstraVertexVector.clear();
-        currentStadiumIndex = -1;
+    vector<Vertex<stadium> *> subsequentVertexVector;
+    vector<Vertex<stadium> *>::iterator vertexVecIt;
+    dijkstraVertexVector.clear();
+    currentStadiumIndex = -1;
 
+    // push back starting stadium
+    selectedStadiums.push_back(startStadium);
 
-        // retrieve all selected stadiums
-        QListWidgetItem *currentItem;
-        for (int i = 0; i < stadiumHash.size(); i++)
+    // retrieve all selected stadiums
+    QListWidgetItem *currentItem;
+    for (int i = 0; i < stadiumHash.size(); i++)
+    {
+
+        currentItem = ui->listWidget_customTrip->item(i);
+        if (currentItem->checkState() == Qt::Checked)
         {
-
-            currentItem = ui->listWidget_customTrip->item(i);
-            if (currentItem->checkState() == Qt::Checked)
-            {
-                selectedStadiums.push_back(currentItem->text());
-            }
-
-
-        }
-
-        for (unsigned int i = 0; i < selectedStadiums.size(); i++)
-        {
-            graph.DijkstraShortestPath(*(stadiumHash.find(startStadium)), *(stadiumHash.find(selectedStadiums[i])), subsequentVertexVector, cost);
-
-            qDebug() << "Cost is: " << cost;
-            totalCost = totalCost + cost;
-            qDebug() << "Total cost is: " << totalCost;
-
-
-            for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
-            {
-                dijkstraVertexVector.push_back(subsequentVertexVector[j]);
-
-                if ( j != 0)
-                {
-                    // prevent subsequent duplicates by seeing if stadiums entered in twice
-                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
-                    {
-                        dijkstraVertexVector.pop_back();
-                    }
-                }
-
-            }
-
-            // update new current stadium
-            startStadium = selectedStadiums[i];
+            selectedStadiums.push_back(currentItem->text());
         }
 
 
+    }
+
+    // loop until stadium before last selected stadium is reached (need i+1)
+    for (unsigned int i = 0; i < selectedStadiums.size() - 1; i++)
+    {
+        subsequentVertexVector.clear();
+
+        graph.DijkstraShortestPath(*(stadiumHash.find(selectedStadiums[i])), *(stadiumHash.find(selectedStadiums[i + 1])), subsequentVertexVector, cost);
+
+        qDebug() << "Cost is: " << cost;
+        totalCost = totalCost + cost;
+        qDebug() << "Total cost is: " << totalCost;
 
 
-        // fill out QListWidget with dijkstra sequence.
-        QListWidgetItem *listItem;
-
-        ui->listWidget_customTripSequence->clear();
-
-        for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+        for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
         {
+            dijkstraVertexVector.push_back(subsequentVertexVector[j]);
 
+            //                if ( j != 0)
+            //                {
+            //                    // prevent subsequent duplicates by seeing if stadiums entered in twice
+            //                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
+            //                    {
+            //                        dijkstraVertexVector.pop_back();
+            //                    }
+            //                }
 
-            listItem = new QListWidgetItem;
-            listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
-            listItem->setFlags(listItem->flags() & !Qt::ItemIsEditable & !Qt::ItemIsSelectable );
-
-            // indicate first one is current stadium
-            if (i == 0)
-            {
-                currentStadiumIndex = 0;
-                listItem->setTextColor(QColor("red"));
-                listItem->setFont(QFont("bold"));
-
-                ui->label_customTripStadiumName->setText(listItem->text());
-                ui->pushButton_customTripPrevious->setEnabled(false);
-                ui->pushButton_customTripNext->setEnabled(false);
-
-
-            }
-            else
-            {
-                ui->pushButton_customTripNext->setEnabled(true);
-
-                listItem->setTextColor(QColor("gray"));
-            }
-            ui->listWidget_customTripSequence->addItem(listItem);
         }
 
-        ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+        // update new current stadium
+        //            startStadium = selectedStadiums[i];
+    }
 
 
-        // set the value of the progress bar.
-        SetProgressBar(-1);
+    // remove duplicates in dijkstraVertexVector ...
+    for (vertexVecIt = dijkstraVertexVector.begin();
+         vertexVecIt != dijkstraVertexVector.end();
+         vertexVecIt++)
+    {
 
-        ui->page_customTripMenu->hide();
-        ui->page_customTrip->show();
+        if (vertexVecIt + 1 != dijkstraVertexVector.end())
+        {
+            qDebug() << "Comparing " << ***vertexVecIt << " and " << ***(vertexVecIt + 1);
+            // prevent subsequent duplicates by seeing if stadiums entered in twice
+            if (***(vertexVecIt) == ***(vertexVecIt + 1))
+            {
+                dijkstraVertexVector.erase(vertexVecIt);
+                qDebug() << "Erasing " << (***vertexVecIt).getStadiumName();
+            }
+
+        }
+
+    }
+
+    // fill out QListWidget with dijkstra sequence.
+    QListWidgetItem *listItem;
+
+    ui->listWidget_customTripSequence->clear();
+
+    for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+    {
+
+        listItem = new QListWidgetItem;
+        listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+        listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+        // indicate first one is current stadium
+        if (i == 0)
+        {
+            currentStadiumIndex = 0;
+            listItem->setTextColor(QColor("red"));
+            listItem->setFont(QFont("bold"));
+
+            ui->label_customTripStadiumName->setText(listItem->text());
+            ui->pushButton_customTripPrevious->setEnabled(false);
+            ui->pushButton_customTripNext->setEnabled(false);
+
+
+        }
+        else
+        {
+            ui->pushButton_customTripNext->setEnabled(true);
+
+            listItem->setTextColor(QColor("gray"));
+        }
+        ui->listWidget_customTripSequence->addItem(listItem);
+    }
+
+    ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+
+
+    // set the value of the progress bar.
+    SetProgressBar(-1);
+
+    ui->page_customTripMenu->hide();
+    ui->page_customTrip->show();
 
 }
 
@@ -602,7 +698,16 @@ void MainWindow::on_button_customTripMainMenu_clicked()
 void MainWindow::on_button_customTripBack_2_clicked()
 {
     ui->page_customTrip->hide();
-    ui->page_customTripMenu->show();
+
+    if (quickTrip)
+    {
+        ui->page_quickTripMenu->show();
+        quickTrip = false;
+    }
+    else
+    {
+        ui->page_customTripMenu->show();
+    }
 }
 
 void MainWindow::on_button_customTripMainMenu_2_clicked()
@@ -614,7 +719,7 @@ void MainWindow::on_button_customTripMainMenu_2_clicked()
 void MainWindow::on_pushButton_customTripNext_clicked()
 {
     QListWidgetItem *listItem;
-//    stadium *currentStadium;
+    //    stadium *currentStadium;
 
     if (currentStadiumIndex == -1)
     {
@@ -651,7 +756,7 @@ void MainWindow::on_pushButton_customTripNext_clicked()
     listItem->setTextColor(QColor("red"));
     listItem->setFont(QFont("bold"));
 
-//    currentStadium = stadiumHash.find(listItem->text());
+    //    currentStadium = stadiumHash.find(listItem->text());
 
     ui->label_customTripStadiumName->setText(listItem->text());
 
@@ -662,7 +767,7 @@ void MainWindow::on_pushButton_customTripNext_clicked()
 void MainWindow::on_pushButton_customTripPrevious_clicked()
 {
     QListWidgetItem *listItem;
-//    stadium *currentStadium;
+    //    stadium *currentStadium;
 
     if (currentStadiumIndex == -1)
     {
@@ -699,7 +804,7 @@ void MainWindow::on_pushButton_customTripPrevious_clicked()
     listItem->setTextColor(QColor("red"));
     listItem->setFont(QFont("bold"));
 
-//    currentStadium = stadiumHash.find(listItem->text());
+    //    currentStadium = stadiumHash.find(listItem->text());
 
     ui->label_customTripStadiumName->setText(listItem->text());
 
@@ -722,3 +827,123 @@ void MainWindow::SetProgressBar(int location)
     ui->progressBar_customTrip->setValue(progressBarVal);
 
 }
+
+void MainWindow::on_button_quickTripBack_clicked()
+{
+    ui->page_quickTripMenu->hide();
+    ui->page_planATrip0->show();
+}
+
+void MainWindow::on_button_quickTripMainMenu_clicked()
+{
+    ui->page_quickTripMenu->hide();
+    ui->page_mainMenu->show();
+}
+
+void MainWindow::on_pushButton_quickTripGo_clicked()
+{
+    QString selectedStadium = ui->comboBox_quickTripSelectStadium->currentText();
+    float totalCost = 0;
+
+    dijkstraVertexVector.clear();
+    currentStadiumIndex = -1;
+
+    graph.DijkstraShortestPath(*(stadiumHash.find("Angels Stadium of Anaheim")), *(stadiumHash.find(selectedStadium)), dijkstraVertexVector, totalCost);
+
+    // fill out QListWidget with dijkstra sequence.
+    QListWidgetItem *listItem;
+
+    ui->listWidget_customTripSequence->clear();
+
+    for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+    {
+        listItem = new QListWidgetItem;
+        listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+        listItem->setFlags(listItem->flags() & Qt::ItemIsEditable & Qt::ItemIsSelectable);
+
+        // indicate first one is current stadium
+        if (i == 0)
+        {
+            currentStadiumIndex = 0;
+            listItem->setTextColor(QColor("red"));
+            listItem->setFont(QFont("bold"));
+
+            ui->label_customTripStadiumName->setText(listItem->text());
+            ui->pushButton_customTripPrevious->setEnabled(false);
+            ui->pushButton_customTripNext->setEnabled(false);
+
+        }
+        else
+        {
+            ui->pushButton_customTripNext->setEnabled(true);
+
+            listItem->setTextColor(QColor("gray"));
+        }
+
+        ui->listWidget_customTripSequence->addItem(listItem);
+    }
+
+    ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+
+
+    // set the value of the progress bar.
+    SetProgressBar(-1);
+
+    quickTrip = true;
+
+    ui->page_quickTripMenu->hide();
+    ui->page_customTrip->show();
+
+}
+void MainWindow::on_button_MST_clicked()
+{
+    ui->page_planATrip0->hide();
+    ui->page_MST->show();
+
+    mstEdgeVector.clear();
+
+    QListWidgetItem *listItem;
+    QString stadium1String;
+    QString stadium2String;
+    float weight = 0;
+    float totalCost = 0;
+
+
+    graph.MST(mstEdgeVector, totalCost);
+
+    // fill out QListWidget with MST sequence.
+
+
+
+    ui->listWidget_displayMST->clear();
+
+    for (unsigned int i = 0; i < mstEdgeVector.size(); i++)
+    {
+
+        stadium1String = (**((*(mstEdgeVector[i])).getVertex1())).getStadiumName();
+        stadium2String = (**((*(mstEdgeVector[i])).getVertex2())).getStadiumName();
+        weight =         (*(mstEdgeVector[i])).getWeight();
+        listItem = new QListWidgetItem;
+
+        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
+        listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+
+        ui->listWidget_displayMST->addItem(listItem);
+
+    }
+
+    ui->label_MSTDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+}
+
+void MainWindow::on_button_backMST_clicked()
+{
+    ui->page_MST->hide();
+    ui->page_planATrip0->show();
+}
+
+void MainWindow::on_button_backMainMenuMST_clicked()
+{
+    ui->page_MST->hide();
+    ui->page_mainMenu->show();
+}
+

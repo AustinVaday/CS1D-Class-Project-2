@@ -94,7 +94,7 @@ QString stadium::getStadiumQuery()
 				+ dateOpened + "', '"
 				+ capacity + "', '"
 				+ league + "', '"
-				+ surface + "')";
+                + surface + "', '" + returnFormatedEdges() + "')";
 
 	return queryString;
 }
@@ -165,3 +165,27 @@ void stadium::setTeamName(QString teamNameN)
 //    visited = visitedN;
 //}
 
+//Used to send data to the database
+QString stadium::returnFormatedEdges()
+{
+
+    vector<vertexEdgeStruct>::iterator it;
+    QString formattedString;
+
+
+    for(it = vertexEdgeVector.begin(); it != vertexEdgeVector.end(); it++)
+    {
+        formattedString += (*it).otherVertex + ";" + QString::number((*it).edge);
+
+        it++;
+        if(it != vertexEdgeVector.end())
+        {
+            formattedString += "~";
+        }
+        it--;
+    }
+
+    return formattedString;
+
+
+}
