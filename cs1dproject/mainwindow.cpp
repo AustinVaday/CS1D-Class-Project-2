@@ -24,10 +24,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	createConnection(true);		// put true to reinitialize the model
 
 	initModel = new QSqlTableModel(0,db);
-	ui->tableView_stadiumList->setModel(initModel);
+    souvenirModel = new QSqlTableModel(0,db);
+    ui->tableView_stadiumList->setModel(initModel);
 	initializeModel(initModel); // Pass in false if you want to make it only
 	//	only editable when submit is clicked.
 
+    initializeSouvenir(souvenirModel);
 	fillGraph();
 
 	// Testing ...
@@ -263,6 +265,7 @@ bool MainWindow::createConnection(bool restart)
 	//now your database will be stored in fileName
 	db = QSqlDatabase::addDatabase("QSQLITE");
 	bool tableMade = false;
+    bool tableMade2 = false;
 	db.setHostName("localhost");
 	db.setDatabaseName("baseball_stadiums");
 
@@ -282,26 +285,37 @@ bool MainWindow::createConnection(bool restart)
 		query.clear();
 		query.exec("drop table stadiums");
 		query.clear();
+        query.exec("drop table souvenirs");
+        query.clear();
 
 		qDebug() << "restart: " << restart;
 	}
 
-	tableMade = query.exec("create table stadiums"
-						   "(stadium_id int primary key,stadiumName "
-						   "varchar(50), "
-						   "teamName varchar(50),"
-						   "street varchar(50), "
-						   "city varchar(50),"
-						   "state varchar(50), "
-						   "zip varchar(50), "
-						   "boxOfficeNum varchar(50),"
-						   "dateOpened varchar(50), "
-						   "capacity varchar(50), "
-						   "league varchar(50),"
-						   "surface varchar(50),"
-						   "verticesAndEdges varchar(100))");
+    /**************************************************************************
+     * Creates stadium table
+     *************************************************************************/
+    tableMade = query.exec("create table stadiums"
+                           "(stadium_id int primary key,stadiumName "
+                           "varchar(50), "
+                           "teamName varchar(50),"
+                           "street varchar(50), "
+                           "city varchar(50),"
+                           "state varchar(50), "
+                           "zip varchar(50), "
+                           "boxOfficeNum varchar(50),"
+                           "dateOpened varchar(50), "
+                           "capacity varchar(50), "
+                           "league varchar(50),"
+                           "surface varchar(50),"
+                           "verticesAndEdges varchar(100))");
 
-	qDebug() << "TableMade: " << tableMade;
+    qDebug() << "TableMade: " << tableMade;
+    /**************************************************************************
+     * Creates souvenir table
+     *************************************************************************/
+    tableMade2 = query.exec("create table souvenirs(souvenirs_id int primary key,name "
+                           "varchar(50),price decimal(6,2))");
+    qDebug() << "TableMade2: " << tableMade2;
 
 	if(tableMade || restart)
 	{
@@ -516,8 +530,23 @@ bool MainWindow::createConnection(bool restart)
 							   "'42,374', 'National', 'Grass', 'US Cellular "
 							   "Field;0~Kauffman Stadium;415~Miller Park;80')");
 	}
+    if(tableMade2 || restart)
+        {
 
-	return tableMade;
+            qDebug() << query.exec("insert into souvenirs values(1, "
+                                   "'Baseball cap',25.99)");
+
+            qDebug() << query.exec("insert into souvenirs values(2, "
+                                   "'Baseball bat',35.35)");
+
+            qDebug() << query.exec("insert into souvenirs values(3, "
+                                   "'Team pennant',12.99)");
+
+            qDebug() << query.exec("insert into souvenirs values(4, "
+                                   "'Autographed baseball',19.99)");
+        }
+
+    return tableMade;
 }
 
 void MainWindow::fillGraph()
@@ -894,7 +923,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
             listItem = new QListWidgetItem;
             listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
-            listItem->setFlags(listItem->flags() & !Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+            listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
 
             // indicate first one is current stadium
             if (i == 0)
@@ -1105,7 +1134,7 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
     {
         listItem = new QListWidgetItem;
         listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
-        listItem->setFlags(listItem->flags() & !Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+        listItem->setFlags(listItem->flags() & Qt::ItemIsEditable & Qt::ItemIsSelectable);
 
         // indicate first one is current stadium
         if (i == 0)

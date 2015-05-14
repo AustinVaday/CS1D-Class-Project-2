@@ -1,7 +1,11 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
+<<<<<<< HEAD
 ** Created by: Qt User Interface Compiler version 5.3.2
+=======
+** Created by: Qt User Interface Compiler version 5.4.1
+>>>>>>> ee7232a3121ae01494bcd1fdbe7adcedf766e8a2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -1012,11 +1016,11 @@ public:
 
         verticalLayout_5->addWidget(lineEdit_teamName);
 
+
         lineEdit_streetName = new QLineEdit(layoutWidget6);
         lineEdit_streetName->setObjectName(QStringLiteral("lineEdit_streetName"));
 
         verticalLayout_5->addWidget(lineEdit_streetName);
-
         lineEdit_cityName = new QLineEdit(layoutWidget6);
         lineEdit_cityName->setObjectName(QStringLiteral("lineEdit_cityName"));
 
@@ -1056,7 +1060,6 @@ public:
         lineEdit_grassType->setObjectName(QStringLiteral("lineEdit_grassType"));
 
         verticalLayout_5->addWidget(lineEdit_grassType);
-
         layoutWidget7 = new QWidget(frame_2);
         layoutWidget7->setObjectName(QStringLiteral("layoutWidget7"));
         layoutWidget7->setGeometry(QRect(40, 30, 112, 361));
@@ -1077,14 +1080,10 @@ public:
 
         label_14 = new QLabel(layoutWidget7);
         label_14->setObjectName(QStringLiteral("label_14"));
-
         verticalLayout_6->addWidget(label_14);
-
         label_cityLabel = new QLabel(layoutWidget7);
         label_cityLabel->setObjectName(QStringLiteral("label_cityLabel"));
-
         verticalLayout_6->addWidget(label_cityLabel);
-
         label_stateLabel = new QLabel(layoutWidget7);
         label_stateLabel->setObjectName(QStringLiteral("label_stateLabel"));
 
@@ -1175,6 +1174,7 @@ public:
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt;\">Temp - still thinking about what is going to go here</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;\"><br /></p></body></html>", 0));
+
         label_titleMainMenu->setText(QApplication::translate("MainWindow", "MLB Vacation Planner", 0));
         button_quickTrip0->setText(QApplication::translate("MainWindow", "Quick Trip", 0));
         button_customTrip0->setText(QApplication::translate("MainWindow", "Custom Trip", 0));
@@ -1186,6 +1186,7 @@ public:
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt;\">Temp - still thinking about what is going to go here</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;\"><br /></p></body></html>", 0));
+
         button_back0->setText(QApplication::translate("MainWindow", "Back", 0));
         button_mainMenu0->setText(QApplication::translate("MainWindow", "Main Menu", 0));
         label_planATripTitle->setText(QApplication::translate("MainWindow", "Plan A Trip", 0));
@@ -1241,6 +1242,7 @@ public:
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt;\">Temp - Still thinking about what to do here</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;\"><br /></p></body></html>", 0));
+
         button_back1->setText(QApplication::translate("MainWindow", "Back", 0));
         button_mainMenu1->setText(QApplication::translate("MainWindow", "Done", 0));
         textBrowser_3->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -1249,6 +1251,7 @@ public:
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt;\">Temp - Still thinking about what to do here</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;\"><br /></p></body></html>", 0));
+
         button_back2->setText(QApplication::translate("MainWindow", "Back", 0));
         button_mainMenu2->setText(QApplication::translate("MainWindow", "Main Menu", 0));
         label_teamSearchTitle->setText(QApplication::translate("MainWindow", "Team Search", 0));
@@ -1370,6 +1373,7 @@ public:
         label_stadiumLabel->setText(QApplication::translate("MainWindow", "Stadium Name: ", 0));
         label_teamNameLabel->setText(QApplication::translate("MainWindow", "Team Name: ", 0));
         label_14->setText(QApplication::translate("MainWindow", "Street Name:", 0));
+
         label_cityLabel->setText(QApplication::translate("MainWindow", "City Name: ", 0));
         label_stateLabel->setText(QApplication::translate("MainWindow", "State Name: ", 0));
         label_zipCode->setText(QApplication::translate("MainWindow", "Zip  Code:", 0));
@@ -1380,6 +1384,7 @@ public:
         label_grassTypeLabel->setText(QApplication::translate("MainWindow", "Grass Type : ", 0));
         label_8->setText(QApplication::translate("MainWindow", "Select a Stadium it is adjacent to ", 0));
         label_13->setText(QApplication::translate("MainWindow", "Distance:", 0));
+
         button_continueAddStadium->setText(QApplication::translate("MainWindow", "Continue", 0));
         button_backAddStadium->setText(QApplication::translate("MainWindow", "Back", 0));
     } // retranslateUi
