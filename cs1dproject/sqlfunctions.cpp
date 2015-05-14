@@ -58,9 +58,9 @@ void MainWindow::initializeSouvenir(QSqlTableModel *souvenirModel, bool editFiel
     }
     souvenirModel->select();
     souvenirModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Qty"));
-    souvenirModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Team"));
-    souvenirModel->setHeaderData(3, Qt::Horizontal, QObject::tr("Item"));
-    souvenirModel->setHeaderData(4, Qt::Horizontal, QObject::tr("Price"));
+	souvenirModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Team"), 0);
+	souvenirModel->setHeaderData(3, Qt::Horizontal, QObject::tr("Item"), 0);
+	souvenirModel->setHeaderData(4, Qt::Horizontal, QObject::tr("Price"), 0);
 }
 
 void MainWindow::refresh()

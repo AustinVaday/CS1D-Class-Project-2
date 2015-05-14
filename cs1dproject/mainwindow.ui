@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>12</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -792,7 +792,7 @@ p, li { white-space: pre-wrap; }
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView_shoppingCart">
+     <widget class="QTableView" name="tableView_customSouvenirView">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1061,7 +1061,7 @@ p, li { white-space: pre-wrap; }
       </widget>
       <widget class="QWidget" name="page_6"/>
      </widget>
-     <widget class="QListWidget" name="listWidget_searchResults0">
+     <widget class="QTableView" name="tableView_searchResults0">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -1643,7 +1643,7 @@ p, li { white-space: pre-wrap; }
        <string>Card Number Error Message</string>
       </property>
      </widget>
-     <widget class="QTableView" name="pg_shpcrt_tableView_shoppingCart">
+     <widget class="QTableView" name="tableView_shoppingCart">
       <property name="geometry">
        <rect>
         <x>5</x>

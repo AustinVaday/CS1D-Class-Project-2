@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     datatable.cpp \
     addstadiumfunctionality.cpp \
     createsouvenirs.cpp \
-    shoppingcartfunctions.cpp
+    shoppingcartfunctions.cpp \
+    searchstadium.cpp
 
 FORMS    += mainwindow.ui
 
