@@ -178,3 +178,88 @@ void MainWindow::on_button_continueAddStadium_clicked()
 
     }
 }
+
+
+
+void MainWindow::on_button_search0_clicked()
+{
+      QFont * newFont;
+      QLabel * newLabel;
+      QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+      int rowIndex ;
+      vector<QString> displayList;
+      vector<QString>::iterator it;
+
+      if(ui->lineEdit_searchLine0->text().isEmpty())
+      {
+          QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+      }
+      else
+      {
+          ui->listWidget_searchResults0->clear();
+
+          displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+
+          qDebug() << "After Search Stadium";
+
+           for(it = displayList.begin(); it != displayList.end(); it++)
+           {
+               ui->listWidget_searchResults0->addItem((*it));
+           }
+
+     }
+}
+
+
+void MainWindow::on_commandLinkButton_clicked()
+{
+    searchSelection = ui->listWidget_searchResults0->currentItem()->text();
+    QMap<QString,stadium>::iterator stadiumIt;
+
+    qDebug() << "Reached command link button clicked" << endl;
+    stadium tempStadium;
+
+    stadiumIt = stadiumHash.find(searchSelection);
+    qDebug() << "After Hash" << endl;
+
+
+    tempStadium = (*stadiumIt);
+
+    qDebug() << "After assigment" << endl;
+
+
+    ui->label_searchedTeamStadium->setText(tempStadium.getStadiumName());
+    ui->label_searchedTeamName->setText(tempStadium.getTeamName());
+    ui->label_searchedNameStreet->setText(tempStadium.getStreetName());
+    ui->label_searchedNameState->setText(tempStadium.getState());
+//    ui->label_searchedTeamCity->setText(tempStadium.getCity());
+    ui->label_searchedNameZip->setText(tempStadium.getZip());
+//    ui->label_searchedBoxOffice->setText(tempStadium.getBoxOfficeNum());
+    ui->label_searchDateOpened->setText(tempStadium.getDateOpened());
+    ui->label_searchedCapacity->setText(tempStadium.getCapacity());
+    ui->label_searchedGrassType->setText(tempStadium.getGrassType());
+    ui->label_searchedLeague->setText(tempStadium.getLeague());
+
+    ui->page_searchForStadium0->hide();
+    ui->page_searchForStadium1->show();
+
+}
+
+void MainWindow::on_button_backSearchResults_clicked()
+{
+    ui->label_searchedTeamStadium->clear();
+    ui->label_searchedTeamName->clear();
+    ui->label_searchedNameState->clear();
+    ui->label_searchedNameStreet->clear();
+//    ui->label_searchedTeamCity->clear();
+    ui->label_searchedNameZip->clear();
+//    ui->label_searchedBoxOffice->clear();
+    ui->label_searchDateOpened->clear();
+    ui->label_searchedCapacity->clear();
+    ui->label_searchedGrassType->clear();
+    ui->label_searchedLeague->clear();
+
+    ui->page_searchForStadium1->hide();
+
+    ui->page_searchForStadium0->show();
+  }

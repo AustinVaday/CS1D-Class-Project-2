@@ -186,6 +186,57 @@ QString stadium::returnFormatedEdges()
     }
 
     return formattedString;
+}
 
+QString stadium::getStreetName()
+{
+    return street;
+}
 
+QString stadium::getZip()
+{
+    return QString::number(zip);
+}
+
+QString stadium::getBoxOfficeNum()
+{
+    return boxOfficeNum;
+}
+
+QString stadium::getDateOpened()
+{
+    return dateOpened;
+}
+QString stadium::getCapacity()
+{
+    return capacity;
+}
+QString stadium::getGrassType()
+{
+    return surface;
+}
+
+QString stadium::getLeague()
+{
+    return league;
+}
+void stadium::operator=(stadium otherStadium)
+{
+      this->stadiumName = otherStadium.stadiumName;
+      this->stadiumNumber = otherStadium.stadiumNumber;
+      this->state         = otherStadium.state;
+      this->street        = otherStadium.street;
+    this->zip            = otherStadium.zip;
+      this->surface       = otherStadium.surface;
+      this->teamName      = otherStadium.teamName;
+    this->boxOfficeNum    = otherStadium.boxOfficeNum;
+    this->league          = otherStadium.league;
+    this->dateOpened      = otherStadium.dateOpened;
+    this->capacity        = otherStadium.capacity;
+//    this->vertexEdgeVector= otherStadium.vertexEdgeVector;
+}
+
+QString stadium::getState()
+{
+    return state;
 }

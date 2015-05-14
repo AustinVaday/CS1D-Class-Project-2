@@ -174,6 +174,10 @@ private slots:
     void on_button_search0_clicked();
 
 
+    void on_commandLinkButton_clicked();
+
+    void on_button_backSearchResults_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
@@ -195,9 +199,9 @@ private:
         vector<Edge<stadium,float> *> mstEdgeVector;
         vector<Vertex<stadium> *> dijkstraVertexVector;
 
-        int currentStadiumIndex;
-        bool quickTrip;
-
+        int     currentStadiumIndex;
+        bool    quickTrip;
+        QString searchSelection;
 };
 
 #endif // MAINWINDOW_H

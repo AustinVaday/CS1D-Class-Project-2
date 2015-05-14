@@ -34,7 +34,15 @@ public:
     QString getCity();
     QString getState();
     QString getPlayingSurface();
-    int getStadiumNumber();
+    QString getStreetName();
+    QString getZip();
+    int     getStadiumNumber();
+    QString getBoxOfficeNum();
+    QString getDateOpened();
+    QString getGrassType();
+    QString getCapacity();
+    QString getLeague();
+    vector<vertexEdgeStruct> getEdgeVector();
     vector<vertexEdgeStruct> getVertexEdgeStructVector();
     //getDate()
     //    bool getVisited();
@@ -45,6 +53,7 @@ public:
     // not work with this implementation because
     // the accessors are not const.....
     bool operator==(stadium& otherStadium);
+    void operator = (stadium otherStadium);
 
     // overloaded extraction operator to display some data..
     friend QDebug operator<<(QDebug out, stadium& displayStadium);
@@ -53,10 +62,22 @@ public:
     void setStadiumName(QString stadiumName);
     void setStadiumNumber(int number);
     void setTeamName(QString teamName);
-    //void setDateOpened();
     void setPlayingSurface(QString grassType);
     void setCity(QString city);
+
+
+
+//    void setBoxOfficeNum(QString bO);
     void setState(QString state);
+//    void setEdgeVector(vector<vertexEdgeStruct> vec);
+//    void setZipCode(int zipCode);
+//    void setDateOpened();
+//    void setStreetName(QString name);
+//    void setLeague(QString league);
+//    void setSurface(QString surface);
+
+
+void getZipInt();
     //    void setVisited(bool visited);
     //void resetTrip()
 
