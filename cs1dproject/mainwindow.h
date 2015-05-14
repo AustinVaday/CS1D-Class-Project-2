@@ -181,7 +181,13 @@ private slots:
 
     void on_pushButton_back_manageSouvenir_clicked();
 
-    private:
+	void on_pushButton_admin_submit_clicked();
+
+	void on_pushButton_admin_deleteSouvenir_clicked();
+
+	void on_pushButton_admin_addSouvenir_clicked();
+
+	private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
 		QTableView* viewModel;
