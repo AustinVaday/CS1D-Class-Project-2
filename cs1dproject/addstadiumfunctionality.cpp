@@ -45,6 +45,14 @@ void MainWindow::on_button_continueAddStadium_clicked()
     int largest = -1;
 
 
+    // add in all stadiums to combobox
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+        }
+    }
 
     for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
     {
@@ -114,21 +122,6 @@ void MainWindow::on_button_continueAddStadium_clicked()
 
         if(weightOk)
         {
-
-//            stadium (int stadiumNum,
-//                     QString stadiumName,
-//                     QString teamName,
-//                     QString street,
-//                     QString city,
-//                     QString state,
-//                     int zipCode,
-//                     QString boxOfficeNum,
-//                     QString dateOpened,
-//                     QString capacity,
-//                     QString league,
-//                     QString surface,
-//                     vector<vertexEdgeStruct> vertexEdgeVector
-//                     );
             newEdge.otherVertex = ui->comboBox_adjacentList->currentText();
             newEdge.edge        = (ui->lineEdit_distanceAdjacentVertex->text()).toFloat();
 

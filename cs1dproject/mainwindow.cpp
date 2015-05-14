@@ -14,11 +14,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow),
 	graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
+
 	vector<Vertex<stadium> *> shortestPath;
 	//	float totalCost = 0;
 	quickTrip  = false;
 	ui->setupUi(this);
 	currentStadiumIndex = -1;
+//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
+
 
 	// Create Database and initialize the table model ( NOT VIEW )
 	createConnection(true);		// put true to reinitialize the model
@@ -30,7 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	initializeModel(initModel); // Pass in false if you want to make it only editable when submit is clicked.
 	initializeSouvenir(souvenirModel);
 	initializeShoppingCart(cartModel);
-
 
 
 	ui->tableView_customSouvenirView->setModel(souvenirModel);
@@ -117,9 +119,55 @@ void MainWindow::on_button_planATrip0_clicked()
 
 void MainWindow::on_button_searchForStadiums0_clicked()
 {
+<<<<<<< HEAD
 	refresh();
 	ui->page_mainMenu->hide();
 	ui->page_searchForStadium0->show();
+=======
+
+        refresh();
+
+    QStringList * stringList;
+
+        stringList = new QStringList;
+
+        *stringList  << "AT&T Park"
+                      << "Angels Stadium of Anaheim"
+                      << "Busch Stadium"
+                      << "Chase Field"
+                      << "Citi Field"
+                      << "Citizens Bank Park"
+                      << "Comerica Park"
+                      << "Coors Feild"
+                      << "Dodger Stadium"
+                      << "Fenway Park"
+                      << "Globe Life Park in Arlington"
+                      << " Great American Ball Park"
+                      << "Kauffman Stadium"
+                      << "Marlins Park"
+                      << "Miller Park"
+                      << "Minute Maid Park"
+                      << "Nationals Park"
+                      << "O.co Coliseum"
+                      << "Oriole Park at Camden Yards"
+                      << "PNC Park"
+                      << "Petco Parrk"
+                      << "Progressive Field"
+                      << "Rogers Centre"
+                      << "SafeCo Field"
+                      << "Target Field"
+                      << "Tropicana Field"
+                      << "Turner Field"
+                      << "US Cellular Field"
+                      << "Wrigley Field"
+                      << "Yankee Stadium";
+
+
+        QCompleter* completer = new QCompleter(*stringList);
+        ui->lineEdit_searchLine0->setCompleter(completer);
+        ui->page_mainMenu->hide();
+        ui->page_searchForStadium0->show();
+>>>>>>> 3c636c57beb6d24d4ccf1120d11cdf92335f2361
 }
 
 void MainWindow::on_button_mainMenu0_clicked()
@@ -129,6 +177,7 @@ void MainWindow::on_button_mainMenu0_clicked()
 	ui->page_mainMenu->show();
 }
 
+<<<<<<< HEAD
 void MainWindow::on_button_back1_clicked()
 {
 	refresh();
@@ -142,6 +191,8 @@ void MainWindow::on_button_mainMenu1_clicked()
 	ui->page_planATrip1->hide();
 	ui->page_planATrip0->show();}
 
+=======
+>>>>>>> 3c636c57beb6d24d4ccf1120d11cdf92335f2361
 void MainWindow::on_button_mainMenu2_clicked()
 {
 	refresh();
@@ -217,22 +268,25 @@ void MainWindow::on_button_mainMenu5_clicked()
 
 void MainWindow::on_button_login_clicked()
 {
-	//Login button pushed
-	QString username      = "admin";
-	QString password      = "password";
-	QString inputName     = ui->lineEdit_username->text();
-	QString inputPassword = ui->lineEdit_password->text();
-	if(inputName != username || inputPassword != password)
-	{
-		QMessageBox::information(this, "Login Error", "incorrect Username or Password");
-		ui->lineEdit_password->clear();
-		ui->lineEdit_username->clear();
-	}
-	else
-	{
-		//qDebug() << "Set name in admin: " << setStadiumName;
-		ui->page_adminLogin0->hide();
-		ui->page_adminMainMenu->show();
+
+    //Login button pushed
+    QString username      = "admin";
+    QString password      = "password";
+    QString inputName     = ui->lineEdit_username->text();
+    QString inputPassword = ui->lineEdit_password->text();
+    if(inputName != username || inputPassword != password)
+    {
+        QMessageBox::information(this, "Login Error", "incorrect Username or Password");
+        ui->lineEdit_password->clear();
+        ui->lineEdit_username->clear();
+    }
+    else
+    {
+        //qDebug() << "Set name in admin: " << setStadiumName;
+        ui->page_adminLogin0->hide();
+        ui->page_adminMainMenu->show();
+        ui->lineEdit_username->clear();
+        ui->lineEdit_password->clear();
 	}
 
 }
@@ -252,7 +306,17 @@ void MainWindow::on_button_backAddStadium_clicked()
 
 void MainWindow::on_button_addStadium0_clicked()
 {
-	ui->page_adminMainMenu->hide();
+
+    // add in all stadiums to combobox
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+        }
+    }
+
+    ui->page_adminMainMenu->hide();
 	ui->page_addStadium->show();
 }
 void MainWindow::fillGraph()
@@ -438,7 +502,12 @@ void MainWindow::fillGraph()
 
 }
 /***********************************************************************************************************************************************
- * *********************************************************************************************************************************************
+ * ***************************************
+
+
+
+
+******************************************************************************************************
  * *********************************************************************************************************************************************
  ***********************************************************************************************************************************************
   **********************************************************************************************************************************************
@@ -982,10 +1051,42 @@ void MainWindow::on_button_backMST_clicked()
 	ui->page_MST->hide();
 	ui->page_planATrip0->show();
 }
-
+//****************())************************************************************************
 void MainWindow::on_button_backMainMenuMST_clicked()
 {
 	ui->page_MST->hide();
 	ui->page_mainMenu->show();
+}
+
+
+void MainWindow::on_button_search0_clicked()
+{
+    QFont * newFont;
+      QLabel * newLabel;
+      QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+      int rowIndex ;
+      vector<QString> displayList;
+      vector<QString>::iterator it;
+
+      if(ui->lineEdit_searchLine0->text().isEmpty())
+      {
+          QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+      }
+      else
+      {
+          ui->listWidget_searchResults0->clear();
+
+          displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+
+          qDebug() << "After Search Stadium";
+
+
+
+           for(it = displayList.begin(); it != displayList.end(); it++)
+           {
+               ui->listWidget_searchResults0->addItem((*it)+ "\n");
+           }
+
+     }
 }
 
