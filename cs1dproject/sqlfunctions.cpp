@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 
-
 /***************************************************************************
  *  Initialize Model
  * ------------------------------------------------------------------------
@@ -227,6 +226,12 @@ bool MainWindow::createConnection(bool restart)
                             "teamName varchar(50), "
                             "itemName varchar(50), "
                             "price decimal(6,2))");
+
+    // Shopping cart table!!!!
+    query.exec("drop table shoppingcart");
+    query.exec("create table shoppingCart(quantity int, teamName varcahr(50), itemName varcahr(50), price decimal(6,2))");
+
+
     qDebug() << "TableMade2: " << tableMade2;
 
     if(tableMade || restart)
@@ -445,27 +450,15 @@ bool MainWindow::createConnection(bool restart)
     if(tableMade2 || restart)
         {
 
-            qDebug() << query.exec("insert into souvenirs values(1, 'generic', 'Baseball Cap', 25.99)");
+            qDebug() << query.exec("insert into souvenirs values(1, 0, 'generic', 'Baseball Cap', 25.99)");
 
-            qDebug() << query.exec("insert into souvenirs values(2, 'generic', 0,  Baseball Cap', 25.99)");
+            qDebug() << query.exec("insert into souvenirs values(2,  0,  'generic', 'Baseball Cap', 25.99)");
 
 
-            qDebug() << query.exec("insert into souvenirs values(3, 'generic',  0, 'Team Pennant', 12.99) ");
+            qDebug() << query.exec("insert into souvenirs values(3,  0,  'generic', 'Team Pennant', 12.99) ");
 
-            qDebug() << query.exec("insert into souvenirs values(4, 'generic',  0, 'Autographed baseball',19.99)");
+            qDebug() << query.exec("insert into souvenirs values(4,  0,  'generic', 'Autographed baseball',19.99)");
         }
-//    // add in all stadiums to combobox
-//    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-//    {
-//        if (!(*stadiumIt).getStadiumName().isEmpty())
-//        {
-//            Ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
-//        }
-//    }
-
-
-//    ui->page_adminMainMenu->hide();
-//    ui->page_addStadium->show();
 
     return tableMade;
 }

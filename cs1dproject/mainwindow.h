@@ -69,6 +69,8 @@ class MainWindow : public QMainWindow
 
         void SetProgressBar(int location);
 
+        void initializeShoppingCart(QSqlTableModel *cartModel, bool editField);
+
 	private slots:
 		void on_button_back0_clicked();
 
@@ -151,10 +153,11 @@ class MainWindow : public QMainWindow
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
-		QSqlTableModel* initModel;
 		QTableView* viewModel;
         QSqlTableModel* souvenirModel;
-		/*
+        QSqlTableModel* initModel;
+        QSqlTableModel* cartModel;
+        /*
 		 * Vertex: stadium
 		 * Edge: float (could be int, but let's make it generic)
 		 */
@@ -165,7 +168,7 @@ private:
         // used to store most recent graph algorithm (global to this class)
         // mst      --> need edges
         // dijkstra --> need vertices
-        vector<Edge<Vertex<stadium>,float> *> mstEdgeVector;
+        vector<Edge<stadium,float> *> mstEdgeVector;
         vector<Vertex<stadium> *> dijkstraVertexVector;
 
         int currentStadiumIndex;

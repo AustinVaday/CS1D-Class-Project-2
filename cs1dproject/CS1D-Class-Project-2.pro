@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     sqlfunctions.cpp \
     datatable.cpp \
     addstadiumfunctionality.cpp \
-    createsouvenirs.cpp
+    createsouvenirs.cpp \
+    shoppingcartfunctions.cpp
 
 FORMS    += mainwindow.ui
 
