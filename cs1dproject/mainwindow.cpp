@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initModel = new QSqlTableModel(0,db);
     souvenirModel = new QSqlTableModel(0,db);
     cartModel = new QSqlTableModel(0,db);
+
     initializeModel(initModel); // Pass in false if you want to make it only editable when submit is clicked.
     initializeSouvenir(souvenirModel);
     initializeShoppingCart(cartModel);
@@ -243,10 +244,6 @@ void MainWindow::on_button_addStadium0_clicked()
     ui->page_adminMainMenu->hide();
     ui->page_addStadium->show();
 }
-
-
-
-
 void MainWindow::fillGraph()
 {
     qDebug() << "filling out the graph...";
@@ -903,6 +900,40 @@ void MainWindow::on_button_MST_clicked()
 {
     ui->page_planATrip0->hide();
     ui->page_MST->show();
+
+    mstEdgeVector.clear();
+
+    QListWidgetItem *listItem;
+    QString stadium1String;
+    QString stadium2String;
+    float weight = 0;
+    float totalCost = 0;
+
+
+    graph.MST(mstEdgeVector, totalCost);
+
+    // fill out QListWidget with MST sequence.
+
+
+
+    ui->listWidget_displayMST->clear();
+
+    for (unsigned int i = 0; i < mstEdgeVector.size(); i++)
+    {
+
+        stadium1String = (**((*(mstEdgeVector[i])).getVertex1())).getStadiumName();
+        stadium2String = (**((*(mstEdgeVector[i])).getVertex2())).getStadiumName();
+        weight =         (*(mstEdgeVector[i])).getWeight();
+        listItem = new QListWidgetItem;
+
+        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
+        listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+
+        ui->listWidget_displayMST->addItem(listItem);
+
+    }
+
+    ui->label_MSTDistanceTravelled->setText(QString::number(totalCost) + " miles.");
 }
 
 void MainWindow::on_button_backMST_clicked()

@@ -151,28 +151,28 @@ private slots:
     void on_button_backMainMenuMST_clicked();
 
 private:
-    Ui::MainWindow *ui;
-    QSqlDatabase db;
-    QTableView* viewModel;
-    QSqlTableModel* souvenirModel;
-    QSqlTableModel* initModel;
-    QSqlTableModel* cartModel;
-    /*
-         * Vertex: stadium
-         * Edge: float (could be int, but let's make it generic)
-         */
-    Graph<stadium,float> graph;
-    QMap<QString,stadium> stadiumHash;
-    QMap<QString,stadium>::iterator stadiumIt;
+		Ui::MainWindow *ui;
+		QSqlDatabase db;
+		QTableView* viewModel;
+        QSqlTableModel* souvenirModel;
+        QSqlTableModel* initModel;
+        QSqlTableModel* cartModel;
+        /*
+		 * Vertex: stadium
+		 * Edge: float (could be int, but let's make it generic)
+		 */
+		Graph<stadium,float> graph;
+        QMap<QString,stadium> stadiumHash;
+        QMap<QString,stadium>::iterator stadiumIt;
 
-    // used to store most recent graph algorithm (global to this class)
-    // mst      --> need edges
-    // dijkstra --> need vertices
-    vector<Edge<Vertex<stadium>,float> *> mstEdgeVector;
-    vector<Vertex<stadium> *> dijkstraVertexVector;
+        // used to store most recent graph algorithm (global to this class)
+        // mst      --> need edges
+        // dijkstra --> need vertices
+        vector<Edge<stadium,float> *> mstEdgeVector;
+        vector<Vertex<stadium> *> dijkstraVertexVector;
 
-    int currentStadiumIndex;
-    bool quickTrip;
+        int currentStadiumIndex;
+        bool quickTrip;
 
 };
 
