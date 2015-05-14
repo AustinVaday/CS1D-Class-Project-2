@@ -6,8 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-	//    try
-	//    {
+	stadium testStadium;
 	QApplication a(argc, argv);
 	MainWindow w;
 

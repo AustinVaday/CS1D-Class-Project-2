@@ -46,7 +46,7 @@ public:
     vector<vertexEdgeStruct> getVertexEdgeStructVector();
     //getDate()
     //    bool getVisited();
-	QString getStadiumQuery();
+	QString getStadiumQuery(int keyIndex);
     QString returnFormatedEdges();
 
     // should pass by const reference, but does
@@ -82,7 +82,7 @@ void getZipInt();
     //void resetTrip()
 
 private:
-    int               stadiumNumber;
+	int               stadiumIndex;
     QString           stadiumName;
     QString           teamName;
     QString           street;

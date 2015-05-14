@@ -724,7 +724,7 @@
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView_shoppingCart">
+     <widget class="QTableView" name="tableView_customSouvenirView">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -834,6 +834,18 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_searchForStadium0">
+     <widget class="QStackedWidget" name="stackedWidget_searchForStadium0">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>90</y>
+        <width>191</width>
+        <height>271</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="page_searchForStadium"/>
+      <widget class="QWidget" name="page_6"/>
+     </widget>
      <widget class="QListWidget" name="listWidget_searchResults0">
       <property name="geometry">
        <rect>
@@ -1637,7 +1649,7 @@
        <string>Card Number Error Message</string>
       </property>
      </widget>
-     <widget class="QTableView" name="pg_shpcrt_tableView_shoppingCart">
+     <widget class="QTableView" name="tableView_shoppingCart">
       <property name="geometry">
        <rect>
         <x>5</x>
@@ -1810,16 +1822,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="button_addSouviner">
+        <widget class="QPushButton" name="button_manageSouviner">
          <property name="text">
-          <string>Add Souviner</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="button_modifySouviner">
-         <property name="text">
-          <string>Modify Souviner</string>
+          <string>Manage Souviners</string>
          </property>
         </widget>
        </item>
@@ -2069,6 +2074,61 @@
         <y>0</y>
         <width>71</width>
         <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_addSouvenir">
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>-21</x>
+        <y>39</y>
+        <width>741</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_adminSouvenirL1">
+       <item>
+        <widget class="QTableView" name="tableView_adminSouviner"/>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_adminSouvenirL2">
+         <item>
+          <widget class="QPushButton" name="pushButton_admin_addSouvenir">
+           <property name="text">
+            <string>Add Souvenir</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_admin_deleteSouvenir">
+           <property name="text">
+            <string>Delete Souvenir</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_admin_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="pushButton_back_manageSouvenir">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>0</y>
+        <width>115</width>
+        <height>32</height>
        </rect>
       </property>
       <property name="text">

@@ -3,7 +3,7 @@
 //Constructor
 stadium::stadium()
 {
-    stadiumNumber = -1;
+	stadiumIndex = -1;
     stadiumName.clear();
     teamName.clear();
     street.clear();
@@ -40,7 +40,7 @@ stadium::stadium (int stadiumNum,
          vector<vertexEdgeStruct> vertexEdgeVector
          )
 {
-    this->stadiumNumber = stadiumNum;
+	this->stadiumIndex = stadiumNum;
     this->stadiumName = stadiumName;
     this->teamName = teamName;
     this->street = street;
@@ -72,7 +72,7 @@ QString stadium::getStadiumName()
 
 int stadium::getStadiumNumber()
 {
-    return stadiumNumber;
+	return stadiumIndex;
 }
 
 vector<vertexEdgeStruct> stadium::getVertexEdgeStructVector()
@@ -80,21 +80,36 @@ vector<vertexEdgeStruct> stadium::getVertexEdgeStructVector()
 	return vertexEdgeVector;
 }
 
-QString stadium::getStadiumQuery()
+QString stadium::getStadiumQuery(int keyIndex)
 {
 	QString queryString;
-
-	queryString = ", '" + stadiumName + "', '"
-				+ teamName + "', '"
-				+ street + "', '"
-				+ city + "', '"
-				+ state + "', '"
-				+ zip + "', '"
-				+ boxOfficeNum + "', '"
-				+ dateOpened + "', '"
-				+ capacity + "', '"
-				+ league + "', '"
-                + surface + "', '" + returnFormatedEdges() + "')";
+	queryString.append("('");
+//	queryString.append(QString::number(keyIndex));
+//	queryString.append("'', '");
+	queryString.append(stadiumName);
+	queryString.append("', '");
+	queryString.append(teamName);
+	queryString.append("', '");
+	queryString.append(street);
+	queryString.append("', '");
+	queryString.append(city);
+	queryString.append("', '");
+	queryString.append(state);
+	queryString.append("', '");
+	queryString.append(QString::number(zip));
+	queryString.append("', '");
+	queryString.append(boxOfficeNum);
+	queryString.append("', '");
+	queryString.append(dateOpened);
+	queryString.append("', '");
+	queryString.append(capacity);
+	queryString.append("', '");
+	queryString.append(league);
+	queryString.append("', '");
+	queryString.append(surface);
+	queryString.append("', '");
+	queryString.append(returnFormatedEdges());
+	queryString.append("')");
 
 	return queryString;
 }
@@ -147,7 +162,7 @@ void stadium::setStadiumName(QString stadiumNameN)
 
 void stadium::setStadiumNumber(int number)
 {
-    stadiumNumber = number;
+	stadiumIndex = number;
 }
 
 void stadium::setState(QString stateN)
@@ -184,7 +199,9 @@ QString stadium::returnFormatedEdges()
         }
         it--;
     }
-
+        #if DEUBG
+        qDebug() <<	"Formatted string is: " << formattedString << endl;
+        #endif
     return formattedString;
 }
 
@@ -223,7 +240,7 @@ QString stadium::getLeague()
 void stadium::operator=(stadium otherStadium)
 {
       this->stadiumName = otherStadium.stadiumName;
-      this->stadiumNumber = otherStadium.stadiumNumber;
+//      this->stadiumNumber = otherStadium.stadiumNumber;
       this->state         = otherStadium.state;
       this->street        = otherStadium.street;
     this->zip            = otherStadium.zip;
