@@ -114,19 +114,6 @@ void MainWindow::on_button_mainMenu0_clicked()
     ui->page_mainMenu->show();
 }
 
-void MainWindow::on_button_back1_clicked()
-{
-    refresh();
-    ui->page_planATrip1->hide();
-    ui->page_planATrip0->show();
-}
-
-void MainWindow::on_button_mainMenu1_clicked()
-{
-    refresh();
-    ui->page_planATrip1->hide();
-    ui->page_planATrip0->show();}
-
 void MainWindow::on_button_mainMenu2_clicked()
 {
     refresh();
@@ -241,6 +228,16 @@ void MainWindow::on_button_backAddStadium_clicked()
 
 void MainWindow::on_button_addStadium0_clicked()
 {
+
+    // add in all stadiums to combobox
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+        }
+    }
+
     ui->page_adminMainMenu->hide();
     ui->page_addStadium->show();
 }
@@ -430,7 +427,12 @@ void MainWindow::fillGraph()
 
 }
 /***********************************************************************************************************************************************
- * *********************************************************************************************************************************************
+ * ***************************************
+
+
+
+
+******************************************************************************************************
  * *********************************************************************************************************************************************
  ***********************************************************************************************************************************************
   **********************************************************************************************************************************************
