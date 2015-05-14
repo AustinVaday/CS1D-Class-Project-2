@@ -155,6 +155,7 @@ void MainWindow::on_button_continueAddStadium_clicked()
             stadiumHash.insert(ui->lineEdit_stadiumName->text(),  *newStadium);
 
             //adds new stadium and edge to the graph
+            graph.insert(*newStadium, *(stadiumHash.find(newEdge.otherVertex)), newEdge.edge);
 
             qDebug() << "After add stadium" << endl;
             QMessageBox::information(this, "Success", "Addition succesful. To add more edges, visit modify stadium");
