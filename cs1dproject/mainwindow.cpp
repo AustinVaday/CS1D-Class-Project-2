@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	initModel = new QSqlTableModel(0,db);
     souvenirModel = new QSqlTableModel(0,db);
-    ui->tableView_stadiumList->setModel(initModel);
+    ui->tableView_stadiumList->setModel(souvenirModel);
     ui->tableView_stadiumList->setSortingEnabled(true);
 	initializeModel(initModel); // Pass in false if you want to make it only
 	//	only editable when submit is clicked.

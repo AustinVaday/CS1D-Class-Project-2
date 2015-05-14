@@ -61,6 +61,7 @@ void MainWindow::initializeSouvenir(QSqlTableModel *souvenirModel, bool editFiel
     souvenirModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
     souvenirModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Price"));
 }
+
 void MainWindow::refresh()
 {
     souvenirModel->select();
@@ -218,8 +219,12 @@ bool MainWindow::createConnection(bool restart)
     /**************************************************************************
      * Creates souvenir table
      *************************************************************************/
-    tableMade2 = query.exec("create table souvenirs(souvenirs_id int primary key,name "
-                           "varchar(50),price decimal(6,2))");
+    tableMade2 = query.exec("create table souvenirs"
+                            "(souvenirs_id int primary key,"
+                            "quantity int, "
+                            "teamName varchar(50), "
+                            "itemName varchar(50), "
+                            "price decimal(6,2))");
     qDebug() << "TableMade2: " << tableMade2;
 
     if(tableMade || restart)
@@ -438,17 +443,14 @@ bool MainWindow::createConnection(bool restart)
     if(tableMade2 || restart)
         {
 
-            qDebug() << query.exec("insert into souvenirs values(1, "
-                                   "'Baseball cap',25.99)");
+            qDebug() << query.exec("insert into souvenirs values(1, 'generic', 'Baseball Cap', 25.99)");
 
-            qDebug() << query.exec("insert into souvenirs values(2, "
-                                   "'Baseball bat',35.35)");
+            qDebug() << query.exec("insert into souvenirs values(2, 'generic', 0,  Baseball Cap', 25.99)");
 
-            qDebug() << query.exec("insert into souvenirs values(3, "
-                                   "'Team pennant',12.99)");
 
-            qDebug() << query.exec("insert into souvenirs values(4, "
-                                   "'Autographed baseball',19.99)");
+            qDebug() << query.exec("insert into souvenirs values(3, 'generic',  0, 'Team Pennant', 12.99) ");
+
+            qDebug() << query.exec("insert into souvenirs values(4, 'generic',  0, 'Autographed baseball',19.99)");
         }
 
     return tableMade;
