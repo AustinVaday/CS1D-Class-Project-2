@@ -39,6 +39,7 @@ public:
     //getDate()
     //    bool getVisited();
 	QString getStadiumQuery();
+    QString returnFormatedEdges();
 
     // should pass by const reference, but does
     // not work with this implementation because
