@@ -91,7 +91,7 @@ public:
 
 	bool setStreet(int stadiumId, const QString& street);
 	void submit(QSqlTableModel* model);
-	bool addStadium(stadium stadiumData);
+	bool addStadium(stadium *stadiumData);
 
 	void SetProgressBar(int location);
 	void shoppingCartNext();
@@ -174,7 +174,9 @@ private slots:
 	void on_button_search0_clicked();
 
 
-private:
+	void on_button_manageSouviner_clicked();
+
+	private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
 		QTableView* viewModel;

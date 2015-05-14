@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	currentStadiumIndex = -1;
 
 	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection(true);		// put true to reinitialize the model
+	createConnection(/*true*/);		// put true to reinitialize the model
 
 	initModel = new QSqlTableModel(0,db);
 	souvenirModel = new QSqlTableModel(0,db);
@@ -32,8 +32,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	initializeSouvenir(souvenirModel);
 	initializeShoppingCart(cartModel);
 
+	ui->tableView_shoppingCart->setModel(souvenirModel);
+	ui->tableView_shoppingCart->setSortingEnabled(true);
+
 	ui->tableView_stadiumList->setModel(initModel);
 	ui->tableView_stadiumList->setSortingEnabled(true);
+
+	ui->tableView_stadiumList->hideColumn(0);
+
 	fillGraph();
 
 	// Testing ...
@@ -235,8 +241,8 @@ void MainWindow::on_button_mainMenu5_clicked()
 void MainWindow::on_button_login_clicked()
 {
 	//Login button pushed
-	QString username      = "admin";
-	QString password      = "password";
+	QString username      = "";
+	QString password      = "";
 	QString inputName     = ui->lineEdit_username->text();
 	QString inputPassword = ui->lineEdit_password->text();
 	if(inputName != username || inputPassword != password)
@@ -1056,4 +1062,9 @@ void MainWindow::on_button_search0_clicked()
 		   }
 
 	 }
+}
+
+void MainWindow::on_button_manageSouviner_clicked()
+{
+	ui->page_adminMainMenu->hide();
 }

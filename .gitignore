@@ -21,7 +21,7 @@
 *.exe
 *.out
 *.app
-
+`
 #ignore all user files and build folders
 *.user
 build/*
