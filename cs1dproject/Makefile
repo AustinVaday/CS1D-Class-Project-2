@@ -867,6 +867,8 @@ moc_mainwindow.cpp: ../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAbstractItemView \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QAbstractItemModel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		graph.h \
 		heap.h \
 		heapitem.h \
@@ -882,6 +884,8 @@ moc_mainwindow.cpp: ../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCompleter \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcompleter.h \
 		mainwindow.h
 	/home/anthony/Qt5.3.2/5.3/gcc_64/bin/moc $(DEFINES) -I/home/anthony/Qt5.3.2/5.3/gcc_64/mkspecs/linux-g++ -I/home/anthony/CS1D_Project2/CS1D-Class-Project-2/cs1dproject -I/home/anthony/Qt5.3.2/5.3/gcc_64/include -I/home/anthony/Qt5.3.2/5.3/gcc_64/include/QtWidgets -I/home/anthony/Qt5.3.2/5.3/gcc_64/include/QtSql -I/home/anthony/Qt5.3.2/5.3/gcc_64/include/QtGui -I/home/anthony/Qt5.3.2/5.3/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
@@ -1505,6 +1509,8 @@ main.o: main.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAbstractItemView \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QAbstractItemModel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		graph.h \
 		heap.h \
 		heapitem.h \
@@ -1519,7 +1525,9 @@ main.o: main.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlError \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir
+		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCompleter \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcompleter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -1868,6 +1876,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAbstractItemView \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QAbstractItemModel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		graph.h \
 		heap.h \
 		heapitem.h \
@@ -1883,6 +1893,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCompleter \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcompleter.h \
 		ui_mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QErrorMessage \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qerrormessage.h \
@@ -2844,6 +2856,8 @@ sqlfunctions.o: sqlfunctions.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAbstractItemView \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QAbstractItemModel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		graph.h \
 		heap.h \
 		heapitem.h \
@@ -2858,7 +2872,9 @@ sqlfunctions.o: sqlfunctions.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlError \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir
+		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCompleter \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcompleter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sqlfunctions.o sqlfunctions.cpp
 
 datatable.o: datatable.cpp datatable.h \
@@ -3311,6 +3327,8 @@ addstadiumfunctionality.o: addstadiumfunctionality.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAbstractItemView \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QAbstractItemModel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		graph.h \
 		heap.h \
 		heapitem.h \
@@ -3326,6 +3344,8 @@ addstadiumfunctionality.o: addstadiumfunctionality.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCompleter \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcompleter.h \
 		ui_mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QErrorMessage \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qerrormessage.h \
@@ -3833,6 +3853,8 @@ shoppingcartfunctions.o: shoppingcartfunctions.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAbstractItemView \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QAbstractItemModel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		graph.h \
 		heap.h \
 		heapitem.h \
@@ -3847,7 +3869,9 @@ shoppingcartfunctions.o: shoppingcartfunctions.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlError \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir
+		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCompleter \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcompleter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shoppingcartfunctions.o shoppingcartfunctions.cpp
 
 searchForStadium.o: searchForStadium.cpp mainwindow.h \
@@ -4196,6 +4220,8 @@ searchForStadium.o: searchForStadium.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlTableModel \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAbstractItemView \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QAbstractItemModel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		graph.h \
 		heap.h \
 		heapitem.h \
@@ -4210,7 +4236,9 @@ searchForStadium.o: searchForStadium.cpp mainwindow.h \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtSql/QSqlError \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QFileDialog \
 		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qfiledialog.h \
-		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir
+		../../../Qt5.3.2/5.3/gcc_64/include/QtCore/QDir \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/QCompleter \
+		../../../Qt5.3.2/5.3/gcc_64/include/QtWidgets/qcompleter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchForStadium.o searchForStadium.cpp
 
 qrc_teamImages.o: qrc_teamImages.cpp 

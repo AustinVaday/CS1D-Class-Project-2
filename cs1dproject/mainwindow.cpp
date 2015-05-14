@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
+//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
     vector<Vertex<stadium> *> shortestPath;
     //	float totalCost = 0;
     quickTrip  = false;
@@ -249,6 +250,8 @@ void MainWindow::on_button_login_clicked()
         //qDebug() << "Set name in admin: " << setStadiumName;
         ui->page_adminLogin0->hide();
         ui->page_adminMainMenu->show();
+        ui->lineEdit_username->clear();
+        ui->lineEdit_password->clear();
     }
 
 }
@@ -1049,8 +1052,9 @@ void MainWindow::on_button_search0_clicked()
 
            for(it = displayList.begin(); it != displayList.end(); it++)
            {
-               newLabel = new QLabel;
                ui->listWidget_searchResults0->addItem((*it)+ "\n");
            }
-      }
+
+     }
 }
+

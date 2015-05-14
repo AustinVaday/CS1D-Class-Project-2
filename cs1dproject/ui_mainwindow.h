@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QCommandLinkButton>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
@@ -149,6 +150,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *button_search0;
     QLineEdit *lineEdit_searchLine0;
+    QCommandLinkButton *commandLinkButton;
     QWidget *page_searchForStadium1;
     QLabel *label_31;
     QLabel *label_41;
@@ -301,7 +303,7 @@ public:
 
         label_titleMainMenu = new QLabel(page_mainMenu);
         label_titleMainMenu->setObjectName(QStringLiteral("label_titleMainMenu"));
-        label_titleMainMenu->setGeometry(QRect(200, 50, 351, 21));
+        label_titleMainMenu->setGeometry(QRect(260, 50, 351, 21));
         stackedWidget_mainWidget->addWidget(page_mainMenu);
         page_planATrip0 = new QWidget();
         page_planATrip0->setObjectName(QStringLiteral("page_planATrip0"));
@@ -619,15 +621,18 @@ public:
 
         horizontalLayout->addWidget(lineEdit_searchLine0);
 
+        commandLinkButton = new QCommandLinkButton(page_searchForStadium0);
+        commandLinkButton->setObjectName(QStringLiteral("commandLinkButton"));
+        commandLinkButton->setGeometry(QRect(20, 390, 81, 41));
         stackedWidget_mainWidget->addWidget(page_searchForStadium0);
         page_searchForStadium1 = new QWidget();
         page_searchForStadium1->setObjectName(QStringLiteral("page_searchForStadium1"));
         label_31 = new QLabel(page_searchForStadium1);
         label_31->setObjectName(QStringLiteral("label_31"));
-        label_31->setGeometry(QRect(80, 50, 67, 17));
+        label_31->setGeometry(QRect(50, 50, 471, 31));
         label_41 = new QLabel(page_searchForStadium1);
         label_41->setObjectName(QStringLiteral("label_41"));
-        label_41->setGeometry(QRect(80, 90, 67, 17));
+        label_41->setGeometry(QRect(50, 130, 67, 17));
         stackedWidget_mainWidget->addWidget(page_searchForStadium1);
         page_shop0 = new QWidget();
         page_shop0->setObjectName(QStringLiteral("page_shop0"));
@@ -779,7 +784,7 @@ public:
 
         lineEdit_password = new QLineEdit(layoutWidget3);
         lineEdit_password->setObjectName(QStringLiteral("lineEdit_password"));
-        lineEdit_password->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        lineEdit_password->setEchoMode(QLineEdit::Password);
         lineEdit_password->setReadOnly(false);
 
         verticalLayout_7->addWidget(lineEdit_password);
@@ -1050,6 +1055,7 @@ public:
         button_mainMenu2->setText(QApplication::translate("MainWindow", "Main Menu", 0));
         label_teamSearchTitle->setText(QApplication::translate("MainWindow", "Team Search", 0));
         button_search0->setText(QApplication::translate("MainWindow", "Search", 0));
+        commandLinkButton->setText(QApplication::translate("MainWindow", "GO", 0));
         label_31->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         label_41->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         label_shopTitle->setText(QApplication::translate("MainWindow", "Shop", 0));

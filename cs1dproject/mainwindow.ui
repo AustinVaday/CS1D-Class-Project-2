@@ -89,7 +89,7 @@
      <widget class="QLabel" name="label_titleMainMenu">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>260</x>
         <y>50</y>
         <width>351</width>
         <height>21</height>
@@ -905,15 +905,28 @@
        </item>
       </layout>
      </widget>
+     <widget class="QCommandLinkButton" name="commandLinkButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>390</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>GO</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_searchForStadium1">
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>50</x>
         <y>50</y>
-        <width>67</width>
-        <height>17</height>
+        <width>471</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -923,8 +936,8 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>90</y>
+        <x>50</x>
+        <y>130</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1540,7 +1553,7 @@
        <item>
         <widget class="QLineEdit" name="lineEdit_password">
          <property name="echoMode">
-          <enum>QLineEdit::PasswordEchoOnEdit</enum>
+          <enum>QLineEdit::Password</enum>
          </property>
          <property name="readOnly">
           <bool>false</bool>

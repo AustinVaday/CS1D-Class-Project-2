@@ -4,7 +4,6 @@
 
 vector<QString> MainWindow::searchForStadium(string searchKey)
 {
-
     qDebug() << "Entered Search For Stadium" << endl;
 
       searchPair *                    newPair;
@@ -66,3 +65,4 @@ vector<QString> MainWindow::searchForStadium(string searchKey)
 
       return finalList;
 }
+

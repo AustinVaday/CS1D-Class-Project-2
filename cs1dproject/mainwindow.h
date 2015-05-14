@@ -11,6 +11,8 @@
 #include <QtGui>
 #include <QMessageBox>
 
+#include <algorithm>
+
 // Qt Sql includes, database, query and table display
 #include <QTableView>
 #include <QSqlQueryModel>
@@ -19,6 +21,8 @@
 #include <QSqlTableModel>
 #include <QAbstractItemView>
 #include <QAbstractItemModel>
+#include <QLabel>
+#include <QFont>
 
 // Project includes
 #include "graph.h"
@@ -28,6 +32,8 @@
 #include <QStringList>
 
 //#include "hashTable.h"
+#include <QStringList>
+#include <QCompleter>
 
 namespace Ui {
 class MainWindow;
@@ -166,6 +172,7 @@ private slots:
     void on_button_backMainMenuMST_clicked();
 
     void on_button_search0_clicked();
+
 
 private:
 		Ui::MainWindow *ui;
