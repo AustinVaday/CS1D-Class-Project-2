@@ -238,8 +238,21 @@ void MainWindow::on_button_backAddStadium_clicked()
 
 void MainWindow::on_button_addStadium0_clicked()
 {
+
+    // add in all stadiums to combobox
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+        }
+    }
+
+
 	ui->page_adminMainMenu->hide();
 	ui->page_addStadium->show();
+
+
 }
 
 
