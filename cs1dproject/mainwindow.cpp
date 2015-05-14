@@ -25,13 +25,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initModel = new QSqlTableModel(0,db);
     souvenirModel = new QSqlTableModel(0,db);
-    //    ui->tableView_stadiumList->setModel(initModel);
-    initializeModel(initModel); // Pass in false if you want to make it only
-                                //	only editable when submit is clicked.
+    cartModel = new QSqlTableModel(0,db);
+
+    initializeModel(initModel); // Pass in false if you want to make it only editable when submit is clicked.
     initializeSouvenir(souvenirModel);
+    initializeShoppingCart(cartModel);
+
     ui->tableView_stadiumList->setModel(souvenirModel);
     ui->tableView_stadiumList->setSortingEnabled(true);
-
     fillGraph();
 
     // Testing ...
@@ -243,10 +244,6 @@ void MainWindow::on_button_addStadium0_clicked()
     ui->page_adminMainMenu->hide();
     ui->page_addStadium->show();
 }
-
-
-
-
 void MainWindow::fillGraph()
 {
     qDebug() << "filling out the graph...";
