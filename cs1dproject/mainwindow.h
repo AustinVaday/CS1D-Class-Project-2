@@ -150,6 +150,8 @@ private slots:
 
     void on_button_backMainMenuMST_clicked();
 
+    void on_button_search0_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;

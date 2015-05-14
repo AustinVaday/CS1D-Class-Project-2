@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initializeSouvenir(souvenirModel);
     initializeShoppingCart(cartModel);
 
-    ui->tableView_stadiumList->setModel(souvenirModel);
+    ui->tableView_stadiumList->setModel(initModel);
     ui->tableView_stadiumList->setSortingEnabled(true);
     fillGraph();
 
@@ -976,10 +976,22 @@ void MainWindow::on_button_backMST_clicked()
     ui->page_MST->hide();
     ui->page_planATrip0->show();
 }
-
+//****************())************************************************************************
 void MainWindow::on_button_backMainMenuMST_clicked()
 {
     ui->page_MST->hide();
     ui->page_mainMenu->show();
 }
 
+
+void MainWindow::on_button_search0_clicked()
+{
+    if(ui->lineEdit_searchLine0->text().isEmpty())
+    {
+        QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+    }else
+    {
+
+    }
+    ui->lineEdit_searchLine0->text();
+}
