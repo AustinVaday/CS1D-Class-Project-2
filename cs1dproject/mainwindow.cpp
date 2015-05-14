@@ -21,18 +21,17 @@ MainWindow::MainWindow(QWidget *parent) :
     currentStadiumIndex = -1;
 
     // Create Database and initialize the table model ( NOT VIEW )
-    createConnection(/*true*/);		// put true to reinitialize the model
+    createConnection(true);		// put true to reinitialize the model
 
     initModel = new QSqlTableModel(0,db);
     souvenirModel = new QSqlTableModel(0,db);
-    ui->tableView_stadiumList->setModel(initModel);
-    ui->tableView_shoppingCart->setModel(souvenirModel);
+    //    ui->tableView_stadiumList->setModel(initModel);
     initializeModel(initModel); // Pass in false if you want to make it only
-    //	only editable when submit is clicked.
+                                //	only editable when submit is clicked.
+    initializeSouvenir(souvenirModel);
     ui->tableView_stadiumList->setModel(souvenirModel);
     ui->tableView_stadiumList->setSortingEnabled(true);
 
-    initializeSouvenir(souvenirModel);
     fillGraph();
 
     // Testing ...
@@ -433,9 +432,46 @@ void MainWindow::fillGraph()
 
 
 }
+/***********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+  **********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+ **  ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+    **  ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+        **  ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+                ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+            ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+        ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+     ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+    ** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE **
+** LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE <<>>> LOST CODE ***/
+//    // add in all stadiums to combobox
+//    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+//    {
+//        if (!(*stadiumIt).getStadiumName().isEmpty())
+//        {
+//            Ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+//        }
+//    }
 
 
+//    ui->page_adminMainMenu->hide();
+//    ui->page_addStadium->show();
 
+
+/***********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ * *********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+  **********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************
+ ***********************************************************************************************************************************************/
 
 void MainWindow::on_button_quickTrip0_clicked()
 {
@@ -615,9 +651,9 @@ void MainWindow::on_pushButton_customTripGo_clicked()
     for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
     {
 
-            listItem = new QListWidgetItem;
-            listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
-            listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+        listItem = new QListWidgetItem;
+        listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+        listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
         // indicate first one is current stadium
         if (i == 0)
         {

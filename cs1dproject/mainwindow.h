@@ -69,6 +69,8 @@ class MainWindow : public QMainWindow
 
         void SetProgressBar(int location);
 
+        void initializeShoppingCart(QSqlTableModel *cartModel, bool editField);
+
 	private slots:
 		void on_button_back0_clicked();
 
@@ -151,10 +153,11 @@ class MainWindow : public QMainWindow
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
-		QSqlTableModel* initModel;
 		QTableView* viewModel;
         QSqlTableModel* souvenirModel;
-		/*
+        QSqlTableModel* initModel;
+        QSqlTableModel* cartModel;
+        /*
 		 * Vertex: stadium
 		 * Edge: float (could be int, but let's make it generic)
 		 */
