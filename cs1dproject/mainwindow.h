@@ -176,6 +176,8 @@ private slots:
 
 	void on_button_manageSouviner_clicked();
 
+	void on_pushButton_back_manageSouvenir_clicked();
+
 	private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;

@@ -1064,7 +1064,3 @@ void MainWindow::on_button_search0_clicked()
 //	 }
 }
 
-void MainWindow::on_button_manageSouviner_clicked()
-{
-	ui->page_adminMainMenu->hide();
-}
