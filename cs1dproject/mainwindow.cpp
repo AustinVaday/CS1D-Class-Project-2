@@ -1035,33 +1035,33 @@ void MainWindow::on_button_backMainMenuMST_clicked()
 
 void MainWindow::on_button_search0_clicked()
 {
-	QFont * newFont;
-	  QLabel * newLabel;
-	  QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
-	  int rowIndex ;
-	  vector<QString> displayList;
-	  vector<QString>::iterator it;
+//	QFont * newFont;
+//	  QLabel * newLabel;
+//	  QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+//	  int rowIndex ;
+//	  vector<QString> displayList;
+//	  vector<QString>::iterator it;
 
-	  if(ui->lineEdit_searchLine0->text().isEmpty())
-	  {
-		  QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
-	  }
-	  else
-	  {
-		  ui->listWidget_searchResults0->clear();
+//	  if(ui->lineEdit_searchLine0->text().isEmpty())
+//	  {
+//		  QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+//	  }
+//	  else
+//	  {
+//		  ui->listWidget_searchResults0->clear();
 
-		  displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+//		  displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
 
-		  qDebug() << "After Search Stadium";
+//		  qDebug() << "After Search Stadium";
 
 
 
-		   for(it = displayList.begin(); it != displayList.end(); it++)
-		   {
-			   ui->listWidget_searchResults0->addItem((*it)+ "\n");
-		   }
+//		   for(it = displayList.begin(); it != displayList.end(); it++)
+//		   {
+//			   ui->listWidget_searchResults0->addItem((*it)+ "\n");
+//		   }
 
-	 }
+//	 }
 }
 
 void MainWindow::on_button_manageSouviner_clicked()
