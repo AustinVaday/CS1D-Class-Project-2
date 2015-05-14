@@ -1813,18 +1813,15 @@ void Graph<VertexType,WeightType>::MST(vector<Edge<VertexType,WeightType> *> &ed
 
             edgeVector.push_back(currentEdge);
 
-//            qDebug() << "MST edge between ";
-//            qDebug() << /*setw(8) << */ **(currentEdge->getVertex1())  << " and ";
-//            qDebug() << /*setw(8) << */ **(currentEdge->getVertex2())  << " has cost: ";
-//            qDebug() << cost << endl;
+            qDebug() << "MST edge between ";
+            qDebug() << /*setw(8) << */ **(currentEdge->getVertex1())  << " and ";
+            qDebug() << /*setw(8) << */ **(currentEdge->getVertex2())  << " has cost: ";
+            qDebug() << currentEdge->getWeight() << endl;
 
         }
 
     }
 
-//    qDebug() << "TOTAL MST COST IS: " << totalCost << endl;
-
-//    qDebug() << right;
 
 }
 

@@ -929,7 +929,7 @@ void MainWindow::on_button_MST_clicked()
         weight =         (*(mstEdgeVector[i])).getWeight();
         listItem = new QListWidgetItem;
 
-        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + weight);
+        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
         listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
 
         ui->listWidget_displayMST->addItem(listItem);
