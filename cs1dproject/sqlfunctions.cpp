@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 /***************************************************************************
  *  Initialize Model
@@ -12,6 +13,7 @@
 void MainWindow::initializeModel(QSqlTableModel *initModel, bool editField)
 {
 	initModel->setTable("stadiums");
+
 	// Defaulted to be false!!
 	if(editField)
 	{
@@ -21,6 +23,7 @@ void MainWindow::initializeModel(QSqlTableModel *initModel, bool editField)
 	{
 		initModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
 	}
+
 	initModel->select();
 	initModel->setHeaderData(1, Qt::Horizontal, QObject::tr("Stadium Names"));
 	initModel->setHeaderData(2, Qt::Horizontal, QObject::tr("Team Names"));
@@ -34,6 +37,7 @@ void MainWindow::initializeModel(QSqlTableModel *initModel, bool editField)
 	initModel->setHeaderData(10, Qt::Horizontal, QObject::tr("League"));
 	initModel->setHeaderData(11, Qt::Horizontal, QObject::tr("Surface"));
 	initModel->setHeaderData(12, Qt::Horizontal, QObject::tr("Vertices And Edges"));
+
 }
 /***************************************************************************
  *  Initialize Souvenir
@@ -63,11 +67,10 @@ void MainWindow::initializeSouvenir(QSqlTableModel *souvenirModel, bool editFiel
     souvenirModel->setHeaderData(4, Qt::Horizontal, QObject::tr("Item"));
     souvenirModel->setHeaderData(5, Qt::Horizontal, QObject::tr("Price"));
 }
-
 void MainWindow::refresh()
 {
-    souvenirModel->select();
-    initModel->select();
+	souvenirModel->select();
+	initModel->select();
 }
 
 QTableView* MainWindow::createView(QSqlTableModel *model, const QString &title)
@@ -142,13 +145,21 @@ void MainWindow::showTableView()
 	table->show();
 }
 
-bool MainWindow::addStadium(stadium stadiumData)
+bool MainWindow::addStadium(stadium *stadiumData)
 {
 	QSqlQuery query;
 	QString queryString;
+	int setKeyIndex;
 
-    queryString = "(insert into stadiums values(" +
-            (query.size() + 1)+ stadiumData.getStadiumQuery();
+	initModel->insertRow(initModel->rowCount());
+	setKeyIndex = initModel->rowCount();
+	refresh();
+	qDebug() << "query size: " << setKeyIndex;
+	qDebug() << "Stadium Query is :: " << stadiumData->getStadiumQuery(setKeyIndex);
+
+
+	queryString = "insert into stadiums (stadiumName, teamName ,street, city, state, zip, boxOfficeNum, dateOpened, capacity, league, surface, verticesAndEdges) values" + stadiumData->getStadiumQuery(setKeyIndex);
+	qDebug() << "Stadium Query String is : " << queryString;
 	return query.exec(queryString);
 
 }
