@@ -639,100 +639,107 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 
 	}
 
-	// loop until stadium before last selected stadium is reached (need i+1)
-	for (unsigned int i = 0; i < selectedStadiums.size() - 1; i++)
-	{
-		subsequentVertexVector.clear();
+    // User must select at least one stadium (the stadium currently inside is the starting stadium, it's always there)
+    if (selectedStadiums.size() == 1)
+    {
+        QMessageBox::information(this, "Error.", "Please select at least ONE designated stadium.");
+    }
+    else
+    {
+        // loop until stadium before last selected stadium is reached (need i+1)
+        for (unsigned int i = 0; i < selectedStadiums.size() - 1; i++)
+        {
+            subsequentVertexVector.clear();
 
-		graph.DijkstraShortestPath(*(stadiumHash.find(selectedStadiums[i])), *(stadiumHash.find(selectedStadiums[i + 1])), subsequentVertexVector, cost);
+            graph.DijkstraShortestPath(*(stadiumHash.find(selectedStadiums[i])), *(stadiumHash.find(selectedStadiums[i + 1])), subsequentVertexVector, cost);
 
-		qDebug() << "Cost is: " << cost;
-		totalCost = totalCost + cost;
-		qDebug() << "Total cost is: " << totalCost;
-
-
-		for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
-		{
-			dijkstraVertexVector.push_back(subsequentVertexVector[j]);
-
-			//                if ( j != 0)
-			//                {
-			//                    // prevent subsequent duplicates by seeing if stadiums entered in twice
-			//                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
-			//                    {
-			//                        dijkstraVertexVector.pop_back();
-			//                    }
-			//                }
-
-		}
-
-		// update new current stadium
-		//            startStadium = selectedStadiums[i];
-	}
+            qDebug() << "Cost is: " << cost;
+            totalCost = totalCost + cost;
+            qDebug() << "Total cost is: " << totalCost;
 
 
-	// remove duplicates in dijkstraVertexVector ...
-	for (vertexVecIt = dijkstraVertexVector.begin();
-		 vertexVecIt != dijkstraVertexVector.end();
-		 vertexVecIt++)
-	{
+            for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
+            {
+                dijkstraVertexVector.push_back(subsequentVertexVector[j]);
 
-		if (vertexVecIt + 1 != dijkstraVertexVector.end())
-		{
-			qDebug() << "Comparing " << ***vertexVecIt << " and " << ***(vertexVecIt + 1);
-			// prevent subsequent duplicates by seeing if stadiums entered in twice
-			if (***(vertexVecIt) == ***(vertexVecIt + 1))
-			{
-				dijkstraVertexVector.erase(vertexVecIt);
-				qDebug() << "Erasing " << (***vertexVecIt).getStadiumName();
-			}
+                //                if ( j != 0)
+                //                {
+                //                    // prevent subsequent duplicates by seeing if stadiums entered in twice
+                //                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
+                //                    {
+                //                        dijkstraVertexVector.pop_back();
+                //                    }
+                //                }
 
-		}
+            }
 
-	}
-
-	// fill out QListWidget with dijkstra sequence.
-	QListWidgetItem *listItem;
-
-	ui->listWidget_customTripSequence->clear();
-
-	for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
-	{
-
-		listItem = new QListWidgetItem;
-		listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
-		listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
-		// indicate first one is current stadium
-		if (i == 0)
-		{
-			currentStadiumIndex = 0;
-			listItem->setTextColor(QColor("red"));
-			listItem->setFont(QFont("bold"));
-
-			ui->label_customTripStadiumName->setText(listItem->text());
-			ui->pushButton_customTripPrevious->setEnabled(false);
-			ui->pushButton_customTripNext->setEnabled(false);
+            // update new current stadium
+            //            startStadium = selectedStadiums[i];
+        }
 
 
-		}
-		else
-		{
-			ui->pushButton_customTripNext->setEnabled(true);
+        // remove duplicates in dijkstraVertexVector ...
+        for (vertexVecIt = dijkstraVertexVector.begin();
+             vertexVecIt != dijkstraVertexVector.end();
+             vertexVecIt++)
+        {
 
-			listItem->setTextColor(QColor("gray"));
-		}
-		ui->listWidget_customTripSequence->addItem(listItem);
-	}
+            if (vertexVecIt + 1 != dijkstraVertexVector.end())
+            {
+                qDebug() << "Comparing " << ***vertexVecIt << " and " << ***(vertexVecIt + 1);
+                // prevent subsequent duplicates by seeing if stadiums entered in twice
+                if (***(vertexVecIt) == ***(vertexVecIt + 1))
+                {
+                    dijkstraVertexVector.erase(vertexVecIt);
+                    qDebug() << "Erasing " << (***vertexVecIt).getStadiumName();
+                }
 
-	ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+            }
+
+        }
+
+        // fill out QListWidget with dijkstra sequence.
+        QListWidgetItem *listItem;
+
+        ui->listWidget_customTripSequence->clear();
+
+        for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+        {
+
+            listItem = new QListWidgetItem;
+            listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+            listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+            // indicate first one is current stadium
+            if (i == 0)
+            {
+                currentStadiumIndex = 0;
+                listItem->setTextColor(QColor("red"));
+                listItem->setFont(QFont("bold"));
+
+                ui->label_customTripStadiumName->setText(listItem->text());
+                ui->pushButton_customTripPrevious->setEnabled(false);
+                ui->pushButton_customTripNext->setEnabled(false);
 
 
-	// set the value of the progress bar.
-	SetProgressBar(-1);
+            }
+            else
+            {
+                ui->pushButton_customTripNext->setEnabled(true);
 
-	ui->page_customTripMenu->hide();
-	ui->page_customTrip->show();
+                listItem->setTextColor(QColor("gray"));
+            }
+            ui->listWidget_customTripSequence->addItem(listItem);
+        }
 
+        ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+
+
+        // set the value of the progress bar.
+        SetProgressBar(-1);
+
+        ui->page_customTripMenu->hide();
+        ui->page_customTrip->show();
+    }
 }
 
 void MainWindow::on_button_customTripBack_clicked()
