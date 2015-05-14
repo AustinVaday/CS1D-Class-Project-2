@@ -1,24 +1,27 @@
 #include "mainwindow.h"
 
 
-
-stadium MainWindow::searchForStadium(string searchKey)
+vector<QString> MainWindow::searchForStadium(string searchKey)
 {
+    qDebug() << "Entered Search For Stadium" << endl;
 
-
-
-    QHash<QString,stadium>::iterator stadiumIt; //Used to iterate through the hash table
+    searchPair *                    newPair;
+    QMap<QString,stadium>::iterator stadiumIt; //Used to iterate through the hash table
     //Used for levenshteins algorithm
-    vector<int>               differenceArray;
-    vector<string>            stadiumNameArray;
-    vector<string>::iterator  nameIt;
-    vector<int>::iterator     differenceIt;
-    int                       smallestDifferenceIndex = 999;
-    string                    temp;
+    vector<searchPair>           differenceArray;
+    vector<searchPair>::iterator diffIt;
+    vector<string>               stadiumNameArray;
+    vector<string>::iterator     nameIt;
+    vector<QString>               finalList;
+    vector<int>::iterator        differenceIt;
+    int                          smallestDifferenceIndex = 999;
+    string                       temp;
+
 
     //Loads all stadium names into vector
     for(stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
     {
+
         stadiumNameArray.push_back(((*stadiumIt).getStadiumName()).toStdString());
     }
 
@@ -27,15 +30,38 @@ stadium MainWindow::searchForStadium(string searchKey)
 //    LevenshteinDistance(const string &s1, const string &s2)
     while(nameIt != stadiumNameArray.end())
     {
+        newPair = new searchPair;
 
-        differenceArray.push_back(LevenshteinDistance(searchKey, (*nameIt)));
+        newPair->stadiumName = (*nameIt);
+        newPair->difference  = LevenshteinDistance(searchKey, (*nameIt));
+
+
+        differenceArray.push_back((*newPair));
         nameIt++;
+
+        newPair = NULL;
     }
 
-    for(differenceIt  = differenceArray.begin(), nameIt = stadiumNameArray.begin();
-        differenceIt != differenceArray.end(),   nameIt != stadiumNameArray.end();
-        differenceIt++ , nameIt++)
+
+    sort(differenceArray.begin(), differenceArray.end(), less_than_key());
+
+    string stringTemp;
+    int     intTemp;
+
+
+
+//    diffIt = differenceArray.begin();
+//    QMessageBox::information(this, "Search Result", QString::fromStdString((*diffIt).stadiumName));
+    for(diffIt = differenceArray.begin(); diffIt != differenceArray.end(); diffIt++)
     {
+        stringTemp = (*diffIt).stadiumName;
+        intTemp    = (*diffIt).difference;
 
+        finalList.push_back(QString::fromStdString(stringTemp));
+        qDebug() << QString::number(intTemp);
+        qDebug() << QString::fromStdString(stringTemp) <<  endl;
     }
-}
+
+    return finalList;
+
+ }

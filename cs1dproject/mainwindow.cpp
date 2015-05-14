@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
+//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
     vector<Vertex<stadium> *> shortestPath;
     //	float totalCost = 0;
     quickTrip  = false;
@@ -102,7 +103,46 @@ void MainWindow::on_button_planATrip0_clicked()
 
 void MainWindow::on_button_searchForStadiums0_clicked()
 {
-    refresh();
+
+    QStringList * stringList;
+
+    stringList = new QStringList;
+
+    *stringList  << "AT&T Park"
+                  << "Angels Stadium of Anaheim"
+                  << "Busch Stadium"
+                  << "Chase Field"
+                  << "Citi Field"
+                  << "Citizens Bank Park"
+                  << "Comerica Park"
+                  << "Coors Feild"
+                  << "Dodger Stadium"
+                  << "Fenway Park"
+                  << "Globe Life Park in Arlington"
+                  << " Great American Ball Park"
+                  << "Kauffman Stadium"
+                  << "Marlins Park"
+                  << "Miller Park"
+                  << "Minute Maid Park"
+                  << "Nationals Park"
+                  << "O.co Coliseum"
+                  << "Oriole Park at Camden Yards"
+                  << "PNC Park"
+                  << "Petco Parrk"
+                  << "Progressive Field"
+                  << "Rogers Centre"
+                  << "SafeCo Field"
+                  << "Target Field"
+                  << "Tropicana Field"
+                  << "Turner Field"
+                  << "US Cellular Field"
+                  << "Wrigley Field"
+                  << "Yankee Stadium";
+
+//    refresh();
+
+    QCompleter* completer = new QCompleter(*stringList);
+    ui->lineEdit_searchLine0->setCompleter(completer);
     ui->page_mainMenu->hide();
     ui->page_searchForStadium0->show();
 }
@@ -209,6 +249,8 @@ void MainWindow::on_button_login_clicked()
         //qDebug() << "Set name in admin: " << setStadiumName;
         ui->page_adminLogin0->hide();
         ui->page_adminMainMenu->show();
+        ui->lineEdit_username->clear();
+        ui->lineEdit_password->clear();
     }
 
 }
@@ -986,12 +1028,55 @@ void MainWindow::on_button_backMainMenuMST_clicked()
 
 void MainWindow::on_button_search0_clicked()
 {
+    QFont * newFont;
+    QLabel * newLabel;
+    QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+    int rowIndex ;
+    vector<QString> displayList;
+    vector<QString>::iterator it;
+
     if(ui->lineEdit_searchLine0->text().isEmpty())
     {
         QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
-    }else
+    }
+    else
     {
+        ui->listWidget_searchResults0->clear();
+
+        displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+
+        qDebug() << "After Search Stadium";
+
+
+
+         for(it = displayList.begin(); it != displayList.end(); it++)
+         {
+             newLabel = new QLabel;
+             ui->listWidget_searchResults0->addItem((*it)+ "\n");
+         }
+
+
+
 
     }
-    ui->lineEdit_searchLine0->text();
+}
+
+void MainWindow::on_lineEdit_password_returnPressed()
+{
+    on_button_login_clicked();
+}
+
+void MainWindow::on_commandLinkButton_clicked()
+{
+
+    stadium tempStadium;
+
+    ui->page_searchForStadium0->hide();
+    ui->page_searchForStadium1->show();
+
+    //Must use stadium data to fill next page
+    //Next frame will be a set of QLabels!
+//    tempStadium = *(stadiumHash.find(ui->listWidget_searchResults0->currentItem()->text()));
+
+
 }

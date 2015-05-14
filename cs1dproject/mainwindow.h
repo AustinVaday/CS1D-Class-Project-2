@@ -11,6 +11,8 @@
 #include <QtGui>
 #include <QMessageBox>
 
+#include <algorithm>
+
 // Qt Sql includes, database, query and table display
 #include <QTableView>
 #include <QSqlQueryModel>
@@ -19,17 +21,35 @@
 #include <QSqlTableModel>
 #include <QAbstractItemView>
 #include <QAbstractItemModel>
+#include <QLabel>
+#include <QFont>
 
 // Project includes
 #include "graph.h"
 #include "stadium.h"
 #include "MainHeader.h"
 //#include "hashTable.h"
+#include <QStringList>
+#include <QCompleter>
 
 namespace Ui {
 class MainWindow;
 }
 
+struct searchPair
+{
+    string stadiumName;
+    int    difference;
+
+};
+
+struct less_than_key
+{
+    inline bool operator() (const searchPair& pairOne, const searchPair& pairTwo)
+    {
+        return (pairOne.difference <= pairTwo.difference);
+    }
+};
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -60,7 +80,7 @@ public:
 
 
 
-    stadium searchForStadium(string searchKey);
+    vector<QString> searchForStadium(string searchKey);
 
 
 
@@ -151,6 +171,10 @@ private slots:
     void on_button_backMainMenuMST_clicked();
 
     void on_button_search0_clicked();
+
+    void on_lineEdit_password_returnPressed();
+
+    void on_commandLinkButton_clicked();
 
 private:
 		Ui::MainWindow *ui;
