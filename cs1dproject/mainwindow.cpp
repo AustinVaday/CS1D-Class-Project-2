@@ -78,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Input mask gives type of input allowed for credit card number
     ui->lineEdit_creditCardNumber->setInputMask("0000000000000000");
     // Max length of input for credit card number
-    ui->lineEdit_creditCardNumber->setMaxLength(9999999999999999);
+//    ui->lineEdit_creditCardNumber->setMaxLength(9999999999999999);
 }
 
 MainWindow::~MainWindow()
@@ -241,8 +241,21 @@ void MainWindow::on_button_backAddStadium_clicked()
 
 void MainWindow::on_button_addStadium0_clicked()
 {
+
+    // add in all stadiums to combobox
+    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+    {
+        if (!(*stadiumIt).getStadiumName().isEmpty())
+        {
+            ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+        }
+    }
+
+
 	ui->page_adminMainMenu->hide();
 	ui->page_addStadium->show();
+
+
 }
 
 
