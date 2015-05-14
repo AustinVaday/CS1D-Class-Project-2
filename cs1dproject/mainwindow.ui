@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>12</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -792,14 +792,17 @@ p, li { white-space: pre-wrap; }
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QTableView" name="customTrip_tableView_shoppingCart_">
+     <widget class="QTableView" name="tableView_shoppingCart">
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>50</y>
+        <y>60</y>
         <width>441</width>
         <height>311</height>
        </rect>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

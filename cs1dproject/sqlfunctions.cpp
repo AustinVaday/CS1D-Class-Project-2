@@ -229,8 +229,10 @@ bool MainWindow::createConnection(bool restart)
                             "price decimal(6,2))");
 
     // Shopping cart table!!!!
-    query.exec("drop table shoppingcart");
-    query.exec("create table shoppingCart(quantity int, teamName varcahr(50), itemName varcahr(50), price decimal(6,2))");
+            query.clear();
+    query.exec("drop table shoppingCart");
+            query.clear();
+    query.exec("create table shoppingCart(quantity int, teamName varchar(50), itemName varchar(50), price decimal(6,2))");
 
 
     qDebug() << "TableMade2: " << tableMade2;
