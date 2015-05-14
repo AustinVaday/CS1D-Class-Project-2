@@ -28,13 +28,13 @@ void souvenirs::setItem(QString name){
 }
 
 void souvenirs::setPrice(QString price){
-	query.exec("Update Souvenirs set price = " + price + " where souvenir = " + name_ + ";");
-	price_ = price;
+    query.exec("Update Souvenirs set price = " + price + " where souvenir = " + name_ + ";");
+    price_ = price.toFloat();
 }
 
 QString souvenirs::getName(){
 	return name_;
 }
-QString souvenirs::getPrice(){
+float souvenirs::getPrice(){
 	return price_;
 }

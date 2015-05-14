@@ -51,6 +51,7 @@ class MainWindow : public QMainWindow
 		bool setStadiumName(int stadiumId,const QString &teamName);
 
 		void initializeModel(QSqlTableModel *initModel, bool editField = true);
+        void initializeSouvenir(QSqlTableModel *initModel, bool editField = true);
 
 		QTableView* createView(QSqlTableModel *initModel, const QString &title);
 		// This method will take a model foo and give it a title foobar.
@@ -152,6 +153,7 @@ private:
 		QSqlDatabase db;
 		QSqlTableModel* initModel;
 		QTableView* viewModel;
+        QSqlTableModel* souvenirModel;
 		/*
 		 * Vertex: stadium
 		 * Edge: float (could be int, but let's make it generic)
