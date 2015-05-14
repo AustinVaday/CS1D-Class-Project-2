@@ -25,13 +25,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initModel = new QSqlTableModel(0,db);
     souvenirModel = new QSqlTableModel(0,db);
-    //    ui->tableView_stadiumList->setModel(initModel);
-    initializeModel(initModel); // Pass in false if you want to make it only
-                                //	only editable when submit is clicked.
+    cartModel = new QSqlTableModel(0,db);
+
+    initializeModel(initModel); // Pass in false if you want to make it only editable when submit is clicked.
     initializeSouvenir(souvenirModel);
+    initializeShoppingCart(cartModel);
+
     ui->tableView_stadiumList->setModel(souvenirModel);
     ui->tableView_stadiumList->setSortingEnabled(true);
-
     fillGraph();
 
     // Testing ...
@@ -902,7 +903,10 @@ void MainWindow::on_button_MST_clicked()
 
     mstEdgeVector.clear();
 
-    QListWidgetItem *listItem;
+//    QListWidgetItem *listItem;
+    QTableWidgetItem *tableItem;
+
+
     QString stadium1String;
     QString stadium2String;
     float weight = 0;
@@ -912,23 +916,53 @@ void MainWindow::on_button_MST_clicked()
     graph.MST(mstEdgeVector, totalCost);
 
     // fill out QListWidget with MST sequence.
+    ui->tableWidget_displayMST->setColumnCount(4);
 
+    // add column headers (not working)
+//    ui->tableWidget_displayMST->setHorizontalHeaderLabels(QStringList() << "Switch.." << "Parameter..." << " " << " asd");
+//    ui->tableWidget_displayMST->setHorizontalHeaderItem(0, new QTableWidgetItem("Prueba"));
 
-
-    ui->listWidget_displayMST->clear();
-
+//    ui->listWidget_displayMST->clear();
+    ui->tableWidget_displayMST->clear();
     for (unsigned int i = 0; i < mstEdgeVector.size(); i++)
     {
 
         stadium1String = (**((*(mstEdgeVector[i])).getVertex1())).getStadiumName();
         stadium2String = (**((*(mstEdgeVector[i])).getVertex2())).getStadiumName();
         weight =         (*(mstEdgeVector[i])).getWeight();
-        listItem = new QListWidgetItem;
 
-        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
-        listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+//        listItem = new QListWidgetItem;
 
-        ui->listWidget_displayMST->addItem(listItem);
+        ui->tableWidget_displayMST->insertRow(i);
+
+        tableItem = new QTableWidgetItem;
+        tableItem->setText(stadium1String);
+        tableItem->setFlags(!Qt::ItemIsEditable & Qt::ItemIsSelectable );
+        ui->tableWidget_displayMST->setItem(i, 0, tableItem);
+
+        tableItem = new QTableWidgetItem;
+        tableItem->setText("       --> ");
+        tableItem->setFlags(!Qt::ItemIsEditable & Qt::ItemIsSelectable );
+        ui->tableWidget_displayMST->setItem(i, 1, tableItem);
+
+        tableItem = new QTableWidgetItem;
+        tableItem->setText(stadium2String);
+        tableItem->setFlags(!Qt::ItemIsEditable & Qt::ItemIsSelectable );
+        ui->tableWidget_displayMST->setItem(i, 2, tableItem);
+
+        tableItem = new QTableWidgetItem;
+        tableItem->setText(QString::number(weight));
+        tableItem->setFlags(!Qt::ItemIsEditable & Qt::ItemIsSelectable );
+        ui->tableWidget_displayMST->setItem(i, 3, tableItem);
+
+
+
+//        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
+
+
+        //        listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+
+//        ui->listWidget_displayMST->addItem(listItem);
 
     }
 
