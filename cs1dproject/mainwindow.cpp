@@ -14,14 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow),
 	graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
-
+//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
 	vector<Vertex<stadium> *> shortestPath;
 	//	float totalCost = 0;
 	quickTrip  = false;
 	ui->setupUi(this);
 	currentStadiumIndex = -1;
-//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
-
 
 	// Create Database and initialize the table model ( NOT VIEW )
 	createConnection(true);		// put true to reinitialize the model
@@ -34,22 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	initializeSouvenir(souvenirModel);
 	initializeShoppingCart(cartModel);
 
-
-	ui->tableView_customSouvenirView->setModel(souvenirModel);
-	ui->tableView_customSouvenirView->setSortingEnabled(true);
-	ui->tableView_customSouvenirView->hideColumn(0);
-
 	ui->tableView_stadiumList->setModel(initModel);
 	ui->tableView_stadiumList->setSortingEnabled(true);
-	ui->tableView_stadiumList->hideColumn(0);
-
-	ui->tableView_searchResults0->setModel(initModel);
-	ui->tableView_searchResults0->setSortingEnabled(true);
-	ui->tableView_searchResults0->hideColumn(0);
-
-	ui->tableView_shoppingCart->setModel(cartModel);
-	ui->tableView_shoppingCart->setSortingEnabled(true);
-	ui->tableView_shoppingCart->hideColumn(0);
 	fillGraph();
 
 	// Testing ...
@@ -119,55 +103,49 @@ void MainWindow::on_button_planATrip0_clicked()
 
 void MainWindow::on_button_searchForStadiums0_clicked()
 {
-<<<<<<< HEAD
-	refresh();
-	ui->page_mainMenu->hide();
-	ui->page_searchForStadium0->show();
-=======
 
-        refresh();
+		refresh();
 
-    QStringList * stringList;
+	QStringList * stringList;
 
-        stringList = new QStringList;
+		stringList = new QStringList;
 
-        *stringList  << "AT&T Park"
-                      << "Angels Stadium of Anaheim"
-                      << "Busch Stadium"
-                      << "Chase Field"
-                      << "Citi Field"
-                      << "Citizens Bank Park"
-                      << "Comerica Park"
-                      << "Coors Feild"
-                      << "Dodger Stadium"
-                      << "Fenway Park"
-                      << "Globe Life Park in Arlington"
-                      << " Great American Ball Park"
-                      << "Kauffman Stadium"
-                      << "Marlins Park"
-                      << "Miller Park"
-                      << "Minute Maid Park"
-                      << "Nationals Park"
-                      << "O.co Coliseum"
-                      << "Oriole Park at Camden Yards"
-                      << "PNC Park"
-                      << "Petco Parrk"
-                      << "Progressive Field"
-                      << "Rogers Centre"
-                      << "SafeCo Field"
-                      << "Target Field"
-                      << "Tropicana Field"
-                      << "Turner Field"
-                      << "US Cellular Field"
-                      << "Wrigley Field"
-                      << "Yankee Stadium";
+		*stringList  << "AT&T Park"
+					  << "Angels Stadium of Anaheim"
+					  << "Busch Stadium"
+					  << "Chase Field"
+					  << "Citi Field"
+					  << "Citizens Bank Park"
+					  << "Comerica Park"
+					  << "Coors Feild"
+					  << "Dodger Stadium"
+					  << "Fenway Park"
+					  << "Globe Life Park in Arlington"
+					  << " Great American Ball Park"
+					  << "Kauffman Stadium"
+					  << "Marlins Park"
+					  << "Miller Park"
+					  << "Minute Maid Park"
+					  << "Nationals Park"
+					  << "O.co Coliseum"
+					  << "Oriole Park at Camden Yards"
+					  << "PNC Park"
+					  << "Petco Parrk"
+					  << "Progressive Field"
+					  << "Rogers Centre"
+					  << "SafeCo Field"
+					  << "Target Field"
+					  << "Tropicana Field"
+					  << "Turner Field"
+					  << "US Cellular Field"
+					  << "Wrigley Field"
+					  << "Yankee Stadium";
 
 
-        QCompleter* completer = new QCompleter(*stringList);
-        ui->lineEdit_searchLine0->setCompleter(completer);
-        ui->page_mainMenu->hide();
-        ui->page_searchForStadium0->show();
->>>>>>> 3c636c57beb6d24d4ccf1120d11cdf92335f2361
+		QCompleter* completer = new QCompleter(*stringList);
+		ui->lineEdit_searchLine0->setCompleter(completer);
+		ui->page_mainMenu->hide();
+		ui->page_searchForStadium0->show();
 }
 
 void MainWindow::on_button_mainMenu0_clicked()
@@ -177,22 +155,6 @@ void MainWindow::on_button_mainMenu0_clicked()
 	ui->page_mainMenu->show();
 }
 
-<<<<<<< HEAD
-void MainWindow::on_button_back1_clicked()
-{
-	refresh();
-	ui->page_planATrip1->hide();
-	ui->page_planATrip0->show();
-}
-
-void MainWindow::on_button_mainMenu1_clicked()
-{
-	refresh();
-	ui->page_planATrip1->hide();
-	ui->page_planATrip0->show();}
-
-=======
->>>>>>> 3c636c57beb6d24d4ccf1120d11cdf92335f2361
 void MainWindow::on_button_mainMenu2_clicked()
 {
 	refresh();
@@ -239,6 +201,10 @@ void MainWindow::on_button_back4_clicked()
 
 void MainWindow::on_button_viewStadiums_clicked()
 {
+	//	QDataWidgetMapper *mapper = new QDataWidgetMapper(initModel);
+
+	//	QTableView *view = createView(initModel, "Stadiums");
+	//	view->show();
 	ui->tableView_stadiumList->show();
 	ui->page_mainMenu->hide();
 	ui->page_stadiumList->show();
@@ -268,25 +234,24 @@ void MainWindow::on_button_mainMenu5_clicked()
 
 void MainWindow::on_button_login_clicked()
 {
-
-    //Login button pushed
-    QString username      = "admin";
-    QString password      = "password";
-    QString inputName     = ui->lineEdit_username->text();
-    QString inputPassword = ui->lineEdit_password->text();
-    if(inputName != username || inputPassword != password)
-    {
-        QMessageBox::information(this, "Login Error", "incorrect Username or Password");
-        ui->lineEdit_password->clear();
-        ui->lineEdit_username->clear();
-    }
-    else
-    {
-        //qDebug() << "Set name in admin: " << setStadiumName;
-        ui->page_adminLogin0->hide();
-        ui->page_adminMainMenu->show();
-        ui->lineEdit_username->clear();
-        ui->lineEdit_password->clear();
+	//Login button pushed
+	QString username      = "admin";
+	QString password      = "password";
+	QString inputName     = ui->lineEdit_username->text();
+	QString inputPassword = ui->lineEdit_password->text();
+	if(inputName != username || inputPassword != password)
+	{
+		QMessageBox::information(this, "Login Error", "incorrect Username or Password");
+		ui->lineEdit_password->clear();
+		ui->lineEdit_username->clear();
+	}
+	else
+	{
+		//qDebug() << "Set name in admin: " << setStadiumName;
+		ui->page_adminLogin0->hide();
+		ui->page_adminMainMenu->show();
+		ui->lineEdit_username->clear();
+		ui->lineEdit_password->clear();
 	}
 
 }
@@ -307,21 +272,24 @@ void MainWindow::on_button_backAddStadium_clicked()
 void MainWindow::on_button_addStadium0_clicked()
 {
 
-    // add in all stadiums to combobox
-    for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
-    {
-        if (!(*stadiumIt).getStadiumName().isEmpty())
-        {
-            ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
-        }
-    }
+	// add in all stadiums to combobox
+	for (stadiumIt = stadiumHash.begin(); stadiumIt != stadiumHash.end(); stadiumIt++)
+	{
+		if (!(*stadiumIt).getStadiumName().isEmpty())
+		{
+			ui->comboBox_adjacentList->addItem((*stadiumIt).getStadiumName());
+		}
+	}
 
-    ui->page_adminMainMenu->hide();
+	ui->page_adminMainMenu->hide();
 	ui->page_addStadium->show();
 }
 void MainWindow::fillGraph()
 {
 	qDebug() << "filling out the graph...";
+
+
+
 	QSqlQuery query = QSqlQuery(db);
 	//    QString dbString;
 	vector<vertexEdgeStruct> vertexEdgeVector;
@@ -980,7 +948,7 @@ void MainWindow::on_button_MST_clicked()
 
 	mstEdgeVector.clear();
 
-	//    QListWidgetItem *listItem;
+//    QListWidgetItem *listItem;
 	QTableWidgetItem *tableItem;
 
 
@@ -996,10 +964,10 @@ void MainWindow::on_button_MST_clicked()
 	ui->tableWidget_displayMST->setColumnCount(4);
 
 	// add column headers (not working)
-	//    ui->tableWidget_displayMST->setHorizontalHeaderLabels(QStringList() << "Switch.." << "Parameter..." << " " << " asd");
-	//    ui->tableWidget_displayMST->setHorizontalHeaderItem(0, new QTableWidgetItem("Prueba"));
+//    ui->tableWidget_displayMST->setHorizontalHeaderLabels(QStringList() << "Switch.." << "Parameter..." << " " << " asd");
+//    ui->tableWidget_displayMST->setHorizontalHeaderItem(0, new QTableWidgetItem("Prueba"));
 
-	//    ui->listWidget_displayMST->clear();
+//    ui->listWidget_displayMST->clear();
 	ui->tableWidget_displayMST->clear();
 	for (unsigned int i = 0; i < mstEdgeVector.size(); i++)
 	{
@@ -1008,7 +976,7 @@ void MainWindow::on_button_MST_clicked()
 		stadium2String = (**((*(mstEdgeVector[i])).getVertex2())).getStadiumName();
 		weight =         (*(mstEdgeVector[i])).getWeight();
 
-		//        listItem = new QListWidgetItem;
+//        listItem = new QListWidgetItem;
 
 		ui->tableWidget_displayMST->insertRow(i);
 
@@ -1034,12 +1002,12 @@ void MainWindow::on_button_MST_clicked()
 
 
 
-		//        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
+//        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
 
 
 		//        listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
 
-		//        ui->listWidget_displayMST->addItem(listItem);
+//        ui->listWidget_displayMST->addItem(listItem);
 
 	}
 
@@ -1061,32 +1029,31 @@ void MainWindow::on_button_backMainMenuMST_clicked()
 
 void MainWindow::on_button_search0_clicked()
 {
-    QFont * newFont;
-      QLabel * newLabel;
-      QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
-      int rowIndex ;
-      vector<QString> displayList;
-      vector<QString>::iterator it;
+	QFont * newFont;
+	  QLabel * newLabel;
+	  QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+	  int rowIndex ;
+	  vector<QString> displayList;
+	  vector<QString>::iterator it;
 
-      if(ui->lineEdit_searchLine0->text().isEmpty())
-      {
-          QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
-      }
-      else
-      {
-          ui->listWidget_searchResults0->clear();
+	  if(ui->lineEdit_searchLine0->text().isEmpty())
+	  {
+		  QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+	  }
+	  else
+	  {
+		  ui->listWidget_searchResults0->clear();
 
-          displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+		  displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
 
-          qDebug() << "After Search Stadium";
+		  qDebug() << "After Search Stadium";
 
 
 
-           for(it = displayList.begin(); it != displayList.end(); it++)
-           {
-               ui->listWidget_searchResults0->addItem((*it)+ "\n");
-           }
+		   for(it = displayList.begin(); it != displayList.end(); it++)
+		   {
+			   ui->listWidget_searchResults0->addItem((*it)+ "\n");
+		   }
 
-     }
+	 }
 }
-
