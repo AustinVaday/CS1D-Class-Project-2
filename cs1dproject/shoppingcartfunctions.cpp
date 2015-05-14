@@ -18,4 +18,3 @@ void MainWindow::initializeShoppingCart(QSqlTableModel *cartModel, bool editFiel
     cartModel->setHeaderData(3, Qt::Horizontal, QObject::tr("Item"));
     cartModel->setHeaderData(4, Qt::Horizontal, QObject::tr("Price"));
 }
-
