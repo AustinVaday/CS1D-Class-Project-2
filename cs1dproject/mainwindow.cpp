@@ -102,9 +102,49 @@ void MainWindow::on_button_planATrip0_clicked()
 
 void MainWindow::on_button_searchForStadiums0_clicked()
 {
-    refresh();
-    ui->page_mainMenu->hide();
-    ui->page_searchForStadium0->show();
+
+        refresh();
+
+    QStringList * stringList;
+
+        stringList = new QStringList;
+
+        *stringList  << "AT&T Park"
+                      << "Angels Stadium of Anaheim"
+                      << "Busch Stadium"
+                      << "Chase Field"
+                      << "Citi Field"
+                      << "Citizens Bank Park"
+                      << "Comerica Park"
+                      << "Coors Feild"
+                      << "Dodger Stadium"
+                      << "Fenway Park"
+                      << "Globe Life Park in Arlington"
+                      << " Great American Ball Park"
+                      << "Kauffman Stadium"
+                      << "Marlins Park"
+                      << "Miller Park"
+                      << "Minute Maid Park"
+                      << "Nationals Park"
+                      << "O.co Coliseum"
+                      << "Oriole Park at Camden Yards"
+                      << "PNC Park"
+                      << "Petco Parrk"
+                      << "Progressive Field"
+                      << "Rogers Centre"
+                      << "SafeCo Field"
+                      << "Target Field"
+                      << "Tropicana Field"
+                      << "Turner Field"
+                      << "US Cellular Field"
+                      << "Wrigley Field"
+                      << "Yankee Stadium";
+
+
+        QCompleter* completer = new QCompleter(*stringList);
+        ui->lineEdit_searchLine0->setCompleter(completer);
+        ui->page_mainMenu->hide();
+        ui->page_searchForStadium0->show();
 }
 
 void MainWindow::on_button_mainMenu0_clicked()
@@ -986,12 +1026,31 @@ void MainWindow::on_button_backMainMenuMST_clicked()
 
 void MainWindow::on_button_search0_clicked()
 {
-    if(ui->lineEdit_searchLine0->text().isEmpty())
-    {
-        QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
-    }else
-    {
+    QFont * newFont;
+      QLabel * newLabel;
+      QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+      int rowIndex ;
+      vector<QString> displayList;
+      vector<QString>::iterator it;
 
-    }
-    ui->lineEdit_searchLine0->text();
+      if(ui->lineEdit_searchLine0->text().isEmpty())
+      {
+          QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+      }
+      else
+      {
+          ui->listWidget_searchResults0->clear();
+
+          displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+
+          qDebug() << "After Search Stadium";
+
+
+
+           for(it = displayList.begin(); it != displayList.end(); it++)
+           {
+               newLabel = new QLabel;
+               ui->listWidget_searchResults0->addItem((*it)+ "\n");
+           }
+      }
 }

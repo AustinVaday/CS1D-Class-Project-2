@@ -24,11 +24,30 @@
 #include "graph.h"
 #include "stadium.h"
 #include "MainHeader.h"
+#include <QCompleter>
+#include <QStringList>
+
 //#include "hashTable.h"
 
 namespace Ui {
 class MainWindow;
 }
+
+
+struct searchPair
+{
+    string stadiumName;
+    int    difference;
+
+};
+
+struct less_than_key
+{
+    inline bool operator() (const searchPair& pairOne, const searchPair& pairTwo)
+    {
+        return (pairOne.difference <= pairTwo.difference);
+    }
+};
 
 class MainWindow : public QMainWindow
 {
@@ -60,7 +79,7 @@ public:
 
 
 
-    stadium searchForStadium(string searchKey);
+    vector<QString> searchForStadium(string searchKey);
 
 
 
@@ -79,10 +98,6 @@ private slots:
     void on_button_searchForStadiums0_clicked();
 
     void on_button_mainMenu0_clicked();
-
-    void on_button_back1_clicked();
-
-    void on_button_mainMenu1_clicked();
 
     void on_button_mainMenu2_clicked();
 
