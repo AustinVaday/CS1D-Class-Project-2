@@ -202,6 +202,7 @@ private slots:
 		vector<Edge<stadium,float> *> mstEdgeVector;
 		vector<Vertex<stadium> *> dijkstraVertexVector;
 
+
         int     currentStadiumIndex;
         bool    quickTrip;
         QString searchSelection;

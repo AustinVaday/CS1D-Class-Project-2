@@ -204,7 +204,6 @@ QString stadium::returnFormatedEdges()
         #endif
     return formattedString;
 }
-
 QString stadium::getStreetName()
 {
     return street;

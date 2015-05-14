@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QErrorMessage>
 #include <QDataWidgetMapper>
@@ -628,8 +628,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 	// retrieve all selected stadiums
 	QListWidgetItem *currentItem;
 	for (int i = 0; i < stadiumHash.size(); i++)
-	{
-
+    {
 		currentItem = ui->listWidget_customTrip->item(i);
 		if (currentItem->checkState() == Qt::Checked)
 		{
@@ -637,8 +636,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 		}
 
 
-	}
-
+    }
     // User must select at least one stadium (the stadium currently inside is the starting stadium, it's always there)
     if (selectedStadiums.size() == 1)
     {
@@ -730,9 +728,14 @@ void MainWindow::on_pushButton_customTripGo_clicked()
             }
             ui->listWidget_customTripSequence->addItem(listItem);
         }
+//=======
+
+//                ui->label_customTripStadiumName->setText(listItem->text());
+//                ui->pushButton_customTripPrevious->setEnabled(false);
+//                ui->pushButton_customTripNext->setEnabled(false);
+//>>>>>>> 461570e42d0013ccc2ba65c042568830384f004c
 
         ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
-
 
         // set the value of the progress bar.
         SetProgressBar(-1);
@@ -1036,6 +1039,37 @@ void MainWindow::on_button_backMST_clicked()
 void MainWindow::on_button_backMainMenuMST_clicked()
 {
 	ui->page_MST->hide();
-	ui->page_mainMenu->show();
+    ui->page_mainMenu->show();
 }
+
+
+//void MainWindow::on_button_search0_clicked()
+//{
+//	QFont * newFont;
+//	  QLabel * newLabel;
+//	  QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+//	  int rowIndex ;
+//	  vector<QString> displayList;
+//	  vector<QString>::iterator it;
+
+//	  if(ui->lineEdit_searchLine0->text().isEmpty())
+//	  {
+//		  QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+//	  }
+//	  else
+//	  {
+//		  ui->listWidget_searchResults0->clear();
+
+//		  displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+
+//		  qDebug() << "After Search Stadium";
+
+
+
+//		   for(it = displayList.begin(); it != displayList.end(); it++)
+//		   {
+//			   ui->listWidget_searchResults0->addItem((*it)+ "\n");
+//		   }
+
+//	 }
 
