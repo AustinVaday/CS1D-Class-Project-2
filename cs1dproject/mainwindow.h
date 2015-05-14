@@ -168,7 +168,7 @@ private:
         // used to store most recent graph algorithm (global to this class)
         // mst      --> need edges
         // dijkstra --> need vertices
-        vector<Edge<Vertex<stadium>,float> *> mstEdgeVector;
+        vector<Edge<stadium,float> *> mstEdgeVector;
         vector<Vertex<stadium> *> dijkstraVertexVector;
 
         int currentStadiumIndex;
