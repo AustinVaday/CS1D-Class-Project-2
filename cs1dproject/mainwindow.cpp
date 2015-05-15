@@ -821,7 +821,7 @@ void MainWindow::on_pushButton_customTripNext_clicked()
 	//    currentStadium = stadiumHash.find(listItem->text());
 
 	ui->label_customTripStadiumName->setText(listItem->text());
-
+on_label_customTripStadiumName_windowIconTextChanged(listItem->text());
 	// update progress bar
 	SetProgressBar(currentStadiumIndex);
 }
@@ -1072,4 +1072,6 @@ void MainWindow::on_button_backMainMenuMST_clicked()
 //		   }
 
 //	 }
+
+
 

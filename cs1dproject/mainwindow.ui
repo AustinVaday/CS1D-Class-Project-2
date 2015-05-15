@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>15</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -724,7 +724,7 @@
        <string>Main Menu</string>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView_customSouvenirView">
+     <widget class="QListView" name="listView_customSouvenirView">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -732,9 +732,6 @@
         <width>441</width>
         <height>311</height>
        </rect>
-      </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
       </property>
      </widget>
     </widget>
