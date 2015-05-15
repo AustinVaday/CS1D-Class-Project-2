@@ -187,6 +187,8 @@ private slots:
 
 	void on_pushButton_admin_addSouvenir_clicked();
 
+	void on_label_customTripStadiumName_windowIconTextChanged(const QString &iconText);
+
 	private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;

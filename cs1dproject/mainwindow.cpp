@@ -699,7 +699,8 @@ void MainWindow::on_pushButton_customTripGo_clicked()
         // fill out QListWidget with dijkstra sequence.
         QListWidgetItem *listItem;
 
-        ui->listWidget_customTripSequence->clear();
+		ui->listWidget_customTripSequence->clear();
+
 
         for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
         {
@@ -714,7 +715,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
                 listItem->setTextColor(QColor("red"));
                 listItem->setFont(QFont("bold"));
 
-                ui->label_customTripStadiumName->setText(listItem->text());
+				ui->label_customTripStadiumName->setText(listItem->text());
                 ui->pushButton_customTripPrevious->setEnabled(false);
                 ui->pushButton_customTripNext->setEnabled(false);
 
@@ -821,7 +822,10 @@ void MainWindow::on_pushButton_customTripNext_clicked()
 	//    currentStadium = stadiumHash.find(listItem->text());
 
 	ui->label_customTripStadiumName->setText(listItem->text());
+	qDebug() << "dJGHsGS <<< " << listItem->text();
 
+	ui->listView_customSouvenirView->reset();
+	ui->listView_customSouvenirView->setModel(souvenirModel);
 	// update progress bar
 	SetProgressBar(currentStadiumIndex);
 }
@@ -931,6 +935,7 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
 			listItem->setFont(QFont("bold"));
 
 			ui->label_customTripStadiumName->setText(listItem->text());
+
 			ui->pushButton_customTripPrevious->setEnabled(false);
 			ui->pushButton_customTripNext->setEnabled(false);
 
