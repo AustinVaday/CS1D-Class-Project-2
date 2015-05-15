@@ -184,7 +184,13 @@ private slots:
     void on_label_customTripStadiumName_windowIconTextChanged(const QString &iconText);
 
     void initCustomTripTable(QSqlTableModel *souvenirModel, bool editField);
-private:
+	void on_pushButton_admin_submit_clicked();
+
+	void on_pushButton_admin_deleteSouvenir_clicked();
+
+	void on_pushButton_admin_addSouvenir_clicked();
+
+    private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
 		QTableView* viewModel;

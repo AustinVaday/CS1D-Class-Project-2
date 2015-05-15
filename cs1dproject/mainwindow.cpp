@@ -1073,5 +1073,3 @@ void MainWindow::on_button_backMainMenuMST_clicked()
 
 //	 }
 
-
-
