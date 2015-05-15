@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #define SQL_DEBUG 1
-#define DEBUG 0
+#define DEBUG 1
 // Standard Qt Includes
 #include <QMainWindow>
 #include <QDebug>
@@ -181,13 +181,16 @@ private slots:
 
     void on_pushButton_back_manageSouvenir_clicked();
 
+    void on_label_customTripStadiumName_windowIconTextChanged(const QString &iconText);
+
+    void initCustomTripTable(QSqlTableModel *souvenirModel, bool editField);
 	void on_pushButton_admin_submit_clicked();
 
 	void on_pushButton_admin_deleteSouvenir_clicked();
 
 	void on_pushButton_admin_addSouvenir_clicked();
 
-	void on_label_customTripStadiumName_windowIconTextChanged(const QString &iconText);
+	void on_pushButton_clicked();
 
 	private:
 		Ui::MainWindow *ui;

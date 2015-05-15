@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow),
 	graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
-//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
+	//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
 	vector<Vertex<stadium> *> shortestPath;
 	//	float totalCost = 0;
 	quickTrip  = false;
@@ -110,48 +110,48 @@ void MainWindow::on_button_planATrip0_clicked()
 void MainWindow::on_button_searchForStadiums0_clicked()
 {
 
-		refresh();
+	refresh();
 
 	QStringList * stringList;
 
-		stringList = new QStringList;
+	stringList = new QStringList;
 
-		*stringList  << "AT&T Park"
-					  << "Angels Stadium of Anaheim"
-					  << "Busch Stadium"
-					  << "Chase Field"
-					  << "Citi Field"
-					  << "Citizens Bank Park"
-					  << "Comerica Park"
-					  << "Coors Feild"
-					  << "Dodger Stadium"
-					  << "Fenway Park"
-					  << "Globe Life Park in Arlington"
-					  << " Great American Ball Park"
-					  << "Kauffman Stadium"
-					  << "Marlins Park"
-					  << "Miller Park"
-					  << "Minute Maid Park"
-					  << "Nationals Park"
-					  << "O.co Coliseum"
-					  << "Oriole Park at Camden Yards"
-					  << "PNC Park"
-					  << "Petco Parrk"
-					  << "Progressive Field"
-					  << "Rogers Centre"
-					  << "SafeCo Field"
-					  << "Target Field"
-					  << "Tropicana Field"
-					  << "Turner Field"
-					  << "US Cellular Field"
-					  << "Wrigley Field"
-					  << "Yankee Stadium";
+	*stringList  << "AT&T Park"
+				 << "Angels Stadium of Anaheim"
+				 << "Busch Stadium"
+				 << "Chase Field"
+				 << "Citi Field"
+				 << "Citizens Bank Park"
+				 << "Comerica Park"
+				 << "Coors Feild"
+				 << "Dodger Stadium"
+				 << "Fenway Park"
+				 << "Globe Life Park in Arlington"
+				 << " Great American Ball Park"
+				 << "Kauffman Stadium"
+				 << "Marlins Park"
+				 << "Miller Park"
+				 << "Minute Maid Park"
+				 << "Nationals Park"
+				 << "O.co Coliseum"
+				 << "Oriole Park at Camden Yards"
+				 << "PNC Park"
+				 << "Petco Parrk"
+				 << "Progressive Field"
+				 << "Rogers Centre"
+				 << "SafeCo Field"
+				 << "Target Field"
+				 << "Tropicana Field"
+				 << "Turner Field"
+				 << "US Cellular Field"
+				 << "Wrigley Field"
+				 << "Yankee Stadium";
 
 
-		QCompleter* completer = new QCompleter(*stringList);
-		ui->lineEdit_searchLine0->setCompleter(completer);
-		ui->page_mainMenu->hide();
-		ui->page_searchForStadium0->show();
+	QCompleter* completer = new QCompleter(*stringList);
+	ui->lineEdit_searchLine0->setCompleter(completer);
+	ui->page_mainMenu->hide();
+	ui->page_searchForStadium0->show();
 }
 
 void MainWindow::on_button_mainMenu0_clicked()
@@ -628,7 +628,7 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 	// retrieve all selected stadiums
 	QListWidgetItem *currentItem;
 	for (int i = 0; i < stadiumHash.size(); i++)
-    {
+	{
 		currentItem = ui->listWidget_customTrip->item(i);
 		if (currentItem->checkState() == Qt::Checked)
 		{
@@ -636,114 +636,114 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 		}
 
 
-    }
-    // User must select at least one stadium (the stadium currently inside is the starting stadium, it's always there)
-    if (selectedStadiums.size() == 1)
-    {
-        QMessageBox::information(this, "Error.", "Please select at least ONE designated stadium.");
-    }
-    else
-    {
-        // loop until stadium before last selected stadium is reached (need i+1)
-        for (unsigned int i = 0; i < selectedStadiums.size() - 1; i++)
-        {
-            subsequentVertexVector.clear();
+	}
+	// User must select at least one stadium (the stadium currently inside is the starting stadium, it's always there)
+	if (selectedStadiums.size() == 1)
+	{
+		QMessageBox::information(this, "Error.", "Please select at least ONE designated stadium.");
+	}
+	else
+	{
+		// loop until stadium before last selected stadium is reached (need i+1)
+		for (unsigned int i = 0; i < selectedStadiums.size() - 1; i++)
+		{
+			subsequentVertexVector.clear();
 
-            graph.DijkstraShortestPath(*(stadiumHash.find(selectedStadiums[i])), *(stadiumHash.find(selectedStadiums[i + 1])), subsequentVertexVector, cost);
+			graph.DijkstraShortestPath(*(stadiumHash.find(selectedStadiums[i])), *(stadiumHash.find(selectedStadiums[i + 1])), subsequentVertexVector, cost);
 
-            qDebug() << "Cost is: " << cost;
-            totalCost = totalCost + cost;
-            qDebug() << "Total cost is: " << totalCost;
-
-
-            for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
-            {
-                dijkstraVertexVector.push_back(subsequentVertexVector[j]);
-
-                //                if ( j != 0)
-                //                {
-                //                    // prevent subsequent duplicates by seeing if stadiums entered in twice
-                //                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
-                //                    {
-                //                        dijkstraVertexVector.pop_back();
-                //                    }
-                //                }
-
-            }
-
-            // update new current stadium
-            //            startStadium = selectedStadiums[i];
-        }
+			qDebug() << "Cost is: " << cost;
+			totalCost = totalCost + cost;
+			qDebug() << "Total cost is: " << totalCost;
 
 
-        // remove duplicates in dijkstraVertexVector ...
-        for (vertexVecIt = dijkstraVertexVector.begin();
-             vertexVecIt != dijkstraVertexVector.end();
-             vertexVecIt++)
-        {
+			for (unsigned int j = 0; j < subsequentVertexVector.size(); j++)
+			{
+				dijkstraVertexVector.push_back(subsequentVertexVector[j]);
 
-            if (vertexVecIt + 1 != dijkstraVertexVector.end())
-            {
-                qDebug() << "Comparing " << ***vertexVecIt << " and " << ***(vertexVecIt + 1);
-                // prevent subsequent duplicates by seeing if stadiums entered in twice
-                if (***(vertexVecIt) == ***(vertexVecIt + 1))
-                {
-                    dijkstraVertexVector.erase(vertexVecIt);
-                    qDebug() << "Erasing " << (***vertexVecIt).getStadiumName();
-                }
+				//                if ( j != 0)
+				//                {
+				//                    // prevent subsequent duplicates by seeing if stadiums entered in twice
+				//                    if (**(subsequentVertexVector[j]) == **(subsequentVertexVector[j-1]))
+				//                    {
+				//                        dijkstraVertexVector.pop_back();
+				//                    }
+				//                }
 
-            }
+			}
 
-        }
+			// update new current stadium
+			//            startStadium = selectedStadiums[i];
+		}
 
-        // fill out QListWidget with dijkstra sequence.
-        QListWidgetItem *listItem;
+
+		// remove duplicates in dijkstraVertexVector ...
+		for (vertexVecIt = dijkstraVertexVector.begin();
+			 vertexVecIt != dijkstraVertexVector.end();
+			 vertexVecIt++)
+		{
+
+			if (vertexVecIt + 1 != dijkstraVertexVector.end())
+			{
+				qDebug() << "Comparing " << ***vertexVecIt << " and " << ***(vertexVecIt + 1);
+				// prevent subsequent duplicates by seeing if stadiums entered in twice
+				if (***(vertexVecIt) == ***(vertexVecIt + 1))
+				{
+					dijkstraVertexVector.erase(vertexVecIt);
+					qDebug() << "Erasing " << (***vertexVecIt).getStadiumName();
+				}
+
+			}
+
+		}
+
+		// fill out QListWidget with dijkstra sequence.
+		QListWidgetItem *listItem;
 
 		ui->listWidget_customTripSequence->clear();
 
 
-        for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
-        {
+		for (unsigned int i = 0; i < dijkstraVertexVector.size(); i++)
+		{
 
-            listItem = new QListWidgetItem;
-            listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
-            listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
-            // indicate first one is current stadium
-            if (i == 0)
-            {
-                currentStadiumIndex = 0;
-                listItem->setTextColor(QColor("red"));
-                listItem->setFont(QFont("bold"));
+			listItem = new QListWidgetItem;
+			listItem->setText((**(dijkstraVertexVector[i])).getStadiumName());
+			listItem->setFlags(Qt::ItemIsEditable & !Qt::ItemIsSelectable );
+			// indicate first one is current stadium
+			if (i == 0)
+			{
+				currentStadiumIndex = 0;
+				listItem->setTextColor(QColor("red"));
+				listItem->setFont(QFont("bold"));
 
 				ui->label_customTripStadiumName->setText(listItem->text());
-                ui->pushButton_customTripPrevious->setEnabled(false);
-                ui->pushButton_customTripNext->setEnabled(false);
+				ui->pushButton_customTripPrevious->setEnabled(false);
+				ui->pushButton_customTripNext->setEnabled(false);
 
 
-            }
-            else
-            {
-                ui->pushButton_customTripNext->setEnabled(true);
+			}
+			else
+			{
+				ui->pushButton_customTripNext->setEnabled(true);
 
-                listItem->setTextColor(QColor("gray"));
-            }
-            ui->listWidget_customTripSequence->addItem(listItem);
-        }
-//=======
+				listItem->setTextColor(QColor("gray"));
+			}
+			ui->listWidget_customTripSequence->addItem(listItem);
+		}
+		//=======
 
-//                ui->label_customTripStadiumName->setText(listItem->text());
-//                ui->pushButton_customTripPrevious->setEnabled(false);
-//                ui->pushButton_customTripNext->setEnabled(false);
-//>>>>>>> 461570e42d0013ccc2ba65c042568830384f004c
+		//                ui->label_customTripStadiumName->setText(listItem->text());
+		//                ui->pushButton_customTripPrevious->setEnabled(false);
+		//                ui->pushButton_customTripNext->setEnabled(false);
+		//>>>>>>> 461570e42d0013ccc2ba65c042568830384f004c
 
-        ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
+		ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
 
-        // set the value of the progress bar.
-        SetProgressBar(-1);
+		// set the value of the progress bar.
+		SetProgressBar(-1);
 
-        ui->page_customTripMenu->hide();
-        ui->page_customTrip->show();
-    }
+		ui->page_customTripMenu->hide();
+		ui->page_customTrip->show();
+	}
 }
 
 void MainWindow::on_button_customTripBack_clicked()
@@ -822,10 +822,7 @@ void MainWindow::on_pushButton_customTripNext_clicked()
 	//    currentStadium = stadiumHash.find(listItem->text());
 
 	ui->label_customTripStadiumName->setText(listItem->text());
-	qDebug() << "dJGHsGS <<< " << listItem->text();
-
-	ui->listView_customSouvenirView->reset();
-	ui->listView_customSouvenirView->setModel(souvenirModel);
+	on_label_customTripStadiumName_windowIconTextChanged(listItem->text());
 	// update progress bar
 	SetProgressBar(currentStadiumIndex);
 }
@@ -969,7 +966,7 @@ void MainWindow::on_button_MST_clicked()
 
 	mstEdgeVector.clear();
 
-//    QListWidgetItem *listItem;
+	//    QListWidgetItem *listItem;
 	QTableWidgetItem *tableItem;
 
 
@@ -985,10 +982,10 @@ void MainWindow::on_button_MST_clicked()
 	ui->tableWidget_displayMST->setColumnCount(4);
 
 	// add column headers (not working)
-//    ui->tableWidget_displayMST->setHorizontalHeaderLabels(QStringList() << "Switch.." << "Parameter..." << " " << " asd");
-//    ui->tableWidget_displayMST->setHorizontalHeaderItem(0, new QTableWidgetItem("Prueba"));
+	//    ui->tableWidget_displayMST->setHorizontalHeaderLabels(QStringList() << "Switch.." << "Parameter..." << " " << " asd");
+	//    ui->tableWidget_displayMST->setHorizontalHeaderItem(0, new QTableWidgetItem("Prueba"));
 
-//    ui->listWidget_displayMST->clear();
+	//    ui->listWidget_displayMST->clear();
 	ui->tableWidget_displayMST->clear();
 	for (unsigned int i = 0; i < mstEdgeVector.size(); i++)
 	{
@@ -997,7 +994,7 @@ void MainWindow::on_button_MST_clicked()
 		stadium2String = (**((*(mstEdgeVector[i])).getVertex2())).getStadiumName();
 		weight =         (*(mstEdgeVector[i])).getWeight();
 
-//        listItem = new QListWidgetItem;
+		//        listItem = new QListWidgetItem;
 
 		ui->tableWidget_displayMST->insertRow(i);
 
@@ -1023,12 +1020,12 @@ void MainWindow::on_button_MST_clicked()
 
 
 
-//        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
+		//        listItem->setText(stadium1String + " --> " + stadium2String + " with weight: " + QString::number(weight));
 
 
 		//        listItem->setFlags(!Qt::ItemIsEditable & !Qt::ItemIsSelectable );
 
-//        ui->listWidget_displayMST->addItem(listItem);
+		//        ui->listWidget_displayMST->addItem(listItem);
 
 	}
 
@@ -1044,6 +1041,74 @@ void MainWindow::on_button_backMST_clicked()
 void MainWindow::on_button_backMainMenuMST_clicked()
 {
 	ui->page_MST->hide();
-    ui->page_mainMenu->show();
+	ui->page_mainMenu->show();
 }
 
+
+//void MainWindow::on_button_search0_clicked()
+//{
+//	QFont * newFont;
+//	  QLabel * newLabel;
+//	  QModelIndexList listIndeces = ui->listWidget_searchResults0->selectionModel()->selectedIndexes();
+//	  int rowIndex ;
+//	  vector<QString> displayList;
+//	  vector<QString>::iterator it;
+
+//	  if(ui->lineEdit_searchLine0->text().isEmpty())
+//	  {
+//		  QMessageBox::information(this, "Error", "Please enter a search item in the search bar");
+//	  }
+//	  else
+//	  {
+//		  ui->listWidget_searchResults0->clear();
+
+//		  displayList = searchForStadium(ui->lineEdit_searchLine0->text().toStdString());
+
+//		  qDebug() << "After Search Stadium";
+
+
+
+//		   for(it = displayList.begin(); it != displayList.end(); it++)
+//		   {
+//			   ui->listWidget_searchResults0->addItem((*it)+ "\n");
+//		   }
+
+//	 }
+
+
+void MainWindow::on_pushButton_clicked()
+{
+
+	ui->page_customTrip->hide();
+	cartModel->clear();
+	cartModel = souvenirModel;
+	cartModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	cartModel->select();
+
+	int quantity = 0;
+	float total = 0;
+	int index = 0;
+	float price = 0;
+
+	QSqlQuery* query = new QSqlQuery;
+	query->exec("select * from shoppingCart");
+
+	while(query->next())
+	{
+		quantity = query->value("quantity").toInt();
+
+		price = query->value("price").toInt();
+		total += price * quantity;
+
+		index++;
+	}
+
+	ui->tableView_shoppingCart->hideColumn(0);
+	ui->tableView_shoppingCart->hideColumn(1);
+
+
+	ui->tableView_shoppingCart->setModel(cartModel);
+	ui->tableView_shoppingCart->setSortingEnabled(true);
+	ui->page_adminMainMenu->hide();
+	ui->page_shoppingCart->show();
+}
