@@ -1233,71 +1233,6 @@
        <string>Finish</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox_souvenirs">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>140</y>
-        <width>191</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Souvenirs Avalilable for Purchase</string>
-      </property>
-      <widget class="QCheckBox" name="checkBox">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>151</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Baseball Cap: $25.99</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>151</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Baseball Bat: $35.35</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>60</y>
-         <width>151</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Team Pennant: $12.99</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>80</y>
-         <width>171</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Autographed Baseball: $19.99</string>
-       </property>
-      </widget>
-     </widget>
      <widget class="QLabel" name="label_welcomeMessage">
       <property name="geometry">
        <rect>
@@ -1309,19 +1244,6 @@
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Welcome to Angels Stadium! Home of the Los Angeles Angels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="button_addToCart">
-      <property name="geometry">
-       <rect>
-        <x>450</x>
-        <y>260</y>
-        <width>151</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add to Cart</string>
       </property>
      </widget>
      <widget class="QLabel" name="label">
@@ -1337,13 +1259,13 @@
        <string>Stadiums to Visit:</string>
       </property>
      </widget>
-     <widget class="QTableView" name="table_stadiumList">
+     <widget class="QTableView" name="tableView_stadiumSouvenirs">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>140</y>
-        <width>351</width>
-        <height>192</height>
+        <width>691</width>
+        <height>301</height>
        </rect>
       </property>
      </widget>
@@ -2144,7 +2066,7 @@
      <x>0</x>
      <y>0</y>
      <width>813</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
