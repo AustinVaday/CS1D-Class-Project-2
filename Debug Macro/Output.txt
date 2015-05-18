@@ -1,0 +1,3 @@
+[Debug] myInt      : 4
+[Debug] myName     : Austin
+[Debug] myBool     : 0
