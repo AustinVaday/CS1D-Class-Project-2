@@ -15,6 +15,7 @@ stadium::stadium()
     capacity.clear();
     league.clear();
     surface.clear();
+    imagePath = ":/background1.jpg";
 
 
 
@@ -53,6 +54,8 @@ stadium::stadium (int stadiumNum,
     this->league = league;
     this->surface = surface;
     this->vertexEdgeVector = vertexEdgeVector;
+    imagePath = ":/background1.jpg";
+
 }
 
 QString stadium::getCity()
@@ -73,6 +76,11 @@ QString stadium::getStadiumName()
 int stadium::getStadiumNumber()
 {
 	return stadiumIndex;
+}
+
+QString stadium::getStadiumImagePath()
+{
+    return imagePath;
 }
 
 vector<vertexEdgeStruct> stadium::getVertexEdgeStructVector()
@@ -148,6 +156,11 @@ QDebug operator<<(QDebug out, stadium& displayStadium)
 void stadium::setCity(QString cityN)
 {
     city = cityN;
+}
+
+void stadium::setImgPath(QString imgPath)
+{
+    imagePath = imgPath;
 }
 
 void stadium::setPlayingSurface(QString grassTypeN)

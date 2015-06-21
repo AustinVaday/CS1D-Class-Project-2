@@ -192,7 +192,10 @@ private slots:
 
 	void on_pushButton_clicked();
 
-	private:
+    void on_lineEdit_password_returnPressed();
+
+
+private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
 		QTableView* viewModel;

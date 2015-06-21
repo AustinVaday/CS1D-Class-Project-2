@@ -42,6 +42,7 @@ public:
     QString getGrassType();
     QString getCapacity();
     QString getLeague();
+    QString getStadiumImagePath();
     vector<vertexEdgeStruct> getEdgeVector();
     vector<vertexEdgeStruct> getVertexEdgeStructVector();
     //getDate()
@@ -64,6 +65,7 @@ public:
     void setTeamName(QString teamName);
     void setPlayingSurface(QString grassType);
     void setCity(QString city);
+    void setImgPath(QString imgPath);
 
 
 
@@ -94,6 +96,7 @@ private:
     QString           capacity;
     QString           league;
     QString           surface;
+    QString           imagePath;
     vector<vertexEdgeStruct> vertexEdgeVector;
 
 };

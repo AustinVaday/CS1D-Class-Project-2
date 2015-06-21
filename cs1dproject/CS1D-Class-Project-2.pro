@@ -44,4 +44,5 @@ FORMS    += mainwindow.ui
 DISTFILES += baseball_stadiums
 
 RESOURCES += \
-    teamImages.qrc
+    teamImages.qrc \
+    backgrounds.qrc

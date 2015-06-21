@@ -8,13 +8,22 @@
 #include <fstream>
 #include <QTableView>
 #include <QTextStream>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow),
 	graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
-	//     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
+    // GUI Colors and design..
+
+
+
+
+
+
+
+    //     ui->listWidget_searchResults0->setSelectionMode(QAbstractItemView::MultiSelection);
 	vector<Vertex<stadium> *> shortestPath;
 	//	float totalCost = 0;
 	quickTrip  = false;
@@ -22,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	currentStadiumIndex = -1;
 
 	// Create Database and initialize the table model ( NOT VIEW )
-	createConnection(/*true*/);		// put true to reinitialize the model
+    createConnection(true);		// put true to reinitialize the model
 
 	initModel = new QSqlTableModel(0,db);
 	souvenirModel = new QSqlTableModel(0,db);
@@ -41,6 +50,41 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->tableView_stadiumList->hideColumn(0);
 
 	fillGraph();
+
+    // Assign all stadium images
+    (stadiumHash["AT&T Park"]).setImgPath(":/../logos/SanFrancisco.jpg");
+    (stadiumHash["Angels Stadium of Anaheim"]).setImgPath(":/../logos/LosAngelesAngels.jpg");
+    (stadiumHash["Busch Stadium"]).setImgPath("../logos/Seattle.jpg");
+    (stadiumHash["Chase Field"]).setImgPath("../logos/Arizona.jpg");
+    (stadiumHash["Citi Field"]).setImgPath("../logos/NewYorkMets.jpg");
+    (stadiumHash["Citizens Bank Park"]).setImgPath("../logos/Philadelphia.jpg");
+    (stadiumHash["Comerica Park"]).setImgPath("../logos/Detroit.jpg");
+    (stadiumHash["Coors Field"]).setImgPath("../logos/Colorado.jpg");
+    (stadiumHash["Dodger Stadium"]).setImgPath("../logos/LosAngelesDodgers.jpg");
+    (stadiumHash["Fenway Park"]).setImgPath("../logos/Boston.jpg");
+    (stadiumHash["Globe Life Park in Arlington"]).setImgPath("../logos/TexasRangers.jpg");
+    (stadiumHash["Great American Ball Park"]).setImgPath("../logos/Cincinnati.jpg");
+    (stadiumHash["Kauffman Stadium"]).setImgPath("../logos/KansasCity.jpg");
+    (stadiumHash["Marlins Park"]).setImgPath("../logos/Miami.jpg");
+    (stadiumHash["Miller Park"]).setImgPath("../logos/Milwaukee.jpg");
+    (stadiumHash["Minute Maid Park"]).setImgPath("../logos/Houston.jpg");
+    (stadiumHash["Nationals Park"]).setImgPath("../logos/Washington.jpg");
+    (stadiumHash["O.co Coliseum"]).setImgPath("../logos/Oakland.jpg");
+    (stadiumHash["Oriole Park at Camden Yards"]).setImgPath("../logos/Baltimore.jpg");
+    (stadiumHash["PNC Park"]).setImgPath("../logos/Pittsburgh.jpg");
+    (stadiumHash["Petco Park"]).setImgPath("../logos/SanDiego.jpg");
+    (stadiumHash["Progressive Field"]).setImgPath("../logos/Cleveland.jpg");
+    (stadiumHash["Rogers Centre"]).setImgPath("../logos/Toronto.jpg");
+    (stadiumHash["SafeCo Field"]).setImgPath("../logos/Seattle.jpg");
+    (stadiumHash["Target Field"]).setImgPath("../logos/Minnesota.jpg");
+    (stadiumHash["Tropicana Field"]).setImgPath("../logos/TampaBay.jpg");
+    (stadiumHash["Turner Field"]).setImgPath("../logos/Atlanta.jpg");
+    (stadiumHash["US Cellular Field"]).setImgPath("../logos/ChicagoWSox.jpg");
+    (stadiumHash["Wrigley Field"]).setImgPath("../logos/ChicagoCubs.jpg");
+    (stadiumHash["Yankee Stadium"]).setImgPath("../logos/NewYorkYankees.jpg");
+
+
+    // ...
 
 	// Testing ...
 	//	qDebug() << "TESTING DIJKSTRA's: ";
@@ -74,7 +118,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	ui->label_titleMainMenu->setFont(titleFont);
 	ui->label_adminLoginTitle->setFont(titleFont);
-	ui->label_planATripTitle->setFont(titleFont);
+//	ui->label_planATripTitle->setFont(titleFont);
 	ui->label_teamSearchTitle->setFont(titleFont);
 	ui->label_stadiumListTitle->setFont(titleFont);
 	ui->label_shopTitle->setFont(titleFont);
@@ -241,8 +285,8 @@ void MainWindow::on_button_mainMenu5_clicked()
 void MainWindow::on_button_login_clicked()
 {
 	//Login button pushed
-	QString username      = "";
-	QString password      = "";
+    QString username      = "admin";
+    QString password      = "password";
 	QString inputName     = ui->lineEdit_username->text();
 	QString inputPassword = ui->lineEdit_password->text();
 	if(inputName != username || inputPassword != password)
@@ -719,6 +763,23 @@ void MainWindow::on_pushButton_customTripGo_clicked()
 				ui->pushButton_customTripPrevious->setEnabled(false);
 				ui->pushButton_customTripNext->setEnabled(false);
 
+                // SET first team image
+                QString imgPath = stadiumHash[listItem->text()].getStadiumImagePath();
+                QString styleString = "image: url(" + imgPath + ");";
+
+//                qDebug() << "STYLESTIRNG IS: " << styleString;
+//                ui->imageWidget->setStyleSheet(styleString);
+//                ui->imageWidget->update();
+
+
+//                ui->pixMapLabel->setPixmap(QPixmap(stadiumHash[listItem->text()].getStadiumImagePath()));
+//                ui->pixMapLabel->update();
+
+                QPixmap *image = new QPixmap(imgPath);
+                QLabel *imageLabel = new QLabel();
+                imageLabel->setPixmap(*image);
+                ui->imageLayout->addWidget(imageLabel);
+                ui->imageLayout->update();
 
 			}
 			else
@@ -823,6 +884,12 @@ void MainWindow::on_pushButton_customTripNext_clicked()
 
 	ui->label_customTripStadiumName->setText(listItem->text());
 	on_label_customTripStadiumName_windowIconTextChanged(listItem->text());
+
+    // SET first team image
+    QString styleString = "image: url(" + stadiumHash[listItem->text()].getStadiumImagePath() + ");";
+    qDebug() << "STYLESTIRNG IS: " << styleString;
+    ui->imageWidget->setStyleSheet(styleString);
+    ui->imageWidget->update();
 	// update progress bar
 	SetProgressBar(currentStadiumIndex);
 }
@@ -870,6 +937,12 @@ void MainWindow::on_pushButton_customTripPrevious_clicked()
 	//    currentStadium = stadiumHash.find(listItem->text());
 
 	ui->label_customTripStadiumName->setText(listItem->text());
+
+    // SET first team image
+    QString styleString = "image: url(" + stadiumHash[listItem->text()].getStadiumImagePath() + ");";
+    qDebug() << "STYLESTIRNG IS: " << styleString;
+    ui->imageWidget->setStyleSheet(styleString);
+    ui->imageWidget->update();
 
 	// update progress bar
 	// if back to first, set progress bar blank
@@ -1112,3 +1185,9 @@ void MainWindow::on_pushButton_clicked()
 	ui->page_adminMainMenu->hide();
 	ui->page_shoppingCart->show();
 }
+
+void MainWindow::on_lineEdit_password_returnPressed()
+{
+    on_button_login_clicked();
+}
+
