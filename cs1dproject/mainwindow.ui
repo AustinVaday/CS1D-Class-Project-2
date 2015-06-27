@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
@@ -22,6 +25,10 @@
       <width>0</width>
       <height>0</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
     </property>
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_2"/>
@@ -36,10 +43,11 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 15pt &quot;Gill Sans&quot;;</string>
+     <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_mainMenu">
      <widget class="QWidget" name="layoutWidget">
@@ -99,6 +107,19 @@ font: 45pt &quot;Optima&quot;;</string>
        <string>MLB Vacation Planner</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="button_chooseTheme">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>420</y>
+        <width>141</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Choose Theme</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_planATrip0">
      <widget class="QWidget" name="layoutWidget">
@@ -152,7 +173,7 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>100</x>
         <y>20</y>
-        <width>91</width>
+        <width>111</width>
         <height>23</height>
        </rect>
       </property>
@@ -238,16 +259,20 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>220</x>
         <y>10</y>
-        <width>461</width>
+        <width>441</width>
         <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(0, 111, 255);
-font: 45pt &quot;Optima&quot;;</string>
+font: 45pt &quot;Optima&quot;;
+align: center;</string>
       </property>
       <property name="text">
        <string>Stadium</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_fixed_2">
@@ -314,8 +339,8 @@ font: 45pt &quot;Optima&quot;;</string>
      <widget class="QLabel" name="label_planATripTitle_3">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>10</y>
+        <x>260</x>
+        <y>0</y>
         <width>211</width>
         <height>61</height>
        </rect>
@@ -479,7 +504,7 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>100</x>
         <y>20</y>
-        <width>91</width>
+        <width>101</width>
         <height>23</height>
        </rect>
       </property>
@@ -570,9 +595,9 @@ font: 45pt &quot;Optima&quot;;</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>80</y>
+        <y>100</y>
         <width>221</width>
-        <height>291</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="widgetResizable">
@@ -584,7 +609,7 @@ font: 45pt &quot;Optima&quot;;</string>
          <x>0</x>
          <y>0</y>
          <width>219</width>
-         <height>289</height>
+         <height>249</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -619,56 +644,41 @@ font: 45pt &quot;Optima&quot;;</string>
       <widget class="QWidget" name="page_10"/>
       <widget class="QWidget" name="page_11"/>
      </widget>
-     <widget class="QLabel" name="label_fixed_3">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>380</y>
-        <width>131</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Total Mileage: </string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_customTripDistanceTravelled">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>380</y>
-        <width>101</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>[distance]</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_customTripStadiumName">
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>50</y>
-        <width>231</width>
-        <height>16</height>
+        <y>10</y>
+        <width>311</width>
+        <height>24</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 20pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Stadium</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_fixed_4">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>50</y>
+        <x>40</x>
+        <y>80</y>
         <width>191</width>
         <height>16</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
-       <string>Stadium Sequence</string>
+       <string>Stadium Sequence:</string>
       </property>
      </widget>
      <widget class="QSplitter" name="splitter_2">
@@ -693,19 +703,6 @@ font: 45pt &quot;Optima&quot;;</string>
         <string>Next</string>
        </property>
       </widget>
-     </widget>
-     <widget class="QLabel" name="label_customCurrentStadium">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>50</y>
-        <width>111</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Current Stadium: </string>
-      </property>
      </widget>
      <widget class="QPushButton" name="button_customTripBack_2">
       <property name="geometry">
@@ -743,7 +740,7 @@ font: 45pt &quot;Optima&quot;;</string>
        </rect>
       </property>
       <property name="text">
-       <string>Finish</string>
+       <string>Purchase</string>
       </property>
      </widget>
      <widget class="QWidget" name="imageWidget" native="true">
@@ -758,24 +755,64 @@ font: 45pt &quot;Optima&quot;;</string>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
-      <widget class="QWidget" name="verticalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>371</width>
-         <height>191</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="imageLayout"/>
-      </widget>
+     </widget>
+     <widget class="QLabel" name="label_planATripTitle_4">
+      <property name="geometry">
+       <rect>
+        <x>232</x>
+        <y>10</y>
+        <width>152</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 20pt &quot;Optima&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Current Stadium: </string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>370</y>
+        <width>222</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_fixed_3">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 20pt &quot;Optima&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Total Mileage: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_customTripDistanceTravelled">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 20pt &quot;Optima&quot;;</string>
+         </property>
+         <property name="text">
+          <string>[distance]</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="page_MST">
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>230</x>
         <y>0</y>
         <width>331</width>
         <height>51</height>
@@ -794,9 +831,13 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>80</x>
         <y>10</y>
-        <width>91</width>
+        <width>101</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Main Menu</string>
@@ -811,6 +852,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Back</string>
       </property>
@@ -818,11 +863,15 @@ font: 45pt &quot;Optima&quot;;</string>
      <widget class="QLabel" name="label_MSTDistanceTravelled">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>370</x>
         <y>380</y>
         <width>161</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>[distance]</string>
@@ -831,11 +880,15 @@ font: 45pt &quot;Optima&quot;;</string>
      <widget class="QLabel" name="label_fixed_7">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>270</x>
         <y>380</y>
         <width>131</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Total Mileage: </string>
@@ -844,7 +897,7 @@ font: 45pt &quot;Optima&quot;;</string>
      <widget class="QScrollArea" name="scrollArea_5">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>140</x>
         <y>60</y>
         <width>461</width>
         <height>311</height>
@@ -890,6 +943,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Back</string>
       </property>
@@ -899,9 +956,13 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>90</x>
         <y>20</y>
-        <width>91</width>
+        <width>101</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Main Menu</string>
@@ -936,6 +997,10 @@ font: 45pt &quot;Optima&quot;;</string>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QPushButton" name="button_search0">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Search</string>
          </property>
@@ -954,6 +1019,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <width>81</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>GO</string>
@@ -978,32 +1047,6 @@ font: 45pt &quot;Optima&quot;;</string>
        <string>Team</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_searchedNameState">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>160</y>
-        <width>361</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_searchedCapacity">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>240</y>
-        <width>371</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QPushButton" name="button_backSearchResults">
       <property name="geometry">
        <rect>
@@ -1013,22 +1056,30 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>27</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Back</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>160</x>
         <y>90</y>
-        <width>89</width>
+        <width>94</width>
         <height>202</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
         <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Team Name:</string>
          </property>
@@ -1036,6 +1087,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_17">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Street Name:</string>
          </property>
@@ -1043,6 +1098,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_16">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>State Name: </string>
          </property>
@@ -1050,6 +1109,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_18">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Zip Code: </string>
          </property>
@@ -1057,6 +1120,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_19">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Date Opened:</string>
          </property>
@@ -1064,6 +1131,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_21">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Capacity: </string>
          </property>
@@ -1071,6 +1142,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_22">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>League: </string>
          </property>
@@ -1078,6 +1153,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_23">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Grass Type: </string>
          </property>
@@ -1085,18 +1164,22 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>260</x>
         <y>90</y>
-        <width>61</width>
-        <height>201</height>
+        <width>63</width>
+        <height>202</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <item>
         <widget class="QLabel" name="label_searchedTeamName">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -1104,6 +1187,21 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_searchedNameStreet">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_searchedNameState">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -1111,6 +1209,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_searchedNameZip">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -1118,6 +1220,21 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_searchDateOpened">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_searchedCapacity">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -1125,6 +1242,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_searchedLeague">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -1132,6 +1253,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_searchedGrassType">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>TextLabel</string>
          </property>
@@ -1253,6 +1378,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>16</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Total: $</string>
       </property>
@@ -1265,6 +1394,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <width>75</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Cancel</string>
@@ -1279,6 +1412,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Confirm</string>
       </property>
@@ -1291,6 +1428,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <width>47</width>
         <height>13</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Name:</string>
@@ -1305,6 +1446,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>16</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Credit Card Num:</string>
       </property>
@@ -1318,6 +1463,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>16</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Expiration Date:</string>
       </property>
@@ -1330,6 +1479,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <width>81</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <item>
        <property name="text">
@@ -1401,6 +1554,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>22</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <item>
        <property name="text">
         <string>2015</string>
@@ -1457,9 +1614,13 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>350</x>
         <y>200</y>
-        <width>61</width>
+        <width>71</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Card Type:</string>
@@ -1473,6 +1634,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <width>121</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <item>
        <property name="text">
@@ -1496,7 +1661,7 @@ font: 45pt &quot;Optima&quot;;</string>
       </property>
       <property name="font">
        <font>
-        <family>Gill Sans</family>
+        <family>Optima</family>
         <pointsize>15</pointsize>
         <weight>50</weight>
         <italic>false</italic>
@@ -1507,7 +1672,7 @@ font: 45pt &quot;Optima&quot;;</string>
        <string notr="true">color: rgb(255, 0, 255);</string>
       </property>
       <property name="text">
-       <string>Name Error Message</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label_errorCardNumber">
@@ -1521,7 +1686,7 @@ font: 45pt &quot;Optima&quot;;</string>
       </property>
       <property name="font">
        <font>
-        <family>Gill Sans</family>
+        <family>Optima</family>
         <pointsize>15</pointsize>
         <weight>50</weight>
         <italic>false</italic>
@@ -1532,7 +1697,7 @@ font: 45pt &quot;Optima&quot;;</string>
        <string notr="true">color: rgb(255, 0, 255);</string>
       </property>
       <property name="text">
-       <string>Card Number Error Message</string>
+       <string/>
       </property>
      </widget>
      <widget class="QTableView" name="tableView_shoppingCart">
@@ -1540,7 +1705,7 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>5</x>
         <y>90</y>
-        <width>311</width>
+        <width>331</width>
         <height>192</height>
        </rect>
       </property>
@@ -1553,6 +1718,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <width>271</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>300</string>
@@ -1599,9 +1768,13 @@ font: 45pt &quot;Optima&quot;;</string>
        <rect>
         <x>50</x>
         <y>20</y>
-        <width>75</width>
+        <width>61</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Back</string>
@@ -1610,11 +1783,15 @@ font: 45pt &quot;Optima&quot;;</string>
      <widget class="QPushButton" name="button_mainMenu4">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>110</x>
         <y>20</y>
-        <width>91</width>
+        <width>101</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Main Menu</string>
@@ -1647,6 +1824,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Login</string>
       </property>
@@ -1677,6 +1858,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>31</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Main Menu</string>
       </property>
@@ -1692,10 +1877,19 @@ font: 45pt &quot;Optima&quot;;</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
-        <widget class="QLineEdit" name="lineEdit_username"/>
+        <widget class="QLineEdit" name="lineEdit_username">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_password">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
          </property>
@@ -1706,18 +1900,22 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>140</x>
         <y>130</y>
-        <width>76</width>
+        <width>106</width>
         <height>121</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_11">
        <item>
         <widget class="QLabel" name="label_15">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>User Name:</string>
          </property>
@@ -1725,6 +1923,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QLabel" name="label_20">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Password:</string>
          </property>
@@ -1743,6 +1945,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Back</string>
       </property>
@@ -1759,6 +1965,10 @@ font: 45pt &quot;Optima&quot;;</string>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
         <widget class="QPushButton" name="button_addStadium0">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Add Stadium</string>
          </property>
@@ -1766,6 +1976,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QPushButton" name="button_modifyStadium">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Modify Stadium</string>
          </property>
@@ -1773,6 +1987,10 @@ font: 45pt &quot;Optima&quot;;</string>
        </item>
        <item>
         <widget class="QPushButton" name="button_manageSouviner">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+         </property>
          <property name="text">
           <string>Manage Souviners</string>
          </property>
@@ -1808,6 +2026,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>401</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -1823,6 +2045,10 @@ font: 45pt &quot;Optima&quot;;</string>
          <height>21</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+       </property>
        <property name="text">
         <string>Please enter the following information</string>
        </property>
@@ -1836,39 +2062,98 @@ font: 45pt &quot;Optima&quot;;</string>
          <height>359</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+       </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QLineEdit" name="lineEdit_stadiumName"/>
+         <widget class="QLineEdit" name="lineEdit_stadiumName">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_teamName"/>
+         <widget class="QLineEdit" name="lineEdit_teamName">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_streetName"/>
+         <widget class="QLineEdit" name="lineEdit_streetName">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_cityName"/>
+         <widget class="QLineEdit" name="lineEdit_cityName">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_stateName"/>
+         <widget class="QLineEdit" name="lineEdit_stateName">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_zipCode"/>
+         <widget class="QLineEdit" name="lineEdit_zipCode">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_boxOfficeNum"/>
+         <widget class="QLineEdit" name="lineEdit_boxOfficeNum">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_dateOpened"/>
+         <widget class="QLineEdit" name="lineEdit_dateOpened">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_capacity"/>
+         <widget class="QLineEdit" name="lineEdit_capacity">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_league"/>
+         <widget class="QLineEdit" name="lineEdit_league">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_grassType"/>
+         <widget class="QLineEdit" name="lineEdit_grassType">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -1877,13 +2162,21 @@ font: 45pt &quot;Optima&quot;;</string>
         <rect>
          <x>40</x>
          <y>30</y>
-         <width>112</width>
+         <width>141</width>
          <height>361</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
          <widget class="QLabel" name="label_stadiumLabel">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Stadium Name: </string>
           </property>
@@ -1891,6 +2184,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_teamNameLabel">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Team Name: </string>
           </property>
@@ -1898,6 +2195,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_14">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Street Name:</string>
           </property>
@@ -1905,6 +2206,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_cityLabel">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>City Name: </string>
           </property>
@@ -1912,6 +2217,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_stateLabel">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>State Name: </string>
           </property>
@@ -1919,6 +2228,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_zipCode">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Zip  Code:</string>
           </property>
@@ -1926,6 +2239,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Box Office #:</string>
           </property>
@@ -1933,6 +2250,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_5">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Date Opened:</string>
           </property>
@@ -1940,6 +2261,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_6">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Capacity:</string>
           </property>
@@ -1947,6 +2272,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_7">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>League:</string>
           </property>
@@ -1954,6 +2283,10 @@ font: 45pt &quot;Optima&quot;;</string>
         </item>
         <item>
          <widget class="QLabel" name="label_grassTypeLabel">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+          </property>
           <property name="text">
            <string>Grass Type : </string>
           </property>
@@ -1970,6 +2303,10 @@ font: 45pt &quot;Optima&quot;;</string>
          <height>21</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+       </property>
       </widget>
       <widget class="QLabel" name="label_8">
        <property name="geometry">
@@ -1979,6 +2316,10 @@ font: 45pt &quot;Optima&quot;;</string>
          <width>241</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
        </property>
        <property name="text">
         <string>Select a Stadium it is adjacent to </string>
@@ -1993,6 +2334,10 @@ font: 45pt &quot;Optima&quot;;</string>
          <height>27</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+       </property>
       </widget>
       <widget class="QLabel" name="label_13">
        <property name="geometry">
@@ -2002,6 +2347,10 @@ font: 45pt &quot;Optima&quot;;</string>
          <width>91</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
        </property>
        <property name="text">
         <string>Distance:</string>
@@ -2017,6 +2366,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
+      </property>
       <property name="text">
        <string>Continue</string>
       </property>
@@ -2029,6 +2382,10 @@ font: 45pt &quot;Optima&quot;;</string>
         <width>61</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 111, 255);
+font: 15pt &quot;Optima&quot;;</string>
       </property>
       <property name="text">
        <string>Back</string>
@@ -2122,6 +2479,22 @@ font: 45pt &quot;Optima&quot;;</string>
      </widget>
     </widget>
    </widget>
+   <widget class="QWidget" name="imageWidget_theme" native="true">
+    <property name="geometry">
+     <rect>
+      <x>-110</x>
+      <y>0</y>
+      <width>981</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/background14.jpg);</string>
+    </property>
+   </widget>
+   <zorder>imageWidget_theme</zorder>
+   <zorder>stackedWidget</zorder>
+   <zorder>stackedWidget_mainWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -2132,6 +2505,13 @@ font: 45pt &quot;Optima&quot;;</string>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionChoose_Layout"/>
+   </widget>
+   <addaction name="menuMenu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -2142,6 +2522,11 @@ font: 45pt &quot;Optima&quot;;</string>
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionChoose_Layout">
+   <property name="text">
+    <string>Choose Layout</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

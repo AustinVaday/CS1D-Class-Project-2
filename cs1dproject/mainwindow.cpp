@@ -13,12 +13,9 @@
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow),
-	graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
+    graph(200, UNDIRECTED_GRAPH) // 200 vertices, undirected
 {
-    // GUI Colors and design..
-
-
-
+    this->setWindowTitle("MLB Vacation Planner!");
 
 
 
@@ -52,62 +49,58 @@ MainWindow::MainWindow(QWidget *parent) :
 	fillGraph();
 
     // Assign all stadium images
-    (stadiumHash["AT&T Park"]).setImgPath(":/../logos/SanFrancisco.jpg");
-    (stadiumHash["Angels Stadium of Anaheim"]).setImgPath(":/../logos/LosAngelesAngels.jpg");
-    (stadiumHash["Busch Stadium"]).setImgPath("../logos/Seattle.jpg");
-    (stadiumHash["Chase Field"]).setImgPath("../logos/Arizona.jpg");
-    (stadiumHash["Citi Field"]).setImgPath("../logos/NewYorkMets.jpg");
-    (stadiumHash["Citizens Bank Park"]).setImgPath("../logos/Philadelphia.jpg");
-    (stadiumHash["Comerica Park"]).setImgPath("../logos/Detroit.jpg");
-    (stadiumHash["Coors Field"]).setImgPath("../logos/Colorado.jpg");
-    (stadiumHash["Dodger Stadium"]).setImgPath("../logos/LosAngelesDodgers.jpg");
-    (stadiumHash["Fenway Park"]).setImgPath("../logos/Boston.jpg");
-    (stadiumHash["Globe Life Park in Arlington"]).setImgPath("../logos/TexasRangers.jpg");
-    (stadiumHash["Great American Ball Park"]).setImgPath("../logos/Cincinnati.jpg");
-    (stadiumHash["Kauffman Stadium"]).setImgPath("../logos/KansasCity.jpg");
-    (stadiumHash["Marlins Park"]).setImgPath("../logos/Miami.jpg");
-    (stadiumHash["Miller Park"]).setImgPath("../logos/Milwaukee.jpg");
-    (stadiumHash["Minute Maid Park"]).setImgPath("../logos/Houston.jpg");
-    (stadiumHash["Nationals Park"]).setImgPath("../logos/Washington.jpg");
-    (stadiumHash["O.co Coliseum"]).setImgPath("../logos/Oakland.jpg");
-    (stadiumHash["Oriole Park at Camden Yards"]).setImgPath("../logos/Baltimore.jpg");
-    (stadiumHash["PNC Park"]).setImgPath("../logos/Pittsburgh.jpg");
-    (stadiumHash["Petco Park"]).setImgPath("../logos/SanDiego.jpg");
-    (stadiumHash["Progressive Field"]).setImgPath("../logos/Cleveland.jpg");
-    (stadiumHash["Rogers Centre"]).setImgPath("../logos/Toronto.jpg");
-    (stadiumHash["SafeCo Field"]).setImgPath("../logos/Seattle.jpg");
-    (stadiumHash["Target Field"]).setImgPath("../logos/Minnesota.jpg");
-    (stadiumHash["Tropicana Field"]).setImgPath("../logos/TampaBay.jpg");
-    (stadiumHash["Turner Field"]).setImgPath("../logos/Atlanta.jpg");
-    (stadiumHash["US Cellular Field"]).setImgPath("../logos/ChicagoWSox.jpg");
-    (stadiumHash["Wrigley Field"]).setImgPath("../logos/ChicagoCubs.jpg");
-    (stadiumHash["Yankee Stadium"]).setImgPath("../logos/NewYorkYankees.jpg");
+    (stadiumHash["AT&T Park"]).setImgPath(":/logos/SanFrancisco.jpg");
+    (stadiumHash["Angels Stadium of Anaheim"]).setImgPath(":/logos/LosAngelesAngels.jpg");
+    (stadiumHash["Busch Stadium"]).setImgPath(":/logos/Seattle.jpg");
+    (stadiumHash["Chase Field"]).setImgPath(":/logos/Arizona.jpg");
+    (stadiumHash["Citi Field"]).setImgPath(":/logos/NewYorkMets.jpg");
+    (stadiumHash["Citizens Bank Park"]).setImgPath(":/logos/Philadelphia.jpg");
+    (stadiumHash["Comerica Park"]).setImgPath(":/logos/Detroit.jpg");
+    (stadiumHash["Coors Field"]).setImgPath(":/logos/Colorado.jpg");
+    (stadiumHash["Dodger Stadium"]).setImgPath(":/logos/LosAngelesDodgers.jpg");
+    (stadiumHash["Fenway Park"]).setImgPath(":/logos/Boston.jpg");
+    (stadiumHash["Globe Life Park in Arlington"]).setImgPath(":/logos/TexasRangers.jpg");
+    (stadiumHash["Great American Ball Park"]).setImgPath(":/logos/Cincinnati.jpg");
+    (stadiumHash["Kauffman Stadium"]).setImgPath(":/logos/KansasCity.jpg");
+    (stadiumHash["Marlins Park"]).setImgPath(":/logos/Miami.jpg");
+    (stadiumHash["Miller Park"]).setImgPath(":/logos/Milwaukee.jpg");
+    (stadiumHash["Minute Maid Park"]).setImgPath(":/logos/Houston.jpg");
+    (stadiumHash["Nationals Park"]).setImgPath(":/logos/Washington.jpg");
+    (stadiumHash["O.co Coliseum"]).setImgPath(":/logos/Oakland.jpg");
+    (stadiumHash["Oriole Park at Camden Yards"]).setImgPath(":/logos/Baltimore.jpg");
+    (stadiumHash["PNC Park"]).setImgPath(":/logos/Pittsburgh.jpg");
+    (stadiumHash["Petco Park"]).setImgPath(":/logos/SanDiego.jpg");
+    (stadiumHash["Progressive Field"]).setImgPath(":/logos/Cleveland.jpg");
+    (stadiumHash["Rogers Centre"]).setImgPath(":/logos/Toronto.jpg");
+    (stadiumHash["SafeCo Field"]).setImgPath(":/logos/Seattle.jpg");
+    (stadiumHash["Target Field"]).setImgPath(":/logos/Minnesota.jpg");
+    (stadiumHash["Tropicana Field"]).setImgPath(":/logos/TampaBay.jpg");
+    (stadiumHash["Turner Field"]).setImgPath(":/logos/Atlanta.jpg");
+    (stadiumHash["US Cellular Field"]).setImgPath(":/logos/ChicagoWSox.jpg");
+    (stadiumHash["Wrigley Field"]).setImgPath(":/logos/ChicagoCubs.jpg");
+    (stadiumHash["Yankee Stadium"]).setImgPath(":/logos/NewYorkYankees.jpg");
+
+    // Fill out the theme list of background images!
+//    themeList.push_back(":/background1.jpg");
+    themeList.push_back(":/background2.jpg");
+//    themeList.push_back(":/background3.jpg");
+    themeList.push_back(":/background4.jpg");
+//    themeList.push_back(":/background5.png");
+    themeList.push_back(":/background6.jpg");
+//    themeList.push_back(":/background7.jpg");
+//    themeList.push_back(":/background8.jpg");
+    themeList.push_back(":/background9.jpg");
+    themeList.push_back(":/background10.png");
+//    themeList.push_back(":/background11.jpg");
+//    themeList.push_back(":/background12.jpg");
+    themeList.push_back(":/background13.png");
+    themeList.push_back(":/background15.jpg");
+    themeList.push_back(":/background16.jpg");
+    themeList.push_back(":/background14.jpg");
 
 
-    // ...
 
-	// Testing ...
-	//	qDebug() << "TESTING DIJKSTRA's: ";
-	//	stadium sourceStadium;
-	//	sourceStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-	//	sourceStadium.setStadiumNumber(5);
 
-	//	stadium endStadium;
-	//	endStadium.setStadiumName("SEE STADIUM NUM INSTEAD!");
-	//	endStadium.setStadiumNumber(2);
-
-	//	graph.DijkstraShortestPath(sourceStadium, endStadium, shortestPath, totalCost);
-
-	//	qDebug() << "Displaying shortest path from shortestPath list!";
-
-	//	for (int i = 0; i < shortestPath.size(); i++)
-	//	{
-	//		// *(shortestPath[i]) returns a stadium POINTER
-	//		qDebug() << *(*(shortestPath[i]));
-	//		qDebug() << " --> ";
-	//	}
-
-	//	qDebug() << "And the total cost is: " << totalCost;
 
 
 	//Initializations of fonts for line edits, etc...
@@ -122,8 +115,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->label_teamSearchTitle->setFont(titleFont);
 	ui->label_stadiumListTitle->setFont(titleFont);
 	ui->label_shopTitle->setFont(titleFont);
-	// setup ui
 
+    // setup ui
 	ui->stackedWidget_mainWidget->currentWidget()->hide();
 	ui->page_mainMenu->show();
 	ui->stackedWidget_mainWidget->show();
@@ -613,7 +606,7 @@ void MainWindow::on_button_cancel_clicked()
 {
 	QMessageBox::information(this, tr("Cancel Order"), tr("Your order has been canceled."));
 	ui->page_shoppingCart->hide();
-	ui->page_shop0->show();
+    ui->page_mainMenu->show();
 }
 
 void MainWindow::on_button_finish_clicked()
@@ -624,7 +617,7 @@ void MainWindow::on_button_finish_clicked()
 
 	refresh();
 	ui->page_shop0->hide();
-	ui->page_shoppingCart->show();
+    ui->page_mainMenu->show();
 }
 void MainWindow::on_button_customTrip0_clicked()
 {
@@ -766,22 +759,11 @@ void MainWindow::on_pushButton_customTripGo_clicked()
                 // SET first team image
                 QString imgPath = stadiumHash[listItem->text()].getStadiumImagePath();
                 QString styleString = "image: url(" + imgPath + ");";
+                ui->imageWidget->setStyleSheet(styleString);
+                ui->imageWidget->setStyleSheet(styleString);
+                ui->imageWidget->update();
 
-//                qDebug() << "STYLESTIRNG IS: " << styleString;
-//                ui->imageWidget->setStyleSheet(styleString);
-//                ui->imageWidget->update();
-
-
-//                ui->pixMapLabel->setPixmap(QPixmap(stadiumHash[listItem->text()].getStadiumImagePath()));
-//                ui->pixMapLabel->update();
-
-                QPixmap *image = new QPixmap(imgPath);
-                QLabel *imageLabel = new QLabel();
-                imageLabel->setPixmap(*image);
-                ui->imageLayout->addWidget(imageLabel);
-                ui->imageLayout->update();
-
-			}
+            }
 			else
 			{
 				ui->pushButton_customTripNext->setEnabled(true);
@@ -885,11 +867,12 @@ void MainWindow::on_pushButton_customTripNext_clicked()
 	ui->label_customTripStadiumName->setText(listItem->text());
 	on_label_customTripStadiumName_windowIconTextChanged(listItem->text());
 
-    // SET first team image
+    // SET the team image
     QString styleString = "image: url(" + stadiumHash[listItem->text()].getStadiumImagePath() + ");";
     qDebug() << "STYLESTIRNG IS: " << styleString;
     ui->imageWidget->setStyleSheet(styleString);
     ui->imageWidget->update();
+
 	// update progress bar
 	SetProgressBar(currentStadiumIndex);
 }
@@ -978,6 +961,7 @@ void MainWindow::on_button_quickTripMainMenu_clicked()
 
 void MainWindow::on_pushButton_quickTripGo_clicked()
 {
+    //***
 	QString selectedStadium = ui->comboBox_quickTripSelectStadium->currentText();
 	float totalCost = 0;
 
@@ -1009,6 +993,13 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
 			ui->pushButton_customTripPrevious->setEnabled(false);
 			ui->pushButton_customTripNext->setEnabled(false);
 
+            // SET first team image
+            QString imgPath = stadiumHash[listItem->text()].getStadiumImagePath();
+            QString styleString = "image: url(" + imgPath + ");";
+            ui->imageWidget->setStyleSheet(styleString);
+            ui->imageWidget->setStyleSheet(styleString);
+            ui->imageWidget->update();
+
 		}
 		else
 		{
@@ -1021,7 +1012,6 @@ void MainWindow::on_pushButton_quickTripGo_clicked()
 	}
 
 	ui->label_customTripDistanceTravelled->setText(QString::number(totalCost) + " miles.");
-
 
 	// set the value of the progress bar.
 	SetProgressBar(-1);
@@ -1191,3 +1181,24 @@ void MainWindow::on_lineEdit_password_returnPressed()
     on_button_login_clicked();
 }
 
+
+void MainWindow::on_button_chooseTheme_clicked()
+{
+    // Iterate to next theme index
+    currentThemeIndex++;
+
+    // Reset theme index if out of bounds
+    if (currentThemeIndex >= themeList.size())
+    {
+        currentThemeIndex = 0;
+    }
+
+    // SET first team image
+    QString imgPath = themeList[currentThemeIndex];
+    QString styleString = "background-image: url(" + imgPath + ");";
+    ui->imageWidget_theme->setStyleSheet(styleString);
+    ui->imageWidget_theme->setStyleSheet(styleString);
+    ui->imageWidget_theme->update();
+
+
+}

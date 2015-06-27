@@ -195,6 +195,8 @@ private slots:
     void on_lineEdit_password_returnPressed();
 
 
+    void on_button_chooseTheme_clicked();
+
 private:
 		Ui::MainWindow *ui;
 		QSqlDatabase db;
@@ -202,6 +204,7 @@ private:
 		QSqlTableModel* souvenirModel;
 		QSqlTableModel* initModel;
 		QSqlTableModel* cartModel;
+        QVector<QString> themeList;
 		/*
 		 * Vertex: stadium
 		 * Edge: float (could be int, but let's make it generic)
@@ -218,6 +221,7 @@ private:
 
 
         int     currentStadiumIndex;
+        int     currentThemeIndex;
         bool    quickTrip;
         QString searchSelection;
 
